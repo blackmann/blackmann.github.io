@@ -8,6 +8,16 @@ body {
   font-weight: 700;
 }
 
+.reveal-color {
+  filter: grayscale();
+  cursor: pointer;
+  transition: filter 300ms;
+}
+
+.reveal-color:hover {
+  filter: none
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {  }
 
