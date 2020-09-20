@@ -18,11 +18,19 @@ body {
   filter: none
 }
 
+.border-md-left {
+  border: none;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {  }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {  }
+@media (min-width: 768px) {
+  .border-md-left {
+    border-left: 1px solid #dee2e6!important;
+  }
+}
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { }
