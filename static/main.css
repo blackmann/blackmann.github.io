@@ -22,6 +22,10 @@ body {
   border: none;
 }
 
+.cancel {
+  text-decoration: line-through;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {  }
 

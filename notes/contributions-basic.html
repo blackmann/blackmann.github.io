@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/main.css">
+
+  <title>Contributions | blackmann</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav class="navbar">
+      <p class="navbar-brand bold">
+        blackmann/notgr <span class="badge badge-danger">busy</span>
+      </p>
+
+      <div class="d-none d-md-block">
+        <a href="mailto:mail@degreat.co.uk" class="mr-3">Send me an email</a>
+        <a href="https://twitter.com/__degreat"><i class="fab fa-twitter"></i></a>
+      </div>
+    </nav>
+  </div>
+
+  <section>
+    <div class="container">
+      <p class="h3 bold mb-0">Working together on a project</p>
+      <small class="text-muted">Written on 14th November 2020</small>
+      <br>
+      <div class="row mt-3">
+        <div class="col-md-7 col-12">
+          <p>
+            Even though the title talks about making code contributions, this note can serve as a primer to basic git
+            commands. The git commands in this notes are agnostic to what version control server
+            <code>(Github, Bitbucket, etc)</code> you use.
+          </p>
+
+          <p>One reason we need to <code>git</code> is so that we can track who made what changes and which files (and
+            lines
+            in a file) were changed. Using traditional folder sharing won't bless you with these. Also git allows us to
+            make contributions to the same file independent of each other and then <code>merge</code> the changes later.
+          </p>
+        </div>
+
+        <div class="col-md-3 col-12">
+          <p class="text-muted border-left px-3">Git is not Github. Git is a version control system. Github is a VCS
+            server.<br><i class="fas fa-paperclip text-muted"></i> <a
+              href="https://en.wikipedia.org/wiki/Version_control">Read
+              more</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-7 col-12">
+          <p class="h5 bold" id="editing">Branch out 👉🏽</p>
+
+          <p>First thing to do after cloning the repository is to branch <em class="text-muted">(out of
+              <code>master</code>)</em> into a branch of your name or nickname.</p>
+
+          <pre class="mb-0"><code class="bash">git checkout -b notgr</code></pre>
+
+          <small class="text-muted">User lowercase alphabets, with hyphens or underscores for the branch name. No spaces
+            should be in the name</small>
+          <br>
+          <br>
+          <p>This is where you work. And this is how your colleagues can identify your work.</p>
+
+        </div>
+
+        <div class="col-md-3 col-12">
+          <p class="text-muted border-left px-3">
+            To clone a repo, run <code>git clone &lt;repo-url&gt;</code>. You can get the repo url from the project on
+            Github, Bitbucket, etc.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-7 col-12">
+          <p class="h5 bold" id="editing">Get to work!</p>
+          <p>
+            It is advisable that you make reasonable amount of code <code class="html">commits</code>. What this means
+            is that, when you implement a working feature of problem, <em>save it to git</em>.
+          </p>
+
+          <p>To commit run the following commands</p>
+
+          <pre class="mb-0"><code class="bash">git add .</code></pre>
+
+          <small class="text-muted">This stages (or adds) your edits for commit (or saving to git)</small>
+
+          <br>
+          <br>
+
+          <pre class="mb-0"><code class="bash">git commit -m "Search bar implemented."</code></pre>
+
+          <small class="text-muted">This is like giving everyone a hint on what you worked on in this commit.</small>
+
+          <br>
+          <br>
+          <p>Now your changes are committed. You can choose to keep working and adding more commits or submit your
+            changes to <code>remote</code>.</p>
+        </div>
+
+        <div class="col-md-3 col-12">
+          <p class="border-left px-3 text-muted">
+            Remote is the server where you host your git/code files. Github for example.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-7 col-12">
+          <p class="h5 bold" id="editing">Submit!</p>
+          <p>If you're confident you've made enough progress to share for review, run the following command.</p>
+          <pre class="mb-0"><code class="bash">git push origin notgr</code></pre>
+
+          <small class="text-muted">Remember notgr is the branch name. Which could be your nickname, etc.</small>
+          <br>
+          <p>
+            After pushing you will find a link in the terminal along the lines of <strong>Create a pull
+              request</strong>. Click this link to open a pull request form.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-7 col-12">
+          <p class="h5 bold" id="editing">Harrgh! Pull request? 🤕</p>
+          <p class="text-muted">Yes, pull request. You thought we were done?</p>
+
+          <p>Use this form to notify your colleagues of the changes you've done. Pull requests are also an opportunity
+            for your colleagues to review your work and provide feedback. If your contributions are fine, then the
+            project leader can merge your contribution into <code>master</code> and probably get you a bottle of
+            Coca-cola.</p>
+        </div>
+      </div>
+
+      <div class="row mt-5 pb-5">
+        <div class="col-md-7 col-12">
+          <p class="h5 bold" id="editing">Last one. Pull!</p>
+          <p>After you get notified your code was merged to <code>master</code>. Run the following command, after you have committed local changes on your branch.</p>
+
+          <pre class="mb-0"><code class="bash">git pull origin master</code></pre>
+
+          <small class="text-muted">
+            This may result in some conflicts. Take the initiative here!
+          </small>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://kit.fontawesome.com/7500dd5906.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+  <script src="/static/main.js"></script>
+</body>
+
+</html>

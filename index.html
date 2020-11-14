@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="static/main.css">
+  <link rel="stylesheet" href="/static/main.css">
 
   <title>blackmann</title>
 </head>
@@ -18,7 +18,7 @@
         blackmann/notgr <span class="badge badge-danger">busy</span>
       </p>
 
-      <div>
+      <div class="d-none d-md-block">
         <a href="mailto:mail@degreat.co.uk" class="mr-3">Send me an email</a>
         <a href="https://twitter.com/__degreat"><i class="fab fa-twitter"></i></a>
       </div>
@@ -83,21 +83,21 @@
           <p class="h5 bold">Mobile</p>
 
           <p>I build well tested mobile apps making sure efficiency and ROI are near maximum.</p>
-          <p class="text-muted">Android/Kotlin, Flutter</p>
+          <p class="text-muted">Flutter, <span class="cancel">Android/Kotlin</span></p>
         </div>
 
         <div class="col-md-3 col-12 p-3 border-md-left">
           <i class="fas fa-globe-africa text-primary h4"></i>
           <p class="h5 bold">Web</p>
           <p>With modern frameworks I build web applications that run well on both desktop and mobile browsers.</p>
-          <p class="text-muted">Vue, React</p>
+          <p class="text-muted">Svelte, <span class="cancel">Vue, React</span></p>
         </div>
 
         <div class="col-md-3 col-12 p-3 border-md-left">
           <i class="fas fa-server text-danger h4"></i>
           <p class="h5 bold">Server API</p>
-          <p>REST APIs, realtime (Websockets) applications that feed and process data from frontend applications.</p>
-          <p class="text-muted">Django, Ktor</p>
+          <p>REST APIs, realtime applications that feed and process data from frontend applications.</p>
+          <p class="text-muted">Django, Feathers/Express</p>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
 
       <div class="row">
         <div class="col-md-4 col-12 p-3 border-md-left">
-          <small class="text-danger"><i class="fas fa-star"></i> 149 stars</small>
+          <small class="text-danger"><i class="fas fa-star"></i> 166 stars</small>
           <p class="h4 bold">story_view</p>
           <p>
             A flutter widget to display stories just like WhatsApp, Facebook and Instagram. Support for still and
@@ -127,7 +127,7 @@
         </div>
 
         <div class="col-md-4 col-12 p-3 border-md-left">
-          <small class="text-muted"><i class="fas fa-star"></i> 57 stars</small>
+          <small class="text-muted"><i class="fas fa-star"></i> 62 stars</small>
           <p class="h4 bold">place_picker</p>
           <p>
             A place/location picker widget for Flutter. Comes with autocomplete search suggestions, map tap selection
@@ -137,12 +137,33 @@
         </div>
       </div>
     </div>
+
+    <div class="p-5-md p-3">
+      <p class="h5 bold"><i class="far fa-clipboard text-danger"></i> Notes</p>
+
+      <p class="text-muted">All the trade-secrets</p>
+
+
+      <div class="row">
+        <div class="col-md-4 col-12">
+          <div class="card">
+            <img src="https://res.cloudinary.com/blackground-labs/image/upload/v1605364101/gr/contributions.png"
+              alt="Contributions" class="img-fluid card-img-top">
+            <div class="card-body">
+              <p class="h4 bold">Working together on a project</p>
+              <p>How to make contributions to the same code repository (with git) for small teams.</p>
+
+              <a href="/notes/contributions-basic.html" class="btn stretched-link btn-primary">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
 
   </footer>
-
 
   <script src="https://kit.fontawesome.com/7500dd5906.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -154,7 +175,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="static/main.js"></script>
+  <script src="/static/main.js"></script>
 </body>
 
 </html>
