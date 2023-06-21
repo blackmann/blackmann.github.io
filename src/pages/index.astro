@@ -1,8 +1,17 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Link from '../components/Link.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+import developerTools from '../lib/developer-tools'
+import featuredLinks from '../lib/featured-links'
+import { getCollection } from 'astro:content'
+import shortenDate from '../lib/shorten-date'
+
+const posts = (await getCollection('blog')).sort((a, b) => {
+	return b.data.pubDate.getTime() - a.data.pubDate.getTime()
+})
 ---
 
 <!DOCTYPE html>
@@ -12,39 +21,94 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
+		<main class="container">
+			<h1 class="mt-8">Welcome to my Home</h1>
+
+			<p class="intro">
+				It's me De-Great; or call me GR. I am a creative trying every and
+				anything that spikes my interest. 3D, code, music, drawing, writing? On
+				this site, you'll find a few things I want you to know <span
+					class="text-secondary">[about me or stuff I'm working on]</span
+				>. If you want to know more and keep up, try following my socials or
+				join my <a href="/">Discord</a> server.
 			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+
+			<h2 class="mt-8">Featured</h2>
+
+			<div class="row row-gap-5">
+				{
+					featuredLinks.map((link) => (
+						<div class="col-md-4">
+							<div class="fw-bold">{link.title}</div>
+							<p class="text-secondary">{link.description}</p>
+							<Link href={`https://${link.link}`}>{link.link}</Link>
+						</div>
+					))
+				}
+			</div>
+
+			<section class="row mt-5">
+				<div class="col-md-8 offset-md-2">
+					<h2>Recent posts</h2>
+
+					<ul class="list-unstyled">
+						{
+							posts.slice(0, 6).map((post) => (
+								<li class="post-item">
+									<a
+										class="d-flex justify-content-between py-2 px-2"
+										href={`/blog/${post.slug}`}
+									>
+										<span>{post.data.title}</span>
+										<span class="text-secondary">
+											{shortenDate(post.data.pubDate)}
+										</span>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+
+					<h2 class="mt-8">Developer packages</h2>
+
+					<div class="row row-gap-5">
+						{
+							developerTools.map((pkg) => (
+								<div class="col-md-6">
+									<div class="fw-bold mb-3">{pkg.title}</div>
+									<div class="text-secondary mb-2">{pkg.description}</div>
+
+									<a href={pkg.link}>{pkg.link}</a>
+								</div>
+							))
+						}
+					</div>
+
+					<div class="mt-5 text-secondary">
+						Check out more projects <a href="/projects">here</a>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
+		<style>
+			.intro {
+				max-width: 480px;
+			}
+
+			.post-item + .post-item {
+				border-top: 1px solid var(--bs-gray-200);
+			}
+
+			@media (prefers-color-scheme: dark) {
+				.post-item + .post-item {
+					border-top: 1px solid var(--bs-gray-800);
+				}
+			}
+
+			.post-item a {
+				text-decoration: none;
+			}
+		</style>
 	</body>
 </html>

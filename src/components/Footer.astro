@@ -1,13 +1,21 @@
 ---
-const today = new Date();
+const today = new Date()
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="text-secondary container mt-8">
+	<div class="mb-2">
+		<span class="text-secondary">Other links:</span>
+		<a class="me-1" href="/cool-stuff">Cool stuff</a>
+		<a href="/candies">Candies 🍬</a>
+	</div>
+
+	<div>&copy; {today.getFullYear()} De-Great Yartey. All rights reserved.</div>
+
+	<div>version 2023.06.20/1</div>
 </footer>
 <style>
 	footer {
 		padding: 25px;
-		text-align: center;
+		color: graytext;
 	}
 </style>
