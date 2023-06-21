@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Link from '../components/Link.astro'
+import Shell from '../layouts/Shell.astro'
 
 const startups = [
   {
@@ -66,78 +67,67 @@ const packages = [
 ]
 ---
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <BaseHead title="Projects" description="Stuff I have worked on." />
-  </head>
+<Shell title="Projects" description="Stuff I have worked on.">
+  <main class="container mt-8">
+    <h1>Projects</h1>
 
-  <body>
-    <Header />
+    <p class="page-half">
+      I've tried many and a lot of things. These are the ones I could collect
+      and showcase; or just proud of them.
+    </p>
 
-    <main class="container mt-8">
-      <h1>Projects</h1>
+    <h2 class="mt-5">Startups</h2>
+    <div class="row">
+      {
+        startups.map((project) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{project.title}</div>
+            <p class="text-secondary">{project.description}</p>
 
-      <p class="page-half">
-        I've tried many and a lot of things. These are the ones I could collect
-        and showcase; or just proud of them.
-      </p>
+            <div class="text-secondary">{project.meta}</div>
 
-      <h2 class="mt-5">Startups</h2>
-      <div class="row">
-        {
-          startups.map((project) => (
-            <div class="col-md-4">
-              <div class="fw-bold">{project.title}</div>
-              <p class="text-secondary">{project.description}</p>
-
-              <div class="text-secondary">{project.meta}</div>
-
-              <div class="mt-2">
-                <Link href={`https://${project.url}`}>{project.url}</Link>
-              </div>
+            <div class="mt-2">
+              <Link href={`https://${project.url}`}>{project.url}</Link>
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
+    </div>
 
-      <h2 class="mt-5">Apps</h2>
-      <div class="row row-gap-5">
-        {
-          apps.map((project) => (
-            <div class="col-md-4">
-              <div class="fw-bold">{project.title}</div>
-              <p class="text-secondary">{project.description}</p>
+    <h2 class="mt-5">Apps</h2>
+    <div class="row row-gap-5">
+      {
+        apps.map((project) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{project.title}</div>
+            <p class="text-secondary">{project.description}</p>
 
-              <div class="text-secondary">{project.meta}</div>
+            <div class="text-secondary">{project.meta}</div>
 
-              <div class="mt-2">
-                <Link href={`https://${project.url}`}>{project.url}</Link>
-              </div>
+            <div class="mt-2">
+              <Link href={`https://${project.url}`}>{project.url}</Link>
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
+    </div>
 
-      <h2 class="mt-5">Packages</h2>
-      <div class="row row-gap-5">
-        {
-          packages.map((project) => (
-            <div class="col-md-4">
-              <div class="fw-bold">{project.title}</div>
-              <p class="text-secondary">{project.description}</p>
+    <h2 class="mt-5">Packages</h2>
+    <div class="row row-gap-5">
+      {
+        packages.map((project) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{project.title}</div>
+            <p class="text-secondary">{project.description}</p>
 
-              <div class="text-secondary">{project.meta}</div>
+            <div class="text-secondary">{project.meta}</div>
 
-              <div class="mt-2">
-                <Link href={`https://${project.url}`}>{project.url}</Link>
-              </div>
+            <div class="mt-2">
+              <Link href={`https://${project.url}`}>{project.url}</Link>
             </div>
-          ))
-        }
-      </div>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Shell>

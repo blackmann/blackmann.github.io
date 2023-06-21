@@ -18,7 +18,7 @@ const { items } = Astro.props
       <li class="list-item">
         <a class="d-flex justify-content-between py-2 px-2" href={item.link}>
           <span>{item.title}</span>
-          <span class="text-secondary">{item.meta}</span>
+          <span class="meta text-secondary">{item.meta}</span>
         </a>
       </li>
     ))
@@ -38,5 +38,10 @@ const { items } = Astro.props
 
   .list-item a {
     text-decoration: none;
+  }
+
+  .meta {
+    min-width: 8rem;
+    text-align: end;
   }
 </style>

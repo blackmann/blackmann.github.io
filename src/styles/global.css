@@ -12,10 +12,17 @@
 	font-weight: 700;
 }
 
+
+@font-face {
+	font-family: "Zed Mono";
+	src: url("/zed-mono/zed-mono-italic.woff2");
+	font-style: italic;
+}
+
 :root {
 	color-scheme: light dark;
 	font-family: "Zed Mono", monospace;
-	font-size: 14px;
+	font-size: 15px;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -54,4 +61,27 @@ a:hover {
 
 .page-half {
 	max-width: 480px;
+}
+
+img, video {
+	max-width: 100%;
+}
+
+.footnotes {
+	border-top: 1px solid var(--bs-secondary-color);
+	margin-top: 4rem;
+}
+
+.footnotes h2 {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	article > section:not(.footnotes) {
+		columns: 2;
+		column-rule-width: thin;
+		column-rule-style: solid;
+		column-rule-color: var(--bs-gray-800);
+		column-gap: 3rem;
+	}
 }

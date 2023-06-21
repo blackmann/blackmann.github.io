@@ -1,0 +1,31 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+const topics = [
+  { title: 'Apps', slug: 'apps' },
+  { title: 'Websites', slug: 'websites' },
+  { title: 'People', slug: 'people' },
+  { title: 'Shows/Movies', slug: 'movies' },
+]
+---
+
+<ul class="list-unstyled">
+  {
+    topics.map((topic) => (
+      <li class="py-2">
+        <HeaderLink href={`/cool-stuff/${topic.slug}`}>
+          {topic.title}
+        </HeaderLink>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin-right: 1rem;
+  }
+</style>
