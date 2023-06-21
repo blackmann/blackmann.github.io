@@ -8,10 +8,17 @@ import developerTools from '../lib/developer-tools'
 import featuredLinks from '../lib/featured-links'
 import { getCollection } from 'astro:content'
 import shortenDate from '../lib/shorten-date'
+import ContentList from '../components/ContentList.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
 	return b.data.pubDate.getTime() - a.data.pubDate.getTime()
 })
+
+const postsList = posts.slice(0, 6).map((post) => ({
+	link: `/blog/${post.slug}`,
+	meta: shortenDate(post.data.pubDate),
+	title: post.data.title
+}))
 ---
 
 <!DOCTYPE html>
@@ -20,9 +27,9 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header title={SITE_TITLE} />
-		<main class="container">
-			<h1 class="mt-8">Welcome to my Home</h1>
+		<Header />
+		<main class="container mt-8">
+			<h1>Welcome to my Home</h1>
 
 			<p class="intro">
 				It's me De-Great; or call me GR. I am a creative trying every and
@@ -51,23 +58,11 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 				<div class="col-md-8 offset-md-2">
 					<h2>Recent posts</h2>
 
-					<ul class="list-unstyled">
-						{
-							posts.slice(0, 6).map((post) => (
-								<li class="post-item">
-									<a
-										class="d-flex justify-content-between py-2 px-2"
-										href={`/blog/${post.slug}`}
-									>
-										<span>{post.data.title}</span>
-										<span class="text-secondary">
-											{shortenDate(post.data.pubDate)}
-										</span>
-									</a>
-								</li>
-							))
-						}
-					</ul>
+					<ContentList items={postsList} />
+
+					<div class="mt-5 text-secondary">
+						See all posts <a href="/blog">here</a>
+					</div>
 
 					<h2 class="mt-8">Developer packages</h2>
 
@@ -94,20 +89,6 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 		<style>
 			.intro {
 				max-width: 480px;
-			}
-
-			.post-item + .post-item {
-				border-top: 1px solid var(--bs-gray-200);
-			}
-
-			@media (prefers-color-scheme: dark) {
-				.post-item + .post-item {
-					border-top: 1px solid var(--bs-gray-800);
-				}
-			}
-
-			.post-item a {
-				text-decoration: none;
 			}
 		</style>
 	</body>

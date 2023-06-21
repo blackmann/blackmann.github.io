@@ -51,3 +51,7 @@ a:hover {
 .mt-8 {
 	margin-top: 8rem;
 }
+
+.page-half {
+	max-width: 480px;
+}

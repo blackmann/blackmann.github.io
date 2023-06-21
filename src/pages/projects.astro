@@ -1,0 +1,143 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+import Link from '../components/Link.astro'
+
+const startups = [
+  {
+    title: 'Adeton',
+    url: 'adeton.io',
+    description:
+      'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian1 merchant. Currently hosting 1000+ shops and processing tens of orders a week. Free to get started',
+    meta: '2021—date',
+  },
+]
+
+const apps = [
+  {
+    title: 'stylebender',
+    description:
+      'Generate your styles how you want them and build rapidly. Opensource too.',
+    url: 'stylebender.okgr.so',
+  },
+  {
+    title: 'Many Things',
+    description:
+      'Inspired by 1Thing by sindresorhus. 1Thing allowed for setting one goal at a time. But I also needed to be reminded about other stuff — many things. This app runs in the menu bar.',
+    url: 'github.com/blackmann/ManyThings',
+    meta: 'Mac Only',
+  },
+  {
+    title: 'Sawside',
+    description:
+      'How about you make real new friends this new year? That was the tagline. This app was left in TestFlight. Might revive it again.',
+    url: 'sawside.com',
+    meta: 'iOS only',
+  },
+  {
+    title: 'aaccraa.com',
+    description:
+      'Connecting strangers and building real connections with live video. Spent a weekend on this proof-of-concept. Deployed midweek and had a surge of 2000 unique visits by end of week.',
+    url: 'aaccraa.com',
+    meta: 'Not restricted to just Accra 🇬🇭',
+  },
+  {
+    title: 'Wipe_Modules',
+    description:
+      "Clean all node_modules from projects that have turned stale. You can select the folder where you keep all your projects and it'll recursively scan for node_modules folders.",
+    meta: 'Mac only',
+    url: 'github.com/blackmann/Wipe_Modules',
+  },
+]
+
+const packages = [
+  {
+    title: 'react-chat-input',
+    description: 'The missing chat input for React ⚛️',
+    url: 'github.com/blackmann/react-chat-input',
+    meta: 'Stalled development'
+  },
+  {
+    title: 'overlapping-panels',
+    description: 'Discord inspired navigation for Flutter apps',
+    url: 'github.com/blackmann/overlapping_panels'
+  }
+]
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <BaseHead title="Projects" description="Stuff I have worked on." />
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container mt-8">
+      <h1>Projects</h1>
+
+      <p class="page-half">
+        I've tried many and a lot of things. These are the ones I could collect
+        and showcase; or just proud of them.
+      </p>
+
+      <h2 class="mt-5">Startups</h2>
+      <div class="row">
+        {
+          startups.map((project) => (
+            <div class="col-md-4">
+              <div class="fw-bold">{project.title}</div>
+              <p class="text-secondary">{project.description}</p>
+
+              <div class="text-secondary">{project.meta}</div>
+
+              <div class="mt-2">
+                <Link href={`https://${project.url}`}>{project.url}</Link>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <h2 class="mt-5">Apps</h2>
+      <div class="row row-gap-5">
+        {
+          apps.map((project) => (
+            <div class="col-md-4">
+              <div class="fw-bold">{project.title}</div>
+              <p class="text-secondary">{project.description}</p>
+
+              <div class="text-secondary">{project.meta}</div>
+
+              <div class="mt-2">
+                <Link href={`https://${project.url}`}>{project.url}</Link>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <h2 class="mt-5">Packages</h2>
+      <div class="row row-gap-5">
+        {
+          packages.map((project) => (
+            <div class="col-md-4">
+              <div class="fw-bold">{project.title}</div>
+              <p class="text-secondary">{project.description}</p>
+
+              <div class="text-secondary">{project.meta}</div>
+
+              <div class="mt-2">
+                <Link href={`https://${project.url}`}>{project.url}</Link>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

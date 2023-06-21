@@ -1,0 +1,42 @@
+---
+interface ContentItem {
+  title: string
+  meta?: string
+  link: string
+}
+
+interface Props {
+  items: ContentItem[]
+}
+
+const { items } = Astro.props
+---
+
+<ul class="list-unstyled">
+  {
+    items.slice(0, 6).map((item) => (
+      <li class="list-item">
+        <a class="d-flex justify-content-between py-2 px-2" href={item.link}>
+          <span>{item.title}</span>
+          <span class="text-secondary">{item.meta}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .list-item + .list-item {
+    border-top: 1px solid var(--bs-gray-200);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .list-item + .list-item {
+      border-top: 1px solid var(--bs-gray-800);
+    }
+  }
+
+  .list-item a {
+    text-decoration: none;
+  }
+</style>
