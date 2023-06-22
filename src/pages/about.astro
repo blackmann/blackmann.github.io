@@ -1,15 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro';
+import Shell from '../layouts/Shell.astro'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title="About me" description="Some quick introduction" />
-	</head>
-
-	<body>
-		<Header />
-	</body>
-</html>
+<Shell title="About me" description="Some quick introduction">
+	<div class="container mt-8">
+		<h1>De-Great Yartey</h1>
+	</div>
+</Shell>

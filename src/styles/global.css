@@ -82,6 +82,29 @@ img, video {
 	display: none;
 }
 
+code {
+	font-family: 'Zed Mono', monospace;
+	color: var(--bs-success);
+}
+
+@media (prefers-color-scheme: dark) {
+	code {
+		color: var(--bs-warning)
+	}
+}
+
+article blockquote {
+	color: var(--bs-secondary)
+}
+
+article table {
+	width: 100%;
+}
+
+article th, article td {
+	text-align: start;
+}
+
 @media screen and (min-width: 768px) {
 	article > section:not(.footnotes) {
 		columns: 2;
@@ -96,4 +119,26 @@ img, video {
 			column-rule-color: var(--bs-gray-700);
 		}
 	}
+}
+
+
+.astro-code {
+  counter-reset: step;
+  counter-increment: step 0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.astro-code .line {
+	line-height: 1.6rem;
+}
+
+.astro-code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
 }
