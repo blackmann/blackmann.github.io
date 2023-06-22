@@ -22,6 +22,14 @@ Tauri, however, provides some APIs[^1] to interact with the system. But when the
 
 First install the [`mongodb`](https://crates.io/crates/mongodb) crate.
 
+Add the following to your `src-tauri/Cargo.toml`:
+
+```toml
+[dependencies.mongodb]
+version = "2.5.0"
+features = ["tokio-sync"]
+```
+
 ## Backend
 
 > Backend in Tauri language means the Rust part of the codebase.
@@ -35,7 +43,8 @@ That said, let's implement a general `find` API:
 
 ...
 
-use mongodb::{bson, bson::Document, options::ClientOptions, options::FindOptions, Client};
+use futures::TryStreamExt;
+use mongodb::{bson, bson::Document, options::FindOptions, Client};
 
 #[tauri::command]
 async fn db_find(
@@ -111,6 +120,10 @@ In `main()` function in `main.rs`, do the following to register our function:
 
 ```rust
 // main.rs
+
+// Update the previous `use` with this.
+// Giving `use mongodb::{bson, bson::Document, options::ClientOptions, options::FindOptions, Client}`
+use mongo::{options::ClientOptions, Client};
 
 ...
 
