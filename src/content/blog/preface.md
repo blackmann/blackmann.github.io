@@ -11,7 +11,7 @@ Coming up with a site format that display many aspect of your career and persona
 
 It's hard.
 
-I have kept my previous website for close to two years now. It was built with Docusaurus so I didn't have to worry much about design. Only thing I had to worry about was the homepage, which I believe I killed it — in a simple way. I also did some few style overrides on the content pages and that was it.
+I have kept my previous website for about a year now. It was built with Docusaurus so I didn't have to worry much about design. Only thing I had to worry about was the homepage, which I believe I killed it — in a simple way. I also did some few style overrides on the content pages and that was it.
 
 The following is a video demo of my old site.
 </section>
