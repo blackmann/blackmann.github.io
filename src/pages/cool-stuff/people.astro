@@ -1,0 +1,78 @@
+---
+import CoolLinks from '../../components/CoolLinks.astro'
+import Shell from '../../layouts/Shell.astro'
+import Link from '../../components/Link.astro'
+
+const people = [
+  {
+    title: 'Drake',
+    description: 'What do I have to say? What do you want to hear?',
+    link: 'instagram.com/champagnepapi',
+  },
+  {
+    title: 'Ash Thorp',
+    description:
+      "I know him for creating very realistic+convincing car renders. He's one of the top VFX artists that inspire me.",
+    link: 'www.altcinc.com',
+  },
+  {
+    title: 'Maxime Heckel',
+    description:
+      "He's a learner. He's a sharer. I follow him for the quality of work and research he puts out.",
+    link: 'maximeheckel.com',
+  },
+  {
+    title: 'Sebastian Lague',
+    description:
+      'His videos are really well put. The time spent in research and development is inspiring. Check out his videos.',
+    link: 'youtube.com/@SebastianLague',
+  },
+  {
+    title: 'Bartosz Ciechanowski',
+    description: 'In-depth engineering research. Man, I idolize this guy.',
+    link: 'ciechanow.ski',
+  },
+  {
+    title: 'Paul Henschel',
+    description: `Paul has made tremendous contributions around WebGL/ThreeJS with React.
+    He leads pmnd.rs and his efforts have lowered the barrier into WebGL considerably.`,
+    link: 'github.com/drcmda',
+  },
+  {
+    title: 'Mr DoNothing',
+    description: 'His art style is yummy.',
+    link: 'instagram.com/mr.donothing/',
+  },
+  {
+    title: 'aarthificial',
+    description:
+      'Just like Sebastian, aarthificial also runs a devlog channel and builds cool tools.',
+    link: 'youtube.com/@aarthificial',
+  },
+]
+---
+
+<Shell title="Cool People" description="People doing cool stuff">
+  <main class="container mt-8">
+    <CoolLinks />
+
+    <h1>Cool people 🥷🏽</h1>
+
+    <p class="text-secondary page-half">
+      I like to be inspired; to be shown what man is capable of. And these
+      people advertise that well.
+    </p>
+
+    <div class="row mt-5 row-gap-5">
+      {
+        people.map((person) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{person.title}</div>
+            <p class="text-secondary">{person.description}</p>
+            <Link href={`https://${person.link}`}>{person.link}</Link>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Shell>

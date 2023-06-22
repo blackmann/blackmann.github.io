@@ -1,0 +1,35 @@
+---
+import CoolLinks from '../../components/CoolLinks.astro'
+import Shell from '../../layouts/Shell.astro'
+import Link from '../../components/Link.astro'
+
+const shows = [
+  {
+    title: '',
+    description: '',
+    rating: '',
+  },
+]
+---
+
+<Shell title="Cool Shows" description="Movies or TV shows that were well done">
+  <main class="container mt-8">
+    <CoolLinks />
+
+    <h1>Cool shows 📺</h1>
+
+    <p class="text-secondary page-half">WIP</p>
+
+    <div class="row mt-5 row-gap-5">
+      {
+        shows.map((show) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{show.title}</div>
+            <p class="text-secondary">{show.description}</p>
+            <p class="text-secondary">{show.rating}</p>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Shell>

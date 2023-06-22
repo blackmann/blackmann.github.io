@@ -68,8 +68,14 @@ img, video {
 }
 
 .footnotes {
-	border-top: 1px solid var(--bs-secondary-color);
+	border-top: 1px solid var(--bs-gray-200);
 	margin-top: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	.footnotes {
+		border-top: 1px solid var(--bs-gray-800);
+	}
 }
 
 .footnotes h2 {
@@ -81,7 +87,13 @@ img, video {
 		columns: 2;
 		column-rule-width: thin;
 		column-rule-style: solid;
-		column-rule-color: var(--bs-gray-800);
+		column-rule-color: var(--bs-gray-400);
 		column-gap: 3rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		article > section:not(.footnotes) {
+			column-rule-color: var(--bs-gray-700);
+		}
 	}
 }

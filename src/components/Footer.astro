@@ -2,7 +2,7 @@
 const today = new Date()
 ---
 
-<footer class="text-secondary container mt-8">
+<footer class="text-secondary container mt-8 pt-5">
 	<div class="mb-2">
 		<span class="text-secondary">Other links:</span>
 		<a class="me-1" href="/cool-stuff">Cool stuff</a>
@@ -18,5 +18,12 @@ const today = new Date()
 	footer {
 		padding: 25px;
 		color: graytext;
+		border-top: 1px solid var(--bs-gray-300);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		footer {
+			border-top: 1px solid var(--bs-gray-800);
+		}
 	}
 </style>

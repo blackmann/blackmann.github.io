@@ -1,12 +1,17 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import HeaderLink from './HeaderLink.astro'
 const topics = [
   { title: 'Apps', slug: 'apps' },
-  { title: 'Websites', slug: 'websites' },
   { title: 'People', slug: 'people' },
-  { title: 'Shows/Movies', slug: 'movies' },
+  { title: 'Websites', slug: 'websites' },
+  { title: 'Repositories', slug: 'repositories' },
+  { title: 'Shows/Movies', slug: 'shows' },
 ]
 ---
+
+<div class="text-secondary d-sm-none mt-3">
+  Swipe horizontally on the links to reveal others 👉🏽
+</div>
 
 <ul class="list-unstyled">
   {
@@ -23,6 +28,8 @@ const topics = [
 <style>
   ul {
     display: flex;
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   li {

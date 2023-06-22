@@ -1,0 +1,49 @@
+---
+import CoolLinks from '../../components/CoolLinks.astro'
+import Shell from '../../layouts/Shell.astro'
+import Link from '../../components/Link.astro'
+
+const websites = [
+  {
+    link: 'boringavatars.com',
+    description:
+      "When I want to generate random cool images as placeholder avatars, here's my go-to!",
+  },
+  {
+    link: 'learningmusic.ableton.com',
+    description:
+      "I'm learning how to make music so…  I like how the lessons are presented and also how intuitive the tools are.",
+  },
+  {
+    link: 'eycndy.co',
+    description:
+      'Looking for visual inspiration for shooting videos, this site will give you ideas.',
+  },
+  {
+    link: 'activetheory.net',
+    description: 'This is a creative agency I admire a lot. They also share inspirational projects/experiments.'
+  }
+]
+---
+
+<Shell title="Cool Websites" description="Websites to inspire you">
+  <main class="container mt-8">
+    <CoolLinks />
+
+    <h1>Cool websites 🌍</h1>
+
+    <p class="text-secondary page-half">Beautiful, helpful or inspirational.</p>
+
+
+    <div class="row mt-5 row-gap-5">
+      {
+        websites.map((site) => (
+          <div class="col-md-4">
+            <Link href={`https://${site.link}`}>{site.link}</Link>
+            <p class="text-secondary">{site.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Shell>

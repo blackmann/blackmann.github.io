@@ -1,13 +1,95 @@
 ---
-import CoolLinks from "../../components/CoolLinks.astro";
-import Shell from "../../layouts/Shell.astro";
+import CoolLinks from '../../components/CoolLinks.astro'
+import Shell from '../../layouts/Shell.astro'
+import Link from '../../components/Link.astro'
 
+const apps = [
+  {
+    title: 'Handbrake',
+    description:
+      'Whenever I want to convert a video from .mov to .mp3, while shrinking the file size considerably and maintaining quality, this is my app.',
+    link: 'handbrake.fr',
+  },
+  {
+    title: 'kinopio',
+    description: 'I use this app to map and draft ideas [on a canvas]',
+    link: 'kinopio.club',
+  },
+  {
+    title: 'Pandan by @sindresorhus',
+    description:
+      "This app helps me monitor how long I've been on my PC without taking breaks. It lives in the menu bar.",
+    link: 'sindresorhus.com/pandan',
+  },
+  {
+    title: 'Noor',
+    description:
+      'This is the new workplace communications app built beautifully and tailored to true collaboration. I prefer this to Slack.',
+    link: 'noor.to',
+  },
+  {
+    title: 'Rectangle',
+    description:
+      'This utility helps me to quickly snap and re-arrange windows on my screen.',
+    meta: 'Mac only',
+    link: 'rectangleapp.com',
+  },
+  {
+    title: 'Medis',
+    meta: 'Mac only',
+    description:
+      "This is a RedisDB GUI client. It's really helpful for someone who's not ready to learn the commands 😅. The free trial is good enough.",
+    link: 'getmedis.com',
+  },
+  {
+    title: 'Top Notch',
+    meta: 'Mac Only',
+    description:
+      'This app makes your notch vanish and adds some rounded corners at the top corners — revealing some cool aesthetics.',
+    link: 'topnotch.app',
+  },
+  {
+    title: 'bat',
+    meta: 'Shell/terminal app',
+    description: 'cat but with syntax highlighting and other cool stuff',
+    link: 'github.com/sharkdp/bat',
+  },
+  {
+    title: 'natto',
+    description:
+      "Have you ever tried node based programming. It's an interesting and intuitive way to solve some problems. Natto is a node based Javascript editor.",
+    link: 'natto.dev',
+  },
+]
 ---
-
 
 <Shell title="Cool Apps" description="Apps you will love">
   <main class="container mt-8">
-    <h1>Cool apps 📱</h1>
     <CoolLinks />
+
+    <h1>Cool apps 📱</h1>
+
+    <p class="text-secondary page-half">
+      These are somewhat niche apps I use or have used in the past. Note that
+      I'm not the author of these apps. They are arranged in no particular
+      order.
+    </p>
+
+    <p class="text-secondary page-half">
+      I apologize if you're bothered by a lot of <b>Mac only</b> apps.
+    </p>
+
+    <div class="row mt-5 row-gap-5">
+      {
+        apps.map((app) => (
+          <div class="col-md-4">
+            <div class="fw-bold">{app.title}</div>
+            <p class="text-secondary">{app.description}</p>
+            <p class="text-secondary">{app.meta}</p>
+            <Link href={`https://${app.link}`}>{app.link}</Link>
+          </div>
+        ))
+      }
+    </div>
   </main>
 </Shell>
