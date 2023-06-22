@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 const postsList = posts.slice(0, 6).map((post) => ({
 	link: `/blog/${post.slug}`,
 	meta: shortenDate(post.data.pubDate),
-	title: post.data.title
+	title: post.data.title,
 }))
 ---
 
@@ -57,7 +57,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 			</div>
 
 			<section class="row mt-5">
-				<div class="col-md-8 offset-md-2">
+				<div class="col-md-8">
 					<h2>Recent posts</h2>
 
 					<ContentList items={postsList} />
@@ -65,25 +65,27 @@ const postsList = posts.slice(0, 6).map((post) => ({
 					<div class="mt-5 text-secondary">
 						See all posts <a href="/blog">here</a>
 					</div>
+				</div>
+			</section>
 
-					<h2 class="mt-8">Developer packages</h2>
+			<section class="mt-8">
+				<h2>Developer packages</h2>
 
-					<div class="row row-gap-5">
-						{
-							developerTools.map((pkg) => (
-								<div class="col-md-6">
-									<div class="fw-bold mb-3">{pkg.title}</div>
-									<div class="text-secondary mb-2">{pkg.description}</div>
+				<div class="row row-gap-5">
+					{
+						developerTools.map((pkg) => (
+							<div class="col-md-4">
+								<div class="fw-bold mb-3">{pkg.title}</div>
+								<div class="text-secondary mb-2">{pkg.description}</div>
 
-									<a href={pkg.link}>{pkg.link}</a>
-								</div>
-							))
-						}
-					</div>
+								<a href={pkg.link}>{pkg.link}</a>
+							</div>
+						))
+					}
+				</div>
 
-					<div class="mt-5 text-secondary">
-						Check out more projects <a href="/projects">here</a>
-					</div>
+				<div class="mt-5 text-secondary">
+					Check out more projects <a href="/projects">here</a>
 				</div>
 			</section>
 		</main>
