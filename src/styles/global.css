@@ -38,6 +38,7 @@
 a {
 	color: canvastext;
 	transition: background 240ms ease-out;
+	word-wrap: break-word;
 }
 
 a:hover {

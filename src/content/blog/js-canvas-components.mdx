@@ -1,0 +1,83 @@
+---
+title: "Javascript Canvas Components"
+description: "Clicking and interacting with components on HTML5 canvas"
+pubDate: "Jun 25 2023"
+---
+
+There's no collective guide on the internet on how to build components for 2D canvas applications or a simple general architecture for canvas apps. So this article tries to propose/share a pattern I figured out from roaming through a number of sources online and also experimenting with some ideas.
+
+## The artboard
+
+This is the primary citizen of a canvas app. The artboard is responsible for rendering items added to it. Note that, some items may be simple renders, others can be interactive. We need a way to abstract that away from the artboard. The way to think about this is to have every item _behave_ the same way (in the eyes of the artboard). That said, this is the interface for an artboard:
+
+```ts
+interface Artboard {
+  ctx: Canvas2DRenderingContext
+  children: ArtboardItem[]
+  render() {}
+}
+```
+
+In the render method, the children are looped over and each child's `.render(ctx)` method is called. Also note that, the children are rendered in the order in which they're added. So later items will completely or partially overlap earlier items.
+
+The artboard is also primarily responsible for capturing events and forwarding them to the children. For mouse events, the way to do this is by first [hit testing](https://en.wikipedia.org/wiki/Hit-testing) each child and then forwarding the event to the first child that passes the test. This is in accordance with how we add and render items as discussed in the previous paragraph.
+
+### Hit testing
+
+### Event propagation
+
+## The `ArtboardItem` interface
+
+```ts
+interface ArtboardItem {
+  render(ctx)
+}
+```
+
+To make things easy to think about, any element that can be added to the artboard should implement a number of interface methods.
+
+### `render(ctx)`
+
+This method will be called whenever the artboard needs to render each item (aka. child). The cool thing about this interface method is that the child (`ArtboardItem`) is responsible for rendering itself. So, if we have item like a `Group` which holds a number of other children, this group can call the render method of each child — and recursively.
+
+This is a snippet demonstrating what I mean:
+
+```js
+const artboard = new Artboard()
+
+const group = {
+  children: [item1, item2],
+  render(ctx) {
+    this.children.forEach((child) => child.render(ctx))
+  }
+}
+
+artboard.add(group)
+artboard.render()
+```
+
+## The `Scene`
+
+## Interesting Findings
+
+Here are some interesting things I learned while working on this research:
+
+1. `mousedown` captures any of the [3] button clicks, not just the left button. So `event.button` has the values `0` (for left), `1` (for middle) and `2` (for right)
+
+1. When resizing a `<canvas />` to fit its parent on window resize, the height of the parent (and thus the canvas) keeps increasing infinitely. Thanks to this solution: https://stackoverflow.com/a/41840263/4803261, I got it fixed.
+
+    <div class="row row-gap-3">
+      <div class="col-md-6">
+      <video src="/canvas-infinite-grow-before.mp4" autoplay loop controls></video>
+
+      <div><span class="fw-bold">before:</span> height grows infinitely on resize</div>
+      </div>
+
+      <div class="col-md-6">
+      <video src="/canvas-infinite-grow-after.mp4" autoplay loop controls></video>
+
+      <div><span class="fw-bold">after:</span> keeps aspect ratio</div>
+      </div>
+    </div>
+
+1. d

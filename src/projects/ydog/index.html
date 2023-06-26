@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ydog | Predecessor to zdog</title>
+  <link rel="stylesheet" href="../../../public/bootstrap-grid.min.css" />
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .canvas-wrapper {
+      line-height: 0;
+    }
+
+    .canvas-wrapper canvas {
+      border-radius: 8px;
+
+    }
+
+    .outline-wrapper {
+      border: 1px solid graytext;
+      border-radius: 0.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .outline {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .outline-wrapper header {
+      padding: 0.25rem 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid graytext;
+    }
+
+    .outline-item {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid graytext;
+    }
+
+    .outline-item .meta {
+      color: graytext;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="canvas-wrapper" style="width: 100%; aspect-ratio: 3/2;">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="outline-wrapper">
+          <header>Outline</header>
+          <div class="outline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./artboard.js"></script>
+  <script src="./scene.js"></script>
+  <script src="./rect.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
