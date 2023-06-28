@@ -25,7 +25,7 @@ function Component() {
 
   return (
     <main>
-      <div ref={divRef}>Hello world</div>
+      <div id='content' ref={divRef}>Hello world</div>
     </main>
   )
 }
@@ -67,6 +67,8 @@ const Demo = React.forwardRef(
   }
 )
 ```
+
+In this example, I used `React.ForwardedRef<number>` to demonstrate that a ref can hold any Javascript value: DOM elements, numbers, objects, etc.
 
 ## A more practical / advanced usecase
 
