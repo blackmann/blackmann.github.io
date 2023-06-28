@@ -17,7 +17,7 @@ pip3 install fonttools
 pip3 install brotli # if you are using .woff/.woff2 formats
 ```
 
-For `.ttf` files, run the following command:
+Now run the following command to optimize the font:
 
 ```sh
 pyftsubset <font-file-name> --output-file=<font-file-out-name> --unicodes=U+0020-007E
