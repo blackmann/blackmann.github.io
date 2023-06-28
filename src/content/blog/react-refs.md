@@ -70,7 +70,7 @@ const Demo = React.forwardRef(
 
 ## A more practical / advanced usecase
 
-Another practical example: let's say we have a a video player that can seek to a certain time position.
+Let's say we have a a video player that can seek to a certain time position.
 On the page where we use this video component, we have a list of bookmarks. When you click on a bookmark, it _seeks_ the video to the time where the bookmark starts. How would you implement something like this?
 
 You might be tempted to set up a whole context or global state management to deal with this. But this will mean the video component is supposed to be rewritten to be aware of your state changes. In my opinion, that will be a bad component design.
