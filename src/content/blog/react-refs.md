@@ -99,7 +99,7 @@ const VideoPlayer = React.forwardRef(
       // see `setRef` implementation at the bottom of this post
       // Here, we're setting a custom object that has the API implementations
       // for our component.
-      setRef({
+      setRef(ref, {
         seek: (seconds) => {
           videoRef.current!.currentTime = seconds
         },
