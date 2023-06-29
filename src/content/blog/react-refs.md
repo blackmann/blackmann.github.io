@@ -121,13 +121,17 @@ const bookmarks = []
 function Page() {
   const playerRef = React.useRef<Player>(null)
 
+  function moveToTime(time: number) {
+    // Notice we're calling .seek here
+    playerRef.current!.seek(time)
+  }
+
   return (
     <main>
       <VideoPlayer ref={playerRef} />
       <ul>
         {bookmarks.map((chapter, i) => (
-          // Notice we're calling .seek here
-          <li key={i} onClick={() => playerRef.current!.seek(chapter.time)}>
+          <li key={i} onClick={() => moveToTime(chapter.time)}>
             {chapter.title} {formatTime(chapter.time)}
           </li>
         ))}
