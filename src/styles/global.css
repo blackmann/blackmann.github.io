@@ -88,6 +88,10 @@ code {
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #1e1e1e;
+  }
+
 	code {
 		color: var(--bs-warning)
 	}
