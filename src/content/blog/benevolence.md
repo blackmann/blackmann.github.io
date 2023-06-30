@@ -6,7 +6,7 @@ pubDate: "Jun 25 2023"
 
 Why is it hard for people to understand?
 
-When you're kind without asking anything in return, you're either naive or you have a _hidden_ string attached. It's crazy to that people will even label you as plainly evil when your intentions do not require a payback from them — yet you keep succeeding.
+When you're kind without asking anything in return, you're either naive or you have a _hidden_ string attached. It's crazy to the extent that people will even label you as plainly evil when your intentions do not require a payback from them — yet you keep succeeding.
 
 Maybe, it's a reflection of human nature — a corrupted one. It's the voice of selfishness, revenge and jealousy.
 
@@ -14,7 +14,7 @@ People that think about themselves can't see why anyone will think about others.
 
 People that were disappointed think nobody else deserves to be beneficiary of kindness.
 
-Others will rather spend on something else, why _waste_ something they never had just like that.
+Others will rather spend on something else, why _waste_ something they never had just like that?
 
 But maybe, for whoever reads this, you may come to understand:
 
