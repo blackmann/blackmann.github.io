@@ -146,3 +146,17 @@ article th, article td {
   text-align: right;
   color: rgba(115,138,148,.4)
 }
+
+.scheme-img > :nth-child(2) {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	.scheme-img > :first-child {
+		display: none;
+	}
+
+	.scheme-img > :nth-child(2) {
+		display: block;
+	}
+}
