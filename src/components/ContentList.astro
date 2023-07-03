@@ -14,7 +14,7 @@ const { items } = Astro.props
 
 <ul class="list-unstyled">
   {
-    items.slice(0, 6).map((item) => (
+    items.map((item) => (
       <li class="list-item">
         <a class="d-flex justify-content-between py-2 px-2" href={item.link}>
           <span>{item.title}</span>

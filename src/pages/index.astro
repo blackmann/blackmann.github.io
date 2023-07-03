@@ -60,7 +60,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 				<div class="col-md-8">
 					<h2>Recent posts</h2>
 
-					<ContentList items={postsList} />
+					<ContentList items={postsList.slice(0, 6)} />
 
 					<div class="mt-5 text-secondary">
 						See all posts <a href="/blog">here</a>
