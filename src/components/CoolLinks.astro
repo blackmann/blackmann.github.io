@@ -1,5 +1,5 @@
 ---
-import HeaderLink from './HeaderLink.astro'
+import NavLink from './NavLink.astro'
 const topics = [
   { title: 'Apps', slug: 'apps' },
   { title: 'People', slug: 'people' },
@@ -17,9 +17,9 @@ const topics = [
   {
     topics.map((topic) => (
       <li class="py-2">
-        <HeaderLink href={`/cool-stuff/${topic.slug}`}>
+        <NavLink href={`/cool-stuff/${topic.slug}`}>
           {topic.title}
-        </HeaderLink>
+        </NavLink>
       </li>
     ))
   }
