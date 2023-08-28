@@ -3,7 +3,7 @@ const featuredLinks = [
 		title: 'SerialBox',
 		description:
 			'Growing engineers. A project to teach people especially kids how to build eletronic projects — with community.',
-		link: 'sb.okgr.so',
+		link: 'sb.degreat.co.uk',
 	},
 	{
 		title: 'Adeton',
