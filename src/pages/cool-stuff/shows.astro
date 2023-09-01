@@ -1,13 +1,24 @@
 ---
 import CoolLinks from '../../components/CoolLinks.astro'
 import Shell from '../../layouts/Shell.astro'
-import Link from '../../components/Link.astro'
 
 const shows = [
   {
-    title: '',
-    description: '',
-    rating: '',
+    title: 'Breaking Bad',
+    description: "You have to see this for yourself. It's an amazing story.",
+    rating: '4.7/5',
+  },
+  {
+    title: 'Ozark',
+    description:
+      'Ruth Langmore! This series really hooked me up from episode 1 to season finale. ',
+    rating: '5/5',
+  },
+
+  {
+    title: 'Better Call Saul',
+    description: 'Saul is such a lawyer. Bob Odenkirk is such an actor. This show is spotlight on a character in Breaking; Saul Goodman/Jimmy McGill.',
+    rating: '4.6/5',
   },
 ]
 ---
@@ -18,7 +29,9 @@ const shows = [
 
     <h1>Cool shows 📺</h1>
 
-    <p class="text-secondary page-half">WIP</p>
+    <p class="text-secondary page-half">
+      I learned as much as I was entertained
+    </p>
 
     <div class="row mt-5 row-gap-5">
       {
