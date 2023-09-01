@@ -3,7 +3,7 @@ const developerTools = [
     title: 'Wipe_Modules',
     description:
       'Clean stale node_modules from old projects and reclaim disk space. Mac only.',
-    link: 'https://github.com/blackmann/Wipe_Module',
+    link: 'https://github.com/blackmann/Wipe_Modules',
   },
   {
     title: 'Many Things',
