@@ -3,36 +3,42 @@ import { CollectionEntry, getCollection } from 'astro:content'
 import BlogPost from '../../layouts/BlogPost.astro'
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog')
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}))
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
 }
 type Props = CollectionEntry<'blog'>
 
 const post = Astro.props
 const { Content } = await post.render()
+
+const dev = process.env.NODE_ENV !== 'production'
 ---
 
 <BlogPost {...post.data}>
-	<Content />
+  <Content />
 
-	<script
-		src="https://giscus.app/client.js"
-		data-repo="blackmann/blackmann.github.io"
-		data-repo-id="R_kgDOJyyyfw"
-		data-category="General"
-		data-category-id="DIC_kwDOJyyyf84CXo_2"
-		data-mapping="pathname"
-		data-strict="0"
-		data-reactions-enabled="1"
-		data-emit-metadata="0"
-		data-input-position="top"
-		data-theme="preferred_color_scheme"
-		data-lang="en"
-		data-loading="lazy"
-		crossorigin="anonymous"
-		async
-	></script>
+  {
+    !dev && (
+      <script
+        src="https://giscus.app/client.js"
+        data-repo="blackmann/blackmann.github.io"
+        data-repo-id="R_kgDOJyyyfw"
+        data-category="General"
+        data-category-id="DIC_kwDOJyyyf84CXo_2"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async
+      />
+    )
+  }
 </BlogPost>
