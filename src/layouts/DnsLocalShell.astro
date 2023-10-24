@@ -1,0 +1,27 @@
+---
+import DotLocalHead from "../components/DotLocalHead.astro";
+import DotLocalHeader from "../components/DotLocalHeader.astro";
+import DotLocalFooter from "../components/DotLocalFooter.astro";
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <DotLocalHead title={title} description={description} />
+  </head>
+
+  <body>
+    <DotLocalHeader />
+
+    <slot />
+
+    <DotLocalFooter />
+  </body>
+</html>

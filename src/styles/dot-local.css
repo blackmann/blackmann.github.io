@@ -1,0 +1,7 @@
+:root {
+	@apply text-slate-700;
+}
+
+.container {
+	@apply max-w-[960px];
+}
