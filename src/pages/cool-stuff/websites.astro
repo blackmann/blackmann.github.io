@@ -27,18 +27,18 @@ const websites = [
 ---
 
 <Shell title="Cool Websites" description="Websites to inspire you">
-  <main class="container mt-8">
+  <main class="container mt-[8rem] min-h-[60vh]">
     <CoolLinks />
 
-    <h1>Cool websites 🌍</h1>
+    <h1 class="text-xl font-bold">Cool websites 🌍</h1>
 
     <p class="text-secondary page-half">Beautiful, helpful or inspirational.</p>
 
 
-    <div class="row mt-5 row-gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
       {
         websites.map((site) => (
-          <div class="col-md-4">
+          <div class="col-span-1">
             <Link href={`https://${site.link}`}>{site.link}</Link>
             <p class="text-secondary">{site.description}</p>
           </div>

@@ -45,7 +45,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
 			<h2 class="mt-[8rem] mb-4 font-bold">Featured</h2>
 
-			<div class="grid grid-cols-3 gap-4">
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
 				{
 					featuredLinks.map((link) => (
 						<div class="col-span-1">
@@ -57,8 +57,8 @@ const postsList = posts.slice(0, 6).map((post) => ({
 				}
 			</div>
 
-			<section class="grid grid-cols-3 mt-[5rem]">
-				<div class="col-span-2">
+			<section class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem]">
+				<div class="col-span-1 lg:col-span-2">
 					<h2 class="font-bold mb-4">Recent posts</h2>
 
 					<ContentList items={postsList.slice(0, 6)} />
@@ -72,7 +72,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 			<section class="mt-[8rem]">
 				<h2 class="font-bold mb-4">Developer packages</h2>
 
-				<div class="grid grid-cols-3 gap-4">
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
 					{
 						developerTools.map((pkg) => (
 							<div class="col-md-4">

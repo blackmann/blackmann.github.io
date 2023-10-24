@@ -64,10 +64,10 @@ const apps = [
 ---
 
 <Shell title="Cool Apps" description="Apps you will love">
-  <main class="container mt-8">
+  <main class="container mt-[8rem]">
     <CoolLinks />
 
-    <h1>Cool apps 📱</h1>
+    <h1 class="text-xl font-bold">Cool apps 📱</h1>
 
     <p class="text-secondary page-half">
       These are somewhat niche apps I use or have used in the past. Note that
@@ -79,11 +79,11 @@ const apps = [
       I apologize if you're bothered by a lot of <b>Mac only</b> apps.
     </p>
 
-    <div class="row mt-5 row-gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
       {
         apps.map((app) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{app.title}</div>
+          <div class="col-span-1">
+            <div class="font-bold">{app.title}</div>
             <p class="text-secondary">{app.description}</p>
             <p class="text-secondary">{app.meta}</p>
             <Link href={`https://${app.link}`}>{app.link}</Link>

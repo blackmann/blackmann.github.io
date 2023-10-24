@@ -24,7 +24,7 @@ const shows = [
 ---
 
 <Shell title="Cool Shows" description="Movies or TV shows that were well done">
-  <main class="container mt-8">
+  <main class="container mt-[8rem] min-h-[60vh]">
     <CoolLinks />
 
     <h1>Cool shows 📺</h1>
@@ -33,11 +33,11 @@ const shows = [
       I learned as much as I was entertained
     </p>
 
-    <div class="row mt-5 row-gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
       {
         shows.map((show) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{show.title}</div>
+          <div class="col-span-1">
+            <div class="font-bold">{show.title}</div>
             <p class="text-secondary">{show.description}</p>
             <p class="text-secondary">{show.rating}</p>
           </div>

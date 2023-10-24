@@ -48,20 +48,20 @@ const repositories = [
   title="Cool Repositories"
   description="Repositories that may become useful"
 >
-  <main class="container mt-8">
+  <main class="container mt-[8rem] min-h-[60vh]">
     <CoolLinks />
 
-    <h1>Cool repositories 📱</h1>
+    <h1 class="text-xl font-bold">Cool repositories 📱</h1>
 
     <p class="text-secondary page-half">
       Repositories that may become handy one day.
     </p>
 
-    <div class="row mt-5 row-gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
       {
         repositories.map((repo) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{repo.title}</div>
+          <div class="col-span-1">
+            <div class="font-bold">{repo.title}</div>
             <p class="text-secondary">{repo.description}</p>
             <Link href={`https://${repo.link}`}>{repo.link}</Link>
           </div>

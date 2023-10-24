@@ -53,21 +53,21 @@ const people = [
 ---
 
 <Shell title="Cool People" description="People doing cool stuff">
-  <main class="container mt-8">
+  <main class="container mt-[8rem]">
     <CoolLinks />
 
-    <h1>Cool people 🥷🏽</h1>
+    <h1 class="font-bold text-xl">Cool people 🥷🏽</h1>
 
     <p class="text-secondary page-half">
       I like to be inspired; to be shown what man is capable of. And these
       people advertise that well.
     </p>
 
-    <div class="row mt-5 row-gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
       {
         people.map((person) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{person.title}</div>
+          <div class="col-span-1">
+            <div class="font-bold">{person.title}</div>
             <p class="text-secondary">{person.description}</p>
             <Link href={`https://${person.link}`}>{person.link}</Link>
           </div>
