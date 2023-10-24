@@ -2,10 +2,10 @@
 const today = new Date()
 ---
 
-<footer class="text-secondary container mt-8 pt-5">
-	<div class="row">
-		<div class="col-md-6">
-			<div class="mb-2">
+<footer class="container mt-8 pt-5 px-5 mb-[5rem] mx-auto border-t border-t-zinc-200 dark:border-t-neutral-600">
+	<div class="grid grid-cols-1 lg:grid-cols-2">
+		<div class="col-span-1">
+			<div class="mb-2 flex gap-2">
 				<span class="text-secondary">Other links:</span>
 				<a class="me-1" href="/cool-stuff">Cool stuff</a>
 				<a href="/candies">Candies 🍬</a>
@@ -19,8 +19,9 @@ const today = new Date()
 			<div>version 2023.09.01/1</div>
 		</div>
 
-		<div class="col-md-6 text-md-end pt-5 pt-md-0">
+		<div class="col-span-1 lg:text-end pt-5 text-secondary">
 			<svg
+				class="inline"
 				width="70"
 				height="21"
 				viewBox="0 0 141 42"
@@ -57,16 +58,3 @@ const today = new Date()
 		</div>
 	</div>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		color: graytext;
-		border-top: 1px solid var(--bs-gray-300);
-	}
-
-	@media (prefers-color-scheme: dark) {
-		footer {
-			border-top: 1px solid var(--bs-gray-800);
-		}
-	}
-</style>

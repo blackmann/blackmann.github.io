@@ -2,10 +2,11 @@
 import NavLink from './NavLink.astro';
 ---
 
-<header class="container">
-	<h2 class="mb-5">
-		<img src="/okgr.svg" alt="okgr" height="18">
+<header class="container mx-auto">
+	<h2 class="mb-[2rem] py-3">
+		<img src="/okgr.svg" alt="okgr" class="h-[18px]">
 	</h2>
+
 	<nav>
 		<NavLink href="/">Home</NavLink>
 		<NavLink href="/projects">Projects</NavLink>
@@ -15,8 +16,3 @@ import NavLink from './NavLink.astro';
 		<NavLink href="https://github.com/blackmann" target="_blank">GitHub</NavLink>
 	</nav>
 </header>
-<style>
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>

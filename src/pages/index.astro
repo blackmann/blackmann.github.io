@@ -28,8 +28,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
 	</head>
 	<body>
 		<Header />
-		<main class="container mt-8">
-			<h1>Welcome to my Home</h1>
+
+		<main class="container mx-auto mt-[8rem]">
+			<h1 class="font-bold text-lg mb-8">Welcome to my Home</h1>
 
 			<p class="intro">
 				It's me De-Great; or call me GR. I am a creative trying every and
@@ -37,18 +38,18 @@ const postsList = posts.slice(0, 6).map((post) => ({
 				this site, you'll find a few things I want you to know <span
 					class="text-secondary">[about me or stuff I'm working on]</span
 				>. If you want to know more and keep up, try following my socials or
-				join my <a href="https://discord.gg/5CDnysz">Discord</a> server.
+				join my <a class="font-medium" href="https://discord.gg/5CDnysz">Discord</a> server.
 			</p>
 
 			<p>🇬🇭</p>
 
-			<h2 class="mt-8">Featured</h2>
+			<h2 class="mt-[8rem] mb-4 font-bold">Featured</h2>
 
-			<div class="row row-gap-5">
+			<div class="grid grid-cols-3 gap-4">
 				{
 					featuredLinks.map((link) => (
-						<div class="col-md-4">
-							<div class="fw-bold">{link.title}</div>
+						<div class="col-span-1">
+							<div class="font-medium">{link.title}</div>
 							<p class="text-secondary">{link.description}</p>
 							<Link href={`https://${link.link}`}>{link.link}</Link>
 						</div>
@@ -56,26 +57,26 @@ const postsList = posts.slice(0, 6).map((post) => ({
 				}
 			</div>
 
-			<section class="row mt-5">
-				<div class="col-md-8">
-					<h2>Recent posts</h2>
+			<section class="grid grid-cols-3 mt-[5rem]">
+				<div class="col-span-2">
+					<h2 class="font-bold mb-4">Recent posts</h2>
 
 					<ContentList items={postsList.slice(0, 6)} />
 
 					<div class="mt-5 text-secondary">
-						See all posts <a href="/blog">here</a>
+						See all posts <a class="text-zinc-800 dark:text-neutral-200" href="/blog">here</a>
 					</div>
 				</div>
 			</section>
 
-			<section class="mt-8">
-				<h2>Developer packages</h2>
+			<section class="mt-[8rem]">
+				<h2 class="font-bold mb-4">Developer packages</h2>
 
-				<div class="row row-gap-5">
+				<div class="grid grid-cols-3 gap-4">
 					{
 						developerTools.map((pkg) => (
 							<div class="col-md-4">
-								<div class="fw-bold mb-3">{pkg.title}</div>
+								<div class="font-medium mb-3">{pkg.title}</div>
 								<div class="text-secondary mb-2">{pkg.description}</div>
 
 								<a href={pkg.link}>{pkg.link}</a>

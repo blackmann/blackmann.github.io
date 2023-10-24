@@ -27,26 +27,20 @@ const postsList = posts.map((post) => ({
 	<body>
 		<Header />
 
-		<main class="container mt-8">
+		<main class="container mx-auto mt-[8rem] min-h-[60vh]">
 			<div class="text-secondary">{posts.length} posts published</div>
 
-			<blockquote>
+			<blockquote class="mx=[480px]">
 				These are my own words. Shaped by my own experiences. If you find
 				something confusing, wrong or misleading, please let me know. If you
 				find anything helpful, please consider sharing to your friends.
 			</blockquote>
 
-			<section class="mt-5">
+			<section class="mt-[5rem]">
 				<ContentList items={postsList} />
 			</section>
 		</main>
 
 		<Footer />
-
-		<style>
-			blockquote {
-				max-width: 480px;
-			}
-		</style>
 	</body>
 </html>

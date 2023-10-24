@@ -12,36 +12,15 @@ interface Props {
 const { items } = Astro.props
 ---
 
-<ul class="list-unstyled">
+<ul>
   {
     items.map((item) => (
-      <li class="list-item">
-        <a class="d-flex justify-content-between py-2 px-2" href={item.link}>
-          <span>{item.title}</span>
-          <span class="meta text-secondary">{item.meta}</span>
+      <li class="[&+&]:border-t-1 [&+&]:border-t border-t-zinc-200 dark:border-t-neutral-600">
+        <a class="flex justify-between py-2 px-2 no-underline" href={item.link}>
+          <span class="flex-1">{item.title}</span>
+          <span class="text-end text-secondary">{item.meta}</span>
         </a>
       </li>
     ))
   }
 </ul>
-
-<style>
-  .list-item + .list-item {
-    border-top: 1px solid var(--bs-gray-200);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .list-item + .list-item {
-      border-top: 1px solid var(--bs-gray-800);
-    }
-  }
-
-  .list-item a {
-    text-decoration: none;
-  }
-
-  .meta {
-    min-width: 8rem;
-    text-align: end;
-  }
-</style>

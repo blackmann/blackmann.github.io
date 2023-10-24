@@ -1,9 +1,15 @@
 const featuredLinks = [
+	// {
+	// 	title: 'SerialBox',
+	// 	description:
+	// 		'Growing engineers. A project to teach people especially kids how to build eletronic projects — with community.',
+	// 	link: 'sb.degreat.co.uk',
+	// },
 	{
-		title: 'SerialBox',
+		title: 'Mangobase',
 		description:
-			'Growing engineers. A project to teach people especially kids how to build eletronic projects — with community.',
-		link: 'sb.degreat.co.uk',
+			'Low-code Javascript backend framework for Node and Bun runtimes.',
+		link: 'degreat.co.uk/mangobase',
 	},
 	{
 		title: 'Adeton',

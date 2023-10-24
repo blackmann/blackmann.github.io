@@ -1,7 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
 import Link from '../components/Link.astro'
 import Shell from '../layouts/Shell.astro'
 
@@ -73,20 +70,20 @@ const packages = [
 ---
 
 <Shell title="Projects" description="Stuff I have worked on.">
-  <main class="container mt-8">
-    <h1>Projects</h1>
+  <main class="container mt-[8rem] mx-auto">
+    <h1 class="font-bold text-2xl mb-[2rem]">Projects</h1>
 
     <p class="page-half">
       I've tried many and a lot of things. These are the ones I could collect
       and showcase; or just proud of them.
     </p>
 
-    <h2 class="mt-5">Startups</h2>
-    <div class="row">
+    <h2 class="mt-5 font-medium text-lg mb-4">Startups</h2>
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-3 gap-y-8">
       {
         startups.map((project) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{project.title}</div>
+          <div class="col-span-1">
+            <div class="font-bold">{project.title}</div>
             <p class="text-secondary">{project.description}</p>
 
             <div class="text-secondary">{project.meta}</div>
@@ -99,12 +96,12 @@ const packages = [
       }
     </div>
 
-    <h2 class="mt-5">Apps</h2>
-    <div class="row row-gap-5">
+    <h2 class="mt-[5rem] font-medium text-lg mb-4">Apps</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
       {
         apps.map((project) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{project.title}</div>
+          <div class="col-span-1">
+            <div class="font-medium">{project.title}</div>
             <p class="text-secondary">{project.description}</p>
 
             <div class="text-secondary">{project.meta}</div>
@@ -117,12 +114,12 @@ const packages = [
       }
     </div>
 
-    <h2 class="mt-5">Packages</h2>
-    <div class="row row-gap-5">
+    <h2 class="mt-[5rem] font-medium text-lg mb-4">Packages</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
       {
         packages.map((project) => (
-          <div class="col-md-4">
-            <div class="fw-bold">{project.title}</div>
+          <div class="col-span-1">
+            <div class="font-medium">{project.title}</div>
             <p class="text-secondary">{project.description}</p>
 
             <div class="text-secondary">{project.meta}</div>
