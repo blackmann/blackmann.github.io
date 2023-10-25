@@ -5,3 +5,7 @@
 .container {
 	@apply max-w-[960px];
 }
+
+.text-secondary {
+	@apply text-slate-500 dark:text-neutral-400;
+}

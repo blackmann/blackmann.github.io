@@ -1,0 +1,109 @@
+---
+import Shell from '../../layouts/dotlocal/Shell.astro'
+---
+
+<Shell
+  title="Home"
+  description="Easily create .local domains for your web projects"
+>
+  <section>
+    <div class="container py-12">
+      <div class="text-center mb-8">
+        <span
+          class="border border-slate-300 rounded-full py-1 px-4 text-sm text-secondary inline-flex items-center gap-1"
+          ><span class="inline-block w-3 h-3 bg-red-400 rounded-full me-2"
+          ></span> Not a <code class="text-slate-700">/etc/hosts</code> editor!</span
+        >
+      </div>
+      <h1
+        class="text-center font-bold text-4xl text-slate-700 max-w-xl mx-auto"
+      >
+        Mirror your production <span class="text-blue-500">domains</span> on
+        your <span class="text-slate-400">.local</span> machine
+      </h1>
+
+      <p
+        class="max-w-xl text-slate-500 text-xl mx-auto text-center my-6 font-light"
+      >
+        Comes with automatic HTTPS redirect and certificates. Supports <a
+          class="underline decoration-dotted cursor-help"
+          href="#path-proxies">proxies on paths.</a
+        >
+      </p>
+
+      <div class="text-center">
+        <span
+          class="bg-slate-600 inline-block font-mono text-slate-100 rounded-md p-3 py-2"
+          ><span class="text-pink-300">brew</span>{' '}
+          <span class="text-slate-300">install</span> dotlocal</span
+        >
+      </div>
+
+      <div class="text-center">
+        <img src="/dotlocal-screenshot.png" alt="DotLocal" class="inline" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="container py-[5rem]">
+      <div class="text-center mb-4">
+        <span
+          class="border border-slate-300 rounded-full py-1 px-4 text-sm text-green-800 inline-flex items-center gap-1 font-medium"
+          ><span class="inline-block w-3 h-3 bg-green-400 rounded-full me-2"
+          ></span> Watch a quick demo.</span
+        >
+      </div>
+      <h2 class="text-center font-bold text-3xl mb-8">
+        Reasons you'll like <span class="text-blue-500"
+          ><span class="text-slate-400" id="examples"></span>.local</span
+        >
+      </h2>
+
+      <div class="grid grid-cols-3 gap-6">
+        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
+          <h3 class="font-bold text-lg mb-2">Want HTTPS experience</h3>
+          <p class="text-secondary">
+            Some web features only work on HTTPS. This is your chance!
+          </p>
+        </div>
+
+        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
+          <h3 class="font-bold text-lg mb-2">
+            Tired of wiping LocalStorage values or Cookies
+          </h3>
+          <p class="text-secondary">
+            Sometimes you save values with similar keys in the LocalStorage or
+            Cookies.
+          </p>
+
+          <p class="text-secondary mt-1">
+            But they conflict between projects because they are on the same
+            domain: localhost.
+          </p>
+        </div>
+
+        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
+          <h3 class="font-bold text-lg mb-2">
+            Your app uses subdomains to resolve tenants.
+          </h3>
+          <p class="text-secondary">
+            If you have a project where users can create sub-domains, testing
+            features on your development environment requires hard-coding test
+            values into your code.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Shell>
+
+<script>
+  import Typewriter from 'typewriter-effect/dist/core'
+
+  new Typewriter('#examples', {
+    strings: ['myapp', 'admin.myapp', 'adeton', 'mangobase', 'api.adeton'],
+    autoStart: true,
+    loop: true,
+  })
+</script>

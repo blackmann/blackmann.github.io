@@ -1,0 +1,27 @@
+---
+import Head from "../../components/dotlocal/Head.astro";
+import Header from "../../components/dotlocal/Header.astro";
+import Footer from "../../components/dotlocal/Footer.astro";
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!DOCTYPE html>
+<html class="bg-slate-100">
+  <head>
+    <Head title={title} description={description} />
+  </head>
+
+  <body>
+    <Header />
+
+    <slot />
+
+    <Footer />
+  </body>
+</html>
