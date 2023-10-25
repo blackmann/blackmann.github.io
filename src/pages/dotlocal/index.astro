@@ -60,43 +60,52 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
         >
       </div>
       <h2 class="text-center font-bold text-3xl mb-8">
-        Reasons you'll like <span class="text-blue-500"
+        Reasons you'll want <span class="text-blue-500"
           ><span class="text-slate-400" id="examples"></span>.local</span
         >
       </h2>
 
-      <div class="grid grid-cols-3 gap-6">
-        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
-          <h3 class="font-bold text-lg mb-2">Want HTTPS experience</h3>
-          <p class="text-secondary">
-            Some web features only work on HTTPS. This is your chance!
-          </p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="col-span-1">
+          <div class="rounded-lg bg-slate-50">
+            <img src="local-secure.png" alt="HTTPS experience" class="w-full" />
+
+            <div class="p-4">
+              <h3 class="font-bold text-lg mb-2">Want HTTPS experience</h3>
+
+              <p class="text-secondary">
+                Some web features only work on HTTPS. This is your chance!
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
-          <h3 class="font-bold text-lg mb-2">
-            Tired of wiping LocalStorage values or Cookies
-          </h3>
-          <p class="text-secondary">
-            Sometimes you save values with similar keys in the LocalStorage or
-            Cookies.
-          </p>
-
-          <p class="text-secondary mt-1">
-            But they conflict between projects because they are on the same
-            domain: localhost.
-          </p>
+        <div class="col-span-1">
+          <div class="rounded-lg bg-slate-50">
+            <img src="localstorage-clear.png" alt="HTTPS experience" class="w-full" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg mb-2">
+                Tired of wiping localStorage or cookies
+              </h3>
+              <p class="text-secondary">
+                Values in <code>localStorage</code> from another project usually interferes with the current working project.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="col-span-1 rounded-lg bg-slate-50 p-4">
-          <h3 class="font-bold text-lg mb-2">
-            Your app uses subdomains to resolve tenants.
-          </h3>
-          <p class="text-secondary">
-            If you have a project where users can create sub-domains, testing
-            features on your development environment requires hard-coding test
-            values into your code.
-          </p>
+        <div class="col-span-1">
+          <div class="rounded-lg bg-slate-50">
+            <img src="subdomains.png" alt="HTTPS experience" class="w-full" />
+            <div class="p-4">
+              <h3 class="font-bold text-lg mb-2">
+                Your app uses subdomains to resolve tenants.
+              </h3>
+              <p class="text-secondary">
+                With <code>dotlocal</code> you don't need to hard-code subdomain values on configs in development.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
