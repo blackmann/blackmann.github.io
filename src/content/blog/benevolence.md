@@ -22,6 +22,6 @@ But maybe, for whoever reads this, you may come to understand:
 
 > — <cite>[@causalinf](https://twitter.com/causalinf)</cite>
 
-So yes, sometimes are kindess are not paid back, they are paid forward.
+So yes, sometimes kindess are not paid back, they are paid forward.
 
 [^1]: I screenshot this tweet in 2018. Here's the link https://twitter.com/causalinf/status/957775747631939584?s=20

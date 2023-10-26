@@ -7,5 +7,5 @@
 }
 
 .text-secondary {
-	@apply text-slate-500 dark:text-neutral-400;
+	@apply text-slate-500;
 }

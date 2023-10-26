@@ -61,18 +61,16 @@ img, video {
 }
 
 .footnotes {
-	border-top: 1px solid var(--bs-gray-200);
+	@apply border-t border-t-zinc-300 dark:border-t-neutral-600 pt-8;
 	margin-top: 4rem;
-}
-
-@media (prefers-color-scheme: dark) {
-	.footnotes {
-		border-top: 1px solid var(--bs-gray-800);
-	}
 }
 
 .footnotes h2 {
 	display: none;
+}
+
+.footnotes ol {
+	@apply list-decimal list-inside marker:text-zinc-500 dark:marker:text-neutral-400;
 }
 
 code {

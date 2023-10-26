@@ -1,5 +1,7 @@
 ---
 import Shell from '../../layouts/dotlocal/Shell.astro'
+
+// [ ] Check wildcard submains, caddy
 ---
 
 <Shell
@@ -60,7 +62,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
         >
       </div>
       <h2 class="text-center font-bold text-3xl mb-8">
-        Reasons you'll want <span class="text-blue-500"
+        Reasons you'll want a <span class="text-blue-500"
           ><span class="text-slate-400" id="examples"></span>.local</span
         >
       </h2>
@@ -68,10 +70,16 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="col-span-1">
           <div class="rounded-lg bg-slate-50">
-            <img src="/local-secure.png" alt="HTTPS experience" class="w-full" />
+            <img
+              src="/local-secure.png"
+              alt="HTTPS experience"
+              class="w-full"
+            />
 
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2">Want HTTPS experience</h3>
+              <h3 class="font-bold text-lg mb-2 tracking-wide">
+                Want HTTPS experience
+              </h3>
 
               <p class="text-secondary">
                 Some web features only work on HTTPS. This is your chance!
@@ -82,13 +90,18 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
         <div class="col-span-1">
           <div class="rounded-lg bg-slate-50">
-            <img src="/localstorage-clear.png" alt="HTTPS experience" class="w-full" />
+            <img
+              src="/localstorage-clear.png"
+              alt="Wiping localStorage"
+              class="w-full"
+            />
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2">
+              <h3 class="font-bold text-lg mb-2 tracking-wide">
                 Tired of wiping localStorage or cookies
               </h3>
               <p class="text-secondary">
-                Values in <code>localStorage</code> from another project usually interferes with the current working project.
+                Values in <code>localStorage</code> from another project usually
+                interferes with the current working project.
               </p>
             </div>
           </div>
@@ -96,18 +109,41 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
         <div class="col-span-1">
           <div class="rounded-lg bg-slate-50">
-            <img src="/subdomains.png" alt="HTTPS experience" class="w-full" />
+            <img src="/subdomains.png" alt="Subdomains" class="w-full" />
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2">
+              <h3 class="font-bold text-lg mb-2 tracking-wide">
                 Your app uses subdomains to resolve tenants.
               </h3>
               <p class="text-secondary">
-                With <code>dotlocal</code> you don't need to hard-code subdomain values on configs in development.
+                With <code>dotlocal</code> you don't need to hard-code subdomain
+                values on configs in development.
               </p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="container py-[5rem]">
+      <div class="text-center mb-4">
+        <span
+          class="border border-orange-300 rounded-full py-1 px-4 text-sm text-orange-500 inline-flex items-center gap-1 font-medium"
+          ><span class="inline-block w-3 h-3 bg-orange-500 rounded-sm me-2"
+          ></span> For $4.99: Perpepertual license </span
+        >
+      </div>
+
+      <h2 class="text-5xl font-bold text-center text-blue-500 tracking-wide">
+        Upgrade license to add unlimited domains and enable path proxies.
+      </h2>
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="container py-[4rem] border-t border-slate-200">
+      <h2>Frequently Asked Questions</h2>
     </div>
   </section>
 </Shell>

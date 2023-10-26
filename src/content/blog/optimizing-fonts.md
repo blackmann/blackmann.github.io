@@ -4,7 +4,7 @@ description: 'How to reduce font (file) size to load webpages faster'
 pubDate: 'Jun 28 2023'
 ---
 
-As at the time I am writing this, the total file size for all the fonts I used on my site was about 3MB. This means on slower networks, it took about 5-6 seconds to load. Meanwhile, you'll be looking at a completely loaded page with texts appearing blank.
+As at the time I write this, the total file size for all the fonts I used on my site was about 3MB. This means on slower networks, it took about 5-6 seconds to load. Meanwhile, you'll be looking at a completely loaded page with texts appearing blank.
 
 Thanks to this [StackOverflow answer](https://stackoverflow.com/a/66238793/4803261), I was able to reduce them down to 200KB. Drastic!
 
