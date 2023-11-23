@@ -33,12 +33,20 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
         >
       </p>
 
-      <div class="text-center">
-        <span
-          class="bg-slate-600 inline-block font-mono text-slate-100 rounded-md p-3 py-2"
-          ><span class="text-pink-300">brew</span>{' '}
-          <span class="text-slate-300">install</span> blackmann/brew/dotlocal</span
+      <div class="flex justify-center">
+        <div
+          class="bg-slate-600 inline-block font-mono text-slate-100 rounded-md p-3 py-2 text-sm"
         >
+          <div>
+            <span class="text-slate-400">$</span>{' '}
+            <span class="text-pink-300">brew</span>{' '}
+            <span class="text-slate-300">install</span> blackmann/brew/dotlocal
+          </div>
+
+          <span class="text-slate-400">$</span>{' '}
+          <span class="text-pink-300">dotlocalctl</span>{' '}
+          <span class="text-slate-300">configure</span>
+        </div>
       </div>
 
       <div class="text-center">
@@ -125,9 +133,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
     </div>
   </section>
 
-  <section class="bg-slate-50">
-
-  </section>
+  <section class="bg-slate-50"></section>
 
   <section class="bg-slate-50">
     <div class="container py-[4rem] border-t border-slate-200">
