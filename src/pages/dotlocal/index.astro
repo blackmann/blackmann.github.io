@@ -169,7 +169,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
   const copyBtn = document.querySelector('#copy-command') as HTMLButtonElement
   copyBtn?.addEventListener('click', () => {
     navigator.clipboard.writeText(
-      `brew install blackmann/brew/dotlocal\ndotlocalctl configure\n`,
+      `brew install blackmann/brew/dotlocal\ndotlocalctl configure`,
     )
   })
 </script>
