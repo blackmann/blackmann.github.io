@@ -1,8 +1,6 @@
 ---
-import LicenseUpgrade from '../../components/dotlocal/LicenseUpgrade.astro';
+import LicenseUpgrade from '../../components/dotlocal/LicenseUpgrade.astro'
 import Shell from '../../layouts/dotlocal/Shell.astro'
-
-// [ ] Check wildcard submains, caddy?
 ---
 
 <Shell
@@ -36,17 +34,30 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
       <div class="flex justify-center">
         <div
-          class="bg-slate-600 inline-block font-mono text-slate-100 rounded-md p-3 py-2 text-sm"
+          class="bg-slate-600 inline-flex gap-4 font-mono text-slate-100 rounded-md p-3 py-2 text-sm"
         >
-          <div>
-            <span class="text-slate-400">$</span>{' '}
-            <span class="text-pink-300">brew</span>{' '}
-            <span class="text-slate-300">install</span> blackmann/brew/dotlocal
-          </div>
+          <div class="flex-1">
+            <div>
+              <span class="text-slate-400">$</span>{' '}
+              <span class="text-pink-300">brew</span>{' '}
+              <span class="text-slate-300">install</span>
+               blackmann/brew/dotlocal
+            </div>
 
-          <span class="text-slate-400">$</span>{' '}
-          <span class="text-pink-300">dotlocalctl</span>{' '}
-          <span class="text-slate-300">configure</span>
+            <div>
+              <span class="text-slate-400">$</span>{' '}
+              <span class="text-pink-300">dotlocalctl</span>{' '}
+              <span class="text-slate-300">configure</span>
+            </div>
+          </div>
+          <div>
+            <button
+              class="material-symbols-rounded text-slate-400 hover:text-slate-300"
+              id="copy-command"
+            >
+              content_copy
+            </button>
+          </div>
         </div>
       </div>
 
@@ -153,5 +164,12 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
     strings: ['myapp', 'admin.myapp', 'adeton', 'mangobase', 'api.adeton'],
     autoStart: true,
     loop: true,
+  })
+
+  const copyBtn = document.querySelector('#copy-command') as HTMLButtonElement
+  copyBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(
+      `brew install blackmann/brew/dotlocal\ndotlocalctl configure\n`,
+    )
   })
 </script>
