@@ -151,7 +151,31 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
   <section class="bg-slate-50">
     <div class="container py-[4rem] border-t border-slate-200">
-      <h2 id="faq">Frequently Asked Questions</h2>
+      <h2 class="font-bold text-2xl mb-2" id="faq">
+        Frequently Asked Questions
+      </h2>
+
+      <ul>
+        <li class="mb-4">
+          <header class="font-medium">
+            The app is installed! Where do I find it?
+          </header>
+
+          <p class="text-secondary">
+            Open the app from the Launchpad. You'll see a globe icon in the Menubar. Click on it and choose Preferences to access the configurations.
+          </p>
+        </li>
+
+        <li>
+          <header class="font-medium">
+            What if I have more than one app that can run on the same port?
+          </header>
+
+          <p class="text-secondary">
+            You can add multiple proxy entries for different apps that point to the same port. Note that the operating system will only allow you to run one app on a port at a time.
+          </p>
+        </li>
+      </ul>
     </div>
   </section>
 </Shell>
