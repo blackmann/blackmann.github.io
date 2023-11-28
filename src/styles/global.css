@@ -18,16 +18,16 @@
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%; */
 
-	--svg-outline: #D9D9D9;
+	--svg-outline: #d4d4d8;
 	--svg-foreground: #A2A1A1;
 	--svg-surface: white;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--svg-outline: #737373;
+		--svg-outline: #525252;
 		--svg-foreground: #d4d4d4;
-		--svg-surface: #404040;
+		--svg-surface: #262626;
 	}
 }
 
