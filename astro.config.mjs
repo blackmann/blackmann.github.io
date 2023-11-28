@@ -10,7 +10,10 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     shikiConfig: {
-      theme: 'github-dark'
+      experimentalThemes: {
+        light: 'github-light',
+        dark: 'vitesse-dark',
+      }
     }
   }
 });

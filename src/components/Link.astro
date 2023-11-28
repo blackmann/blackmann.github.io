@@ -2,10 +2,11 @@
 import { SITE_HOST }  from '../consts'
 interface Props {
   href: string
+  className?: string
 }
 
 const url = new URL(Astro.props.href)
 const isExternal = url.hostname !== SITE_HOST
 ---
 
-<a target={isExternal ? '_blank' : '_self'} href={Astro.props.href}><slot /></a>
+<a class={Astro.props.className} target={isExternal ? '_blank' : '_self'} href={Astro.props.href}><slot /></a>

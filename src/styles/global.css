@@ -1,25 +1,5 @@
-@font-face {
-	font-family: "Zed Mono";
-	src: url("/zed-mono/zed-mono-regular.woff2");
-}
-
-@font-face {
-	font-family: "Zed Mono";
-	src: url("/zed-mono/zed-mono-bold.woff2");
-	font-weight: 700;
-}
-
-@font-face {
-	font-family: "Zed Mono";
-	src: url("/zed-mono/zed-mono-medium.woff2");
-	font-weight: 500;
-}
-
-@font-face {
-	font-family: "Zed Mono";
-	src: url("/zed-mono/zed-mono-italic.woff2");
-	font-style: italic;
-}
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
 .text-secondary {
 	@apply text-zinc-600 dark:text-neutral-400;
@@ -29,14 +9,14 @@
 	@apply text-zinc-800 dark:text-stone-50 bg-zinc-100 dark:bg-neutral-900;
 
 	color-scheme: light dark;
-	font-family: "Zed Mono", monospace;
-	font-size: 15px;
+	font-family: "Dosis", monospace;
+	font-size: 16px;
 
-	font-synthesis: none;
+	/* font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%; */
 }
 
 
@@ -74,8 +54,8 @@ img, video {
 }
 
 code {
-	font-family: 'Zed Mono', monospace;
-	@apply text-green-700 dark:text-orange-400;
+	font-family: 'IBM Plex Mono', monospace;
+	@apply text-green-700 dark:text-orange-400 text-sm;
 }
 
 article h1, article h2, article h3, article h4, article h5, article h6 {
@@ -139,7 +119,7 @@ article th, article td {
 }
 
 .astro-code .line {
-	line-height: 1.6rem;
+	line-height: 1;
 }
 
 .astro-code .line::before {
@@ -150,6 +130,18 @@ article th, article td {
   display: inline-block;
   text-align: right;
   color: rgba(115,138,148,.4)
+}
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
 }
 
 .scheme-img > :nth-child(2) {
@@ -164,4 +156,9 @@ article th, article td {
 	.scheme-img > :nth-child(2) {
 		display: block;
 	}
+}
+
+
+.card {
+	@apply bg-zinc-50 dark:bg-neutral-800 border border-zinc-200 dark:border-neutral-700 rounded-lg p-4;
 }

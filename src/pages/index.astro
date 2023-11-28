@@ -11,85 +11,98 @@ import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
-	return b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  return b.data.pubDate.getTime() - a.data.pubDate.getTime()
 })
 
 const postsList = posts.slice(0, 6).map((post) => ({
-	link: `/blog/${post.slug}`,
-	meta: shortenDate(post.data.pubDate),
-	title: post.data.title,
+  link: `/blog/${post.slug}`,
+  meta: shortenDate(post.data.pubDate),
+  title: post.data.title,
 }))
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title="Hi 👋🏽" description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
+  <head>
+    <BaseHead title="Hi 👋🏽" description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
 
-		<main class="container mx-auto mt-[8rem]">
-			<h1 class="font-bold text-lg mb-8">Welcome to my Home</h1>
+    <main class="container mx-auto mt-[8rem]">
+      <h1 class="font-bold text-lg mb-8">Welcome to my Home</h1>
 
-			<p class="max-w-[480px]">
-				It's me De-Great; or call me GR. I am a creative trying every and
-				anything that spikes my interest. 3D, code, music, drawing, writing? On
-				this site, you'll find a few things I want you to know <span
-					class="text-secondary">[about me or stuff I'm working on]</span
-				>. If you want to know more and keep up, try following my socials or
-				join my <a class="font-medium" href="https://discord.gg/5CDnysz">Discord</a> server.
-			</p>
+      <p class="max-w-[480px]">
+        It's me De-Great; or call me GR. I am a creative trying every and
+        anything that spikes my interest. 3D, code, music, drawing, writing? On
+        this site, you'll find a few things I want you to know <span
+          class="text-secondary">[about me or stuff I'm working on]</span
+        >. If you want to know more and keep up, try following my socials or
+        join my <a class="font-medium" href="https://discord.gg/5CDnysz"
+          >Discord</a
+        > server.
+      </p>
 
-			<p>🇬🇭</p>
+      <p>🇬🇭</p>
 
-			<h2 class="mt-[8rem] mb-4 font-bold">Featured</h2>
+      <h2 class="mt-[8rem] mb-4 font-bold">Featured</h2>
 
-			<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
-				{
-					featuredLinks.map((link) => (
-						<div class="col-span-1">
-							<div class="font-medium">{link.title}</div>
-							<p class="text-secondary">{link.description}</p>
-							<Link href={`https://${link.link}`}>{link.link}</Link>
-						</div>
-					))
-				}
-			</div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+        {
+          featuredLinks.map((link) => (
+            <div class="col-span-1">
+              <div class="card">
+                <div class="font-bold">{link.title}</div>
+                <p class="text-secondary">{link.description}</p>
+                <Link className="font-medium" href={`https://${link.link}`}>
+                  {link.link}
+                </Link>
+              </div>
+            </div>
+          ))
+        }
+      </div>
 
-			<section class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem]">
-				<div class="col-span-1 lg:col-span-2">
-					<h2 class="font-bold mb-4">Recent posts</h2>
+      <section class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem]">
+        <div class="col-span-1 lg:col-span-2">
+          <h2 class="font-bold mb-4">Recent posts</h2>
 
-					<ContentList items={postsList.slice(0, 6)} />
+          <ContentList items={postsList.slice(0, 6)} />
 
-					<div class="mt-5 text-secondary">
-						See all posts <a class="text-zinc-800 dark:text-neutral-200" href="/blog">here</a>
-					</div>
-				</div>
-			</section>
+          <div class="mt-5 text-secondary">
+            See all posts <a
+              class="text-zinc-800 dark:text-neutral-200"
+              href="/blog">here</a
+            >
+          </div>
+        </div>
+      </section>
 
-			<section class="mt-[8rem]">
-				<h2 class="font-bold mb-4">Developer packages</h2>
+      <section class="mt-[8rem]">
+        <h2 class="font-bold mb-4">Developer packages</h2>
 
-				<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
-					{
-						developerTools.map((pkg) => (
-							<div class="col-md-4">
-								<div class="font-medium mb-3">{pkg.title}</div>
-								<div class="text-secondary mb-2">{pkg.description}</div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+          {
+            developerTools.map((pkg) => (
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="mb-3 font-bold">{pkg.title}</div>
+                  <div class="text-secondary mb-2">{pkg.description}</div>
 
-								<a href={pkg.link}>{pkg.link}</a>
-							</div>
-						))
-					}
-				</div>
+                  <a class="font-medium" href={pkg.link}>
+                    {pkg.link}
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
 
-				<div class="mt-5 text-secondary">
-					Check out more projects <a href="/projects">here</a>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+        <div class="mt-5 text-secondary">
+          Check out more projects <a href="/projects">here</a>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

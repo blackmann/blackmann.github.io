@@ -14,7 +14,7 @@ const featuredLinks = [
 	{
 		title: 'Adeton',
 		description:
-			'This is a SaaS project I developed; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant.',
+			'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant.',
 		link: 'adeton.io',
 	},
 	{
