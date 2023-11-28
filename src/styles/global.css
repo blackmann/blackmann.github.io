@@ -17,6 +17,18 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%; */
+
+	--svg-outline: #D9D9D9;
+	--svg-foreground: #A2A1A1;
+	--svg-surface: white;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--svg-outline: #737373;
+		--svg-foreground: #d4d4d4;
+		--svg-surface: #404040;
+	}
 }
 
 
@@ -24,7 +36,8 @@ a {
 	@apply hover:bg-zinc-200 dark:hover:bg-neutral-800 underline break-words;
 }
 
-p + *, * + p {
+p+*,
+*+p {
 	@apply mt-[1rem];
 }
 
@@ -36,7 +49,8 @@ p + *, * + p {
 	max-width: 480px;
 }
 
-img, video {
+img,
+video {
 	max-width: 100%;
 }
 
@@ -58,7 +72,12 @@ code {
 	@apply text-green-700 dark:text-orange-400 text-sm;
 }
 
-article h1, article h2, article h3, article h4, article h5, article h6 {
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
 	@apply font-bold;
 }
 
@@ -70,15 +89,22 @@ article h2 {
 	@apply text-xl;
 }
 
-article h3, h4 {
+article h3,
+h4 {
 	@apply text-lg;
 }
 
-article h5, h6 {
+article h5,
+h6 {
 	@apply text-base;
 }
 
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
+*+h1,
+*+h2,
+*+h3,
+*+h4,
+*+h5,
+*+h6 {
 	@apply mt-8;
 }
 
@@ -90,12 +116,13 @@ article table {
 	width: 100%;
 }
 
-article th, article td {
+article th,
+article td {
 	text-align: start;
 }
 
 @media screen and (min-width: 768px) {
-	article > section:not(.footnotes) {
+	article>section:not(.footnotes) {
 		columns: 2;
 		column-rule-width: thin;
 		column-rule-style: solid;
@@ -104,7 +131,7 @@ article th, article td {
 	}
 
 	@media (prefers-color-scheme: dark) {
-		article > section:not(.footnotes) {
+		article>section:not(.footnotes) {
 			column-rule-color: var(--bs-gray-700);
 		}
 	}
@@ -112,8 +139,8 @@ article th, article td {
 
 
 .astro-code {
-  counter-reset: step;
-  counter-increment: step 0;
+	counter-reset: step;
+	counter-increment: step 0;
 	padding: 1rem;
 	border-radius: 0.5rem;
 }
@@ -123,42 +150,47 @@ article th, article td {
 }
 
 .astro-code .line::before {
-  content: counter(step);
-  counter-increment: step;
-  width: 1rem;
-  margin-right: 1.5rem;
-  display: inline-block;
-  text-align: right;
-  color: rgba(115,138,148,.4)
+	content: counter(step);
+	counter-increment: step;
+	width: 1rem;
+	margin-right: 1.5rem;
+	display: inline-block;
+	text-align: right;
+	color: rgba(115, 138, 148, .4)
 }
 
 @media (prefers-color-scheme: dark) {
-  .astro-code,
-  .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    /* Optional, if you also want font styles */
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
+
+	.astro-code,
+	.astro-code span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+		/* Optional, if you also want font styles */
+		font-style: var(--shiki-dark-font-style) !important;
+		font-weight: var(--shiki-dark-font-weight) !important;
+		text-decoration: var(--shiki-dark-text-decoration) !important;
+	}
 }
 
-.scheme-img > :nth-child(2) {
+.scheme-img> :nth-child(2) {
 	display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-	.scheme-img > :first-child {
+	.scheme-img> :first-child {
 		display: none;
 	}
 
-	.scheme-img > :nth-child(2) {
+	.scheme-img> :nth-child(2) {
 		display: block;
 	}
 }
 
-
 .card {
 	@apply bg-zinc-50 dark:bg-neutral-800 border border-zinc-200 dark:border-neutral-700 rounded-lg p-4;
+}
+
+.feature-svg {
+	width: 100%;
+	height: auto;
 }

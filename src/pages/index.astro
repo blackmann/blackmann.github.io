@@ -19,6 +19,8 @@ const postsList = posts.slice(0, 6).map((post) => ({
   meta: shortenDate(post.data.pubDate),
   title: post.data.title,
 }))
+
+const B = Link
 ---
 
 <!doctype html>
@@ -51,12 +53,18 @@ const postsList = posts.slice(0, 6).map((post) => ({
         {
           featuredLinks.map((link) => (
             <div class="col-span-1">
-              <div class="card">
+              <div class="card !pb-0">
                 <div class="font-bold">{link.title}</div>
                 <p class="text-secondary">{link.description}</p>
-                <Link className="font-medium" href={`https://${link.link}`}>
+                <Link className="font-medium mb-2 inline-block" href={`https://${link.link}`}>
                   {link.link}
                 </Link>
+
+                {link.featureImage && (
+                  <div class="aspect-[16/7] bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40 rounded-t-lg">
+                    <link.featureImage />
+                  </div>
+                )}
               </div>
             </div>
           ))

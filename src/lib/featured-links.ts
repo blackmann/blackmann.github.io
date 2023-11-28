@@ -1,3 +1,7 @@
+import MangobaseFeatureImage from "../components/MangobaseFeatureImage.astro"
+import YTFeatureImage from '../components/YTFeatureImage.astro'
+import AdetonFeatureImage from '../components/AdetonFeatureImage.astro'
+
 const featuredLinks = [
 	// {
 	// 	title: 'SerialBox',
@@ -10,6 +14,7 @@ const featuredLinks = [
 		description:
 			'Low-code Javascript backend framework for Node and Bun runtimes.',
 		link: 'degreat.co.uk/mangobase',
+		featureImage: MangobaseFeatureImage
 	},
 	{
 		title: 'Adeton',
