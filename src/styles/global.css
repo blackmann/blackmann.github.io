@@ -9,7 +9,7 @@
 	@apply text-zinc-800 dark:text-stone-50 bg-zinc-100 dark:bg-neutral-900;
 
 	color-scheme: light dark;
-	font-family: "Dosis", monospace;
+	font-family: "Dosis", sans-serif;
 	font-size: 16px;
 
 	/* font-synthesis: none;
