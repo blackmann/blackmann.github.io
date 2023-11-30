@@ -1,0 +1,29 @@
+---
+import Link from './Link.astro'
+
+interface Project {
+  title: string
+  description: string
+  meta?: string
+  url: string
+}
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+---
+
+<div class="col-span-1">
+  <div class="card">
+    <div class="font-bold">{project.title}</div>
+    <p class="text-secondary">{project.description}</p>
+
+    <div class="text-secondary">{project.meta}</div>
+
+    <div class="mt-2">
+      <Link href={`https://${project.url}`}>{project.url}</Link>
+    </div>
+  </div>
+</div>

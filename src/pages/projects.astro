@@ -1,5 +1,6 @@
 ---
 import Link from '../components/Link.astro'
+import ProjectItem from '../components/ProjectItem.astro'
 import Shell from '../layouts/Shell.astro'
 
 const startups = [
@@ -80,56 +81,17 @@ const packages = [
 
     <h2 class="mt-5 font-medium text-lg mb-4">Startups</h2>
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-3 gap-y-8">
-      {
-        startups.map((project) => (
-          <div class="col-span-1">
-            <div class="font-bold">{project.title}</div>
-            <p class="text-secondary">{project.description}</p>
-
-            <div class="text-secondary">{project.meta}</div>
-
-            <div class="mt-2">
-              <Link href={`https://${project.url}`}>{project.url}</Link>
-            </div>
-          </div>
-        ))
-      }
+      {startups.map((project) => <ProjectItem project={project} />)}
     </div>
 
     <h2 class="mt-[5rem] font-medium text-lg mb-4">Apps</h2>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
-      {
-        apps.map((project) => (
-          <div class="col-span-1">
-            <div class="font-medium">{project.title}</div>
-            <p class="text-secondary">{project.description}</p>
-
-            <div class="text-secondary">{project.meta}</div>
-
-            <div class="mt-2">
-              <Link href={`https://${project.url}`}>{project.url}</Link>
-            </div>
-          </div>
-        ))
-      }
+      {apps.map((project) => <ProjectItem project={project} />)}
     </div>
 
     <h2 class="mt-[5rem] font-medium text-lg mb-4">Packages</h2>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
-      {
-        packages.map((project) => (
-          <div class="col-span-1">
-            <div class="font-medium">{project.title}</div>
-            <p class="text-secondary">{project.description}</p>
-
-            <div class="text-secondary">{project.meta}</div>
-
-            <div class="mt-2">
-              <Link href={`https://${project.url}`}>{project.url}</Link>
-            </div>
-          </div>
-        ))
-      }
+      {packages.map((project) => <ProjectItem project={project} />)}
     </div>
   </main>
 </Shell>
