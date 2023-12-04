@@ -93,3 +93,5 @@ Note that, you can explore both ways; horizontal and vertical.
 That was it.
 
 React or leave a comment. See next time!
+
+Here are the slides, if you will: [Figma: Diversify your interests](https://www.figma.com/proto/pnEqMk2RSNNSn74H1NwlSQ?node-id=0-1&mode=design&t=0JHuzQBfDF1ZvaFW-6)
