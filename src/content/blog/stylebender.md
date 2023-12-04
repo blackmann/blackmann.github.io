@@ -2,6 +2,8 @@
 title: 'stylebender: Speeding my web workflow'
 description: Why I'm building stylebender
 pubDate: 'Jul 03 2023'
+tags:
+  - abandoned
 ---
 
 Whenever I start a new web project, I go through the pain of doing searches like "CSS libraries", "React components libraries", etc. Each time, getting the same set of results as before and sometimes going through them all over again hoping they look different than last time.

@@ -3,6 +3,7 @@ interface ContentItem {
   title: string
   meta?: string
   link: string
+  tags?: string[]
 }
 
 interface Props {
@@ -16,8 +17,20 @@ const { items } = Astro.props
   {
     items.map((item) => (
       <li class="[&+&]:border-t-1 [&+&]:border-t border-t-zinc-200 dark:border-t-neutral-600">
-        <a class="flex justify-between py-2 px-2 no-underline" href={item.link}>
-          <span class="flex-1 font-medium">{item.title}</span>
+        <a
+          class="flex justify-between py-2 px-2 no-underline gap-2"
+          href={item.link}
+        >
+          <div class="flex-1 font-medium">
+            <span transition:name={`page-title:${item.title}`}>{item.title}</span>
+            <ul class="inline-flex">
+              {item.tags?.map((tag) => (
+                <li>
+                  <code class="bg-zinc-200 px-2 rounded-md">{tag}</code>
+                </li>
+              ))}
+            </ul>
+          </div>
           <span class="text-end text-secondary">{item.meta}</span>
         </a>
       </li>

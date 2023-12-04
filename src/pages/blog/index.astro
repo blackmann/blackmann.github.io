@@ -15,6 +15,7 @@ const postsList = posts.map((post) => ({
 	link: `/blog/${post.slug}`,
 	meta: shortenDate(post.data.pubDate),
 	title: post.data.title,
+	tags: post.data.tags
 }))
 ---
 
@@ -28,9 +29,9 @@ const postsList = posts.map((post) => ({
 		<Header />
 
 		<main class="container mx-auto mt-[8rem] min-h-[60vh]">
-			<div class="text-secondary">{posts.length} posts published</div>
+			<div class="font-bold">{posts.length} posts published</div>
 
-			<p class="max-w-[480px]">
+			<p class="max-w-[480px] text-secondary">
 				These are my own words. Shaped by my own experiences. If you find
 				something confusing, wrong or misleading, please let me know. If you
 				find anything helpful, please consider sharing to your friends.

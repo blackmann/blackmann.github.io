@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0");
 
 .text-secondary {
-	@apply text-zinc-600 dark:text-neutral-400;
+	@apply text-zinc-500 dark:text-neutral-400;
 }
 
 :root {
@@ -55,6 +55,10 @@ video {
 	max-width: 100%;
 }
 
+hr {
+	@apply border-t border-t-zinc-300 dark:border-t-neutral-600 mt-4;
+}
+
 .footnotes {
 	@apply border-t border-t-zinc-300 dark:border-t-neutral-600 pt-8;
 	margin-top: 4rem;
@@ -64,8 +68,8 @@ video {
 	display: none;
 }
 
-.footnotes ol {
-	@apply list-decimal marker:text-zinc-500 dark:marker:text-neutral-400;
+.footnotes li {
+	@apply list-decimal ms-8 marker:text-zinc-500 dark:marker:text-neutral-400;
 }
 
 code {
@@ -100,6 +104,14 @@ h6 {
 	@apply text-base;
 }
 
+article ul {
+	@apply list-disc list-outside ms-8;
+}
+
+article li + li {
+	@apply mt-2;
+}
+
 *+h1,
 *+h2,
 *+h3,
@@ -110,7 +122,7 @@ h6 {
 }
 
 article blockquote {
-	color: var(--bs-secondary)
+	@apply max-w-[30rem] p-2 bg-zinc-200 bg-opacity-50 text-xl mx-auto
 }
 
 article table {
