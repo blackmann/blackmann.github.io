@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blackmann.github.io',
+  site: 'https://degreat.co.uk',
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     shikiConfig: {
