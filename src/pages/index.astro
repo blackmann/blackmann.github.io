@@ -80,7 +80,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
         <div class="col-span-1 lg:col-span-2">
           <h2 class="font-bold mb-4">Recent posts</h2>
 
-          <ContentList items={postsList.slice(0, 6)} />
+          <ContentList noTransition items={postsList.slice(0, 6)} />
 
           <div class="mt-5 text-secondary">
             See all posts <a
