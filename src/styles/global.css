@@ -108,7 +108,7 @@ article ul {
 	@apply list-disc list-outside ms-8;
 }
 
-article li + li {
+article li+li {
 	@apply mt-2;
 }
 
@@ -122,7 +122,7 @@ article li + li {
 }
 
 article blockquote {
-	@apply max-w-[30rem] p-2 bg-zinc-200 bg-opacity-50 text-xl mx-auto
+	@apply max-w-[30rem] p-2 bg-zinc-200 dark:bg-neutral-800 bg-opacity-50 text-xl mx-auto
 }
 
 article table {

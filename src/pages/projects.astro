@@ -71,26 +71,26 @@ const packages = [
 ---
 
 <Shell title="Projects" description="Stuff I have worked on.">
-  <main class="container mt-[8rem] mx-auto">
-    <h1 class="font-bold text-2xl mb-[2rem]">Projects</h1>
+  <main class="container mx-auto mt-[8rem]">
+    <h1 class="mb-[2rem] text-2xl font-bold">Projects</h1>
 
     <p class="page-half">
       I've tried many and a lot of things. These are the ones I could collect
       and showcase; or just proud of them.
     </p>
 
-    <h2 class="mt-5 font-medium text-lg mb-4">Startups</h2>
-    <div class="grid gap-4 grid-cols-1 lg:grid-cols-3 gap-y-8">
+    <h2 class="mb-4 mt-5 text-lg font-medium">Startups</h2>
+    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {startups.map((project) => <ProjectItem project={project} />)}
     </div>
 
-    <h2 class="mt-[5rem] font-medium text-lg mb-4">Apps</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+    <h2 class="mb-4 mt-[5rem] text-lg font-medium">Apps</h2>
+    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {apps.map((project) => <ProjectItem project={project} />)}
     </div>
 
-    <h2 class="mt-[5rem] font-medium text-lg mb-4">Packages</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+    <h2 class="mb-4 mt-[5rem] text-lg font-medium">Packages</h2>
+    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {packages.map((project) => <ProjectItem project={project} />)}
     </div>
   </main>

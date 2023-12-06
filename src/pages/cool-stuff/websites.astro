@@ -21,8 +21,9 @@ const websites = [
   },
   {
     link: 'activetheory.net',
-    description: 'This is a creative agency I admire a lot. They also share inspirational projects/experiments.'
-  }
+    description:
+      'This is a creative agency I admire a lot. They also share inspirational projects/experiments.',
+  },
 ]
 ---
 
@@ -34,8 +35,7 @@ const websites = [
 
     <p class="text-secondary page-half">Beautiful, helpful or inspirational.</p>
 
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
+    <div class="mt-[5rem] grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {
         websites.map((site) => (
           <div class="col-span-1">

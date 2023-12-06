@@ -9,43 +9,43 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 >
   <section>
     <div class="container py-12">
-      <div class="text-center mb-8">
+      <div class="mb-8 text-center">
         <span
-          class="border border-slate-300 rounded-full py-1 px-4 text-sm text-secondary inline-flex items-center gap-1"
-          ><span class="inline-block w-3 h-3 bg-red-400 rounded-full me-2"
+          class="text-secondary inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm"
+          ><span class="me-2 inline-block h-3 w-3 rounded-full bg-red-400"
           ></span> Not a <code class="text-slate-700">/etc/hosts</code> editor!</span
         >
       </div>
       <h1
-        class="text-center font-bold text-4xl text-slate-700 max-w-xl mx-auto"
+        class="mx-auto max-w-xl text-center text-4xl font-bold text-slate-700"
       >
         Mirror your production <span class="text-blue-500">domains</span> on
         your <span class="text-slate-400">.local</span> machine
       </h1>
 
       <p
-        class="max-w-xl text-slate-500 text-xl mx-auto text-center my-6 font-light"
+        class="mx-auto my-6 max-w-xl text-center text-xl font-light text-slate-500"
       >
         Comes with automatic HTTPS redirect and certificates. Supports <a
-          class="underline decoration-dotted cursor-help"
+          class="cursor-help underline decoration-dotted"
           href="#path-proxies">proxies on paths.</a
         >
       </p>
 
       <div class="flex justify-center">
         <div
-          class="bg-slate-600 inline-flex gap-4 font-mono text-slate-100 rounded-md p-3 py-2 text-sm"
+          class="inline-flex gap-4 rounded-md bg-slate-600 p-3 py-2 font-mono text-sm text-slate-100"
         >
           <div class="flex-1">
             <div>
-              <span class="text-slate-400 select-none">$</span>{' '}
+              <span class="select-none text-slate-400">$</span>{' '}
               <span class="text-pink-300">brew</span>{' '}
               <span class="text-slate-300">install</span>
                blackmann/brew/dotlocal
             </div>
 
             <div>
-              <span class="text-slate-400 select-none">$</span>{' '}
+              <span class="select-none text-slate-400">$</span>{' '}
               <span class="text-pink-300">dotlocalctl</span>{' '}
               <span class="text-slate-300">configure</span>
             </div>
@@ -74,20 +74,20 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
   <section class="bg-white">
     <div class="container py-[5rem]">
-      <div class="text-center mb-4">
+      <div class="mb-4 text-center">
         <span
-          class="border border-slate-300 rounded-full py-1 px-4 text-sm text-green-800 inline-flex items-center gap-1 font-medium"
-          ><span class="inline-block w-3 h-3 bg-green-400 rounded-full me-2"
+          class="inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm font-medium text-green-800"
+          ><span class="me-2 inline-block h-3 w-3 rounded-full bg-green-400"
           ></span> Watch a quick demo.</span
         >
       </div>
-      <h2 class="text-center font-bold text-3xl mb-8">
+      <h2 class="mb-8 text-center text-3xl font-bold">
         Reasons you'll want a <span class="text-blue-500"
           ><span class="text-slate-400" id="examples"></span>.local</span
         >
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div class="col-span-1">
           <div class="rounded-lg bg-slate-50">
             <img
@@ -97,7 +97,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
             />
 
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2 tracking-wide">
+              <h3 class="mb-2 text-lg font-bold tracking-wide">
                 Want HTTPS experience
               </h3>
 
@@ -116,7 +116,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
               class="w-full"
             />
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2 tracking-wide">
+              <h3 class="mb-2 text-lg font-bold tracking-wide">
                 Tired of wiping localStorage or cookies
               </h3>
               <p class="text-secondary">
@@ -131,7 +131,7 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
           <div class="rounded-lg bg-slate-50">
             <img src="/subdomains.png" alt="Subdomains" class="w-full" />
             <div class="p-4">
-              <h3 class="font-bold text-lg mb-2 tracking-wide">
+              <h3 class="mb-2 text-lg font-bold tracking-wide">
                 Your app uses subdomains to resolve tenants.
               </h3>
               <p class="text-secondary">
@@ -150,8 +150,8 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
   </section>
 
   <section class="bg-slate-50">
-    <div class="container py-[4rem] border-t border-slate-200">
-      <h2 class="font-bold text-2xl mb-2" id="faq">
+    <div class="container border-t border-slate-200 py-[4rem]">
+      <h2 class="mb-2 text-2xl font-bold" id="faq">
         Frequently Asked Questions
       </h2>
 
@@ -162,7 +162,9 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
           </header>
 
           <p class="text-secondary">
-            Open the app from the Launchpad. You'll see a globe icon in the Menubar. Click on it and choose Preferences to access the configurations.
+            Open the app from the Launchpad. You'll see a globe icon in the
+            Menubar. Click on it and choose Preferences to access the
+            configurations.
           </p>
         </li>
 
@@ -172,7 +174,9 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
           </header>
 
           <p class="text-secondary">
-            You can add multiple proxy entries for different apps that point to the same port. Note that the operating system will only allow you to run one app on a port at a time.
+            You can add multiple proxy entries for different apps that point to
+            the same port. Note that the operating system will only allow you to
+            run one app on a port at a time.
           </p>
         </li>
       </ul>

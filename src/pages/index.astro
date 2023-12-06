@@ -30,7 +30,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <Header />
 
     <main class="container mx-auto mt-[8rem]">
-      <h1 class="font-bold text-lg mb-8">Welcome to my Home</h1>
+      <h1 class="mb-8 text-lg font-bold">Welcome to my Home</h1>
 
       <p class="max-w-[480px]">
         It's me De-Great; or call me GR. I am a creative trying every and
@@ -45,9 +45,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
       <p>🇬🇭</p>
 
-      <h2 class="mt-[8rem] mb-4 font-bold">Featured</h2>
+      <h2 class="mb-4 mt-[8rem] font-bold">Featured</h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+      <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
         {
           featuredLinks.map((link) => (
             <div class="col-span-1">
@@ -63,7 +63,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
                 {link.featureImage && (
                   <div
-                    class="aspect-[16/7] bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40 rounded-t-lg"
+                    class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
                     role="img"
                     aria-label={link.title}
                   >
@@ -76,13 +76,13 @@ const postsList = posts.slice(0, 6).map((post) => ({
         }
       </div>
 
-      <section class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem]">
+      <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
         <div class="col-span-1 lg:col-span-2">
-          <h2 class="font-bold mb-4">Recent posts</h2>
+          <h2 class="mb-4 font-bold">Recent posts</h2>
 
           <ContentList noTransition items={postsList.slice(0, 6)} />
 
-          <div class="mt-5 text-secondary">
+          <div class="text-secondary mt-5">
             See all posts <a
               class="text-zinc-800 dark:text-neutral-200"
               href="/blog">here</a
@@ -92,9 +92,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
       </section>
 
       <section class="mt-[8rem]">
-        <h2 class="font-bold mb-4">Developer packages</h2>
+        <h2 class="mb-4 font-bold">Developer packages</h2>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8">
+        <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
           {
             developerTools.map((pkg) => (
               <div class="col-md-4">
@@ -111,7 +111,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           }
         </div>
 
-        <div class="mt-5 text-secondary">
+        <div class="text-secondary mt-5">
           Check out more projects <a href="/projects">here</a>
         </div>
       </section>

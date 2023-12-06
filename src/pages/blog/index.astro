@@ -8,40 +8,40 @@ import shortenDate from '../../lib/shorten-date'
 import ContentList from '../../components/ContentList.astro'
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
 
 const postsList = posts.map((post) => ({
-	link: `/blog/${post.slug}`,
-	meta: shortenDate(post.data.pubDate),
-	title: post.data.title,
-	tags: post.data.tags
+  link: `/blog/${post.slug}`,
+  meta: shortenDate(post.data.pubDate),
+  title: post.data.title,
+  tags: post.data.tags,
 }))
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
 
-	<body>
-		<Header />
+  <body>
+    <Header />
 
-		<main class="container mx-auto mt-[8rem] min-h-[60vh]">
-			<div class="font-bold">{posts.length} posts published</div>
+    <main class="container mx-auto mt-[8rem] min-h-[60vh]">
+      <div class="font-bold">{posts.length} posts published</div>
 
-			<p class="max-w-[480px] text-secondary">
-				These are my own words. Shaped by my own experiences. If you find
-				something confusing, wrong or misleading, please let me know. If you
-				find anything helpful, please consider sharing to your friends.
-			</p>
+      <p class="max-w-[480px] text-secondary">
+        These are my own words. Shaped by my own experiences. If you find
+        something confusing, wrong or misleading, please let me know. If you
+        find anything helpful, please consider sharing to your friends.
+      </p>
 
-			<section class="mt-[5rem]">
-				<ContentList items={postsList} />
-			</section>
-		</main>
+      <section class="mt-[5rem]">
+        <ContentList items={postsList} />
+      </section>
+    </main>
 
-		<Footer />
-	</body>
+    <Footer />
+  </body>
 </html>

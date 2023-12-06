@@ -4,22 +4,31 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
 <Shell title="dotlocalctl" description="Backend CLI for dotlocal">
   <div class="container py-[4rem]">
-    <h1 class="text-4xl font-mono font-bold">dotlocalctl <span class="material-symbols-rounded text-slate-500">terminal</span></h1>
+    <h1 class="font-mono text-4xl font-bold">
+      dotlocalctl
+      <span class="material-symbols-rounded text-slate-500">terminal</span>
+    </h1>
 
     <p class="text-secondary">
-      Backend CLI for <a class="text-blue-500 underline" href="/dotlocal"
-        >DotLocal</a
-      > written in Rust.
+      Backend CLI for
+      <a class="text-blue-500 underline" href="/dotlocal">DotLocal</a> written
+      in Rust.
     </p>
 
     <p class="mt-[3rem]">
-      <code class="bg-slate-200 px-2 py-1 rounded-md"
-        >brew install dotlocalctl</code>
+      <code class="rounded-md bg-slate-200 px-2 py-1"
+        >brew install dotlocalctl</code
+      >
     </p>
 
-    <h2 class="text-secondary mt-[3rem] mb-4">Description</h2>
+    <h2 class="text-secondary mb-4 mt-[3rem]">Description</h2>
 
-    <p>This CLI provides commands to create <code>.local</code> domains and proxies easily.</p>
-    <p>Run <code>dotlocalctl --help</code> for available commands and parameters</p>
+    <p>
+      This CLI provides commands to create <code>.local</code> domains and
+      proxies easily.
+    </p>
+    <p>
+      Run <code>dotlocalctl --help</code> for available commands and parameters
+    </p>
   </div>
 </Shell>

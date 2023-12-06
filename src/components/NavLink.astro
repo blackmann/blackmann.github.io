@@ -1,20 +1,22 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types'
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'>
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, ...props } = Astro.props
 
-const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '') || (href !== '/' && pathname.startsWith(href));
+const { pathname } = Astro.url
+const isActive =
+  href === pathname ||
+  href === pathname.replace(/\/$/, '') ||
+  (href !== '/' && pathname.startsWith(href))
 ---
 
-<a href={href} class="inline-flex me-2 no-underline px-1 py-0.5 rounded-lg" class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a
+  href={href}
+  class="me-2 inline-flex rounded-lg px-1 py-0.5 no-underline"
+  class:list={[className, { 'font-bold underline': isActive }]}
+  {...props}
+>
+  <slot />
 </a>
-
-<style>
-	a.active {
-		@apply underline font-bold;
-	}
-</style>

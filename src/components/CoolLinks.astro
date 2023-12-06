@@ -9,7 +9,7 @@ const topics = [
 ]
 ---
 
-<div class="text-secondary sm:hidden mt-3">
+<div class="text-secondary mt-3 sm:hidden">
   Swipe horizontally on the links to reveal others 👉🏽
 </div>
 
@@ -17,9 +17,7 @@ const topics = [
   {
     topics.map((topic) => (
       <li class="py-2">
-        <NavLink href={`/cool-stuff/${topic.slug}`}>
-          {topic.title}
-        </NavLink>
+        <NavLink href={`/cool-stuff/${topic.slug}`}>{topic.title}</NavLink>
       </li>
     ))
   }

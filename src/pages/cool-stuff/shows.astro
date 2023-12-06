@@ -17,7 +17,8 @@ const shows = [
 
   {
     title: 'Better Call Saul',
-    description: 'Saul is such a lawyer. Bob Odenkirk is such an actor. This show is spotlight on a character in Breaking; Saul Goodman/Jimmy McGill.',
+    description:
+      'Saul is such a lawyer. Bob Odenkirk is such an actor. This show is spotlight on a character in Breaking; Saul Goodman/Jimmy McGill.',
     rating: '4.6/5',
   },
 ]
@@ -27,13 +28,13 @@ const shows = [
   <main class="container mt-[8rem] min-h-[60vh]">
     <CoolLinks />
 
-    <h1 class="font-bold text-xl">Cool shows 📺</h1>
+    <h1 class="text-xl font-bold">Cool shows 📺</h1>
 
     <p class="text-secondary page-half">
       I learned as much as I was entertained
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 mt-[5rem] gap-4 gap-y-8">
+    <div class="mt-[5rem] grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {
         shows.map((show) => (
           <div class="col-span-1">
