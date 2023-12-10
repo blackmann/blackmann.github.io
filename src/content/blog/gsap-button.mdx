@@ -1,0 +1,56 @@
+---
+title: 'GSAP Button'
+description: 'Why you should have more than one interest'
+pubDate: 'Dec 9 2023'
+tags:
+  - creative
+  - research
+---
+
+import BorderFigure from "../../components/GSAPButtonPostBorderFigure.astro"
+
+This weekend, I wanted to pick up something new to learn. I've had [_GSAP_](https://gsap.com) on my list for a long time; so that was it!
+
+I spent a few minutes reading the [Learning](https://gsap.com/resources) page — **Your first animation** through to **JS Frameworks**. I only did some reading/skimming as I only was interested in what it offers at a high level.
+
+I do have some OK understanding of making animations; like what keyframes, timeline, eases, etc. mean. So I'm sure I'll be able to get more detail on those by searching on their website/docs.
+
+But I stumbled on a cool effect when hovering [CTA](<https://en.wikipedia.org/wiki/Call_to_action_(marketing)>) buttons like Create Account, Login, etc. on their site.
+
+- [ ] Insert finished work [button] here
+
+In this post, I'll like to share my thought process on achieving the same result. Yes, using GSAP!
+
+## Composition
+
+Lets break the button apart so we can get some clues on how to reason about the implementations
+
+### Borders
+
+The borders of the buttons are solid, thick and rounded. Now, when the [hover circle](#hover-circle) enters the button, it seems the border acts as a mask over it (— the hover circle).
+
+<BorderFigure />
+
+Thoughts:
+
+- If the border acts as a mask over the hover circle, then the border is not a regular DOM [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border) style.
+
+- Or it is a DOM border style and uses CSS [clipping mask](https://css-tricks.com/clipping-masking-css/) with an SVG path.
+
+> Feel free to share other ways it could be in the comments below. We're all learning!
+
+In either case, we need an SVG path to define our button's borders. I mention SVG because I know SVGs have [`<mask />`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask) element through passive reading in the past.
+
+But another thing to consider is that, the buttons can have variable width. (Height maybe¿). This will mean the SVG path should be generated dynamically and probably absolutely positioned. Yes, with JS.
+
+[ ] Learn about SVG paths
+
+### Hover circle
+
+As the mouse pointer enters the button, a circle grows to fill the button almost fully. The circle grows from where the mouse entered. When the mouse leaves the button, the circle shrinks — also in the direction when the mouse exits the button.
+
+One interesting feature is that, the hover circle expands almost fully when the mouse enters a button. Why do I say cheat? At first, I thought the circle should fill the button gradually as the mouse reaches the center. Hover your mouse on the button below from the edges to see what I mean.
+
+- [ ] Add applet to demonstrate circle fill
+
+You'll notice that, if the circle went gradually, it'll cause contrasting issues. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website.

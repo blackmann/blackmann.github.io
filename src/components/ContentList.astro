@@ -28,7 +28,7 @@ const { items, noTransition } = Astro.props
             >
               {item.title}
             </span>
-            <ul class="inline-flex">
+            <ul class="inline-flex gap-2 ms-2">
               {item.tags?.map((tag) => (
                 <li>
                   <code class="rounded-md bg-zinc-200 px-2 dark:bg-neutral-800">
