@@ -87,6 +87,6 @@ I'm not sharing a golden rule.
 
 It's fine to change your site multiple times. As with every iteration, you get to know more of yourself and what you want people to learn about you. With my current iteration, I've been able to gather what makes me tick — inspiration. And that's the theme for this current iteration.
 
-How do you find this site? Lemme know by tweeting [@_yogr](https://twitter.com/_yogr).
+How do you find this site? Lemme know by sharing your ideas in the comment below.
 
 [^1]: I wanted to wordplay this as: "I fell in love with Astro at first site". Nevermind!

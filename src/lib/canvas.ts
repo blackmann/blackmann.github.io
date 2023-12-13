@@ -13,9 +13,10 @@ const darkColors: typeof colors = {
 interface Config {
   colors: typeof colors
   height: number
-  mouseX?: number
-  mouseY?: number
+  mouseX: number
+  mouseY: number
   width: number
+  update?: VoidFunction
 }
 
 interface Options {
@@ -91,6 +92,7 @@ function canvas(
   }
 
   resize()
+  updateColorScheme()
 
   window.addEventListener('resize', resize)
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -102,6 +104,8 @@ function canvas(
 
   config.mouseX = (config.width * 1) / 3
   config.mouseY = (config.height * 1) / 3
+
+  config.update = _draw
 
   _draw()
 }

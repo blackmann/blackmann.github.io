@@ -1,0 +1,95 @@
+<canvas class="bg-zinc-200 dark:bg-neutral-800" id="hover-circle-canvas">
+</canvas>
+<div class="mt-2 flex justify-center gap-2">
+  <button
+    class="rounded-md bg-zinc-200 px-2 py-1 font-medium dark:bg-neutral-600"
+    >Gradual fill</button
+  >
+  <button
+    class="rounded-md bg-zinc-200 px-2 py-1 font-medium dark:bg-neutral-600"
+    >Almost fully</button
+  >
+</div>
+
+<script>
+  import { canvas } from '../lib/canvas'
+  import gsap from 'gsap'
+
+  let fillType: 'gradual' | 'almost' = 'gradual'
+  const SETTLED_POINTER_RADIUS = 10
+  const START_POINTER_SCALE = 7
+  let mouseEnter = false
+  const appState = {
+    circleScale: 1,
+  }
+
+  let radiusScale = 0
+
+  canvas('#hover-circle-canvas', (ctx, config) => {
+    const { width, height, mouseX, mouseY, colors } = config
+    const [cx, cy] = [width / 2, height / 2]
+    const buttonWidth = width * 0.3
+    const buttonHeight = height * 0.12
+
+    const [bx, by] = [cx - buttonWidth / 2, cy - buttonHeight / 2]
+    radiusScale = buttonWidth / 2 / SETTLED_POINTER_RADIUS
+
+    console.log('circlescale', appState.circleScale)
+
+    {
+      // circle bound to pointer
+      ctx.beginPath()
+      ctx.fillStyle = appState.circleScale > 1.1 ? colors.light : colors.dark
+      ctx.arc(
+        mouseX,
+        mouseY,
+        SETTLED_POINTER_RADIUS * appState.circleScale,
+        0,
+        Math.PI * 2,
+      )
+      ctx.fill()
+
+      ctx.globalCompositeOperation = 'xor'
+
+      ctx.beginPath()
+      ctx.fillStyle = colors.light
+      const buttonBorder = new Path2D()
+      ctx.strokeStyle = colors.dark
+      ctx.lineWidth = 4
+      buttonBorder.roundRect(bx, by, buttonWidth, buttonHeight, 30)
+      ctx.fill(buttonBorder)
+
+      const entered = ctx.isPointInPath(buttonBorder, mouseX, mouseY)
+      mouseEnter = entered
+
+      ctx.globalCompositeOperation = 'source-over'
+    }
+
+    {
+      ctx.save()
+      ctx.beginPath()
+      ctx.roundRect(bx, by, buttonWidth, buttonHeight, 30)
+      ctx.clip()
+
+      ctx.beginPath()
+      ctx.fillStyle = colors.dark
+      ctx.arc(
+        mouseX,
+        mouseY,
+        SETTLED_POINTER_RADIUS * appState.circleScale,
+        0,
+        Math.PI * 2,
+      )
+      ctx.fill()
+      ctx.restore()
+    }
+
+    if (mouseEnter) {
+      const closeToCenter = mouseX <= cx ? mouseX / cx : cx / mouseX
+      const growScale = closeToCenter * radiusScale * 1.2
+      gsap.to(appState, { circleScale: growScale })
+    } else {
+      gsap.to(appState, { circleScale: 1 })
+    }
+  })
+</script>

@@ -157,4 +157,4 @@ function setRef<T>(ref: React.ForwardedRef<T>, value: T) {
 }
 ```
 
-I hope this helps. If you have any question or suggestion, tweet [@\_yogr](https://twitter.com/_yogr)
+I hope this helps. If you have any question or suggestion, leave them in the comments below.

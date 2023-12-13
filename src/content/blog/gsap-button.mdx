@@ -7,7 +7,9 @@ tags:
   - research
 ---
 
-import BorderFigure from "../../components/GSAPButtonPostBorderFigure.astro"
+import BorderFigure from '../../components/GSAPButtonPostBorderFigure.astro'
+
+import HoverCircleFigure from '../../components/GSAPButtonHoverCircleFigure.astro'
 
 This weekend, I wanted to pick up something new to learn. I've had [_GSAP_](https://gsap.com) on my list for a long time; so that was it!
 
@@ -31,6 +33,8 @@ The borders of the buttons are solid, thick and rounded. Now, when the [hover ci
 
 <BorderFigure />
 
+`[Applet]`: Hover the canvas to observe the intersection of the hover circle and button.
+
 Thoughts:
 
 - If the border acts as a mask over the hover circle, then the border is not a regular DOM [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border) style.
@@ -43,14 +47,18 @@ In either case, we need an SVG path to define our button's borders. I mention SV
 
 But another thing to consider is that, the buttons can have variable width. (Height maybe¿). This will mean the SVG path should be generated dynamically and probably absolutely positioned. Yes, with JS.
 
-[ ] Learn about SVG paths
+Learn about writing SVGs from here: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction
 
 ### Hover circle
 
 As the mouse pointer enters the button, a circle grows to fill the button almost fully. The circle grows from where the mouse entered. When the mouse leaves the button, the circle shrinks — also in the direction when the mouse exits the button.
 
-One interesting feature is that, the hover circle expands almost fully when the mouse enters a button. Why do I say cheat? At first, I thought the circle should fill the button gradually as the mouse reaches the center. Hover your mouse on the button below from the edges to see what I mean.
+One interesting feature is that, the hover circle expands almost fully when the mouse enters a button. At first, I thought the circle should fill the button gradually as the mouse reaches the center. Hover your mouse on the button below from the edges to see what I mean.
 
-- [ ] Add applet to demonstrate circle fill
+<HoverCircleFigure />
 
-You'll notice that, if the circle went gradually, it'll cause contrasting issues. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website.
+You'll notice that, if the circle went gradually, it'll cause contrasting issues with the text. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website.
+
+## Generalizing
+
+I like to generalize my solutions so I can reuse them wherever.
