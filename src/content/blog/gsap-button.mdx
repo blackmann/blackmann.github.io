@@ -29,7 +29,7 @@ Lets break the button apart so we can get some clues on how to reason about the 
 
 ### Borders
 
-The borders of the buttons are solid, thick and rounded. Now, when the [hover circle](#hover-circle) enters the button, it seems the border acts as a mask over it (— the hover circle).
+The borders of the buttons are solid, thick and rounded. Now, when the [hover circle](#hover-circle) enters the button, the intersection forms a solid fill. In the figure below, you can perceive the whole circle — this is for demonstration purposes.
 
 <BorderFigure />
 
@@ -57,7 +57,7 @@ One interesting feature is that, the hover circle expands almost fully when the 
 
 <HoverCircleFigure />
 
-You'll notice that, if the circle went gradually, it'll cause contrasting issues with the text. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website.
+You'll notice that, if the circle went gradually, it'll cause contrasting issues with the text. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website, ie, *Almost fully*.
 
 ## Generalizing
 

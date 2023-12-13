@@ -16,11 +16,11 @@ interface Config {
   mouseX: number
   mouseY: number
   width: number
-  update?: VoidFunction
 }
 
 interface Options {
   height?: number
+  animate?: boolean
 }
 
 function canvas(
@@ -67,23 +67,10 @@ function canvas(
   }
 
   function updateMousePos(e: MouseEvent) {
-    gsap
-      .to(config, {
-        mouseX: e.clientX - canvas.getBoundingClientRect().left,
-        mouseY: e.clientY - canvas.getBoundingClientRect().top,
-      })
-      .eventCallback('onUpdate', _draw)
-
-    // _draw()
-  }
-
-  function resetMousePos() {
-    gsap
-      .to(config, {
-        mouseX: (config.width * 1) / 3,
-        mouseY: (config.height * 1) / 3,
-      })
-      .eventCallback('onUpdate', _draw)
+    gsap.to(config, {
+      mouseX: e.clientX - canvas.getBoundingClientRect().left,
+      mouseY: e.clientY - canvas.getBoundingClientRect().top,
+    })
   }
 
   function _draw() {
@@ -95,19 +82,24 @@ function canvas(
   updateColorScheme()
 
   window.addEventListener('resize', resize)
+  window.addEventListener('load', resize)
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
   mediaQuery.addEventListener('change', updateColorScheme)
 
   // [ ] TODO: Add touch support
   canvas.addEventListener('mousemove', updateMousePos)
-  canvas.addEventListener('mouseleave', resetMousePos)
 
   config.mouseX = (config.width * 1) / 3
   config.mouseY = (config.height * 1) / 3
 
-  config.update = _draw
+  function run() {
+    _draw()
+    if (options.animate) {
+      requestAnimationFrame(run)
+    }
+  }
 
-  _draw()
+  run()
 }
 
 export { canvas }
