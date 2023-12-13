@@ -57,8 +57,30 @@ One interesting feature is that, the hover circle expands almost fully when the 
 
 <HoverCircleFigure />
 
-You'll notice that, if the circle went gradually, it'll cause contrasting issues with the text. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website, ie, *Almost fully*.
+You'll notice that, if the circle went gradually, it'll cause contrasting issues with the text. For accessibility reasons, it makes sense the circle behaves as done on the GSAP website, ie, _Almost fully_.
+
+One more thing: the hover circle doesn't grow until it crosses a padding threshold on the horizontal axis.
+
+While not captured in the figure above, the anchor for the circle is locked from where the mouse entered
+
+### Text
+
+The text changes color when hovered. To white — based on the theme/brand of GSAP. This is contrasted by the [hover circle](#hover-circle) which is black.
+
+## Specifications
+
+From the composition developed above, here are some specifications I've come up for the button — the GSAP button.
+
+1. The effect should work on buttons or links (`<a />`)
+1. The hover circle uses the `almost-fully` strategy.
+1. The padding threshold determines how far the hover-circle expands when the mouse enters the element.
+1. The hover circle fills the rest of the space in proportion to how close the mouse pointer is to the center, horizontally.
+1. The text changes color when hovered.
 
 ## Generalizing
 
-I like to generalize my solutions so I can reuse them wherever.
+I like to generalize my solutions so I can reuse them wherever. Some thoughts about generalization goes like:
+
+1. The effect should be able to work on any element; regardless of orientation. Square, landscape and portrait elements should work.
+1. Since the effect should work on any element of any shape/size, responsiveness should handled. Maybe for performance reasons, when the window resizes, we only reapply the effect if the size of element changes.
+

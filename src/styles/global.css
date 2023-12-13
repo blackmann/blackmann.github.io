@@ -108,6 +108,10 @@ article ul {
 	@apply list-disc list-outside ms-8;
 }
 
+article ol {
+	@apply list-decimal list-outside ms-8;
+}
+
 article li+li {
 	@apply mt-2;
 }
