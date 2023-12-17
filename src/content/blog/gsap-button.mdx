@@ -83,4 +83,63 @@ I like to generalize my solutions so I can reuse them wherever. Some thoughts ab
 
 1. The effect should be able to work on any element; regardless of orientation. Square, landscape and portrait elements should work.
 1. Since the effect should work on any element of any shape/size, responsiveness should handled. Maybe for performance reasons, when the window resizes, we only reapply the effect if the size of element changes.
+1. It should work with any UI framework like React, and also work with Vanilla.
 
+## Approach
+
+We're going to use the following as the specimen for our project:
+
+<div class="grid grid-cols-2 lg:grid-cols-4 my-8">
+  <div class="col-span-1 lg:col-start-2 flex items-center">
+    <button class="rounded-[30px] border-2 border-zinc-700 px-8 py-2 font-bold text-zinc-700">
+      Get GSAP now
+    </button>
+  </div>
+
+  <div class="col-span-1">
+    <div class="rounded-[30px] border-2 border-zinc-700 p-6 font-bold text-zinc-700 text-2xl">
+      <div>
+        Though history repeats itself; there are outlier events. Events that never happened…
+      </div>
+    </div>
+  </div>
+</div>
+
+### 1. The API
+
+We should be able to do something like any of the following to apply the effect. I (personally) always like to start from the API, then drill down to details.
+
+```js
+// pass queryselector
+// this will select all elements
+applyGsapHoverEffect('.gsap-button')
+
+// pass element
+// this will work when used with frameworks like React.
+// Then, we'll have to do something like `applyGsapHoverEffect(ref.current)`
+const button = document.querySelector('#login-button')
+applyGsapHoverEffect(button)
+
+// pass array of elements
+const buttons = document.querySelectorAll('.gsap-button')
+applyGsapHoverEffect(buttons)
+```
+
+In Typescript, we'll have our API signature like below
+
+```typescript
+function applyGsapHoverEffect(el: string | HTMLElement | HTMLElement[]) {
+  // we wouldn't want to do lots if/else depending of the type of `el`
+  // so we can normalize `el` to be an array
+
+  const elements = [
+    typeof el === 'string' ? document.querySelectorAll(el) : el,
+  ].flat()
+}
+```
+
+If you're confused about `.flat()`: since `el` can be a single `HTMLElement` or an array, we could end up with nested array. `.flat()` un-nests it one level — which is enough.
+
+> Take off `.flat()` and do a `console.log` to see what it looks like when you pass a query selector.
+
+### 2. The background
