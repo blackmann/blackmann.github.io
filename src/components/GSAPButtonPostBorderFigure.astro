@@ -1,105 +1,70 @@
-<canvas class="bg-zinc-200 dark:bg-neutral-800"> </canvas>
+<div
+  class="w-full bg-zinc-200 dark:bg-neutral-800"
+  id="border-intersection-figure"
+>
+</div>
 
 <script>
-  import { canvas } from '../lib/canvas'
+  import p5 from 'p5'
+  import { canvasColors } from '../lib/canvas-colors'
 
-  const config = {
-    height: 0.3,
-    animate: true
-  }
+  new p5((p) => {
+    const parent = document.getElementById('border-intersection-figure')
 
-  canvas(
-    'canvas',
-    (ctx, config) => {
-      const { x: originX, y: originY } = {
-        x: config.width / 2,
-        y: config.height / 2,
-      }
+    p.setup = () => {
+      p.createCanvas(parent.clientWidth, parent.clientWidth * 0.3)
+    }
 
-      // draw button
+    p.windowResized = () => {
+      p.resizeCanvas(parent.clientWidth, parent.clientWidth * 0.3)
+    }
 
-      const buttonWidth = config.width * 0.25
-      const buttonHeight = config.height * 0.17
+    p.draw = () => {
+      const buttonWidth = p.width * 0.25
+      const buttonHeight = p.height * 0.17
 
-      const buttonX = originX - buttonWidth / 2
-      const buttonY = originY - buttonHeight / 2
+      const cx = p.width / 2
+      const cy = p.height / 2
 
-      const hoverCircleRadius = (buttonWidth / 2) * 1.5
-      const hoverCircleX = originX
-      const hoverCircleY = originY
+      const mx = p.constrain(p.mouseX, 0, p.width)
+      const my = p.constrain(p.mouseY, 0, p.height)
 
-      {
-        // outer circle cut
-        ctx.beginPath()
-        ctx.fillStyle = config.colors.light
-        ctx.lineWidth = 3
-        ctx.roundRect(
-          buttonX,
-          buttonY,
-          buttonWidth,
-          buttonHeight,
-          buttonHeight / 2,
-        )
-        ctx.fill()
+      p.background(canvasColors.background)
+      p.rectMode(p.CENTER)
 
-        ctx.globalCompositeOperation = 'xor'
+      p.fill(canvasColors.light)
+      p.noStroke()
+      p.arc(
+        mx ?? cx,
+        my ?? cy,
+        buttonWidth * 1.5,
+        buttonWidth * 1.5,
+        0,
+        Math.PI * 2,
+      )
 
-        ctx.arc(
-          config.mouseX ?? hoverCircleX,
-          config.mouseY ?? hoverCircleY,
-          hoverCircleRadius,
-          0,
-          Math.PI * 2,
-        )
-        ctx.fill()
+      p.push()
 
-        ctx.globalCompositeOperation = 'source-over'
-      }
+      p.clip(() => {
+        p.rect(cx, cy, buttonWidth, buttonHeight, buttonHeight / 2)
+      })
 
-      {
-        // inner intersection
-        ctx.beginPath()
-        ctx.fillStyle = config.colors.dark
-        ctx.roundRect(
-          buttonX,
-          buttonY,
-          buttonWidth,
-          buttonHeight,
-          buttonHeight / 2,
-        )
-        ctx.fill()
+      p.fill(canvasColors.dark)
+      p.arc(
+        mx ?? cx,
+        my ?? cy,
+        buttonWidth * 1.5,
+        buttonWidth * 1.5,
+        0,
+        Math.PI * 2,
+      )
 
-        ctx.globalCompositeOperation = 'destination-in'
+      p.pop()
 
-        ctx.beginPath()
-        ctx.arc(
-          config.mouseX ?? hoverCircleX,
-          config.mouseY ?? hoverCircleY,
-          hoverCircleRadius,
-          0,
-          Math.PI * 2,
-        )
-        ctx.fill()
-
-        ctx.globalCompositeOperation = 'source-over'
-      }
-
-      {
-        // stroke
-        ctx.beginPath()
-        ctx.lineWidth = 3
-        ctx.strokeStyle = config.colors.dark
-        ctx.roundRect(
-          buttonX,
-          buttonY,
-          buttonWidth,
-          buttonHeight,
-          buttonHeight / 2,
-        )
-        // ctx.fill()
-        ctx.stroke()
-      }
-    },
-    config,
-  )
+      p.stroke(canvasColors.dark)
+      p.strokeWeight(3)
+      p.noFill()
+      p.rect(cx, cy, buttonWidth, buttonHeight, buttonHeight / 2)
+    }
+  }, document.getElementById('border-intersection-figure'))
 </script>

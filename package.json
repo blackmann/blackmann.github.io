@@ -17,6 +17,7 @@
     "astro": "^3.6.1",
     "gsap": "^3.12.3",
     "markdown-it": "^13.0.2",
+    "p5": "1.9.0",
     "sanitize-html": "^2.11.0",
     "tailwindcss": "^3.0.24",
     "typewriter-effect": "^2.21.0"
