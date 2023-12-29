@@ -134,6 +134,10 @@ article td {
 	text-align: start;
 }
 
+article video {
+	border-radius: 0.75rem;
+}
+
 @media screen and (min-width: 768px) {
 	article>section:not(.footnotes) {
 		columns: 2;
