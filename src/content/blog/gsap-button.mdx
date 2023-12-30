@@ -11,6 +11,8 @@ import BorderFigure from '../../components/GSAPButtonPostBorderFigure.astro'
 
 import HoverCircleFigure from '../../components/GSAPButtonHoverCircleFigure.astro'
 
+import Specimen from '../../components/gsap-button-diff/specimen.astro'
+
 This weekend, I wanted to pick up something new to learn. I've had [_GSAP_](https://gsap.com) on my list for a long time; so that was it!
 
 I spent a few minutes reading the [Learning](https://gsap.com/resources) page — **Your first animation** through to **JS Frameworks**. I only did some reading/skimming as I only was interested in what it offers at a high level.
@@ -29,7 +31,7 @@ Lets break the button apart so we can get some clues on how to reason about the 
 
 ### Borders
 
-The borders of the buttons are solid, thick and rounded. Now, when the [hover circle](#hover-circle) enters the button, the intersection forms a solid fill. In the figure below, you can see how this intersection happens — this is for demonstration purposes.
+The borders of the buttons are solid, thick and rounded. Now, when the [hover circle](#hover-circle) enters the button, the intersection forms a solid fill. In the figure below, you can see how this intersection happens — this is for demonstration purposes. This means, in our implementation, we'll have to clip/mask the circle to only show the intersection.
 
 <BorderFigure />
 
@@ -89,21 +91,7 @@ I like to generalize my solutions so I can reuse them wherever. Some thoughts ab
 
 We're going to use the following as the specimen for our project:
 
-<div class="grid grid-cols-2 lg:grid-cols-4 my-8">
-  <div class="col-span-1 lg:col-start-2 flex items-center">
-    <button class="rounded-[30px] border-2 border-zinc-700 px-8 py-2 font-bold text-zinc-700">
-      Get GSAP now
-    </button>
-  </div>
-
-  <div class="col-span-1">
-    <div class="rounded-[30px] border-2 border-zinc-700 p-6 font-bold text-zinc-700 text-2xl">
-      <div>
-        Though history repeats itself; there are outlier events. Events that never happened…
-      </div>
-    </div>
-  </div>
-</div>
+<Specimen />
 
 ### 1. The API
 

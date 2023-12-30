@@ -6,6 +6,7 @@ new p5((p) => {
 
   p.setup = () => {
     p.createCanvas(parent.clientWidth, parent.clientWidth * 0.3)
+    p.noCursor()
   }
 
   p.windowResized = () => {
