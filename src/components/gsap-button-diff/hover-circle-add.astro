@@ -1,0 +1,58 @@
+---
+import Specimen from './specimen.astro'
+---
+
+<Specimen
+  buttonId="background-button_hover-circle-add"
+  cardId="background-card_hover-circle-add"
+/>
+
+<script>
+  function applyGsapHoverEffect(el: string | HTMLElement | HTMLElement[]) {
+    // we wouldn't want to do lots if/else depending of the type of `el`
+    // so we can normalize `el` to be an array
+
+    const elements = [
+      typeof el === 'string'
+        ? Array.from(document.querySelectorAll<HTMLElement>(el))
+        : el,
+    ].flat()
+
+    for (const el of elements) {
+      // just so that only the circle shows
+      el.style.color = 'transparent'
+
+      el.style.position = 'relative'
+
+      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+      bg.style.cssText = `
+    position: absolute;
+    background: #e9e9e9;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 1.5rem;
+`
+      const circle = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'circle',
+      )
+
+      circle.setAttribute('cx', '100%')
+      circle.setAttribute('cy', '100%')
+      circle.setAttribute('r', '125%')
+      circle.setAttribute('fill', '#333')
+
+      bg.appendChild(circle)
+
+      el.insertAdjacentElement('afterbegin', bg)
+    }
+  }
+
+  const button = document.getElementById('background-button_hover-circle-add')!
+  const card = document.getElementById('background-card_hover-circle-add')!
+
+  applyGsapHoverEffect([button, card])
+</script>

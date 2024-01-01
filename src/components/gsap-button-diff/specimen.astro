@@ -1,7 +1,17 @@
+---
+interface Props {
+  buttonId?: string;
+  cardId?: string;
+}
+
+const { buttonId, cardId } = Astro.props
+---
+
 <div class="my-8 grid grid-cols-2 lg:grid-cols-4">
   <div class="col-span-1 flex items-center lg:col-start-2">
     <button
-      class="rounded-[30px] border-2 border-zinc-700 px-8 py-2 font-bold text-zinc-700"
+      class="rounded-[30px] border-2 border-zinc-700 dark:border-neutral-300 px-8 py-2 font-bold text-zinc-700 dark:text-neutral-200"
+      id={buttonId}
     >
       Get GSAP now
     </button>
@@ -9,7 +19,8 @@
 
   <div class="col-span-1">
     <div
-      class="rounded-[30px] border-2 border-zinc-700 p-6 text-2xl font-bold text-zinc-700"
+      class="rounded-[30px] border-2 border-zinc-700 dark:border-neutral-300 p-6 text-2xl font-bold text-zinc-700 dark:text-neutral-200"
+      id={cardId}
     >
       <div>
         Though history repeats itself; there are outlier events. Events that

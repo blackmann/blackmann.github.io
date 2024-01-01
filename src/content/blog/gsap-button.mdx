@@ -4,7 +4,12 @@ description: 'Why you should have more than one interest'
 pubDate: 'Dec 9 2023'
 tags:
   - creative
-  - research
+  - r&d
+source:
+  url: https://github.com/blackmann/blackmann.github.io/
+  title: Source code here
+  subtitle: You can find implementation for this reasearch here
+  thumbnail: thumbnail
 ---
 
 import BorderFigure from '../../components/GSAPButtonPostBorderFigure.astro'
@@ -12,6 +17,10 @@ import BorderFigure from '../../components/GSAPButtonPostBorderFigure.astro'
 import HoverCircleFigure from '../../components/GSAPButtonHoverCircleFigure.astro'
 
 import Specimen from '../../components/gsap-button-diff/specimen.astro'
+
+import CreateBackground from '../../components/gsap-button-diff/background.astro'
+
+import AddHoverCircle from '../../components/gsap-button-diff/hover-circle-add.astro'
 
 This weekend, I wanted to pick up something new to learn. I've had [_GSAP_](https://gsap.com) on my list for a long time; so that was it!
 
@@ -35,8 +44,6 @@ The borders of the buttons are solid, thick and rounded. Now, when the [hover ci
 
 <BorderFigure />
 
-`[Applet]`: Hover the canvas to observe the intersection of the hover circle and button.
-
 Thoughts:
 
 - If the border acts as a mask over the hover circle, then the border is not a regular DOM [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border) style.
@@ -55,7 +62,7 @@ Learn about writing SVGs from here: https://developer.mozilla.org/en-US/docs/Web
 
 As the mouse pointer enters the button, a circle grows to fill the button almost fully. The circle grows from where the mouse entered. When the mouse leaves the button, the circle shrinks — also in the direction when the mouse exits the button.
 
-One interesting feature is that, the hover circle expands almost fully when the mouse enters a button. At first, I thought the circle should fill the button gradually as the mouse reaches the center. Hover your mouse on the button below from the edges to see what I mean.
+One interesting feature is that, the hover circle expands to fill the button entirely as the mouse reaches the center. At first, I thought the circle should fill the button gradually as the mouse reaches the center. Hover your mouse on the button below from the edges to see what I mean.
 
 <HoverCircleFigure />
 
@@ -99,7 +106,7 @@ We should be able to do something like any of the following to apply the effect.
 
 ```js
 // pass queryselector
-// this will select all elements
+// this will select all elements witht his class (gsap-button)
 applyGsapHoverEffect('.gsap-button')
 
 // pass element
@@ -121,7 +128,7 @@ function applyGsapHoverEffect(el: string | HTMLElement | HTMLElement[]) {
   // so we can normalize `el` to be an array
 
   const elements = [
-    typeof el === 'string' ? document.querySelectorAll(el) : el,
+    typeof el === 'string' ? Array.from(document.querySelectorAll(el)) : el,
   ].flat()
 }
 ```
@@ -131,3 +138,63 @@ If you're confused about `.flat()`: since `el` can be a single `HTMLElement` or 
 > Take off `.flat()` and do a `console.log` to see what it looks like when you pass a query selector.
 
 ### 2. The background
+
+We will have to insert an SVG element below the text. To do that, we have to ensure the element has `relative` positioning so that we can have our SVG `absolute`ly positioned inside it.
+
+The code below demonstrates how I accomplished this. Ignore the light shade of background — it won't make it to the final work.
+
+<CreateBackground />
+
+```typescript
+for (const el of elements) {
+  el.style.position = 'relative'
+
+  const bg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  bg.style.cssText = `
+    position: absolute;
+    background: #e9e9e9;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 1.8rem;
+`
+
+  el.insertAdjacentElement('afterbegin', bg)
+}
+```
+
+### 3. Clip + Circle
+
+By design, the SVGs shape clips its contents — providence! This means we can just add our hover [`<circle />`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle) without needing a [`<clipPath />`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath).
+
+
+```typescript
+// ...
+
+// add these attributes to the bg (SVG) so that we can do
+// relative positioning using percentages
+
+bg.setAttribute('width', `${el.clientWidth}`)
+bg.setAttribute('height', `${el.clientHeight}`)
+
+const circle = document.createElementNS(
+  'http://www.w3.org/2000/svg',
+  'circle'
+)
+
+circle.setAttribute('cx', '100%')
+circle.setAttribute('cy', '100%')
+circle.setAttribute('r', '125%')
+circle.setAttribute('fill', '#333')
+
+bg.appendChild(circle)
+
+el.insertAdjacentElement('afterbegin', bg)
+
+```
+
+This is what our specimen looks like with this addition:
+
+<AddHoverCircle />

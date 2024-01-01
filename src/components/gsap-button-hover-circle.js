@@ -38,12 +38,13 @@ new p5((p) => {
       p.constrain(p.mouseX, 0, p.width),
       p.constrain(p.mouseY, 0, p.height),
     ]
-    const buttonWidth = p.width * 0.3
+    const buttonWidth = Math.max(p.width * 0.3, 220)
     const buttonHeight = buttonWidth * 0.2
     const baseRadius = buttonHeight / 3
 
     const radius = baseRadius * state.cursorScale
-    const targetScale = buttonWidth / 2 / baseRadius + (fillType === 'gradual' ? 5 : 7)
+    const targetScale =
+      buttonWidth / 2 / baseRadius + (fillType === 'gradual' ? 5 : 7)
 
     const buttonShape = [cx, cy, buttonWidth, buttonHeight, buttonHeight / 2]
 
@@ -139,6 +140,19 @@ new p5((p) => {
       }
     }
     // </ray>
+
+    // <text>
+    p.push()
+    {
+      p.textAlign(p.CENTER, p.CENTER)
+      p.noStroke()
+      p.fill(entered ? canvasColors.light : canvasColors.dark)
+      p.textSize(20)
+      p.textStyle(p.BOLD)
+      p.text('Get started', cx, cy)
+    }
+    p.pop()
+    // </text>
 
     // <scale>
     if (entered) {
