@@ -5,6 +5,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import FormattedDate from '../components/FormattedDate.astro'
 import type { MarkdownHeading } from 'astro'
+import DotLocalAd from '../components/DotLocalAd.astro'
 
 type Props = CollectionEntry<'blog'>['data'] & {
   headings: MarkdownHeading[]
@@ -24,7 +25,7 @@ const headings = headingsRaw.filter(
   <body>
     <Header />
 
-    <main class="container mt-[8rem]">
+    <main class="container mt-[8rem] scroll-smooth">
       <article>
         <div>
           <h1
@@ -49,7 +50,46 @@ const headings = headingsRaw.filter(
             }
           </ul>
         </div>
-        <slot />
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+          <div class="col-span-1 lg:col-span-3">
+            <slot />
+          </div>
+
+          <aside class="col-span-1 hidden lg:block">
+            <div class="sticky top-8">
+              {
+                headings.length > 1 && (
+                  <div class="rounded-lg bg-zinc-200 bg-opacity-40 p-2 dark:bg-neutral-800">
+                    <header class="mb-2 flex gap-2 rounded-lg bg-zinc-200 p-1 font-bold dark:bg-neutral-700">
+                      <span class="material-symbols-rounded">
+                        directions_walk
+                      </span>
+                      Jump to
+                    </header>
+
+                    <ul class="mx-2 list-none">
+                      {headings.map((h) => (
+                        <li>
+                          <a
+                            class="no-underline hover:underline"
+                            class:list={[{ 'ms-4': h.depth === 3 }]}
+                            href={`#${h.slug}`}
+                          >
+                            {h.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              }
+
+              <div class="mt-2 w-[8rem]">
+                <DotLocalAd />
+              </div>
+            </div>
+          </aside>
+        </div>
       </article>
     </main>
 
