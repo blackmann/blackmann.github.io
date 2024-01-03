@@ -6,4 +6,8 @@ const blog = defineCollection({
   schema: rssSchema.extend({ tags: z.array(z.string()).optional() }),
 })
 
-export const collections = { blog }
+const courses = defineCollection({
+  schema: rssSchema.extend({ tags: z.array(z.string()).optional() }),
+})
+
+export const collections = { blog, courses }

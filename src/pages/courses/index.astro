@@ -1,0 +1,49 @@
+---
+import Shell from '../../layouts/Shell.astro'
+import { getCollection } from 'astro:content'
+
+const courses = (await getCollection('courses')).map((course) => ({
+  ...course,
+  slug: `/courses/${course.slug}`,
+}))
+
+console.log(courses)
+---
+
+<Shell
+  description="Up your skills with fairly challenging courses"
+  title="Courses"
+>
+  <div class="container">
+    <h1 class="mt-[8rem] text-2xl font-bold">Courses</h1>
+
+    <p>
+      Up your skills with fairly challenging courses. Typically requires a
+      weekend.
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4">
+      <div class="col-span-1">
+        <a
+          class="no-underline block rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-neutral-700 dark:bg-neutral-80"
+          href="/courses/quiz-rs"
+        >
+          <h2 class="font-bold">Introduction to Rust with egui</h2>
+          <p>Build a quiz app while learning the fundamentals of Rust.</p>
+
+          <div class="flex gap-2">
+            <span class="rounded-lg bg-zinc-200 px-2 text-sm font-medium">
+              5 chapters &bull; 1 weekend
+            </span>
+
+            <span
+              class="rounded-lg bg-pink-100 px-2 text-sm font-medium text-pink-500"
+            >
+              basics
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</Shell>

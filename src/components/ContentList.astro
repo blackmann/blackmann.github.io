@@ -14,7 +14,7 @@ interface Props {
 const { items, noTransition } = Astro.props
 ---
 
-<ul>
+<ul class="hover-link">
   {
     items.map((item) => (
       <li class="[&+&]:border-t-1 border-t-zinc-200 dark:border-t-neutral-600 [&+&]:border-t">
