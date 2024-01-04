@@ -47,7 +47,7 @@ p+*,
 }
 
 .container {
-	@apply max-w-[960px];
+	@apply max-w-[960px] mx-auto;
 }
 
 .page-half {
