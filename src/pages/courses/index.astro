@@ -2,12 +2,30 @@
 import Shell from '../../layouts/Shell.astro'
 import { getCollection } from 'astro:content'
 
-const courses = (await getCollection('courses')).map((course) => ({
-  ...course,
-  slug: `/courses/${course.slug}`,
-}))
+const exercises = await getCollection('courses')
+const courseMeta = await getCollection('course-meta')
 
-// console.log(courses)
+type Unpacked<T> = T extends (infer U)[] ? U : T
+
+type Course = { chapters: number; slug: string } & Unpacked<typeof courseMeta>
+
+const courses: Course[] = []
+
+for (const meta of courseMeta) {
+  const chapters = exercises.filter((ex) =>
+    ex.id.startsWith(`${meta.id}/`),
+  ).length
+
+  const course: Course = {
+    slug: `courses/${meta.id}/intro`,
+    chapters,
+    ...meta,
+  }
+
+  courses.push(course)
+}
+
+console.log(courses)
 ---
 
 <Shell
@@ -22,27 +40,30 @@ const courses = (await getCollection('courses')).map((course) => ({
       weekend.
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-4">
-      <div class="col-span-1">
-        <a class="card block no-underline" href="/courses/quiz-rs">
-          <h2 class="font-bold">Introduction to Rust with egui</h2>
-          <p>Build a quiz app while learning the fundamentals of Rust.</p>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      {
+        courses.map((course) => (
+          <div class="col-span-1">
+            <a class="card block no-underline" href={course.slug}>
+              <h2 class="font-bold">{course.data.title}</h2>
+              <p>{course.data.description}</p>
+              <p class="text-secondary">{course.data.meta}</p>
 
-          <div class="flex gap-2">
-            <span
-              class="rounded-lg bg-zinc-200 px-2 text-sm font-medium dark:bg-neutral-700"
-            >
-              5 chapters
-            </span>
+              <div class="flex gap-2">
+                <span class="rounded-lg bg-zinc-200 px-2 text-sm font-medium dark:bg-neutral-700">
+                  {course.chapters} chapters
+                </span>
 
-            <span
-              class="rounded-lg bg-pink-100 px-2 text-sm font-medium text-pink-500 dark:bg-pink-700 dark:bg-opacity-10 dark:text-pink-400"
-            >
-              basics
-            </span>
+                {course.data.tags.map((tag) => (
+                  <span class="rounded-lg bg-pink-100 px-2 text-sm font-medium text-pink-500 dark:bg-pink-700 dark:bg-opacity-10 dark:text-pink-400">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
+        ))
+      }
     </div>
   </div>
 </Shell>

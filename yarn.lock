@@ -1255,6 +1255,18 @@
     fast-glob "^3.3.2"
     magic-string "^0.30.5"
 
+"@unocss/core@0.58.3":
+  version "0.58.3"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.58.3.tgz#1f20c2bb585d488a74351df544e8b35d05bc5594"
+  integrity sha512-9hTxzsrSLh+07ql/lGhE+8ZbE9MTTeZeMx131cPf2jDJUxAZooLE5pBCoK0k77ZJGcribRrwPGkUScBNOK0cYQ==
+
+"@unocss/transformer-variant-group@^0.58.3":
+  version "0.58.3"
+  resolved "https://registry.yarnpkg.com/@unocss/transformer-variant-group/-/transformer-variant-group-0.58.3.tgz#d6707c850cc3561cd04b4f40f459b252bed4a4b1"
+  integrity sha512-/8CyzLwzpJC5cdiA/Wd5/Pg+HEIK+xxJJ3/VXoo93OPNCCbA9/h6DPwDh1ogKk15c6b5H75Ow6zKq1rYQAz2EA==
+  dependencies:
+    "@unocss/core" "0.58.3"
+
 acorn-jsx@^5.0.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"

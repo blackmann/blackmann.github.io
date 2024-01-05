@@ -23,6 +23,7 @@
   "devDependencies": {
     "@unocss/reset": "^0.58.3",
     "@unocss/transformer-directives": "^0.58.3",
+    "@unocss/transformer-variant-group": "^0.58.3",
     "prettier": "^3.1.0",
     "prettier-plugin-astro": "^0.12.2",
     "prettier-plugin-tailwindcss": "^0.5.9",
