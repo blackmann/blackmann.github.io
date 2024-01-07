@@ -78,7 +78,7 @@ Besides land cost, another problem is getting a caretaker I can trust since I li
 
 I considered going for an art diploma in Germany. I picked up Duolingo and kept streaks.
 
-<img class="rounded-lg" src="/year_in_review_stats_share_card.png" width="400" />
+<img class="rounded-lg" src="/year_in_review_stats_share_card.jpg" width="400" />
 
 Germany because after exploring a number of European countries on the internet (especially Youtube), they felt like the best option. Learning German felt like a fair challenge and also getting to meet new people just felt exciting.
 
@@ -150,7 +150,9 @@ Though not the _whole world_ picked it up, the few people that did really impres
 
 ## Fun
 
-I mostly played FIFA with my friends. One fun thing I did in 2023 was go ride a quad bike in the Eastern Region with some friends. We went through the woods — riding over rocks and hills. Bumpy! It was actually very memorable to me.
+I mostly played FIFA with my friends[^4]. One fun thing I did in 2023 was go ride a quad bike in the Eastern Region with some friends. We went through the woods — riding over rocks and hills. Bumpy! It was actually very memorable to me.
+
+[^4]: We normally play against each other in my [Discord server](https://discord.gg/5CDnysz).
 
 <img class="rounded-lg" src="/atv-2023.jpg" alt="ATV Ride" width="400" />
 
