@@ -790,7 +790,14 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.5.tgz#faad84c41ba12e3a0acb52571df9bff37bee75f6"
   integrity sha512-czTrygUsB/jlM8qEW5MD8bgYU2Xg14lo6kBDXW6HdxKjh8M5PzETGiSHaz9MtbXBYDloHNUAUW2tMiKW4KM9Mw==
 
-"@iconify/types@^2.0.0":
+"@iconify-json/lucide@^1.1.151":
+  version "1.1.151"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.1.151.tgz#49dc64cafb5a0ef03ddb3782c7fa22ebba36df10"
+  integrity sha512-bX58mRUaEsshulChtkkh+BH3o9dJJi5VkuUILmVQXTvELI6ZL9ktIyF+W+aDfF9pfzmUmd+jc3FHQBVfq40WOg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify/types@*", "@iconify/types@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
@@ -1121,7 +1128,7 @@
   dependencies:
     "@unocss/core" "0.58.3"
 
-"@unocss/preset-icons@0.58.3":
+"@unocss/preset-icons@0.58.3", "@unocss/preset-icons@^0.58.3":
   version "0.58.3"
   resolved "https://registry.yarnpkg.com/@unocss/preset-icons/-/preset-icons-0.58.3.tgz#2a62f36dc34c2cdb597121b2b0d26fc022583609"
   integrity sha512-SA4Eu4rOQ9+zUgIyK6RacS01ygm0PJWkqKlD8ccrBqEyZapqiU+vLL+v6X8YVjoZjR+5CVgcMD5Km7zEQgqXQw==
@@ -1232,7 +1239,7 @@
     "@unocss/rule-utils" "0.58.3"
     css-tree "^2.3.1"
 
-"@unocss/transformer-variant-group@0.58.3":
+"@unocss/transformer-variant-group@0.58.3", "@unocss/transformer-variant-group@^0.58.3":
   version "0.58.3"
   resolved "https://registry.yarnpkg.com/@unocss/transformer-variant-group/-/transformer-variant-group-0.58.3.tgz#d6707c850cc3561cd04b4f40f459b252bed4a4b1"
   integrity sha512-/8CyzLwzpJC5cdiA/Wd5/Pg+HEIK+xxJJ3/VXoo93OPNCCbA9/h6DPwDh1ogKk15c6b5H75Ow6zKq1rYQAz2EA==
@@ -1254,18 +1261,6 @@
     chokidar "^3.5.3"
     fast-glob "^3.3.2"
     magic-string "^0.30.5"
-
-"@unocss/core@0.58.3":
-  version "0.58.3"
-  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.58.3.tgz#1f20c2bb585d488a74351df544e8b35d05bc5594"
-  integrity sha512-9hTxzsrSLh+07ql/lGhE+8ZbE9MTTeZeMx131cPf2jDJUxAZooLE5pBCoK0k77ZJGcribRrwPGkUScBNOK0cYQ==
-
-"@unocss/transformer-variant-group@^0.58.3":
-  version "0.58.3"
-  resolved "https://registry.yarnpkg.com/@unocss/transformer-variant-group/-/transformer-variant-group-0.58.3.tgz#d6707c850cc3561cd04b4f40f459b252bed4a4b1"
-  integrity sha512-/8CyzLwzpJC5cdiA/Wd5/Pg+HEIK+xxJJ3/VXoo93OPNCCbA9/h6DPwDh1ogKk15c6b5H75Ow6zKq1rYQAz2EA==
-  dependencies:
-    "@unocss/core" "0.58.3"
 
 acorn-jsx@^5.0.0:
   version "5.3.2"

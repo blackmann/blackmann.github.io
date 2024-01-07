@@ -7,14 +7,16 @@ import NavLink from './NavLink.astro'
     <img src="/okgr.svg" alt="okgr" class="h-[18px]" />
   </h2>
 
-  <nav class="hover-link">
+  <nav class="hover-link flex items-center gap-2">
     <NavLink href="/">Home</NavLink>
     <NavLink href="/projects">Projects</NavLink>
     <NavLink href="/blog">Blog</NavLink>
     <NavLink href="/about">About</NavLink>
-    <NavLink href="https://twitter.com/_yogr" target="_blank">Twitter</NavLink>
+    <NavLink href="https://twitter.com/_yogr" target="_blank">
+      <span class="i-lucide-twitter"></span>
+    </NavLink>
     <NavLink href="https://github.com/blackmann" target="_blank">
-      GitHub
+      <span class="i-lucide-github"></span>
     </NavLink>
   </nav>
 </header>

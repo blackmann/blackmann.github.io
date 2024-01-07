@@ -93,7 +93,7 @@ const { Content } = await content.render()
         </ul>
       </aside>
 
-      <div class="col-span-3">
+      <div class="col-span-1 lg:col-span-3">
         <header>
           <p
             class="dark:text-orange inline rounded-xl bg-orange-200 bg-opacity-20 px-2 py-1 font-medium text-orange-600 dark:bg-orange-600 dark:bg-opacity-10"
@@ -105,7 +105,9 @@ const { Content } = await content.render()
           </h1>
         </header>
 
-        <Content />
+        <article class="mt-4">
+          <Content />
+        </article>
       </div>
     </div>
   </div>
