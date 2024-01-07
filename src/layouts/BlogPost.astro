@@ -7,11 +7,13 @@ import FormattedDate from '../components/FormattedDate.astro'
 import type { MarkdownHeading } from 'astro'
 import DotLocalAd from '../components/DotLocalAd.astro'
 
-type Props = CollectionEntry<'blog'>['data'] & {
+type Props = CollectionEntry<'blog'> & {
   headings: MarkdownHeading[]
 }
 
-const { title, description, headings: headingsRaw, pubDate, tags } = Astro.props
+const { headings: headingsRaw, data, slug } = Astro.props
+const { pubDate, tags, title, description } = data
+
 const headings = headingsRaw.filter(
   (h) => h.depth < 4 && h.text !== 'Footnotes',
 )
@@ -19,7 +21,7 @@ const headings = headingsRaw.filter(
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description!} />
+    <BaseHead image={`/og/${slug}.png`} title={title} description={description!} />
   </head>
 
   <body>
@@ -30,8 +32,7 @@ const headings = headingsRaw.filter(
         <div>
           <h1
             class="mt-2 inline text-2xl font-bold"
-            transition:name={`page-title:${title}`}
-          >
+            transition:name={`page-title:${title}`}>
             {title}
           </h1>
         </div>
@@ -73,8 +74,7 @@ const headings = headingsRaw.filter(
                           <a
                             class="no-underline hover:underline"
                             class:list={[{ 'ms-4': h.depth === 3 }]}
-                            href={`#${h.slug}`}
-                          >
+                            href={`#${h.slug}`}>
                             {h.text}
                           </a>
                         </li>

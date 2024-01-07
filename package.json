@@ -15,10 +15,12 @@
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/lucide": "^1.1.151",
+    "@resvg/resvg-js": "^2.6.0",
     "@unocss/preset-icons": "^0.58.3",
     "astro": "^3.6.1",
     "markdown-it": "^13.0.2",
     "sanitize-html": "^2.11.0",
+    "satori": "^0.10.11",
     "tailwindcss": "^3.4.0",
     "typewriter-effect": "^2.21.0"
   },

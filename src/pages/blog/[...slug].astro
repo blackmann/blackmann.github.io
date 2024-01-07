@@ -17,7 +17,7 @@ const { Content, headings } = await post.render()
 const dev = process.env.NODE_ENV !== 'production'
 ---
 
-<BlogPost headings={headings} {...post.data}>
+<BlogPost headings={headings} {...post}>
   <Content />
 
   {
