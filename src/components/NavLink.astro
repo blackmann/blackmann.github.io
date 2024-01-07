@@ -15,8 +15,10 @@ const isActive =
 <a
   href={href}
   class="inline-flex rounded-lg px-1 py-0.5 font-medium no-underline"
-  class:list={[className, { 'bg-zinc-200 underline': isActive }]}
-  {...props}
->
+  class:list={[
+    className,
+    { 'bg-zinc-200 underline dark:bg-neutral-800': isActive },
+  ]}
+  {...props}>
   <slot />
 </a>

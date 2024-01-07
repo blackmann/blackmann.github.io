@@ -76,10 +76,10 @@ const { Content } = await content.render()
               outline.map((chapter) => (
                 <li>
                   <a
-                    class="text-secondary flex justify-between rounded-lg px-2 py-1 no-underline hover:bg-zinc-200 dark:hover:bg-neutral-700"
+                    class="text-secondary flex justify-between rounded-lg px-2 py-1 no-underline hover:bg-zinc-200 dark:hover:bg-neutral-800"
                     class:list={[
                       {
-                        'bg-zinc-200 font-medium !text-zinc-900 dark:bg-neutral-700':
+                        'bg-zinc-200 font-medium !text-zinc-900 !dark:text-neutral-100 dark:bg-neutral-800':
                           chapter.slug === slug,
                       },
                     ]}
