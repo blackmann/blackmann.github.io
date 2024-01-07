@@ -2,7 +2,7 @@
 import Shell from '../../layouts/Shell.astro'
 import { getCollection } from 'astro:content'
 
-const exercises = await getCollection('courses')
+const lessons = await getCollection('lessons')
 const courseMeta = await getCollection('course-meta')
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
@@ -12,7 +12,7 @@ type Course = { chapters: number; slug: string } & Unpacked<typeof courseMeta>
 const courses: Course[] = []
 
 for (const meta of courseMeta) {
-  const chapters = exercises.filter((ex) =>
+  const chapters = lessons.filter((ex) =>
     ex.id.startsWith(`${meta.id}/`),
   ).length
 
@@ -30,8 +30,7 @@ console.log(courses)
 
 <Shell
   description="Up your skills with fairly challenging courses"
-  title="Courses"
->
+  title="Courses">
   <div class="container">
     <h1 class="mt-[8rem] text-2xl font-bold">Courses</h1>
 

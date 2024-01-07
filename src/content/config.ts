@@ -5,7 +5,7 @@ const blog = defineCollection({
   schema: rssSchema.extend({ tags: z.array(z.string()).optional() }),
 })
 
-const courses = defineCollection({
+const lessons = defineCollection({
   schema: rssSchema.extend({
     tags: z.array(z.string()).optional(),
     index: z.number(),
@@ -22,4 +22,4 @@ const courseMeta = defineCollection({
   }),
 })
 
-export const collections = { blog, 'course-meta': courseMeta, courses }
+export const collections = { blog, 'course-meta': courseMeta, lessons }

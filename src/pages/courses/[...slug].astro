@@ -6,13 +6,13 @@ import { getCollection } from 'astro:content'
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
 export const getStaticPaths = (async () => {
-  const content = await getCollection('courses')
-  content.sort((a, b) => a.data.index - b.data.index)
+  const lessons = await getCollection('lessons')
+  lessons.sort((a, b) => a.data.index - b.data.index)
   const courseMeta = await getCollection('course-meta')
 
-  type Content = Unpacked<typeof content>
+  type Content = Unpacked<typeof lessons>
 
-  const outlines: Record<string, Content[]> = content.reduce(
+  const outlines: Record<string, Content[]> = lessons.reduce(
     (prev, curr) => {
       const courseId = curr.slug.split('/')[0]
       if (!prev[courseId]) {
@@ -26,17 +26,17 @@ export const getStaticPaths = (async () => {
     {} as Record<string, Content[]>,
   )
 
-  return content.map((ct) => {
-    const courseId = ct.slug.split('/')[0]
+  return lessons.map((lesson) => {
+    const courseId = lesson.slug.split('/')[0]
     const outline = outlines[courseId]
 
-    const index = outline.findIndex((chapter) => chapter.slug === ct.slug)
+    const index = outline.findIndex((chapter) => chapter.slug === lesson.slug)
     const progress = ((index + 1) / outline.length) * 100
 
     return {
-      params: { slug: ct.slug },
+      params: { slug: lesson.slug },
       props: {
-        content: ct,
+        content: lesson,
         outline,
         progress,
         meta: courseMeta.find((cm) => cm.id === courseId),
@@ -55,49 +55,49 @@ const { Content } = await content.render()
   <div class="container">
     <div class="mt-[8rem] grid grid-cols-1 gap-4 lg:grid-cols-4">
       <aside class="col-span-1">
-        <header class="text-secondary mb-1 ms-2 font-medium">
-          Outline <span class="rounded-lg bg-zinc-200 px-1 py-0.5 text-xs"
-            >{Math.floor(progress)}%</span
-          >
-        </header>
+        <div class="top-4 lg:sticky">
+          <header class="text-secondary mb-1 ms-2 font-medium">
+            Outline <span class="rounded-lg bg-zinc-200 px-1 py-0.5 text-xs">
+              {Math.floor(progress)}%
+            </span>
+          </header>
 
-        <div class="mx-2 mb-2">
-          <div class="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-            <div
-              class="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
-              style={`width: ${progress}%`}
-              transition:name="course-progress"
-            >
+          <div class="mx-2 mb-2">
+            <div class="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+              <div
+                class="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
+                style={`width: ${progress}%`}
+                transition:name="course-progress">
+              </div>
             </div>
           </div>
+          <ul>
+            {
+              outline.map((chapter) => (
+                <li>
+                  <a
+                    class="text-secondary flex justify-between rounded-lg px-2 py-1 no-underline hover:bg-zinc-200 dark:hover:bg-neutral-700"
+                    class:list={[
+                      {
+                        'bg-zinc-200 font-medium !text-zinc-900 dark:bg-neutral-700':
+                          chapter.slug === slug,
+                      },
+                    ]}
+                    href={`/courses/${chapter.slug}`}>
+                    {chapter.data.title}
+                    {chapter.slug === slug && <small>2min</small>}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
         </div>
-
-        <ul>
-          {
-            outline.map((chapter) => (
-              <li
-                class="text-secondary rounded-lg px-2 py-1 hover:bg-zinc-200 dark:hover:bg-neutral-700"
-                class:list={[
-                  {
-                    'bg-zinc-200 font-medium !text-zinc-900 dark:bg-neutral-700':
-                      chapter.slug === slug,
-                  },
-                ]}
-              >
-                <a class="block no-underline" href={`/courses/${chapter.slug}`}>
-                  {chapter.data.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
       </aside>
 
       <div class="col-span-1 lg:col-span-3">
         <header>
           <p
-            class="dark:text-orange inline rounded-xl bg-orange-200 bg-opacity-20 px-2 py-1 font-medium text-orange-600 dark:bg-orange-600 dark:bg-opacity-10"
-          >
+            class="dark:text-orange inline rounded-xl bg-orange-200 bg-opacity-20 px-2 py-1 font-medium text-orange-600 dark:bg-orange-600 dark:bg-opacity-10">
             {meta?.data.title}
           </p>
           <h1 class="mt-0 text-3xl font-bold">

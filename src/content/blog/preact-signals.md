@@ -1,6 +1,6 @@
 ---
 title: 'Preact Signals: A journey through states'
-description: Preact signals, as the simplest state management for React apps
+description: Why you should prefer Preact Signals as state management for your next React project.
 pubDate: Jul 19 2023
 ---
 

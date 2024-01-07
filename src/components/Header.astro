@@ -1,5 +1,7 @@
 ---
 import NavLink from './NavLink.astro'
+
+const dev = process.env.NODE_ENV !== 'production'
 ---
 
 <header class="container mx-auto">
@@ -9,14 +11,24 @@ import NavLink from './NavLink.astro'
 
   <nav class="hover-link flex items-center gap-2">
     <NavLink href="/">Home</NavLink>
+
     <NavLink href="/projects">Projects</NavLink>
+
     <NavLink href="/blog">Blog</NavLink>
+
+    {dev && <NavLink href="/courses">Courses</NavLink>}
+
     <NavLink href="/about">About</NavLink>
-    <NavLink href="https://twitter.com/_yogr" target="_blank">
-      <span class="i-lucide-twitter"></span>
+
+    <NavLink
+      class="text-blue-500"
+      href="https://twitter.com/_yogr"
+      target="_blank">
+      <span class="i-lucide-twitter" title="Twitter"></span>
     </NavLink>
+
     <NavLink href="https://github.com/blackmann" target="_blank">
-      <span class="i-lucide-github"></span>
+      <span class="i-lucide-github" title="Github"></span>
     </NavLink>
   </nav>
 </header>
