@@ -6,6 +6,7 @@ interface Project {
   description: string
   meta?: string
   url: string
+  tags?: { title: string; color: string }[]
 }
 
 interface Props {
@@ -25,5 +26,18 @@ const { project } = Astro.props
     <div class="mt-2">
       <Link href={`https://${project.url}`}>{project.url}</Link>
     </div>
+
+    {
+      project.tags && (
+        <ul class="mt-2">
+          {project.tags.map((tag) => (
+            <span
+              class={`rounded-lg bg-${tag.color}-100 bg-opacity-50 px-2 text-${tag.color}-500`}>
+              {tag.title}
+            </span>
+          ))}
+        </ul>
+      )
+    }
   </div>
 </div>

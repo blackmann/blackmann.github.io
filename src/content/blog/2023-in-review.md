@@ -2,8 +2,6 @@
 title: 2023 in review
 description: Overall a good year; lessons, opportunities and achievements. A rundown on how it all went.
 pubDate: 'Jan 7 2024'
-tags:
-  - retrospection
 ---
 
 This year has mostly been exciting for me. To quantify it, I’ll rate it as a 7/10 or 4/5. While that seems like a positive outlook, they aren’t based on any predefined goals and achievements. In other words, I didn’t have any proper _New Year_ resolutions for 2023. I just winged it.
@@ -92,13 +90,13 @@ Since I'm jobless, I can freely work on stuff I love or need without constraint 
 
 ### Stylebender
 
-I was tired of writing common styles for my web project. So I built a visual style editor to generate styles. You can try it here: https://stylebender.vercel.app
+I was tired of writing common styles for my web projects. So I built a visual style editor to generate styles. You can try it here: https://stylebender.vercel.app
 
 I worked hard on this for about three weeks. After launch, someone suggested I made exports into Tailwind possible. I initially objected to it because I didn't like Tailwind.
 
 This was because of a past trauma from a terrible developer experience when using Tailwind. This may have been due to webpack on Windows. This was in 2020 thereabouts.
 
-But then, I wanted to take it for a spin again. And I loved the experience. I was really happy. I am really happy to have picked it up again. The DX that comes with tailwind is unparalled when it comes to styling.
+But then, I took it for a spin again. And I loved the experience. I was really happy. I am really happy to have picked it up again. The DX that comes with tailwind is unparalled when it comes to styling.
 
 > Before now, I've mostly used [css modules](https://github.com/css-modules/css-modules).
 
@@ -116,9 +114,9 @@ See project here: https://github.com/blackmann/3e
 
 ### Mangobase
 
-This is my biggest and active project. A low-code Javascript backend framework. I built this out of the frustration of the new [FeathersJS](https://https://feathersjs.com/) version.
+This is my biggest and active project. A low-code Javascript backend framework. I built this out of the frustration of the new [FeathersJS](https://https://feathersjs.com/) version (v5).
 
-FeathersJS v4 was a beautiful framework until v5 changed everything and made it stressful to add just one service. v4 required me to do very little. v5 required me to x5.
+FeathersJS v4 was a beautiful framework until v5 changed everything and made it stressful to add even one service. v4 required me to do very little. v5 required me to x5.
 
 I needed to move away from it. So I built Mangobase which copies a lot of concepts from Feathers (v4) and includes UI to do low-code stuff.
 
@@ -132,9 +130,9 @@ If you're a web developer, there are a number cases where using domain names oth
 
 - Testing cookies
 - Resolving tenants using subdomains
-- Avoiding conflicting localstorage key/values
+- Avoiding conflicting `localstorage` key/values
 
-To address this, I built DotLocal to help replicate production domains (if you will) on local.
+To address this, I built DotLocal to help replicate production domains (if you will) on local. This way, you don't have to test in production.
 
 Check it out from here: https://degreat.co.uk/dotlocal. Though it's free, consider buying a (one-time) license to support me. 😊
 
@@ -150,7 +148,7 @@ Though not the _whole world_ picked it up, the few people that did really impres
 
 ## Fun
 
-I mostly played FIFA with my friends[^4]. One fun thing I did in 2023 was go ride a quad bike in the Eastern Region with some friends. We went through the woods — riding over rocks and hills. Bumpy! It was actually very memorable to me.
+I mostly played FIFA with my friends[^4]. One fun thing I did in 2023 was go ride a quad bike in the Eastern Region with some friends. We went through the woods — riding over rocks and climbing hills. Bumpy! It was actually very memorable to me.
 
 [^4]: We normally play against each other in my [Discord server](https://discord.gg/5CDnysz).
 
@@ -158,7 +156,7 @@ I mostly played FIFA with my friends[^4]. One fun thing I did in 2023 was go rid
 
 ## First public speak
 
-I've lowkey wanted to speak publicly. I had the honors to speak at the first [React Ghana](https://twitter.com/ReactGhana) meetup. My topic was: **Diversifying your interests**. I wrote about it here: [/blog/diversify-interests](/blog/diversify-interests)
+I've lowkey wanted to speak publicly for a long time. Also [@uxderrick](https://twitter.com/uxderrick) encouraged me one time to start speaking. I had the honors to speak at the first [React Ghana](https://twitter.com/ReactGhana) meetup. My topic was: **Diversifying your interests**. I wrote about it here: [/blog/diversify-interests](/blog/diversify-interests)
 
 <img class="rounded-lg" src="/1701689737825.jpeg" alt="React Ghana meetup" width="400" />
 
