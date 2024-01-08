@@ -138,6 +138,16 @@ Check it out from here: https://degreat.co.uk/dotlocal. Though it's free, consid
 
 > This is the first tool I ever published with billing and I was thrilled to get 3 sales on the first day of launch.
 
+### bun
+
+I also made notable contributions to the bun runtime. Mainly about Jest implementations:
+
+- https://github.com/oven-sh/bun/pull/2961
+- https://github.com/oven-sh/bun/pull/2870
+- https://github.com/oven-sh/bun/pull/2836
+
+All merged. 😊
+
 ## Diversity of Interests
 
 I thought the conversations we have in our local community can make use of some variety so I introduced a course on 3d modelling with Blender to inspire people to pick up a new skill that can grow into something.
