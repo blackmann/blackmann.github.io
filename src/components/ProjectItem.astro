@@ -6,7 +6,7 @@ interface Project {
   description: string
   meta?: string
   url: string
-  tags?: { title: string; color: string }[]
+  tags?: string[]
 }
 
 interface Props {
@@ -18,7 +18,10 @@ const { project } = Astro.props
 
 <div class="col-span-1">
   <div class="card">
+    <!-- <div class="mb-2 h-24 rounded-lg bg-zinc-100"></div> -->
+
     <div class="font-bold">{project.title}</div>
+
     <p class="text-secondary">{project.description}</p>
 
     <div class="text-secondary">{project.meta}</div>
@@ -32,8 +35,8 @@ const { project } = Astro.props
         <ul class="mt-2">
           {project.tags.map((tag) => (
             <span
-              class={`rounded-lg bg-${tag.color}-100 bg-opacity-50 px-2 text-${tag.color}-500`}>
-              {tag.title}
+              class={`rounded-lg bg-zinc-200 px-2 font-medium text-zinc-600 dark:bg-neutral-700 dark:text-neutral-300`}>
+              {tag}
             </span>
           ))}
         </ul>

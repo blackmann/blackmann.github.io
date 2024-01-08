@@ -1,9 +1,9 @@
 const developerTools = [
   {
-    title: 'Wipe_Modules',
+    title: 'DotLocal',
     description:
-      'Clean stale node_modules from old projects and reclaim disk space. Mac only.',
-    link: 'https://github.com/blackmann/Wipe_Modules',
+      'Mirror your production domains on your .local machine',
+    link: 'https://degreat.co.uk/dotlocal',
   },
   {
     title: 'Many Things',
@@ -12,10 +12,11 @@ const developerTools = [
     link: 'https://github.com/blackmann/ManyThings'
   },
   {
-    title: 'react-chat-input',
-    description: 'The missing chat input for React — developed with lexical.dev. Still a work-in-progress.',
-    link: 'https://github.com/blackmann/react-chat-input'
-  }
+    title: 'Wipe_Modules',
+    description:
+      'Clean stale node_modules from old projects and reclaim disk space. Mac only.',
+    link: 'https://github.com/blackmann/Wipe_Modules',
+  },
 ]
 
 export default developerTools

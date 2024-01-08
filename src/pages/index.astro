@@ -30,17 +30,23 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <Header />
 
     <main class="container mx-auto mt-[8rem]">
-      <h1 class="mb-8 text-lg font-bold">Welcome to my Home</h1>
+      <abbr
+        title="Twi language: means Welcome"
+        class="rounded-lg bg-pink-100 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
+        <span class="material-symbols-rounded !text-sm">handshake</span> Akwaaba
+      </abbr>
+      <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
 
-      <p class="max-w-[480px]">
+      <p class="mt-8 max-w-[480px]">
         It's me De-Great; or call me GR. I am a creative trying every and
         anything that spikes my interest. 3D, code, music, drawing, writing? On
         this site, you'll find a few things I want you to know <span
-          class="text-secondary">[about me or stuff I'm working on]</span
-        >. If you want to know more and keep up, try following my socials or
-        join my <a class="font-medium" href="https://discord.gg/5CDnysz"
-          >Discord</a
-        > server.
+          class="text-secondary">
+          [about me or stuff I'm working on]
+        </span>. If you want to know more and keep up, try following my socials
+        or join my <a class="font-medium" href="https://discord.gg/5CDnysz">
+          Discord
+        </a> server.
       </p>
 
       <p>🇬🇭</p>
@@ -56,8 +62,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
                 <p class="text-secondary">{link.description}</p>
                 <Link
                   className="font-medium mb-2 inline-block"
-                  href={`https://${link.link}`}
-                >
+                  href={`https://${link.link}`}>
                   {link.link}
                 </Link>
 
@@ -65,8 +70,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
                   <div
                     class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
                     role="img"
-                    aria-label={link.title}
-                  >
+                    aria-label={link.title}>
                     <link.featureImage />
                   </div>
                 )}
@@ -85,8 +89,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <div class="text-secondary mt-5">
             See all posts <a
               class="text-zinc-800 dark:text-neutral-200"
-              href="/blog">here</a
-            >
+              href="/blog">
+              here
+            </a>
           </div>
         </div>
       </section>
