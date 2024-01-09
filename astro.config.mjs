@@ -16,6 +16,6 @@ export default defineConfig({
     },
   },
   vite: {
-    optimizeDeps: { exclude: ['@resvg/resvg-js-darwin-arm64']}
-  }
+    optimizeDeps: { exclude: ['@resvg/resvg-js-darwin-arm64'] },
+  },
 })
