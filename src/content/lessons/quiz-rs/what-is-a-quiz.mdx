@@ -1,0 +1,128 @@
+---
+title: What is a quiz?
+pubDate: 10 Jan 2024
+index: 15
+---
+
+import Fold from '../../../components/Fold.tsx'
+
+## First, a question
+
+A quiz has a number of questions. From design, each question has a title and an answer which can be true or false. We also need to be able to track if a question has been answered or not — to determine score and if the quiz is complete.
+
+This helps us to arrive at the following data structure for a question:
+
+```rust
+struct Question {
+  title: String,
+  answer: bool,
+  user_answer: Option<bool>
+}
+```
+
+Put this piece of code in `quiz/src/quiz.rs`.
+
+What is an `Option<>`? Why don't we just use `bool` for `user_answer`? This is because the user may not have answered the question yet. So we use `Option<>` to indicate that the value may or may not be present. We'll see how to use it later.
+
+We need implement two methods on the `Question` struct to help us 1) know if the question has been answered and 2) know if the user's answer is correct.
+
+```rust
+// ^ struct Question { ... }
+
+impl Question {
+  fn is_answered(&self) -> bool {
+    self.user_answer.is_some()
+  }
+
+  fn is_correct(&self) -> bool {
+    self.user_answer == Some(self.answer)
+  }
+}
+```
+
+Notice that the methods are supposed to return a `bool` but there's no `return` keyword. In Rust, the last statement (not line)[^1] of a function without termination (ie, `;`) is a return value.
+
+[^1]: See https://doc.rust-lang.org/book/ch03-03-how-functions-work.html#functions-with-return-values
+
+## Then a quiz
+
+A quiz is a collection of questions and also tracks the current question.
+
+```rust
+struct Quiz {
+  questions: Vec<Question>,
+  // What is `usize`? Make a Google search 🤷🏽‍♂️?
+  current_index: usize
+}
+```
+
+Let's implement methods to
+
+- get the current question
+- move to the next question but only if the current question has been answered
+- get the score of the quiz
+
+Attempt to implement these methods yourself by referencing the `Question` methods above. If you get stuck or done, see/compare the solution below:
+
+<div class="mt-2" />
+
+<Fold client:load title="Hint: Quiz Signature" subtitle="Click here to view the Quiz methods' signature. Implement them.">
+```rust
+// ^ struct Quiz { ... }
+
+impl Quiz {
+  fn current_question(&self) -> Question { }
+
+  fn next_question(&mut self) -> Question {
+  // watch out for index out of bounds
+  }
+
+  fn score(&self) -> usize { }
+}
+
+````
+</Fold>
+
+Here are some pointers:
+
+- Iterator loops: https://doc.rust-lang.org/reference/expressions/loop-expr.html#iterator-loops
+
+```rust
+// ^ struct Quiz { ... }
+
+impl Quiz {
+  fn current_question(&self) -> Question {
+    self.questions[self.current_index]
+  }
+
+  fn next_question(&mut self) -> Question {
+    let count = self.questions.len() - 1;
+    if self.current_question().is_answered() && self.current_index < count {
+      self.current_index += 1;
+    }
+
+    self.current_question()
+  }
+
+  fn score(&self) -> usize {
+    // notice `mut`
+    let mut correct = 0;
+    for question in &self.questions {
+      if question.is_correct() {
+        correct += 1;
+      }
+    }
+
+    correct
+  }
+}
+````
+
+`mut` is used to indicate that the variable can be mutated. In Rust, you have to be intentional about mutation.
+
+## Exercise: more methods
+
+You must have noticed we are missing some implementations. This is your exercise:
+
+1. Implement a method to go to the previous question: `fn prev_question(&mut self) -> Question`
+2. Implement a method to answer the current question. It should also return true/false if the answer is correct or not: `fn answer(&mut self, answer: bool) -> bool`

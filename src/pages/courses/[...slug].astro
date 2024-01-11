@@ -52,7 +52,7 @@ const { slug } = Astro.params
 const { Content } = await content.render()
 ---
 
-<Shell description="Course" title="Course">
+<Shell description="" title={`${content.data.title} | ${meta?.data.title}`}>
   <div class="container">
     <div class="mt-[8rem] grid grid-cols-1 gap-4 lg:grid-cols-4">
       <aside class="col-span-1">
@@ -68,8 +68,7 @@ const { Content } = await content.render()
             <div class="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
               <div
                 class="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
-                style={`width: ${progress}%`}
-                transition:name="course-progress">
+                style={`width: ${progress}%`}>
               </div>
             </div>
           </div>
@@ -116,7 +115,7 @@ const { Content } = await content.render()
             <div class="mt-12 flex justify-end">
               <a
                 href={`/courses/${next.slug}`}
-                class="group inline-flex gap-2 rounded-lg border border-zinc-300 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 !bg-opacity-75 dark:border-neutral-800 dark:hover:bg-neutral-800">
+                class="group inline-flex gap-2 rounded-lg border border-zinc-300 !bg-opacity-75 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 dark:border-neutral-800 dark:hover:bg-neutral-800">
                 <div>
                   <header class="text-secondary">Up next</header>
                   <div class="font-medium">{next.data.title}</div>

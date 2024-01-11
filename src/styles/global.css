@@ -76,6 +76,10 @@ hr {
 	display: none;
 }
 
+.footnotes ol {
+	@apply ms-0;
+}
+
 .footnotes li {
 	@apply list-decimal ms-8 marker:text-zinc-500 dark:marker:text-neutral-400;
 }
@@ -144,6 +148,14 @@ article td {
 
 article video {
 	border-radius: 0.75rem;
+}
+
+article pre {
+	@apply mt-2;
+}
+
+article ol {
+	@apply list-decimal list-outside ms-8;
 }
 
 @media screen and (min-width: 768px) {
