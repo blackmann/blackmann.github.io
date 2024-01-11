@@ -1,0 +1,136 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Shell from '../../layouts/Shell.astro'
+import { getCollection } from 'astro:content'
+
+type Unpacked<T> = T extends (infer U)[] ? U : T
+
+export const getStaticPaths = (async () => {
+  const lessons = await getCollection('lessons')
+  lessons.sort((a, b) => a.data.index - b.data.index)
+  const courseMeta = await getCollection('course-meta')
+
+  type Content = Unpacked<typeof lessons>
+
+  const outlines: Record<string, Content[]> = lessons.reduce(
+    (prev, curr) => {
+      const courseId = curr.slug.split('/')[0]
+      if (!prev[courseId]) {
+        prev[courseId] = []
+      }
+
+      prev[courseId].push(curr)
+
+      return prev
+    },
+    {} as Record<string, Content[]>,
+  )
+
+  return lessons.map((lesson) => {
+    const courseId = lesson.slug.split('/')[0]
+    const outline = outlines[courseId]
+
+    const index = outline.findIndex((chapter) => chapter.slug === lesson.slug)
+    const progress = ((index + 1) / outline.length) * 100
+
+    return {
+      params: { slug: lesson.slug },
+      props: {
+        content: lesson,
+        meta: courseMeta.find((cm) => cm.id === courseId),
+        next: outline[index + 1],
+        outline,
+        progress,
+      },
+    }
+  })
+}) satisfies GetStaticPaths
+
+const { content, meta, outline, progress, next } = Astro.props
+const { slug } = Astro.params
+
+const { Content } = await content.render()
+---
+
+<Shell description="" title={`${content.data.title} | ${meta?.data.title}`}>
+  <div class="container">
+    <div class="mt-[8rem] grid grid-cols-1 gap-4 lg:grid-cols-4">
+      <aside class="col-span-1">
+        <div class="top-4 lg:sticky">
+          <header class="text-secondary mb-1 ms-2 font-medium">
+            Outline <span
+              class="rounded-lg bg-zinc-200 px-1 py-0.5 text-xs dark:bg-neutral-800">
+              {Math.floor(progress)}%
+            </span>
+          </header>
+
+          <div class="mx-2 mb-2">
+            <div class="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+              <div
+                class="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
+                style={`width: ${progress}%`}>
+              </div>
+            </div>
+          </div>
+          <ul>
+            {
+              outline.map((chapter) => (
+                <li>
+                  <a
+                    class="text-secondary flex justify-between rounded-lg px-2 py-1 no-underline hover:bg-zinc-200 dark:hover:bg-neutral-800"
+                    class:list={[
+                      {
+                        '!dark:text-neutral-100 bg-zinc-200 font-medium !text-zinc-900 dark:bg-neutral-800':
+                          chapter.slug === slug,
+                      },
+                    ]}
+                    href={`/courses/${chapter.slug}`}>
+                    {chapter.data.title}
+                    {chapter.slug === slug && <small>2min</small>}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+
+      <div class="col-span-1 lg:col-span-3">
+        <header>
+          <p
+            class="dark:text-orange inline rounded-xl bg-orange-200 bg-opacity-20 px-2 py-1 font-medium text-orange-600 dark:bg-orange-600 dark:bg-opacity-10">
+            {meta?.data.title}
+          </p>
+          <h1 class="mt-0 text-3xl font-bold">
+            {content.data.title}
+          </h1>
+        </header>
+
+        <article class="mt-4">
+          <Content />
+        </article>
+
+        {
+          next && (
+            <div class="mt-12 flex justify-end">
+              <a
+                href={`/courses/${next.slug}`}
+                class="group inline-flex gap-2 rounded-lg border border-zinc-300 !bg-opacity-75 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 dark:border-neutral-800 dark:hover:bg-neutral-800">
+                <div>
+                  <header class="text-secondary">Up next</header>
+                  <div class="font-medium">{next.data.title}</div>
+                </div>
+
+                <div>
+                  <span class="material-symbols-rounded text-secondary -mt-1 !text-lg transition-transform group-hover:translate-x-2">
+                    arrow_forward
+                  </span>
+                </div>
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</Shell>

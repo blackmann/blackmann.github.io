@@ -10,21 +10,35 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.5",
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.3",
-    "@astrojs/tailwind": "^5.0.2",
-    "astro": "^3.6.1",
+    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/lucide": "^1.1.151",
+    "@resvg/resvg-js": "^2.6.0",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@unocss/preset-icons": "^0.58.3",
+    "astro": "^4.1.1",
+    "clsx": "^2.1.0",
     "gsap": "^3.12.3",
     "markdown-it": "^13.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "p5": "1.9.0",
     "sanitize-html": "^2.11.0",
-    "tailwindcss": "^3.0.24",
+    "satori": "^0.10.11",
+    "tailwindcss": "^3.4.0",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@unocss/reset": "^0.58.3",
+    "@unocss/transformer-directives": "^0.58.3",
+    "@unocss/transformer-variant-group": "^0.58.3",
     "prettier": "^3.1.0",
     "prettier-plugin-astro": "^0.12.2",
-    "prettier-plugin-tailwindcss": "^0.5.9"
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "unocss": "^0.58.3"
   }
 }

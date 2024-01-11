@@ -34,7 +34,15 @@
 
 
 a {
-	@apply hover:bg-zinc-200 dark:hover:bg-neutral-800 underline break-words;
+	@apply  underline break-words;
+}
+
+.font-mono {
+	font-family: 'IBM Plex Mono', monospace;
+}
+
+.hover-link a {
+	@apply hover:bg-zinc-200 dark:hover:bg-neutral-800 transition-[background] duration-200;
 }
 
 p+*,
@@ -43,7 +51,7 @@ p+*,
 }
 
 .container {
-	@apply max-w-[960px];
+	@apply max-w-[960px] mx-auto px-4;
 }
 
 .page-half {
@@ -66,6 +74,10 @@ hr {
 
 .footnotes h2 {
 	display: none;
+}
+
+.footnotes ol {
+	@apply ms-0;
 }
 
 .footnotes li {
@@ -136,6 +148,18 @@ article table {
 article th,
 article td {
 	text-align: start;
+}
+
+article video {
+	border-radius: 0.75rem;
+}
+
+article pre {
+	@apply mt-2;
+}
+
+article ol {
+	@apply list-decimal list-outside ms-8;
 }
 
 @media screen and (min-width: 768px) {

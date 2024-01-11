@@ -3,29 +3,52 @@ const today = new Date()
 ---
 
 <footer
-  class="container mx-auto mb-[5rem] mt-[8rem] border-t border-t-zinc-200 px-5 pt-5 dark:border-t-neutral-600"
+  class="container mx-auto mb-[2rem] mt-[8rem] border-t border-t-zinc-200 px-5 pt-5 dark:border-t-neutral-600"
 >
   <div class="grid grid-cols-1 lg:grid-cols-2">
     <div class="col-span-1">
-      <div class="mb-2 flex gap-2">
-        <span class="text-secondary">Other links:</span>
-        <a class="me-1" href="/cool-stuff">Cool stuff</a>
-        <a href="/candies">Candies 🍬</a>
-        <a href="/jpegs">JPEGs</a>
-      </div>
-
-      <div>
+      <div class="text-secondary">
         &copy; {today.getFullYear()} De-Great Yartey. All rights reserved.
       </div>
 
-      <div>
-        version 2023.{today.getMonth() + 1}.{
+      <div class="text-secondary font-mono text-sm ms-4">
+        version {today.getFullYear()}.{today.getMonth() + 1}.{
           today.getDate().toString().padStart(2, '0')
         }/1
       </div>
+
+      <div class="mt-2 flex gap-2 ms-4">
+        <a
+          class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 font-medium no-underline"
+          href="/cool-stuff"
+        >
+          <span class="material-symbols-rounded text-secondary !text-sm">
+            stadia_controller
+          </span>
+           Cool stuff
+        </a>
+        <a
+          class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 font-medium no-underline"
+          href="/candies"
+        >
+          <span class="material-symbols-rounded text-secondary !text-sm">
+            cake
+          </span>
+           Candies 🍬
+        </a>
+        <a
+          class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 font-medium no-underline"
+          href="/jpegs"
+        >
+          <span class="material-symbols-rounded text-secondary !text-sm">
+            photo_prints
+          </span>
+           JPEGs
+        </a>
+      </div>
     </div>
 
-    <div class="text-secondary col-span-1 pt-5 lg:text-end">
+    <div class="text-secondary col-span-1 lg:text-end mt-8 ms-4 lg:mt-0">
       <svg
         class="inline"
         width="70"

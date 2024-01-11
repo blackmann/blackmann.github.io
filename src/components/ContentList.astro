@@ -14,10 +14,10 @@ interface Props {
 const { items, noTransition } = Astro.props
 ---
 
-<ul>
+<ul class="hover-link">
   {
     items.map((item) => (
-      <li class="[&+&]:border-t-1 border-t-zinc-200 dark:border-t-neutral-600 [&+&]:border-t">
+      <li class="[&+&]:border-t-1 border-t-zinc-200 dark:border-t-neutral-800 [&+&]:border-t">
         <a
           class="flex justify-between gap-2 px-2 py-2 no-underline"
           href={item.link}
