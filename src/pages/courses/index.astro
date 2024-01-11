@@ -41,7 +41,7 @@ for (const meta of courseMeta) {
       {
         courses.map((course) => (
           <div class="col-span-1">
-            <a class="card block no-underline" href={course.slug}>
+            <a class="card block no-underline" href={`/${course.slug}`}>
               <h2 class="font-bold">{course.data.title}</h2>
               <p>{course.data.description}</p>
               <p class="text-secondary">{course.data.meta}</p>
