@@ -10,8 +10,6 @@ Let's put a face to the name.
 
 We'll use `egui` to create the interface for our app. `egui` is an [immediate mode GUI](https://collquinn.gitlab.io/portfolio/my-article.html) library for Rust.
 
-<div class="mt-2" />
-
 <Fold title="Immediate mode" subtitle="What does that mean?" client:load>
   Immediate mode GUI is a paradigm where the GUI is drawn every frame. This is
   in contrast to the more common retained mode GUI where the GUI is built once
@@ -79,8 +77,6 @@ impl eframe::app::App for App {
 }
 ```
 
-<div class="mt-2" />
-
 <Fold title="egui:: eframe::" subtitle="Huh? What are those?" client:load>
   Prefixing symbols (ie, functions, structs, etc.) with the name of the library they belong to is a common practice in Rust. This is to avoid name collisions. For example, there's a `Vec` in the standard library and there's also a `Vec` in the `egui` library. So to use the one in the standard library, you'd do: `std::vec::Vec`. And to use the one in `egui`, you'd do: `egui::vec::Vec`.
 
@@ -99,7 +95,7 @@ impl eframe::app::App for App {
   Throughout the course, I'll be using the prefix to make it clear where a symbol is coming from. But you can use the `use` statement to bring them to scope.
 </Fold>
 
-Run your code to see what you've done. Forgotten how? See [Chapter 3: Create project](./create-project#run).
+Run your code to see what you've done. Forgotten how to run a bin? See [Chapter 3: Create project](./create-project#run).
 
 ## UI
 
@@ -121,3 +117,5 @@ egui::CentralPanel::default().show(ctx, |ui| {
   });
 });
 ```
+
+Next we're going to handle states and logic for our app.

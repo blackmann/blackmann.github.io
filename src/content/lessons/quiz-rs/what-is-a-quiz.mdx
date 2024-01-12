@@ -22,6 +22,21 @@ struct Question {
 
 Put this piece of code in `quiz/src/quiz.rs`.
 
+<Fold title="Current folder structure" subtitle="Compare to make sure you're on track" client:load>
+Your folder structure should look like this now:
+
+```bash
+.
+├── Cargo.lock
+├── Cargo.toml
+└── quiz
+    ├── Cargo.toml
+    └── src
+        ├── main.rs
+        └── quiz.rs
+```
+</Fold>
+
 What is an `Option<>`? Why don't we just use `bool` for `user_answer`? This is because the user may not have answered the question yet. So we use `Option<>` to indicate that the value may or may not be present. We'll see how to use it later.
 
 We need implement two methods on the `Question` struct to help us 1) know if the question has been answered and 2) know if the user's answer is correct.
@@ -31,10 +46,13 @@ We need implement two methods on the `Question` struct to help us 1) know if the
 
 impl Question {
   fn is_answered(&self) -> bool {
+    // `is_some` is a method on `Option<>` that tells us if
+    // the `user_answer` is not `None`
     self.user_answer.is_some()
   }
 
   fn is_correct(&self) -> bool {
+    // What is `Some`? Make a Google search 🤷🏽‍♂️?
     self.user_answer == Some(self.answer)
   }
 }
@@ -64,7 +82,6 @@ Let's implement methods to
 
 Attempt to implement these methods yourself by referencing the `Question` methods above. If you get stuck or done, see/compare the solution below:
 
-<div class="mt-2" />
 
 <Fold client:load title="Hint: Quiz Signature" subtitle="Click here to view the Quiz methods' signature. Implement them.">
 ```rust
@@ -87,6 +104,8 @@ Here are some pointers:
 
 - Iterator loops: https://doc.rust-lang.org/reference/expressions/loop-expr.html#iterator-loops
 
+- Method syntax: [https://web.mit.edu/rust-lang_v1.25/.../method-syntax.html](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/method-syntax.html). Watch out for mutable `self` references.
+
 ```rust
 // ^ struct Quiz { ... }
 
@@ -95,6 +114,7 @@ impl Quiz {
     self.questions[self.current_index]
   }
 
+  // &mut means mutable reference
   fn next_question(&mut self) -> Question {
     let count = self.questions.len() - 1;
     if self.current_question().is_answered() && self.current_index < count {
@@ -126,3 +146,5 @@ You must have noticed we are missing some implementations. This is your exercise
 
 1. Implement a method to go to the previous question: `fn prev_question(&mut self) -> Question`
 2. Implement a method to answer the current question. It should also return true/false if the answer is correct or not: `fn answer(&mut self, answer: bool) -> bool`
+
+We'll test our implementation in the next lesson.

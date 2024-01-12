@@ -17,7 +17,7 @@ for (const meta of courseMeta) {
   ).length
 
   const course: Course = {
-    slug: `courses/${meta.id}/intro`,
+    slug: `/courses/${meta.id}/intro`,
     chapters,
     ...meta,
   }
@@ -29,7 +29,7 @@ for (const meta of courseMeta) {
 <Shell
   description="Up your skills with fairly challenging courses"
   title="Courses">
-  <div class="container">
+  <div class="container min-h-[50vh]">
     <h1 class="mt-[8rem] text-2xl font-bold">Courses</h1>
 
     <p>
@@ -41,7 +41,9 @@ for (const meta of courseMeta) {
       {
         courses.map((course) => (
           <div class="col-span-1">
-            <a class="card block no-underline" href={`/${course.slug}`}>
+            <a
+              class="card block no-underline transition-[border] duration-200 hover:border-zinc-300 dark:hover:border-neutral-600"
+              href={course.slug}>
               <h2 class="font-bold">{course.data.title}</h2>
               <p>{course.data.description}</p>
               <p class="text-secondary">{course.data.meta}</p>

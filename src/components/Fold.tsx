@@ -12,7 +12,7 @@ function Fold({ children, subtitle, title }: Props) {
   return (
     <div
       className={clsx(
-        'dark:(bg-neutral-900 border-neutral-700) group rounded-lg border border-zinc-200 bg-zinc-50',
+        'dark:(bg-neutral-900 border-neutral-700) group rounded-lg border border-zinc-200 bg-zinc-50 mt-2',
         {
           expanded,
         },

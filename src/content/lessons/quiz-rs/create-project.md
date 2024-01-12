@@ -14,8 +14,8 @@ Note that we don't need to use workspaces. This is just anticipating future exer
 
 ```bash
 # you can name the directory anything you want. eg. rustws
-mkdir cargows
-cd cargows
+mkdir learn-rust
+cd learn-rust
 ```
 
 Next is to add a manifest file to the folder: `Cargo.toml`
@@ -28,7 +28,7 @@ members = [
 resolver = "2"
 ```
 
-You can see `quiz` in there. Let's add it:
+Let's add the `quiz` package to the workspace.
 
 ```bash
 cargo new quiz --bin
@@ -45,3 +45,15 @@ cargo run -p quiz
 ```
 
 From now onwards, when I say let's run the app, this is the command to run.
+
+The folder structure should look like this:
+
+```bash
+.
+├── Cargo.lock
+├── Cargo.toml
+└── quiz
+    ├── Cargo.toml
+    └── src
+        └── main.rs
+```

@@ -1,0 +1,117 @@
+---
+title: State and Logic
+pubDate: 10 Jan 2024
+index: 30
+---
+
+import Fold from '../../../components/Fold.tsx'
+
+In this section, we have two objectives. We're going to implement:
+
+- the state for our app. But we need questions. I mean you should get some questions.
+- and wire the logic with the UI
+
+## State
+
+Our state is a `Quiz`. Luckily, we've already implemented that. So let's add that to our `App` struct.
+
+```rust
+struct App {
+  quiz: quiz::Quiz
+}
+```
+
+And we'll have to update our `App::new` function:
+
+```rust
+impl App {
+  fn new() -> Self {
+    let quiz = quiz::Quiz::sample();
+    Self { quiz }
+  }
+}
+```
+
+`::sample()` is not implemented for `quiz::Quiz`. Want to give it a try?
+
+```rust
+impl Quiz {
+  fn sample() -> Self {
+    Self {
+      // Notice how we create a vector! This is a macro that
+      // helps us create a vector with less code. Read on macros 🤷🏽‍♂️
+      questions: vec![
+        Question {
+          title: "Is the sky blue?".to_string(),
+          answer: true,
+          user_answer: None
+        },
+        Question {
+          title: "Is the grass green?".to_string(),
+          answer: true,
+          user_answer: None
+        },
+        Question {
+          title: "Is the sun yellow?".to_string(),
+          answer: false,
+          user_answer: None
+        },
+      ]
+    }
+  }
+}
+```
+
+`::sample()` here doesn't accept a `&self` unlike the other functions we've seen. You can treat functions like this as static functions. In Typescript, this would look like:
+
+```ts
+class Quiz {
+  static sample() {
+    return new Quiz(/* ... */)
+  }
+}
+```
+
+This same format is used for _constructors_. In Rust, constructors are just static functions that return a new instance of the struct. Conventionally, you can call your constructor `new`.
+
+```rust
+impl Quiz {
+  fn new(questions: Vec<Question>) -> Self {
+    Self {
+      questions
+    }
+  }
+}
+```
+
+## Logic
+
+Back to our `App::update` function, let's actually render the current question and other relevant information:
+
+```rust
+impl eframe::app::App for App {
+  fn update(&mut self, ctx: &egui::CtxRef, frame: &mut eframe::epi::Frame<'_>) {
+    egui::CentralPanel::default().show(ctx, |ui| {
+      let current_question = self.quiz.current_question();
+      let questions_count = self.quiz.questions.len()
+
+      // welcome to string formatting in Rust
+      let question_number = format!("{}/{}", self.quiz.current_index + 1, questions_count)
+
+      ui.label(question_number);
+      ui.label(&current_question.title);
+
+      ui.horizontal(|ui| {
+        ui.button("True");
+        ui.button("False");
+      });
+
+      ui.horizontal(|ui| {
+        ui.button("Previous");
+        ui.button("Next");
+      });
+    });
+  }
+}
+```
+
