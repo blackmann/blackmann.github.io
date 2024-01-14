@@ -1,0 +1,29 @@
+---
+title: Design our app
+pubDate: 5 Jan 2024
+index: 5
+---
+
+import QuizUIDesign from '../../../components/QuizUIDesign.astro'
+
+I always like to draw wireframes to visualize my app so I can come up with requirements. It makes things clearer and easier to attack the objectives.
+
+I spent some time coming up with the following design. But you can be creative and come up with yours. The chapters on [Layouting](layout) and [Styling](styling) will help achieve whatever you come up with.
+
+<div class="bg-zinc-50 rounded-lg dark:(bg-neutral-800 bg-opacity-50) p-2">
+  <QuizUIDesign />
+</div>
+
+We'll need to restrict the width and height of our app else we're going to have lots of empty space which won't look good.
+
+## Specifications
+
+- Our quiz app is going to show the question number in the format (1/3) where 1 is the current question and 3 is the total number of questions.
+
+- The question is going to be shown in the middle of the screen.
+
+- The user can select either true or false.
+
+- The user can only go to the next question if they have answered the current question. They can go back to the previous question at any time.
+
+- When a question is answered, the user should be shown whether they got the question right or wrong immediately.

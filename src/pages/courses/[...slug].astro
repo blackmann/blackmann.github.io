@@ -2,6 +2,8 @@
 import type { GetStaticPaths } from 'astro'
 import Shell from '../../layouts/Shell.astro'
 import { getCollection } from 'astro:content'
+import DotLocalAd from '../../components/DotLocalAd.astro'
+import { CourseOutline } from '../../components/CourseOutline.tsx'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
@@ -55,43 +57,19 @@ const { Content } = await content.render()
 <Shell description="" title={`${content.data.title} | ${meta?.data.title}`}>
   <div class="container">
     <div class="mt-[8rem] grid grid-cols-1 gap-4 lg:grid-cols-4">
-      <aside class="col-span-1">
-        <div class="top-4 lg:sticky">
-          <header class="text-secondary mb-1 ms-2 font-medium">
-            Outline <span
-              class="rounded-lg bg-zinc-200 px-1 py-0.5 text-xs dark:bg-neutral-800">
-              {Math.floor(progress)}%
-            </span>
-          </header>
+      <aside class="lg:(top-0 static) sticky top-4 col-span-1 z-10">
+        <div class="lg:(top-4 sticky)">
+          <CourseOutline
+            courseTitle={meta?.data.title!}
+            outline={outline}
+            progress={progress}
+            currentChapter={slug}
+            client:load
+          />
 
-          <div class="mx-2 mb-2">
-            <div class="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-              <div
-                class="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
-                style={`width: ${progress}%`}>
-              </div>
-            </div>
+          <div class="mt-2 hidden w-[8rem] lg:block">
+            <DotLocalAd />
           </div>
-          <ul>
-            {
-              outline.map((chapter) => (
-                <li>
-                  <a
-                    class="text-secondary flex justify-between rounded-lg px-2 py-1 no-underline hover:bg-zinc-200 dark:hover:bg-neutral-800"
-                    class:list={[
-                      {
-                        '!dark:text-neutral-100 bg-zinc-200 font-medium !text-zinc-900 dark:bg-neutral-800':
-                          chapter.slug === slug,
-                      },
-                    ]}
-                    href={`/courses/${chapter.slug}`}>
-                    {chapter.data.title}
-                    {chapter.slug === slug && <small>2min</small>}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
         </div>
       </aside>
 

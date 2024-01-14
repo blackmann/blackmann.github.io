@@ -101,17 +101,41 @@ impl eframe::app::App for App {
       ui.label(question_number);
       ui.label(&current_question.title);
 
-      ui.horizontal(|ui| {
-        ui.button("True");
-        ui.button("False");
-      });
-
-      ui.horizontal(|ui| {
-        ui.button("Previous");
-        ui.button("Next");
-      });
+      // ...
     });
   }
 }
 ```
 
+Let's move on to the buttons:
+
+```rust
+impl eframe::app::App for App {
+  fn update(&mut self, ctx: &egui::CtxRef, frame: &mut eframe::epi::Frame<'_>) {
+    egui::CentralPanel::default().show(ctx, |ui| {
+      // ...
+
+      ui.horizontal(|ui| {
+        // Conventionally, you would have attached a click handler
+        // to the button. But remember, this is an immediated mode UI.
+        // So we have to perform this check every frame.
+        if ui.button("True").clicked() {
+          self.quiz.answer(true);
+        }
+        if ui.button("False").clicked() {
+          self.quiz.answer(false);
+        }
+      });
+
+      // ...
+    });
+  }
+}
+```
+
+## Next, Previous?
+
+Here's your exercise:
+
+1. Implement the next and previous buttons. The question number and text should update accordingly.
+2. On the same row as True/False buttons, show a label only if the user has answered the question. The label should say whether the user got the question right or wrong. "Correct" or "Wrong" is fine.
