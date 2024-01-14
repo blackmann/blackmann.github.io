@@ -33,7 +33,7 @@ function CourseOutline({
         </div>
 
         <span className="material-symbols-rounded !lg:hidden">
-          {expanded ? 'expand_more' : 'expand_less'}
+          {expanded ? 'expand_less' : 'expand_more'}
         </span>
       </header>
 
