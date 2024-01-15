@@ -1,0 +1,81 @@
+---
+title: Layouting
+pubDate: 10 Jan 2024
+index: 35
+---
+
+import Fold from '../../../components/Fold.tsx'
+import SpaceBetweenPrevNext from '../../../components/SpaceBetweenPrevNext.astro'
+
+We can all agree, our app is not looking good. If you don't care about looks, I think we're done here. Else, let's ge'it.
+
+If you remember, from our [design](design-app), we need to restrict the width and height of our app. Let's update our [`NativeOptions`](https://docs.rs/eframe/latest/eframe/struct.NativeOptions.html) in `main`:
+
+```rust
+fn main() -> Result<(), eframe::Error> {
+    let viewport = ViewportBuilder::default().with_inner_size(egui::Vec2::new(300.0, 400.0));
+
+    let options = eframe::NativeOptions{
+      viewport,
+      // This is a common pattern in Rust. See below
+      ..Default::default(),
+    };
+
+    eframe::run_native("Queeez", options, Box::new(|ctx| Box::new(App::new())))
+}
+```
+
+<Fold title="Defaults" subtitle="The `Default` trait in Rust and how it works" client:load>
+  This [document](https://doc.rust-lang.org/std/default/trait.Default.html) does a good job of explaining the `Default` trait. Please read it.
+
+  However, in our code above, we're using the `..` operator to copy the rest of the fields from the default `NativeOptions` struct. This is a common pattern in Rust. It's called [Struct update syntax](https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax).
+
+  In simpler words, we're creating a new `NativeOptions` instance with the default values and then overriding just the `viewport` field with our own value.
+</Fold>
+
+This will make the app launch with a 300 x 400 window. But you'll be able to resize the window. We don't want that. Your exercise is to look throught the [`ViewportBuilder`](https://docs.rs/egui/0.25.0/egui/viewport/struct.ViewportBuilder.html) docs and find a way to disable resizing.
+
+Next step is to put some space between the previous and next buttons so that each button is on opposite sides of the window horizontally.
+
+<div class="bg-zinc-50 rounded-lg dark:(bg-neutral-800 bg-opacity-50) p-2">
+  <SpaceBetweenPrevNext />
+</div>
+
+`egui` does not have a built-in way to do something like [`justify-between`](https://tailwindcss.com/docs/justify-content#space-between). So we'll have to finesse it.
+
+The way to do that is to:
+
+1. create two columns
+2. justify the first column naturally (left to right)
+3. justify the second column in reverse (right to left)
+4. render each button in its own column
+
+Replace the part of the code that renders the next and previous buttons with the following:
+
+```rust
+ui.columns(2, |columns| {
+  columns[0].allocate_ui_with_layout(
+    Vec2 { x: 120.0, y: 40.0 },
+    egui::Layout::left_to_right(egui::Align::Center),
+    |ui| {
+      if ui.button("previous").clicked() {
+          self.quiz.previous();
+      }
+    },
+  );
+
+  columns[1].allocate_ui_with_layout(
+    Vec2 { x: 120.0, y: 40.0 },
+    egui::Layout::right_to_left(egui::Align::Center),
+    |ui| {
+      if ui.button("next").clicked() {
+          self.quiz.next();
+      }
+    },
+  );
+})
+```
+
+Good now.
+
+On to some styling.

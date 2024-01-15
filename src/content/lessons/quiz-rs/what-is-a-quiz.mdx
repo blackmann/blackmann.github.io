@@ -106,12 +106,17 @@ Here are some pointers:
 
 - Method syntax: [https://web.mit.edu/rust-lang_v1.25/.../method-syntax.html](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/method-syntax.html). Watch out for mutable `self` references.
 
+The following is a concrete implementation of the methods. You can compare with yours.
+
 ```rust
 // ^ struct Quiz { ... }
 
 impl Quiz {
-  fn current_question(&self) -> Question {
-    self.questions[self.current_index]
+  // Here we return a reference to the current question
+  // else we'll be make a `move` which the compile will complain
+  // about.
+  fn current_question(&self) -> &Question {
+    &self.questions[self.current_index]
   }
 
   // &mut means mutable reference

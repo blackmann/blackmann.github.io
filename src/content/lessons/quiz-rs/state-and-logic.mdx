@@ -92,13 +92,13 @@ Back to our `App::update` function, let's actually render the current question a
 impl eframe::app::App for App {
   fn update(&mut self, ctx: &egui::CtxRef, frame: &mut eframe::epi::Frame<'_>) {
     egui::CentralPanel::default().show(ctx, |ui| {
-      let current_question = self.quiz.current_question();
-      let questions_count = self.quiz.questions.len()
+      let current_index = self.quiz.current_index + 1;
+      let count = self.quiz.questions.len()
 
       // welcome to string formatting in Rust
-      let question_number = format!("{}/{}", self.quiz.current_index + 1, questions_count)
+      ui.label(format!("{current_index}/{count}"));
 
-      ui.label(question_number);
+      let current_question = self.quiz.current_question();
       ui.label(&current_question.title);
 
       // ...
@@ -107,7 +107,7 @@ impl eframe::app::App for App {
 }
 ```
 
-Let's move on to the buttons:
+Let's move on to add the buttons:
 
 ```rust
 impl eframe::app::App for App {
