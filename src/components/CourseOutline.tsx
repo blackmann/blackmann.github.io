@@ -5,7 +5,7 @@ interface Props {
   courseTitle: string
   progress: number
   currentChapter: string
-  outline: { slug: string; data: { title: string } }[]
+  outline: { slug: string; data: { time: number; title: string } }[]
 }
 
 function CourseOutline({
@@ -64,7 +64,9 @@ function CourseOutline({
               )}
               href={`/courses/${chapter.slug}`}>
               {chapter.data.title}
-              {chapter.slug === currentChapter && <small>2min</small>}
+              {chapter.slug === currentChapter && (
+                <small>{chapter.data.time}mins</small>
+              )}
             </a>
           </li>
         ))}

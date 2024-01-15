@@ -9,6 +9,7 @@ const lessons = defineCollection({
   schema: rssSchema.extend({
     tags: z.array(z.string()).optional(),
     index: z.number(),
+    time: z.number(),
   }),
 })
 

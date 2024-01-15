@@ -2,6 +2,7 @@
 title: Create project ft. cargo workspaces
 pubDate: 5 Jan 2024
 index: 10
+time: 2
 ---
 
 > <span class="text-secondary">Before you continue</span>: If you haven't already, you should have Rust installed. Make some Google search 🤷🏽‍♂️.

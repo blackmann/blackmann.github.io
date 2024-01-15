@@ -2,6 +2,7 @@
 title: What next? ft. you
 pubDate: 10 Jan 2024
 index: 45
+time: 2
 ---
 
 I hope you had fun and feel accomplished. What are your impressions about the language so far? Do you think it's something you'll like to try out in the future? If it's all positive, then read on.

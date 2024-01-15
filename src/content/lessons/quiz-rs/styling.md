@@ -2,6 +2,7 @@
 title: Styling
 pubDate: 10 Jan 2024
 index: 40
+time: 5
 ---
 
 Right now our app has the same font size all round. The true/false buttons don't show any selection state — and they look small.

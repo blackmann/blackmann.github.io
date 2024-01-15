@@ -2,6 +2,7 @@
 title: Test
 pubDate: 10 Jan 2024
 index: 20
+time: 10
 ---
 
 We need a way to tell that what we've been writing so far is correct. Testing is straightforward in Rust. We don't need to create a separate test file. Right at the bottom of `quiz/src/quiz.rs`, add the following:
