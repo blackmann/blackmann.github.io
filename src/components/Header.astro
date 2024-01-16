@@ -1,7 +1,5 @@
 ---
 import NavLink from './NavLink.astro'
-
-const dev = process.env.NODE_ENV !== 'production'
 ---
 
 <header class="container mx-auto">
@@ -16,7 +14,7 @@ const dev = process.env.NODE_ENV !== 'production'
 
     <NavLink href="/blog">Blog</NavLink>
 
-    {dev && <NavLink href="/courses">Courses</NavLink>}
+    <NavLink href="/courses">Courses</NavLink>
 
     <NavLink href="/about">About</NavLink>
 
