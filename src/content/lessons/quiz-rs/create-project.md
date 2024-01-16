@@ -3,6 +3,7 @@ title: Create project ft. cargo workspaces
 pubDate: 5 Jan 2024
 index: 10
 time: 2
+related_commit: https://github.com/blackmann/learn-rust/commit/f14820ed7ba18f9993e3c81b98452b7464457150
 ---
 
 > <span class="text-secondary">Before you continue</span>: If you haven't already, you should have Rust installed. Make some Google search 🤷🏽‍♂️.

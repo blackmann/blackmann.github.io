@@ -57,7 +57,7 @@ const { Content } = await content.render()
 <Shell description="" title={`${content.data.title} | ${meta?.data.title}`}>
   <div class="container">
     <div class="mt-[8rem] grid grid-cols-1 gap-4 lg:grid-cols-4">
-      <aside class="lg:(top-0 static) sticky top-4 col-span-1 z-10">
+      <aside class="lg:(top-0 static) sticky top-4 z-10 col-span-1">
         <div class="lg:(top-4 sticky)">
           <CourseOutline
             courseTitle={meta?.data.title!}
@@ -88,26 +88,54 @@ const { Content } = await content.render()
           <Content />
         </article>
 
-        {
-          next && (
-            <div class="mt-12 flex justify-end">
+        <div class="mt-12 grid grid-cols-2 gap-2 lg:grid-cols-3">
+          {
+            content.data.related_commit && (
               <a
-                href={`/courses/${next.slug}`}
-                class="group inline-flex gap-2 rounded-lg border border-zinc-300 !bg-opacity-75 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 dark:border-neutral-800 dark:hover:bg-neutral-800">
-                <div>
-                  <header class="text-secondary">Up next</header>
-                  <div class="font-medium">{next.data.title}</div>
-                </div>
+                href={content.data.related_commit}
+                target="_blank"
+                class="col-span-1 flex gap-2 rounded-lg border border-zinc-200 px-2 py-1 no-underline hover:bg-zinc-200 dark:border-neutral-700 dark:hover:bg-neutral-800">
+                <span class="i-lucide-github mt-1" title="Github" />
 
                 <div>
-                  <span class="material-symbols-rounded text-secondary -mt-1 !text-lg transition-transform group-hover:translate-x-2">
-                    arrow_forward
-                  </span>
+                  <header>
+                    Related commit{' '}
+                    <span class="material-symbols-rounded !text-sm">
+                      open_in_new
+                    </span>{' '}
+                  </header>
+                  <div class="text-secondary line-clamp-1">
+                    {content.data.related_commit
+                      .split('/')
+                      .pop()
+                      ?.substring(18)}
+                  </div>
                 </div>
               </a>
-            </div>
-          )
-        }
+            )
+          }
+
+          {
+            next && (
+              <div class="col-span-1 col-start-2 flex justify-end lg:col-start-3">
+                <a
+                  href={`/courses/${next.slug}`}
+                  class="group inline-flex gap-2 rounded-lg border border-zinc-300 !bg-opacity-75 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 dark:border-neutral-800 dark:hover:bg-neutral-800">
+                  <div>
+                    <header class="text-secondary">Up next</header>
+                    <div class="font-medium">{next.data.title}</div>
+                  </div>
+
+                  <div>
+                    <span class="material-symbols-rounded text-secondary -mt-1 !text-lg transition-transform group-hover:translate-x-2">
+                      arrow_forward
+                    </span>
+                  </div>
+                </a>
+              </div>
+            )
+          }
+        </div>
       </div>
     </div>
   </div>

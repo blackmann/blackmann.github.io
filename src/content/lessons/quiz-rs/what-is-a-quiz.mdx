@@ -3,6 +3,7 @@ title: What is a quiz?
 pubDate: 10 Jan 2024
 index: 15
 time: 10
+related_commit: https://github.com/blackmann/learn-rust/commit/4a7a11c007cb9f00ecc432540921e372a0cb38cc
 ---
 
 import Fold from '../../../components/Fold.tsx'
@@ -59,7 +60,7 @@ impl Question {
 }
 ```
 
-Notice that the methods are supposed to return a `bool` but there's no `return` keyword. In Rust, the last statement (not line)[^1] of a function without termination (ie, `;`) is a return value.
+Notice that the methods are supposed to return a `bool` but there's no `return` keyword. In Rust, the last statement[^1] of a function without termination (ie, `;`) is a return value.
 
 [^1]: See https://doc.rust-lang.org/book/ch03-03-how-functions-work.html#functions-with-return-values
 
@@ -121,7 +122,7 @@ impl Quiz {
   }
 
   // &mut means mutable reference
-  fn next_question(&mut self) -> Question {
+  fn next_question(&mut self) -> &Question {
     let count = self.questions.len() - 1;
     if self.current_question().is_answered() && self.current_index < count {
       self.current_index += 1;

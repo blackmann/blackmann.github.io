@@ -3,6 +3,7 @@ title: Styling
 pubDate: 10 Jan 2024
 index: 40
 time: 5
+related_commit: https://github.com/blackmann/learn-rust/commit/6b18b2ce7e42236cf28d507eb535bc6ce70e4494
 ---
 
 Right now our app has the same font size all round. The true/false buttons don't show any selection state — and they look small.
@@ -26,7 +27,7 @@ fn update(&mut self, ctx: &eframe::egui::Context, frame: &mut eframe::Frame) {
     ]
     .into();
 
-    style.spacing.button_padding = Vec2::new(10.0, 5.0);
+    style.spacing.button_padding = egui::Vec2::new(10.0, 5.0);
 
     ui.set_style(style);
 
@@ -42,7 +43,8 @@ Let's also update just the question label so it appears bigger than `18.0` point
 
 ```rust
 ui.label(
-  RichText::new(current_question.title.as_str()).font(FontId::proportional(32.0)),
+  egui::RichText::new(current_question.title.as_str())
+                    .font(egui::FontId::proportional(32.0)),
 );
 ```
 
@@ -59,7 +61,7 @@ fn get_button(label: &str, selected: bool) -> egui::Button<'static> {
         label = label.color(egui::Color32::WHITE);
     }
 
-    let mut button = egui::Button::new(label).min_size(Vec2::new(60.0, 30.0));
+    let mut button = egui::Button::new(label).min_size(egui::Vec2::new(60.0, 30.0));
 
     if selected {
         button = button.fill(egui::Color32::BLUE);
@@ -98,7 +100,7 @@ Now when you run the app and make a selection, the button will change color. Nic
 If you prefer your buttons are rounder, you can add the following code right after `ui.set_style()`:
 
 ```rust
-ui.visuals_mut().widgets.inactive.rounding = Rounding::from(6.0);
+ui.visuals_mut().widgets.inactive.rounding = egui::Rounding::from(6.0);
 ```
 
 Voila! We're basically done. Let's see what's next for you.

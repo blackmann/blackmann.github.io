@@ -3,6 +3,7 @@ title: GUI ft. egui
 pubDate: 10 Jan 2024
 index: 25
 time: 10
+related_commit: https://github.com/blackmann/learn-rust/commit/8226e2c0b3170a8822d87c53cd3483b64e8b3bce
 ---
 
 import Fold from '../../../components/Fold.tsx'
@@ -58,7 +59,7 @@ struct App { }
 
 impl App {
   fn new() -> Self {
-    App {}
+    Self {}
   }
 }
 
@@ -69,8 +70,8 @@ Now, you should get an error that `App` doesn't implement `egui::app::App`. Let'
 ```rust
 // yes, this is another impl block
 // in Typescript, this would be: `class App implements eframe::app::App`
-impl eframe::app::App for App {
-  fn update(&mut self, ctx: &egui::CtxRef, frame: &mut eframe::epi::Frame<'_>) {
+impl eframe::App for App {
+  fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
     egui::CentralPanel::default().show(ctx, |ui| {
       ui.label("Hello world!");
     });
@@ -118,5 +119,7 @@ egui::CentralPanel::default().show(ctx, |ui| {
   });
 });
 ```
+
+Run the app to see what it looks like: `cargo run -p quiz`.
 
 Next we're going to handle states and logic for our app.

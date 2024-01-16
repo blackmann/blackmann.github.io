@@ -9,6 +9,8 @@ I hope you had fun and feel accomplished. What are your impressions about the la
 
 ## What next?
 
+First, share your progress with me on Twitter [@_yogr](https://twitter.com/_yogr) or on [Discord](https://discord.gg/5CDnysz). I'm really interested in what you've done.
+
 Rust is a general purpose language. Meaning you can use it for a lot of things. Building UIs is one of them. Though, the GUI ecosystem is still figuring things out. This means you won't find mature libraries/frameworks like you would in other languages.
 
 If you'll like to be just fluent with language and have a handle on it, I suggest you pick up [Rustlings](https://github.com/rust-lang/rustlings). It's a collection of small exercises that will help you get familiar with the language.

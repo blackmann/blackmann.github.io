@@ -3,6 +3,7 @@ title: State and Logic
 pubDate: 10 Jan 2024
 index: 30
 time: 10
+related_commit: https://github.com/blackmann/learn-rust/commit/98fe74e6094ac96228fbeb22b77a4474dd4eaff4
 ---
 
 import Fold from '../../../components/Fold.tsx'
@@ -22,6 +23,14 @@ struct App {
 }
 ```
 
+You'll get an error: `struct 'Quiz' is private`. What we need to do is add `pub` to the `Quiz` struct in `quiz.rs`:
+
+```rust
+pub struct Quiz {
+  // ...
+}
+```
+
 And we'll have to update our `App::new` function:
 
 ```rust
@@ -35,9 +44,11 @@ impl App {
 
 `::sample()` is not implemented for `quiz::Quiz`. Want to give it a try?
 
+The following is an implementation of the `sample` function:
+
 ```rust
 impl Quiz {
-  fn sample() -> Self {
+  pub fn sample() -> Self {
     Self {
       // Notice how we create a vector! This is a macro that
       // helps us create a vector with less code. Read on macros 🤷🏽‍♂️
@@ -57,9 +68,12 @@ impl Quiz {
           answer: false,
           user_answer: None
         },
-      ]
+      ],
+      current_index: 0
     }
   }
+
+  // ...
 }
 ```
 
@@ -73,7 +87,7 @@ class Quiz {
 }
 ```
 
-This same format is used for _constructors_. In Rust, constructors are just static functions that return a new instance of the struct. Conventionally, you can call your constructor `new`.
+This same format (ie, static functions) is used for _constructors_. In Rust, constructors are just static functions that return a new instance of the struct. Conventionally, you can call your constructor `new`.
 
 ```rust
 impl Quiz {
@@ -94,7 +108,7 @@ impl eframe::app::App for App {
   fn update(&mut self, ctx: &egui::CtxRef, frame: &mut eframe::epi::Frame<'_>) {
     egui::CentralPanel::default().show(ctx, |ui| {
       let current_index = self.quiz.current_index + 1;
-      let count = self.quiz.questions.len()
+      let count = self.quiz.questions.len();
 
       // welcome to string formatting in Rust
       ui.label(format!("{current_index}/{count}"));
@@ -107,6 +121,14 @@ impl eframe::app::App for App {
   }
 }
 ```
+
+Adding this piece of code will introduce a number of errors in the format:
+
+```
+field `current_index` of `Quiz` is private: rust-analyzer (E0616)
+```
+
+Add `pub` to these fields, methods or structs to make them accessible to the `main` module.
 
 Let's move on to add the buttons:
 
@@ -140,3 +162,7 @@ Here's your exercise:
 
 1. Implement the next and previous buttons. The question number and text should update accordingly.
 2. On the same row as True/False buttons, show a label only if the user has answered the question. The label should say whether the user got the question right or wrong. "Correct" or "Wrong" is fine.
+
+⚠️ Remember that your next button will only work when you answer the current question. So click True/False first.
+
+Let's rearrange our UI next.

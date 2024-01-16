@@ -3,6 +3,7 @@ title: Layouting
 pubDate: 10 Jan 2024
 index: 35
 time: 7
+related_commit: https://github.com/blackmann/learn-rust/commit/5344efaed4288942ef1be0c1f399b1cdbddfdaee
 ---
 
 import Fold from '../../../components/Fold.tsx'
@@ -14,12 +15,12 @@ If you remember, from our [design](design-app), we need to restrict the width an
 
 ```rust
 fn main() -> Result<(), eframe::Error> {
-    let viewport = ViewportBuilder::default().with_inner_size(egui::Vec2::new(300.0, 400.0));
+    let viewport = egui::ViewportBuilder::default().with_inner_size(egui::Vec2::new(300.0, 400.0));
 
     let options = eframe::NativeOptions{
       viewport,
       // This is a common pattern in Rust. See below
-      ..Default::default(),
+      ..Default::default()
     };
 
     eframe::run_native("Queeez", options, Box::new(|ctx| Box::new(App::new())))
@@ -56,7 +57,7 @@ Replace the part of the code that renders the next and previous buttons with the
 ```rust
 ui.columns(2, |columns| {
   columns[0].allocate_ui_with_layout(
-    Vec2 { x: 120.0, y: 40.0 },
+    egui::Vec2 { x: 120.0, y: 40.0 },
     egui::Layout::left_to_right(egui::Align::Center),
     |ui| {
       if ui.button("previous").clicked() {
@@ -66,7 +67,7 @@ ui.columns(2, |columns| {
   );
 
   columns[1].allocate_ui_with_layout(
-    Vec2 { x: 120.0, y: 40.0 },
+    egui::Vec2 { x: 120.0, y: 40.0 },
     egui::Layout::right_to_left(egui::Align::Center),
     |ui| {
       if ui.button("next").clicked() {

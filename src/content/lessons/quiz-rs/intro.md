@@ -9,8 +9,6 @@ This is a quick course to show you that Rust is just a beautiful language and af
 
 You've come to the right place. This course does not require you to have used Rust before. However, you should have programmed in another language — any language.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FQB39LMr1e8?si=v64vPu_NEqx7NmA6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg w-full"></iframe>
-
 ## The language
 
 Rust is a statically typed language. A lot of us have grown to like types so this shouldn't be a problem. If you come from a dynamically typed language like Javascript, Python, Ruby, etc. and don't know what **static typing** means, this is a quick explanation: https://stackoverflow.com/a/1517670/4803261
@@ -39,6 +37,8 @@ This is purely a suggestion. However, you should feel free to use whatever metho
   Doing this allows your brain to use knowledge instead of _instructions_.
 
 - If you don't understand anything, don't be hard on yourself. Do some light reading. Perhaps, use ChatGPT to get a summary. Deep understanding will come with repetition/time.
+
+Each lesson comes with a related commit which you can use to compare with your progress.
 
 ## No spoonfeeding
 

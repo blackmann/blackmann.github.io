@@ -10,6 +10,7 @@ const lessons = defineCollection({
     tags: z.array(z.string()).optional(),
     index: z.number(),
     time: z.number(),
+    related_commit: z.string().optional(),
   }),
 })
 
