@@ -42,4 +42,4 @@ This is purely a suggestion. However, you should feel free to use whatever metho
 
 ## No spoonfeeding
 
-The course is designed to be fairly challenging so it feels worth the effort. So in some cases, you'll have to figure things on your own. If you're stuck, you can ask for help in this [Discord server](https://https://discord.gg/5CDnysz).
+The course is designed to be fairly challenging so it feels worth the effort. So in some cases, you'll have to figure things on your own. If you're stuck, you can ask for help in this [Discord server](https://https://discord.gg/5CDnysz) or reference the related commit which will be linked at the end of each lesson.
