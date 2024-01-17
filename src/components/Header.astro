@@ -14,13 +14,16 @@ import NavLink from './NavLink.astro'
 
     <NavLink href="/blog">Blog</NavLink>
 
-    <NavLink href="/courses">Courses</NavLink>
+    <NavLink class="relative" href="/courses">
+      Courses <div class="absolute -top-2 right-0">
+        <small class="inline-block size-2 rounded-md bg-pink-500 text-white">
+        </small>
+      </div>
+    </NavLink>
 
     <NavLink href="/about">About</NavLink>
 
-    <NavLink
-      href="https://twitter.com/_yogr"
-      target="_blank">
+    <NavLink href="https://twitter.com/_yogr" target="_blank">
       <span class="i-lucide-twitter" title="Twitter"></span>
     </NavLink>
 

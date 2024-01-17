@@ -95,7 +95,7 @@ const { Content } = await content.render()
                 href={content.data.related_commit}
                 target="_blank"
                 class="col-span-1 flex gap-2 rounded-lg border border-zinc-200 px-2 py-1 no-underline hover:bg-zinc-200 dark:border-neutral-700 dark:hover:bg-neutral-800">
-                <span class="i-lucide-github mt-1" title="Github" />
+                <span class="i-lucide-github mt-1 size-4" title="Github" />
 
                 <div>
                   <header>
@@ -108,7 +108,7 @@ const { Content } = await content.render()
                     {content.data.related_commit
                       .split('/')
                       .pop()
-                      ?.substring(18)}
+                      ?.substring(26)}
                   </div>
                 </div>
               </a>

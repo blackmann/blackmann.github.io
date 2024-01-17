@@ -2,5 +2,5 @@
   "title": "Introduction to Rust 🦀 with egui",
   "description": "Build a GUI quiz app while learning the fundamentals of Rust.",
   "meta": "No prior knowledge of Rust required but basic programming experience.",
-  "tags": ["basic"]
+  "tags": ["basics"]
 }

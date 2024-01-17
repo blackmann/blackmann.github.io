@@ -38,7 +38,7 @@ This is purely a suggestion. However, you should feel free to use whatever metho
 
 - If you don't understand anything, don't be hard on yourself. Do some light reading. Perhaps, use ChatGPT to get a summary. Deep understanding will come with repetition/time.
 
-Each lesson comes with a related commit which you can use to compare with your progress.
+❇️ Each lesson comes with a related commit which you can use to compare with your progress.
 
 ## No spoonfeeding
 
