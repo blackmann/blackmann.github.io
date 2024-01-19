@@ -10,7 +10,7 @@ related_commit: https://github.com/blackmann/learn-rust/commit/f14820ed7ba18f999
 
 Create a directory to keep our project. Since we're learning Rust, I propose we create a workspace[^1] so we can put all learning projects in there.
 
-[^1]: Read about cargo workspaces [here](TODO:)
+[^1]: Read about cargo workspaces [here](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html)
 
 Note that we don't need to use workspaces. This is just anticipating future exercises you do — so you don't clutter your file system with lots of folders. Let's go.
 
