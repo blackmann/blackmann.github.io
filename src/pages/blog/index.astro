@@ -1,11 +1,8 @@
 ---
-import BaseHead from '../../components/BaseHead.astro'
-import Header from '../../components/Header.astro'
-import Footer from '../../components/Footer.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts'
 import { getCollection } from 'astro:content'
 import shortenDate from '../../lib/shorten-date'
 import ContentList from '../../components/ContentList.astro'
+import Shell from '../../layouts/Shell.astro'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -19,29 +16,18 @@ const postsList = posts.map((post) => ({
 }))
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
+<Shell title="Blog" description="My own words, shaped by my experience.">
+  <main class="container mx-auto mt-[8rem] min-h-[60vh]">
+    <div class="font-bold">{posts.length} posts published</div>
 
-  <body>
-    <Header />
+    <p class="text-secondary max-w-[480px]">
+      These are my own words. Shaped by my own experiences. If you find
+      something confusing, wrong or misleading, please let me know. If you find
+      anything helpful, please consider sharing to your friends.
+    </p>
 
-    <main class="container mx-auto mt-[8rem] min-h-[60vh]">
-      <div class="font-bold">{posts.length} posts published</div>
-
-      <p class="max-w-[480px] text-secondary">
-        These are my own words. Shaped by my own experiences. If you find
-        something confusing, wrong or misleading, please let me know. If you
-        find anything helpful, please consider sharing to your friends.
-      </p>
-
-      <section class="mt-[5rem]">
-        <ContentList items={postsList} />
-      </section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+    <section class="mt-[5rem]">
+      <ContentList items={postsList} />
+    </section>
+  </main>
+</Shell>

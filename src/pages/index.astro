@@ -1,7 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
 import Link from '../components/Link.astro'
 import { SITE_DESCRIPTION } from '../consts'
 import developerTools from '../lib/developer-tools'
@@ -9,6 +6,7 @@ import featuredLinks from '../lib/featured-links'
 import { getCollection } from 'astro:content'
 import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
+import Shell from '../layouts/Shell.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -21,111 +19,102 @@ const postsList = posts.slice(0, 6).map((post) => ({
 }))
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title="Hi 👋🏽" description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
+<Shell title="Hi 👋🏽" description={SITE_DESCRIPTION}>
+  <main class="container mx-auto mt-[8rem]">
+    <abbr
+      title="Twi language: means Welcome"
+      class="rounded-lg bg-pink-100 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
+      <span class="material-symbols-rounded !text-sm">handshake</span> Akwaaba
+    </abbr>
+    <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
 
-    <main class="container mx-auto mt-[8rem]">
-      <abbr
-        title="Twi language: means Welcome"
-        class="rounded-lg bg-pink-100 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
-        <span class="material-symbols-rounded !text-sm">handshake</span> Akwaaba
-      </abbr>
-      <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
+    <p class="mt-8 max-w-[480px]">
+      It's me De-Great; or call me GR. I am a creative trying every and anything
+      that spikes my interest. 3D, code, music, drawing, writing?
+    </p>
 
-      <p class="mt-8 max-w-[480px]">
-        It's me De-Great; or call me GR. I am a creative trying every and
-        anything that spikes my interest. 3D, code, music, drawing, writing?
-      </p>
+    <p class="max-w-[480px]">
+      On this site, you'll find a few things I want you to know <span
+        class="text-secondary">
+        <a href="about">about me</a> or <a href="projects">
+          stuff I'm working on
+        </a>
+      </span>. If you want to know more and keep up, try following my socials or
+      join my <a class="font-medium" href="https://discord.gg/5CDnysz">
+        Discord
+      </a> server.
+    </p>
 
-      <p class="max-w-[480px]">
-        On this site, you'll find a few things I want you to know <span
-          class="text-secondary">
-          <a href="about">about me</a> or <a href="projects">
-            stuff I'm working on
+    <p>🇬🇭</p>
+
+    <h2 class="mb-4 mt-[8rem] font-bold">Featured</h2>
+
+    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
+      {
+        featuredLinks.map((link) => (
+          <div class="col-span-1">
+            <div class="card !pb-0">
+              <h3 class="font-bold">{link.title}</h3>
+              <p class="text-secondary">{link.description}</p>
+              <Link
+                className="font-medium mb-2 inline-block"
+                href={`https://${link.link}`}>
+                {link.link}
+              </Link>
+
+              {link.featureImage && (
+                <div
+                  class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
+                  role="img"
+                  aria-label={link.title}>
+                  <link.featureImage />
+                </div>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-1 lg:col-span-2">
+        <h2 class="mb-4 font-bold">Recent posts</h2>
+
+        <ContentList noTransition items={postsList.slice(0, 6)} />
+
+        <div class="text-secondary mt-5">
+          See all posts <a
+            class="text-zinc-800 dark:text-neutral-200"
+            href="/blog">
+            here
           </a>
-        </span>. If you want to know more and keep up, try following my socials
-        or join my <a class="font-medium" href="https://discord.gg/5CDnysz">
-          Discord
-        </a> server.
-      </p>
+        </div>
+      </div>
+    </section>
 
-      <p>🇬🇭</p>
-
-      <h2 class="mb-4 mt-[8rem] font-bold">Featured</h2>
+    <section class="mt-[8rem]">
+      <h2 class="mb-4 font-bold">Developer packages</h2>
 
       <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
         {
-          featuredLinks.map((link) => (
-            <div class="col-span-1">
-              <div class="card !pb-0">
-                <h3 class="font-bold">{link.title}</h3>
-                <p class="text-secondary">{link.description}</p>
-                <Link
-                  className="font-medium mb-2 inline-block"
-                  href={`https://${link.link}`}>
-                  {link.link}
-                </Link>
+          developerTools.map((pkg) => (
+            <div class="col-md-4">
+              <div class="card">
+                <h3 class="mb-3 font-bold">{pkg.title}</h3>
+                <div class="text-secondary mb-2">{pkg.description}</div>
 
-                {link.featureImage && (
-                  <div
-                    class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
-                    role="img"
-                    aria-label={link.title}>
-                    <link.featureImage />
-                  </div>
-                )}
+                <a class="font-medium" href={pkg.link}>
+                  {pkg.link}
+                </a>
               </div>
             </div>
           ))
         }
       </div>
 
-      <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
-        <div class="col-span-1 lg:col-span-2">
-          <h2 class="mb-4 font-bold">Recent posts</h2>
-
-          <ContentList noTransition items={postsList.slice(0, 6)} />
-
-          <div class="text-secondary mt-5">
-            See all posts <a
-              class="text-zinc-800 dark:text-neutral-200"
-              href="/blog">
-              here
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="mt-[8rem]">
-        <h2 class="mb-4 font-bold">Developer packages</h2>
-
-        <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
-          {
-            developerTools.map((pkg) => (
-              <div class="col-md-4">
-                <div class="card">
-                  <h3 class="mb-3 font-bold">{pkg.title}</h3>
-                  <div class="text-secondary mb-2">{pkg.description}</div>
-
-                  <a class="font-medium" href={pkg.link}>
-                    {pkg.link}
-                  </a>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-
-        <div class="text-secondary mt-5">
-          Check out more projects <a href="/projects">here</a>
-        </div>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+      <div class="text-secondary mt-5">
+        Check out more projects <a href="/projects">here</a>
+      </div>
+    </section>
+  </main>
+</Shell>

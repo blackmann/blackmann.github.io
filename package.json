@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/mdx": "^2.0.5",
     "@astrojs/react": "^3.0.9",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.4",
@@ -20,13 +20,14 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@unocss/preset-icons": "^0.58.3",
-    "astro": "^4.1.1",
+    "astro": "^4.2.0",
     "clsx": "^2.1.0",
     "markdown-it": "^13.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize-html": "^2.11.0",
     "satori": "^0.10.11",
+    "shikiji-transformers": "^0.10.0-beta.8",
     "tailwindcss": "^3.4.0",
     "typewriter-effect": "^2.21.0"
   },

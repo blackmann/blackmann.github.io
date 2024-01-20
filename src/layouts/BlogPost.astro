@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro'
 import FormattedDate from '../components/FormattedDate.astro'
 import type { MarkdownHeading } from 'astro'
 import DotLocalAd from '../components/DotLocalAd.astro'
+import Loader from '../components/Loader.astro'
 
 type Props = CollectionEntry<'blog'> & {
   headings: MarkdownHeading[]
@@ -25,6 +26,7 @@ const headings = headingsRaw.filter(
   </head>
 
   <body>
+    <Loader />
     <Header />
 
     <main class="container mt-[8rem] scroll-smooth">

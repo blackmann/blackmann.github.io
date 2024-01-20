@@ -1,0 +1,34 @@
+<div
+  class="loader sticky left-0 top-0 h-1 bg-blue-500 transition-[width] duration-200"
+  style="width: 0%;">
+</div>
+
+<script>
+  let interval: ReturnType<typeof setInterval>
+
+  function getLoaderEl() {
+    return document.querySelector('.loader') as HTMLElement
+  }
+
+  document.addEventListener('astro:before-preparation', (e) => {
+    const loader = getLoaderEl()
+
+    loader.style.width = '15%'
+    interval = setInterval(() => {
+      const previous = parseInt(loader.style.width)
+
+      if (previous >= 80) {
+        clearInterval(interval)
+        return
+      }
+
+      loader.style.width = `${previous + 2}%`
+    }, 800)
+  })
+
+  document.addEventListener('astro:after-preparation', () => {
+    clearInterval(interval)
+    const loader = getLoaderEl()
+    loader.style.width = '100%'
+  })
+</script>
