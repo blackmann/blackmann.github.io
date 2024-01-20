@@ -123,7 +123,7 @@ impl Quiz {
 
   // &mut means mutable reference
   fn next_question(&mut self) -> &Question {
-    let count = self.questions.len() - 1; // [!code --]
+    let count = self.questions.len() - 1;
     if self.current_question().is_answered() && self.current_index < count {
       self.current_index += 1;
     }
