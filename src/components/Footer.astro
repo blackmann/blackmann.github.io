@@ -11,12 +11,14 @@ const today = new Date()
       </div>
 
       <div class="text-secondary ms-4 font-mono text-xs">
-        version <span class="text-green-600 bg-green-400 bg-opacity-10">{today.getFullYear()}</span>.{
-          today.getMonth() + 1
-        }.{today.getDate().toString().padStart(2, '0')}/1
+        version <span class="bg-green-400 bg-opacity-10 text-green-600">
+          {today.getFullYear()}
+        </span>.{today.getMonth() + 1}.{
+          today.getDate().toString().padStart(2, '0')
+        }/1
       </div>
 
-      <div class="!text-xs font-mono">
+      <div class="font-mono !text-xs">
         <div class="text-secondary ms-4">Astro x Github Pages</div>
 
         <div class="text-secondary ms-4">
@@ -31,25 +33,19 @@ const today = new Date()
         <a
           class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 font-medium no-underline dark:bg-neutral-800"
           href="/cool-stuff">
-          <span class="material-symbols-rounded text-secondary !text-sm">
-            stadia_controller
-          </span>
+          <span class="i-lucide-gamepad-2 text-secondary !text-sm"></span>
           Cool stuff
         </a>
         <a
           class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 font-medium no-underline dark:bg-neutral-800"
           href="/candies">
-          <span class="material-symbols-rounded text-secondary !text-sm">
-            cake
-          </span>
+          <span class="i-lucide-candy-cane text-secondary !text-sm"></span>
           Candies 🍬
         </a>
         <a
           class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 font-medium no-underline dark:bg-neutral-800"
           href="/jpegs">
-          <span class="material-symbols-rounded text-secondary !text-sm">
-            photo_prints
-          </span>
+          <span class="i-lucide-book-image text-secondary !text-sm"></span>
           JPEGs
         </a>
       </div>

@@ -12,7 +12,7 @@ function Fold({ children, subtitle, title }: Props) {
   return (
     <div
       className={clsx(
-        'dark:(bg-neutral-900 border-neutral-700) group rounded-lg border border-zinc-200 bg-zinc-50 mt-2',
+        'dark:(bg-neutral-900 border-neutral-700) group mt-2 rounded-lg border border-zinc-200 bg-zinc-50',
         {
           expanded,
         },
@@ -22,9 +22,7 @@ function Fold({ children, subtitle, title }: Props) {
         onClick={() => setExpanded(!expanded)}>
         <div>
           <div className="flex size-8 -rotate-90 select-none items-center justify-center rounded-full transition-[background] duration-200 group-hover:bg-zinc-200 group-[.expanded]:rotate-0 dark:group-hover:bg-neutral-700">
-            <span className="material-symbols-rounded text-secondary">
-              expand_more
-            </span>
+            <span className="i-lucide-chevron-down text-secondary"></span>
           </div>
         </div>
         <div>
@@ -33,7 +31,9 @@ function Fold({ children, subtitle, title }: Props) {
         </div>
       </header>
 
-      <div className="hidden pb-4 px-4 pt-0 group-[.expanded]:block">{children}</div>
+      <div className="hidden px-4 pb-4 pt-0 group-[.expanded]:block">
+        {children}
+      </div>
     </div>
   )
 }

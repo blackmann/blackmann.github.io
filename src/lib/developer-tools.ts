@@ -8,7 +8,7 @@ const developerTools = [
   {
     title: 'Many Things',
     description:
-      'Track tasks you need to work on and quickly list ideas right from the the menu bar.',
+      'Track tasks you need to work on and quickly list ideas right from the menu bar.',
     link: 'https://github.com/blackmann/ManyThings'
   },
   {

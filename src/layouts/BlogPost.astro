@@ -22,7 +22,11 @@ const headings = headingsRaw.filter(
 
 <html lang="en">
   <head>
-    <BaseHead image={`/og/${slug}.png`} title={title} description={description!} />
+    <BaseHead
+      image={`/og/${slug}.png`}
+      title={title}
+      description={description!}
+    />
   </head>
 
   <body>
@@ -63,10 +67,8 @@ const headings = headingsRaw.filter(
               {
                 headings.length > 1 && (
                   <div class="rounded-lg bg-zinc-200 bg-opacity-40 p-2 dark:bg-neutral-800">
-                    <header class="mb-2 flex gap-2 rounded-lg bg-zinc-200 p-1 font-bold dark:bg-neutral-700">
-                      <span class="material-symbols-rounded">
-                        directions_walk
-                      </span>
+                    <header class="mb-2 flex gap-2 rounded-lg bg-zinc-200 p-1 font-bold dark:bg-neutral-700 items-center">
+                      <span class="i-lucide-split-square-vertical text-secondary" />
                       Jump to
                     </header>
 

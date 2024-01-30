@@ -100,9 +100,7 @@ const { Content } = await content.render()
                 <div>
                   <header class="font-medium">
                     Related commit{' '}
-                    <span class="material-symbols-rounded !text-sm">
-                      open_in_new
-                    </span>{' '}
+                    <div class="i-lucide-external-link inline-block !text-sm" />
                   </header>
                   <div class="text-secondary line-clamp-1">
                     {content.data.related_commit
@@ -126,11 +124,7 @@ const { Content } = await content.render()
                     <div class="font-medium">{next.data.title}</div>
                   </div>
 
-                  <div>
-                    <span class="material-symbols-rounded text-secondary -mt-1 !text-lg transition-transform group-hover:translate-x-2">
-                      arrow_forward
-                    </span>
-                  </div>
+                  <div class="i-lucide-arrow-right text-secondary -mt-1 !text-lg transition-transform group-hover:translate-x-2 mt-1" />
                 </a>
               </div>
             )

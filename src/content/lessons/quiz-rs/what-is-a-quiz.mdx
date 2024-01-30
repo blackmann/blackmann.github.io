@@ -115,8 +115,9 @@ The following is a concrete implementation of the methods. You can compare with 
 
 impl Quiz {
   // Here we return a reference to the current question
-  // else we'll be make a `move` which the compile will complain
+  // else we'll be making a `move` which the compiler will complain
   // about.
+  // Try to remove the `&` on this line and the next and see what happens.
   fn current_question(&self) -> &Question {
     &self.questions[self.current_index]
   }

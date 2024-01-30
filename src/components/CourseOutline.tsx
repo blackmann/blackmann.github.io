@@ -22,8 +22,7 @@ function CourseOutline({
         className="text-secondary mx-2 mb-1 flex cursor-pointer items-center justify-between font-medium lg:pointer-events-none"
         onClick={() => setExpanded(!expanded)}>
         <div className="flex items-center gap-2">
-          <span className="material-symbols-rounded !text-sm">menu</span>{' '}
-          Outline
+          <div className="i-lucide-list-tree">menu</div> Outline
           <span className="rounded-lg bg-zinc-200 px-1 py-0.5 text-xs dark:bg-neutral-800">
             {Math.floor(progress)}%
           </span>
@@ -32,9 +31,10 @@ function CourseOutline({
           </span> */}
         </div>
 
-        <span className="material-symbols-rounded !lg:hidden">
-          {expanded ? 'expand_less' : 'expand_more'}
-        </span>
+        <div
+          className={clsx('i-lucide-chevron-down !lg:hidden', {
+            '!i-lucide-chevron-up': expanded,
+          })}></div>
       </header>
 
       <div className="mx-2 mb-2">

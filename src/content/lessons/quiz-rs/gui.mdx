@@ -39,6 +39,7 @@ In `quiz/src`, replace the `main` function with the following:
 
 ```rust
 fn main() -> Result<(), eframe::Error> {
+    println!("Hello, world!"); // [!code --]
     let options = eframe::NativeOptions::default();
     eframe::run_native("Queeez", options, Box::new(|ctx| Box::new(App::new())))
 }

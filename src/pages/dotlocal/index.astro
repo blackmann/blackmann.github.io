@@ -5,43 +5,40 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
 
 <Shell
   title="DotLocal - Easily create .local domains for your web projects"
-  description="Easily create .local domains for your web projects"
->
+  description="Easily create .local domains for your web projects">
   <section>
     <div class="container py-12">
       <div class="mb-8 text-center">
         <span
-          class="text-secondary inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm"
-          ><span class="me-2 inline-block h-3 w-3 rounded-full bg-red-400"
-          ></span> Not a <code class="text-slate-700">/etc/hosts</code> editor!</span
-        >
+          class="text-secondary inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm">
+          <span class="me-2 inline-block h-3 w-3 rounded-full bg-red-400">
+          </span> Not a <code class="text-slate-700">/etc/hosts</code> editor!
+        </span>
       </div>
       <h1
-        class="mx-auto max-w-xl text-center text-4xl font-bold text-slate-700"
-      >
-        Mirror your production <span class="text-blue-500">domains</span> on
-        your <span class="text-slate-400">.local</span> machine
+        class="mx-auto max-w-xl text-center text-4xl font-bold text-slate-700">
+        Mirror your production <span class="text-blue-500">domains</span> on your
+        <span class="text-slate-400">.local</span> machine
       </h1>
 
       <p
-        class="mx-auto my-6 max-w-xl text-center text-xl font-light text-slate-500"
-      >
+        class="mx-auto my-6 max-w-xl text-center text-xl font-light text-slate-500">
         Comes with automatic HTTPS redirect and certificates. Supports <a
           class="cursor-help underline decoration-dotted"
-          href="#path-proxies">proxies on paths.</a
-        >
+          href="#path-proxies">
+          proxies on paths.
+        </a>
       </p>
 
       <div class="flex justify-center">
         <div
-          class="inline-flex gap-4 rounded-md bg-slate-600 p-3 py-2 font-mono text-sm text-slate-100"
-        >
+          class="inline-flex gap-4 rounded-md bg-slate-600 p-3 py-2 font-mono text-sm text-slate-100">
           <div class="flex-1">
             <div>
               <span class="select-none text-slate-400">$</span>{' '}
               <span class="text-pink-300">brew</span>{' '}
               <span class="text-slate-300">install</span>
-               blackmann/brew/dotlocal
+              blackmann/brew/dotlocal
             </div>
 
             <div>
@@ -52,10 +49,8 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
           </div>
           <div>
             <button
-              class="material-symbols-rounded text-slate-400 hover:text-slate-300"
-              id="copy-command"
-            >
-              content_copy
+              class="i-lucide-copy text-slate-400 hover:text-slate-300"
+              id="copy-command">
             </button>
           </div>
         </div>
@@ -76,15 +71,15 @@ import Shell from '../../layouts/dotlocal/Shell.astro'
     <div class="container py-[5rem]">
       <div class="mb-4 text-center">
         <span
-          class="inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm font-medium text-green-800"
-          ><span class="me-2 inline-block h-3 w-3 rounded-full bg-green-400"
-          ></span> Watch a quick demo.</span
-        >
+          class="inline-flex items-center gap-1 rounded-full border border-slate-300 px-4 py-1 text-sm font-medium text-green-800">
+          <span class="me-2 inline-block h-3 w-3 rounded-full bg-green-400">
+          </span> Watch a quick demo.
+        </span>
       </div>
       <h2 class="mb-8 text-center text-3xl font-bold">
-        Reasons you'll want a <span class="text-blue-500"
-          ><span class="text-slate-400" id="examples"></span>.local</span
-        >
+        Reasons you'll want a <span class="text-blue-500">
+          <span class="text-slate-400" id="examples"></span>.local
+        </span>
       </h2>
 
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
