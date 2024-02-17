@@ -12,12 +12,6 @@
 	font-family: "Dosis", sans-serif;
 	font-size: 16px;
 
-	/* font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%; */
-
 	--svg-outline: #d4d4d8;
 	--svg-foreground: #A2A1A1;
 	--svg-surface: white;
@@ -30,7 +24,6 @@
 		--svg-surface: #262626;
 	}
 }
-
 
 a {
 	@apply  underline break-words;
