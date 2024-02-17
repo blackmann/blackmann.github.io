@@ -70,7 +70,7 @@ async fn db_find(
 
 Simple right? That's all for `find` and we'll be able to query MongoDB from the frontend in any manner that MongoDB allows.
 
-## Fronted
+## Frontend
 
 A quick example to find all `user` accounts created today (from the frontend), will look like this:
 
