@@ -40,7 +40,7 @@ In a country/culture where there's no care for anything, do we expect more from 
 
 It takes people passionate about soccer to want to build a beautiful stadium, a beautiful league. It takes someone who cares about children to want to build/re-build a children park.
 
-Consequently, but not surprising to me, people who care about nothing will instintively find a blame. "But we have people who have been hired or voted for to do this or that!" But if you paid attention to anything I've read, these people you're demanding accountability from are just like you and the rest of us — they care about nothing. But you demand more because they're in position? Remember again: they're there for _what they'll eat_.
+Consequently, but not surprising to me, people who care about nothing will instinctively find a blame. "But we have people who have been hired or voted for to do this or that!" But if you paid attention to anything I've read, these people you're demanding accountability from are just like you and the rest of us — they care about nothing. But you demand more because they're in position? Remember again: they're there for _what they'll eat_.
 
 > Is it a children's park they'll eat? Is it a beautiful stadium they'll eat?
 
@@ -49,6 +49,8 @@ Consequently, but not surprising to me, people who care about nothing will insti
 When people hate their country/group, it's actually the fault of a few people — leadership. But people who end up in leadership are just a product of the rest of the people.
 
 When people love their country, it's also because of a few people. A simple example is Ghana Black Stars _of the old_. I remember as a kid when people will lift up the Ghana 🇬🇭 flag and put on souvenirs during African and World cups. It took a few players to be proud of Ghana.
+
+> What we get wrong here is that, we don't call these kind of people leaders. But they are!
 
 Shatta Wale got a feature with Beyonce for a soundtrack in Lion King (movie). It got Ghanaians proud.
 
@@ -66,4 +68,4 @@ Not only in music, Nigerians are doing well with their movie, tech, in fact, the
 
 This is not to say the people of Nigeria are not going through hardship. But these few people remind them to keep trying; to keep caring about something.
 
-What I ask of us as Ghanaians is that, if you will, there should be something you care about beyond what you'll eat.
+What I ask of us as Ghanaians is that, if you will, there should be something you care about beyond what you'll eat. This is the only form of leadership that brings actual change!
