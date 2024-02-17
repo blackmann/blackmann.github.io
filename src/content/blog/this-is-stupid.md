@@ -40,7 +40,7 @@ In a country/culture where there's no care for anything, do we expect more from 
 
 It takes people passionate about soccer to want to build a beautiful stadium, a beautiful league. It takes someone who cares about children to want to build/re-build a children park.
 
-Consequently, but not surprising to me, people who care about nothing will instinctively find a blame. "But we have people who have been hired or voted for to do this or that!" But if you paid attention to anything I've read, these people you're demanding accountability from are just like you and the rest of us — they care about nothing. But you demand more because they're in position? Remember again: they're there for _what they'll eat_.
+Consequently, but not surprising to me, people who care about nothing will instinctively find a blame. "But we have people who have been hired or voted for to do this or that!" But if you paid attention to anything I've just written, these people you're demanding accountability from are just like you and the rest of us — they care about nothing. But you demand more because they're in position? Remember again: they're there for _what they'll eat_.
 
 > Is it a children's park they'll eat? Is it a beautiful stadium they'll eat?
 
