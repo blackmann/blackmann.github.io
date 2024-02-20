@@ -6,7 +6,7 @@ pubDate: Feb 20 2024
 
 Around 2016, I met a _now_ friend on [DevCongress](http://www.devcongress.org)' slack. He needed help with a Java [Swing](https://docs.oracle.com/javase/tutorial/uiswing/start/index.html)[^1] application. At the time, I only knew how use Java for Android applications. It had just been a few months since I got into into Android development. But I picked up the challenge and decided to help him.
 
-[^1]: Not to be confused with Java [Sping](https://spring.io)
+[^1]: Not to be confused with Java [Spring](https://spring.io)
 
 Yes, we succeeded in getting that task done. I got a few euros as thanks.
 
