@@ -32,7 +32,7 @@ As you may already know, I have authored a number of opensource libraries and pr
 
 Basically, most of the introductions are in the form of knowing a particular library or framework. To generalize, people have tagged themselves with frameworks/tools sub a [programming] language. It has mostly felt weird to me when people respond that way. Weirder when I am asked to respond with my stack.
 
-Like I said earlier, stacks are meant for projects not people. To identity with a few stacks must mean:
+Like I said earlier, stacks are meant for projects not people. To identify with a few stacks must mean:
 
 1. There are actually lots of projects that require the exact stack or
 2. You aim to attract very few opportunities requiring that stack
