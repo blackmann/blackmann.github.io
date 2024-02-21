@@ -20,18 +20,16 @@ const { items, noTransition } = Astro.props
       <li class="[&+&]:border-t-1 border-t-zinc-200 dark:border-t-neutral-800 [&+&]:border-t">
         <a
           class="flex justify-between gap-2 px-2 py-2 no-underline"
-          href={item.link}
-        >
+          href={item.link}>
           <div class="flex-1 font-medium">
             <span
-              transition:name={noTransition ? '' : `page-title:${item.title}`}
-            >
+              transition:name={noTransition ? '' : `page-title:${item.title}`}>
               {item.title}
             </span>
             <ul class="inline-flex">
               {item.tags?.map((tag) => (
                 <li>
-                  <code class="rounded-md bg-zinc-200 px-2 dark:bg-neutral-800">
+                  <code class="rounded-md bg-zinc-200 px-1 font-normal dark:bg-neutral-800">
                     {tag}
                   </code>
                 </li>

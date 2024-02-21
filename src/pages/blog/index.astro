@@ -5,12 +5,12 @@ import ContentList from '../../components/ContentList.astro'
 import Shell from '../../layouts/Shell.astro'
 
 const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
 )
 
 const postsList = posts.map((post) => ({
   link: `/blog/${post.slug}`,
-  meta: shortenDate(post.data.pubDate),
+  meta: shortenDate(post.data.pubDate!),
   title: post.data.title,
   tags: post.data.tags,
 }))
