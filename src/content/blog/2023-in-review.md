@@ -116,7 +116,7 @@ See project here: https://github.com/blackmann/3e
 
 This is my biggest and active project. A low-code Javascript backend framework. I built this out of the frustration of the new [FeathersJS](https://https://feathersjs.com/) version (v5).
 
-FeathersJS v4 was a beautiful framework until v5 changed everything and made it stressful to add even one service. v4 required me to do very little. v5 required me to x5.
+FeathersJS v4 was a beautiful framework until v5 changed everything and made it stressful to add even one service. v4 required me to do very little. v5 required me to do x5.
 
 I needed to move away from it. So I built Mangobase which copies a lot of concepts from Feathers (v4) and includes UI to do low-code stuff.
 
