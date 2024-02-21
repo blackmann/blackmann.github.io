@@ -24,8 +24,24 @@ const { Content, headings } = await post.render()
 const dev = process.env.NODE_ENV !== 'production'
 ---
 
-<BlogPost headings={headings} previous={previous} {...post}>
+<BlogPost headings={headings} {...post}>
   <Content />
+
+  {
+    previous && (
+      <div class="mt-4">
+        <a
+          href={`/blog/${previous.slug}`}
+          class="mt-8 inline-block rounded-lg border border-zinc-300 px-2 py-1 no-underline transition-[background] duration-200 hover:border-zinc-400 dark:border-neutral-700 dark:hover:border-neutral-600">
+          <div class="text-secondary inline-flex items-center gap-2 font-mono text-sm">
+            <div class="i-lucide-book-text inline-block" /> Keep reading
+          </div>
+
+          <div class="ms-5.5 leading-none">{previous.data.title}</div>
+        </a>
+      </div>
+    )
+  }
 
   {
     !dev && (

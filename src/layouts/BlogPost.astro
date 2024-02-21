@@ -10,10 +10,9 @@ import Loader from '../components/Loader.astro'
 
 type Props = CollectionEntry<'blog'> & {
   headings: MarkdownHeading[]
-  previous?: CollectionEntry<'blog'>
 }
 
-const { headings: headingsRaw, data, slug, previous } = Astro.props
+const { headings: headingsRaw, data, slug } = Astro.props
 const { pubDate, tags, title, description } = data
 
 const headings = headingsRaw.filter(
@@ -46,7 +45,8 @@ const headings = headingsRaw.filter(
         <div class="mb-[4rem] text-zinc-500 dark:text-neutral-400">
           <ul class="ms-0 flex list-none gap-2">
             <li>
-              <div class="inline rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 font-mono text-sm">
+              <div
+                class="inline rounded-lg bg-zinc-200 px-2 font-mono text-sm dark:bg-neutral-800">
                 <FormattedDate date={pubDate} />
               </div>
             </li>
@@ -64,23 +64,6 @@ const headings = headingsRaw.filter(
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <div class="col-span-1 lg:col-span-3">
             <slot />
-
-            {
-              previous && (
-                <div class="mt-8">
-                  <a
-                    href={`/blog/${previous.slug}`}
-                    class="mt-8 inline-block rounded-lg border border-zinc-300 px-2 py-1 no-underline transition-[background] duration-200 hover:border-zinc-400 dark:border-neutral-700 dark:hover:border-neutral-600">
-                    <div class="text-secondary inline-flex items-center gap-2 font-mono text-sm">
-                      <div class="i-lucide-book-text inline-block" /> Keep
-                      reading
-                    </div>
-
-                    <div class="ms-5.5 leading-none">{previous.data.title}</div>
-                  </a>
-                </div>
-              )
-            }
           </div>
 
           <aside class="col-span-1 hidden lg:block">
