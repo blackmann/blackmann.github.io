@@ -9,12 +9,12 @@ import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
-  return b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
 })
 
 const postsList = posts.slice(0, 6).map((post) => ({
   link: `/blog/${post.slug}`,
-  meta: shortenDate(post.data.pubDate),
+  meta: shortenDate(post.data.pubDate!),
   title: post.data.title,
 }))
 ---
@@ -28,24 +28,50 @@ const postsList = posts.slice(0, 6).map((post) => ({
     </abbr>
     <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
 
-    <p class="mt-8 max-w-[480px]">
-      It's me De-Great; or call me GR. I am a creative trying every and anything
-      that spikes my interest. 3D, code, music, drawing, writing?
-    </p>
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+      <div class="col-span-1">
+        <p class="mt-8">
+          It's me De-Great; or call me GR. I am a creative trying every and
+          anything that spikes my interest. 3D, code, music, drawing, writing?
+        </p>
 
-    <p class="max-w-[480px]">
-      On this site, you'll find a few things I want you to know <span
-        class="text-secondary">
-        <a href="about">about me</a> or <a href="projects">
-          stuff I'm working on
-        </a>
-      </span>. If you want to know more and keep up, try following my socials or
-      join my <a class="font-medium" href="https://discord.gg/5CDnysz">
-        Discord
-      </a> server.
-    </p>
+        <p>
+          On this site, you'll find a few things I want you to know <span
+            class="text-secondary">
+            <a href="about">about me</a> or <a href="projects">
+              stuff I'm working on
+            </a>
+          </span>. If you want to know more and keep up, try following my
+          socials or join my <a
+            class="font-medium"
+            href="https://discord.gg/5CDnysz">
+            Discord
+          </a> server.
+        </p>
 
-    <p>🇬🇭</p>
+        <p>🇬🇭</p>
+      </div>
+
+      <div class="col-span-1 mt-8 lg:mt-0">
+        <div class="mx-auto w-[200px]">
+          <img
+            src="/01-pix-art.jpeg"
+            alt="art"
+            width="200"
+            class="image-render-pixel"
+          />
+          <div class="text-secondary mt-1 text-sm">
+            <div
+              class="inline-flex items-center gap-1 rounded-lg bg-zinc-200 px-2 font-medium dark:bg-neutral-800">
+              <div class="i-lucide-flower inline-block text-amber-500"></div> Art
+              of the day
+            </div>
+            <div class="ms-2">Hand-sketched with Pixaki on iPad</div>
+            <div class="ms-2 font-mono text-xs">23-02</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <h2 class="mb-4 mt-[8rem] font-bold">Featured</h2>
 
