@@ -231,3 +231,7 @@ article ol {
 	width: 100%;
 	height: auto;
 }
+
+.MafsView {
+	@apply rounded-lg mt-2;
+}

@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content'
+import shortenDate from '../../lib/shorten-date'
+import ContentList from '../../components/ContentList.astro'
+import Shell from '../../layouts/Shell.astro'
+
+const notes = (await getCollection('lesson-notes')).sort(
+  (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
+)
+
+const postsList = notes.map((post) => ({
+  link: `/lesson-notes/${post.slug}`,
+  meta: shortenDate(post.data.pubDate!),
+  title: post.data.title,
+  tags: post.data.tags,
+}))
+---
+
+<Shell
+  title="Lesson notes"
+  description="Sharing how I understand these topics in an attempt to master them.">
+  <main class="container mx-auto mt-[8rem] min-h-[60vh]">
+    <div class="font-bold">{notes.length} notes published</div>
+
+    <p class="text-secondary max-w-[480px]">
+      Here are my ways of understanding a topic. I thought writing them will
+      allow me to develop deeper understanding. Hopefully, other people will
+      find it useful too.
+    </p>
+
+    <section class="mt-[5rem]">
+      <ContentList items={postsList} />
+    </section>
+  </main>
+</Shell>

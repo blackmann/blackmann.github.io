@@ -1,0 +1,80 @@
+---
+title: "Inequalities involving fractions"
+description: "Why is it hard for people to understand others can be kind?"
+pubDate: "Feb 24, 2024"
+tags:
+  - calculus
+  - algebra
+---
+
+import { Sol1NumberLine } from '../../components/inequalities-involving-fractions.tsx'
+
+It's easy to solve inequalities like the following:
+
+$$
+\begin{split}
+ & -2x + 5 \leq 7 \newline
+ & \implies -2x \leq 7 - 5 \newline
+ & \implies -2x \leq 2 \newline
+ & \implies x \geq -1 \newline
+\end{split}
+$$
+
+We reverse the sign because $$x$$ coefficient was negative. If you substituted $$0$$ for $$x$$ into the equation, it holds. This is standard inequality exercise all of us can do. But while solving some examples, I was met with a sample below:
+
+$$
+\frac{x - 7}{x + 3} \gt 2
+$$
+
+If you went straight to treat this just like you would with equalities, you'll end up with the solution $$-13 \gt x$$. Which is wrong. If you substituted $$-14$$, for example, into the equation, you get $$1.9$$ which is not greater than 2.
+
+How do we solve this then? First, we need to understand that the denominator $$(x + 3)$$ cannot be $$0$$. From that understanding, it means our $$x$$ solution can be on either sides of $$-3$$ on the number line.
+
+> $$-3$$ because when $$x + 3 = 0$$, then $$x = -3$$. I hope that was clear.
+
+<Sol1NumberLine client:load />
+
+This means we have to solve twice; once for when $$x + 3 > 0$$ (ie, $$x > -3$$) and when $$x + 3 < 0$$ (ie, $$x < -3$$).
+
+When $$(x + 3) > 0$$
+
+$$
+\begin{split}
+ & \frac{x - 7}{x + 3} \gt 2\newline
+\implies &  x - 7 \gt 2(x + 3)\newline
+\implies &  x - 7 \gt 2x + 6\newline
+\implies &  -13 \gt x
+\end{split}
+$$
+
+But we already established that this is false. And also $$x < -13$$ contradicts $$x > -3$$.
+
+Now let's solve for when $$(x + 3) < 0$$. Because $$(x + 3)$$ is negative (ie, less than), we will flip the inequality. You can think of this as multiplying through by $$-1$$ (or $$\frac{1}{-1}$$).
+
+$$
+\begin{split}
+ & \frac{x - 7}{x + 3} \lt 2\newline
+\implies &  x - 7 \lt 2(x + 3)\newline
+\implies &  x - 7 \lt 2x + 6\newline
+\implies &  -13 \lt x
+\end{split}
+$$
+
+When we test with $$-12$$, the inequality should now hold. And $$x > -13$$ satisfies $$x < -3$$. That is if you listed numbers greater than $$-13$$, you'll find some that fall below $$-3$$. This means $$-13 < x < -3$$. If you test values in that range, you'll find that they satisfy the inequality.
+
+> If you're lost, you may need to take this slowly with a number of repetitions.
+
+Note that, you wouldn't always have your answers on only one partition on the number line. They could be on both.
+
+Some patterns I noticed while solving some examples are:
+
+1. When the solution contradicts the range defined by a direction, discard it; as seen with solving for when $$x + 3 > 0$$.
+
+1. If it satifies the range defined by the direction, keep it.
+    - The solution or the range may overlap each other. You should keep the only one that covers both. For example, say in the direction of $$x < 3$$, you got $$x < 10$$. Notice here that all values below $$10$$ also fall under $$3$$. So we keep just $$x < 3$$ as our solution.
+
+      Try this:
+
+    $$
+    \frac{x + 4}{x - 3} < 2
+    $$

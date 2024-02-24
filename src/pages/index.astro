@@ -57,7 +57,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <img
             src="/01-pix-art.jpeg"
             alt="art"
-            width="200"
+            width="180"
             class="image-render-pixel"
           />
           <div class="text-secondary mt-1 text-sm">
@@ -81,7 +81,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
       {
         featuredLinks.map((link) => (
           <div class="col-span-1">
-            <div class="card !pb-0 !max-md:px-2 !max-md:pt-2">
+            <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
               <h3 class="font-bold">{link.title}</h3>
               <p class="text-secondary">{link.description}</p>
               <div class="pb-2">
@@ -121,13 +121,24 @@ const postsList = posts.slice(0, 6).map((post) => ({
       </div>
     </section>
 
-    <section class="mt-[8rem]">
+    <section class="mt-[4rem]">
+      <div>
+        <a
+          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 py-0.8 font-medium no-underline border-2 border-dashed hover:border-solid border-zinc-300"
+          href="/lesson-notes">
+          <div class="i-lucide-sigma-square inline-block opacity-50"></div>
+          Lesson notes
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-[4rem]">
       <h2 class="mb-4 flex items-center gap-2 font-bold">
         <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer
         Packages
       </h2>
 
-      <div class="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3">
+      <div class="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4">
         {
           developerTools.map((pkg) => (
             <div class="col-md-4">
