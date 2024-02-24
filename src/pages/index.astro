@@ -23,7 +23,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
   <main class="container mx-auto mt-[8rem]">
     <abbr
       title="Twi language: means Welcome"
-      class="rounded-lg bg-pink-100 border border-pink-200 dark:border-green-800 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
+      class="rounded-lg border border-pink-200 bg-pink-100 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:border-green-800 dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
       <div class="i-lucide-hand-metal inline-block !text-sm"></div> Akwaaba
     </abbr>
     <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
@@ -62,7 +62,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           />
           <div class="text-secondary mt-1 text-sm">
             <div
-              class="inline-flex items-center gap-1 rounded-lg border border-zinc-300 dark:border-neutral-700 bg-zinc-200 px-2 font-medium dark:bg-neutral-800">
+              class="inline-flex items-center gap-1 rounded-lg border border-zinc-300 bg-zinc-200 px-2 font-medium dark:border-neutral-700 dark:bg-neutral-800">
               <div class="i-lucide-flower inline-block text-amber-500"></div> Art
               of the day
             </div>
@@ -77,18 +77,18 @@ const postsList = posts.slice(0, 6).map((post) => ({
       <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
     </h2>
 
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+    <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:gap-4">
       {
         featuredLinks.map((link) => (
           <div class="col-span-1">
-            <div class="card !pb-0 max-md:mx-auto">
+            <div class="card !pb-0 !max-md:px-2 !max-md:pt-2">
               <h3 class="font-bold">{link.title}</h3>
               <p class="text-secondary">{link.description}</p>
-              <Link
-                className="font-medium mb-2 inline-block"
-                href={`https://${link.link}`}>
-                {link.link}
-              </Link>
+              <div class="pb-2">
+                <Link className="font-medium" href={`https://${link.link}`}>
+                  <span class="whitespace-pre-wrap">{link.link}</span>
+                </Link>
+              </div>
 
               {link.featureImage && (
                 <div
@@ -122,20 +122,21 @@ const postsList = posts.slice(0, 6).map((post) => ({
     </section>
 
     <section class="mt-[8rem]">
-      <h2 class="mb-4 font-bold flex gap-2 items-center">
-        <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer Packages
+      <h2 class="mb-4 flex items-center gap-2 font-bold">
+        <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer
+        Packages
       </h2>
 
-      <div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3">
+      <div class="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3">
         {
           developerTools.map((pkg) => (
             <div class="col-md-4">
-              <div class="card">
+              <div class="card !max-md:px-2 !max-md:pt-2">
                 <h3 class="mb-3 font-bold">{pkg.title}</h3>
                 <div class="text-secondary mb-2">{pkg.description}</div>
 
                 <a class="font-medium" href={pkg.link}>
-                  {pkg.link}
+                  <span class="whitespace-pre-wrap">{pkg.link}</span>
                 </a>
               </div>
             </div>
