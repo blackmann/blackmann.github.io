@@ -29,6 +29,14 @@ a {
 	@apply  underline break-words;
 }
 
+kbd {
+	@apply border rounded-md px-1 text-sm border-b-2 dark:border-zinc-600;
+}
+
+kbd + kbd {
+	@apply ms-1;
+}
+
 .font-mono {
 	font-family: 'JetBrains Mono', monospace;
 }
