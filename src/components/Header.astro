@@ -4,24 +4,52 @@ import NavLink from './NavLink.astro'
 
 <header class="container mx-auto">
   <h2 class="mb-[2rem] py-3">
-    <img src="/okgr.svg" alt="okgr" class="h-[18px]" height="18" width="60.42" />
+    <img
+      src="/okgr.svg"
+      alt="okgr"
+      class="h-[18px]"
+      height="18"
+      width="60.42"
+    />
   </h2>
 
   <nav class="hover-link flex items-center gap-2">
-    <NavLink href="/">Home</NavLink>
+    <NavLink href="/">
+      <div
+        class="i-lucide-home hidden opacity-50 group-[.is-active]:inline-block">
+      </div> Home
+    </NavLink>
 
-    <NavLink href="/projects">Projects</NavLink>
+    <NavLink href="/projects">
+      <div
+        class="i-lucide-croissant hidden opacity-50 group-[.is-active]:inline-block">
+      </div>Projects
+    </NavLink>
 
-    <NavLink href="/blog">Blog</NavLink>
+    <NavLink href="/blog">
+      <div
+        class="i-lucide-cassette-tape hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+      Blog
+    </NavLink>
 
     <NavLink class="relative" href="/courses">
+      <div
+        class="i-lucide-graduation-cap hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+
       Courses <div class="absolute -top-2 right-0">
         <small class="inline-block size-2 rounded-md bg-pink-500 text-white">
         </small>
       </div>
     </NavLink>
 
-    <NavLink href="/about">About</NavLink>
+    <NavLink href="/about">
+      <div
+        class="i-lucide-user hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+      About
+    </NavLink>
 
     <NavLink href="https://twitter.com/_yogr" target="_blank">
       <span class="i-lucide-twitter" title="Twitter"></span>

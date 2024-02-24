@@ -23,7 +23,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
   <main class="container mx-auto mt-[8rem]">
     <abbr
       title="Twi language: means Welcome"
-      class="rounded-lg bg-pink-100 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
+      class="rounded-lg bg-pink-100 border border-pink-200 dark:border-green-800 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
       <div class="i-lucide-hand-metal inline-block !text-sm"></div> Akwaaba
     </abbr>
     <h1 class="mt-0 text-lg font-bold">Welcome to my Home</h1>
@@ -62,7 +62,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           />
           <div class="text-secondary mt-1 text-sm">
             <div
-              class="inline-flex items-center gap-1 rounded-lg bg-zinc-200 px-2 font-medium dark:bg-neutral-800">
+              class="inline-flex items-center gap-1 rounded-lg border border-zinc-300 dark:border-neutral-700 bg-zinc-200 px-2 font-medium dark:bg-neutral-800">
               <div class="i-lucide-flower inline-block text-amber-500"></div> Art
               of the day
             </div>
@@ -73,7 +73,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
       </div>
     </div>
 
-    <h2 class="mb-4 mt-[8rem] font-bold">Featured</h2>
+    <h2 class="mb-4 flex items-center gap-2 font-bold" id="featured">
+      <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
+    </h2>
 
     <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
       {
@@ -104,7 +106,10 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
     <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
       <div class="col-span-1 lg:col-span-2">
-        <h2 class="mb-4 font-bold">Recent posts</h2>
+        <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts">
+          <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
+          posts
+        </h2>
 
         <ContentList noTransition items={postsList.slice(0, 6)} />
 
@@ -117,7 +122,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
     </section>
 
     <section class="mt-[8rem]">
-      <h2 class="mb-4 font-bold">Developer packages</h2>
+      <h2 class="mb-4 font-bold flex gap-2 items-center">
+        <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer Packages
+      </h2>
 
       <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
         {
