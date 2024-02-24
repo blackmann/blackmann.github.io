@@ -233,5 +233,5 @@ article ol {
 }
 
 .MafsView {
-	@apply rounded-lg mt-2;
+	@apply rounded-lg mt-2 border-2 border-transparent dark:border-neutral-700;
 }
