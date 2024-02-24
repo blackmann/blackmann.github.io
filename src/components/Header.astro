@@ -3,7 +3,7 @@ import NavLink from './NavLink.astro'
 ---
 
 <header class="container mx-auto">
-  <h2 class="mb-[2rem] py-3">
+  <header class="mb-[2rem] flex items-center justify-between py-3">
     <img
       src="/okgr.svg"
       alt="okgr"
@@ -11,7 +11,22 @@ import NavLink from './NavLink.astro'
       height="18"
       width="60.42"
     />
-  </h2>
+
+    <div
+      class="flex items-center gap-1 rounded-full border border-zinc-400 bg-zinc-200 bg-opacity-40 px-1 text-zinc-600 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+      <NavLink class="!p-1" href="mailto:mail@degreat.co.uk" target="_blank">
+        <span class="i-lucide-mail" title="My mail"></span>
+      </NavLink>
+
+      <NavLink class="!p-1" href="https://twitter.com/_yogr" target="_blank">
+        <span class="i-lucide-twitter" title="Twitter"></span>
+      </NavLink>
+
+      <NavLink class="!p-1" href="https://github.com/blackmann" target="_blank">
+        <span class="i-lucide-github" title="Github"></span>
+      </NavLink>
+    </div>
+  </header>
 
   <nav class="hover-link flex items-center gap-2 overflow-y-auto">
     <NavLink href="/">
@@ -39,7 +54,7 @@ import NavLink from './NavLink.astro'
       </div>
 
       Courses <div class="absolute -top-2 right-0">
-        <small class="inline-block size-2 rounded-md bg-pink-500 text-white">
+        <small class="inline-block size-2 rounded-md bg-amber-500 text-white">
         </small>
       </div>
     </NavLink>
@@ -49,14 +64,6 @@ import NavLink from './NavLink.astro'
         class="i-lucide-user hidden opacity-50 group-[.is-active]:inline-block">
       </div>
       About
-    </NavLink>
-
-    <NavLink href="https://twitter.com/_yogr" target="_blank">
-      <span class="i-lucide-twitter" title="Twitter"></span>
-    </NavLink>
-
-    <NavLink href="https://github.com/blackmann" target="_blank">
-      <span class="i-lucide-github" title="Github"></span>
     </NavLink>
   </nav>
 </header>

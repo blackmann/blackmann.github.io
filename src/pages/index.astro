@@ -77,11 +77,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
       <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
     </h2>
 
-    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       {
         featuredLinks.map((link) => (
           <div class="col-span-1">
-            <div class="card !pb-0">
+            <div class="card !pb-0 max-md:mx-auto">
               <h3 class="font-bold">{link.title}</h3>
               <p class="text-secondary">{link.description}</p>
               <Link
@@ -126,7 +126,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
         <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer Packages
       </h2>
 
-      <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
+      <div class="grid grid-cols-2 gap-4 gap-y-8 md:grid-cols-3">
         {
           developerTools.map((pkg) => (
             <div class="col-md-4">
