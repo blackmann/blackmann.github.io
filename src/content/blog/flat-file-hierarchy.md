@@ -88,6 +88,8 @@ I can only make my case for flat hierarchies by making a case against nesting.
 
 1. A lot of people use domains as basis of nesting. For example, profile header, banner, etc. should be placed in the folder `/components/profile` -- the domain. The question is: does it make sense re-use the banner on a post detail page. If yes, do we still leave it in `/components/profile` or move it somewhere else? What will we call this new folder?
 
+1. Collaboration. Is anyone free to create additional folders as they see fit? You can see how this will require some back and forth during reviews.
+
 1. When do we stop nesting? 3 levels deep? 4?
 
 1. Have you noticed that the files explorer of the IDE scrolls horizontally now? And the file you're looking for is weirdly at the edge? For me, this has been a DX problem for me when working between many files, because if I lost my way to a file, I scroll back horizontally, try to follow/find the folder level and then continue.
