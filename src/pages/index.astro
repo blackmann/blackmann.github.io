@@ -83,8 +83,8 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <div class="col-span-1">
             <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
               <h3 class="font-bold">{link.title}</h3>
-              <p class="text-secondary">{link.description}</p>
-              <div class="pb-2">
+              <p class="text-secondary text-sm mt-0">{link.description}</p>
+              <div class="pb-2 text-sm">
                 <Link className="font-medium" href={`https://${link.link}`}>
                   <span class="whitespace-pre-wrap">{link.link}</span>
                 </Link>
@@ -124,7 +124,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <section class="mt-[4rem]">
       <div>
         <a
-          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 py-0.8 font-medium no-underline border-2 border-dashed hover:border-solid border-zinc-300 dark:border-neutral-700"
+          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 py-0.8 font-medium no-underline border-2 border-dashed border-zinc-300 dark:border-neutral-700"
           href="/lesson-notes">
           <div class="i-lucide-sigma-square inline-block opacity-50"></div>
           Lesson notes
@@ -143,10 +143,10 @@ const postsList = posts.slice(0, 6).map((post) => ({
           developerTools.map((pkg) => (
             <div class="col-md-4">
               <div class="card !max-md:px-2 !max-md:pt-2">
-                <h3 class="mb-3 font-bold">{pkg.title}</h3>
-                <div class="text-secondary mb-2">{pkg.description}</div>
+                <h3 class="font-bold">{pkg.title}</h3>
+                <div class="text-secondary mb-2 text-sm">{pkg.description}</div>
 
-                <a class="font-medium" href={pkg.link}>
+                <a class="font-medium text-sm" href={pkg.link}>
                   <span class="whitespace-pre-wrap">{pkg.link}</span>
                 </a>
               </div>
