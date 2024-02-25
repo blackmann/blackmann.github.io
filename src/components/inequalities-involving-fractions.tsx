@@ -4,7 +4,7 @@ import "mafs/core.css";
 
 function Sol1NumberLine() {
 	return (
-		<Mafs height={200} pan={false}>
+		<Mafs height={200}>
 			<Coordinates.Cartesian yAxis={false} />
       <Circle center={[-3, 0.5]} radius={0.25} />
       <Vector tip={[-7, 0.5]} tail={[-3.25, 0.5]} />
