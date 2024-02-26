@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content'
 import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
+import ProjectItem from '../components/ProjectItem.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -124,7 +125,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <section class="mt-[4rem]">
       <div>
         <a
-          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 py-0.8 font-medium no-underline border-2 border-dashed border-zinc-300 dark:border-neutral-700"
+          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 py-0.8 font-medium no-underline border-2 border-dashed border-zinc-300 hover:border-zinc-400 dark:border-neutral-700 dark:hover:border-neutral-600"
           href="/lesson-notes">
           <div class="i-lucide-sigma-square inline-block opacity-50"></div>
           Lesson notes
@@ -142,14 +143,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
         {
           developerTools.map((pkg) => (
             <div class="col-md-4">
-              <div class="card !max-md:px-2 !max-md:pt-2">
-                <h3 class="font-bold">{pkg.title}</h3>
-                <div class="text-secondary mb-2 text-sm">{pkg.description}</div>
-
-                <a class="font-medium text-sm" href={pkg.link}>
-                  <span class="whitespace-pre-wrap">{pkg.link}</span>
-                </a>
-              </div>
+              <ProjectItem project={pkg} />
             </div>
           ))
         }

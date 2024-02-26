@@ -1,5 +1,5 @@
 ---
-import Link from './Link.astro'
+import IconifyLink from './IconifyLink.astro'
 
 interface Project {
   title: string
@@ -22,17 +22,17 @@ const { project } = Astro.props
 
     <div class="font-bold">{project.title}</div>
 
-    <p class="text-secondary">{project.description}</p>
+    <p class="text-secondary text-sm">{project.description}</p>
 
-    <div class="text-secondary">{project.meta}</div>
+    <div class="text-secondary text-sm">{project.meta}</div>
 
-    <div class="mt-2">
-      <Link href={`https://${project.url}`}>{project.url}</Link>
+    <div class="mt-2 text-sm">
+      <IconifyLink href={`https://${project.url}`} />
     </div>
 
     {
       project.tags && (
-        <ul class="mt-2">
+        <ul class="mt-2 text-sm">
           {project.tags.map((tag) => (
             <span
               class={`rounded-lg bg-zinc-200 px-2 font-medium text-zinc-600 dark:bg-neutral-700 dark:text-neutral-300`}>
