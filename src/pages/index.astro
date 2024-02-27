@@ -8,6 +8,7 @@ import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 import ProjectItem from '../components/ProjectItem.astro'
+import {ArtSlides} from '../components/ArtSlides.tsx'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -54,23 +55,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
       </div>
 
       <div class="col-span-1 mt-8 lg:mt-0">
-        <div class="mx-auto w-[200px]">
-          <img
-            src="/01-pix-art.jpeg"
-            alt="art"
-            width="180"
-            class="image-render-pixel"
-          />
-          <div class="text-secondary mt-1 text-sm">
-            <div
-              class="inline-flex items-center gap-1 rounded-lg border border-zinc-300 bg-zinc-200 px-2 font-medium dark:border-neutral-700 dark:bg-neutral-800">
-              <div class="i-lucide-flower inline-block text-amber-500"></div> Art
-              of the day
-            </div>
-            <div class="ms-2">Hand-sketched with Pixaki on iPad</div>
-            <div class="ms-2 font-mono text-xs">23-02</div>
-          </div>
-        </div>
+        <ArtSlides client:load />
       </div>
     </div>
 
