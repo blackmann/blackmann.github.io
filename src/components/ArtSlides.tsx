@@ -5,7 +5,6 @@ const slides = [
 	{
 		url: "/02-pix-art.jpeg",
 		title: "a piece of super mario!",
-		className: "border-yellow-600",
 		date: "27-02",
 	},
 	{
@@ -27,7 +26,7 @@ function ArtSlides() {
 							src={art.url}
 							alt="art"
 							width="180"
-							className={clsx("image-render-pixel border-4", art.className)}
+							className="image-render-pixel border-5 dark:border-neutral-700 border-zinc-300"
 						/>
 					</li>
 				))}
