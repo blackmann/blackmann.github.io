@@ -3,15 +3,15 @@ import React from "react";
 
 const slides = [
 	{
-		url: "/01-pix-art.jpeg",
-		title: "hello world! this is pilot for ArtSlides.",
-		date: "23-02",
-	},
-	{
 		url: "/02-pix-art.jpeg",
 		title: "a piece of super mario!",
 		className: "border-yellow-600",
 		date: "27-02",
+	},
+	{
+		url: "/01-pix-art.jpeg",
+		title: "hello world! this is pilot for ArtSlides.",
+		date: "23-02",
 	},
 ];
 
