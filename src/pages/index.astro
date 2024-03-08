@@ -8,7 +8,7 @@ import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 import ProjectItem from '../components/ProjectItem.astro'
-import {ArtSlides} from '../components/ArtSlides.tsx'
+import { ArtSlides } from '../components/ArtSlides.tsx'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -38,15 +38,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
         </p>
 
         <p>
-          On this site, you'll find a few things I want you to know <span
-            class="text-secondary">
-            <a href="about">about me</a> or <a href="projects">
-              stuff I'm working on
-            </a>
-          </span>. If you want to know more and keep up, try following my
-          socials or join my <a
-            class="font-medium"
-            href="https://discord.gg/5CDnysz">
+          On this site, you'll find a few things I want you to know
+          <a href="about">about me</a> or <a href="projects">
+            stuff I'm working on
+          </a>. If you want to know more and keep up, try following my socials
+          or join my <a class="font-medium" href="https://discord.gg/5CDnysz">
             Discord
           </a> server.
         </p>
@@ -69,7 +65,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <div class="col-span-1">
             <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
               <h3 class="font-bold">{link.title}</h3>
-              <p class="text-secondary text-sm mt-0">{link.description}</p>
+              <p class="text-secondary mt-0 text-sm">{link.description}</p>
               <div class="pb-2 text-sm">
                 <Link className="font-medium" href={`https://${link.link}`}>
                   <span class="whitespace-pre-wrap">{link.link}</span>
@@ -85,7 +81,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
                 </div>
               )}
             </div>
-            {link.footer && (<p class="text-secondary mt-0 text-sm ms-4">Please subscribe</p>)}
+            {link.footer && (
+              <p class="text-secondary ms-2 mt-0 text-xs md:ms-4">
+                Please subscribe
+              </p>
+            )}
           </div>
         ))
       }
@@ -111,7 +111,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <section class="mt-[4rem]">
       <div>
         <a
-          class="inline-flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 py-0.8 font-medium no-underline border-2 border-dashed border-zinc-300 hover:border-zinc-400 dark:border-neutral-700 dark:hover:border-neutral-600"
+          class="py-0.8 inline-flex items-center gap-2 rounded-lg border-2 border-dashed border-zinc-300 bg-zinc-200 px-2 font-medium no-underline hover:border-zinc-400 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
           href="/lesson-notes">
           <div class="i-lucide-sigma-square inline-block opacity-50"></div>
           Lesson notes

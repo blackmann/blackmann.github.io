@@ -1,6 +1,6 @@
-import MangobaseFeatureImage from "../components/MangobaseFeatureImage.astro"
-import YTFeatureImage from '../components/YTFeatureImage.astro'
-import AdetonFeatureImage from '../components/AdetonFeatureImage.astro'
+import MangobaseFeatureImage from "../components/MangobaseFeatureImage.astro";
+import YTFeatureImage from "../components/YTFeatureImage.astro";
+import AdetonFeatureImage from "../components/AdetonFeatureImage.astro";
 
 const featuredLinks = [
 	// {
@@ -10,25 +10,25 @@ const featuredLinks = [
 	// 	link: 'sb.degreat.co.uk',
 	// },
 	{
-		title: 'Mangobase 🥭',
+		title: "Mangobase 🥭",
 		description:
-			'Low-code Javascript backend framework for Node and Bun runtimes.',
-		link: 'degreat.co.uk/mangobase',
-		featureImage: MangobaseFeatureImage
+			"Low-code Javascript backend framework for Node and Bun runtimes.",
+		link: "degreat.co.uk/mangobase",
+		featureImage: MangobaseFeatureImage,
 	},
 	{
-		title: 'Adeton',
+		title: "Adeton",
 		description:
-			'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant.',
-		link: 'adeton.io',
+			"This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant.",
+		link: "adeton.io",
 	},
 	{
-		title: 'Devlog',
+		title: "Devlog",
 		description:
 			"This is a Youtube channel I share progress on stuff I'm working on. It's fun, check it out!",
-		link: 'youtube.com/@notgr',
-		footer: 'Please subscribe'
+		link: "youtube.com/@notgr",
+		footer: "Please subscribe",
 	},
-]
+];
 
-export default featuredLinks
+export default featuredLinks;
