@@ -27,6 +27,7 @@ const featuredLinks = [
 		description:
 			"This is a Youtube channel I share progress on stuff I'm working on. It's fun, check it out!",
 		link: 'youtube.com/@notgr',
+		footer: 'Please subscribe'
 	},
 ]
 

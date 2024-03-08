@@ -4,12 +4,12 @@ import React from "react";
 const slides = [
 	{
 		url: "/02-pix-art.jpeg",
-		title: "a piece of super mario!",
+		title: "a piece of super mario! Handmade in Pixaki",
 		date: "27-02",
 	},
 	{
 		url: "/01-pix-art.jpeg",
-		title: "hello world! this is pilot for ArtSlides.",
+		title: "hello world! this is pilot for ArtSlides. Pixel art made in Pixaki.",
 		date: "23-02",
 	},
 ];

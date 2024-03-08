@@ -14,7 +14,7 @@ In 2021, when I was experimenting on ways to improve my developer workflow, I tr
 
 ### Nester
 
-```
+```bash
 /src
 ├── components
 │   ├── profile
@@ -46,7 +46,7 @@ This diagram stops only two levels down, but they can go deeper than that; we kn
 
 ### Flatter
 
-```
+```bash
 /src
 ├── components
 │   ├── password-form.ts

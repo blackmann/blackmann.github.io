@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 .text-secondary {
@@ -9,8 +9,8 @@
 	@apply text-zinc-800 dark:text-stone-50 bg-zinc-100 dark:bg-neutral-900;
 
 	color-scheme: light dark;
-	font-family: "Dosis", sans-serif;
-	font-size: 16px;
+	font-family: "Inter", sans-serif;
+	font-size: 14px;
 
 	--svg-outline: #d4d4d8;
 	--svg-foreground: #A2A1A1;
@@ -86,7 +86,7 @@ hr {
 
 code {
 	font-family: 'JetBrains Mono', monospace;
-	@apply text-green-700 dark:text-orange-400 text-sm;
+	@apply text-blue-600 dark:text-orange-400 text-sm;
 }
 
 article h1,
@@ -134,7 +134,7 @@ article li+li {
 }
 
 article blockquote {
-	@apply max-w-[30rem] p-2 bg-zinc-200 dark:bg-neutral-800 bg-opacity-50 text-xl mx-auto
+	@apply max-w-[30rem] p-2 bg-zinc-200 dark:bg-neutral-800 bg-opacity-50 text-xl mx-auto border-s-3 border-blue-500 dark:border-amber-500 my-4 rounded-e-lg;
 }
 
 article table {
