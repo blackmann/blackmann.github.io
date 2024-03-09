@@ -130,6 +130,14 @@ field `current_index` of `Quiz` is private: rust-analyzer (E0616)
 
 Add `pub` to these fields, methods or structs to make them accessible to the `main` module.
 
+```rust
+struct Quiz {
+  current_index: usize; // [!code --]
+  pub current_index: usize; // [!code ++]
+  // ...
+}
+```
+
 Let's move on to add the buttons:
 
 ```rust

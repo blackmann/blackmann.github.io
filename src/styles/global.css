@@ -26,14 +26,14 @@
 }
 
 a {
-	@apply  underline break-words;
+	@apply underline break-words;
 }
 
 kbd {
 	@apply border rounded-md px-1 text-sm border-b-2 dark:border-zinc-600;
 }
 
-kbd + kbd {
+kbd+kbd {
 	@apply ms-1;
 }
 
@@ -194,6 +194,43 @@ article ol {
 	display: inline-block;
 	text-align: right;
 	color: rgba(115, 138, 148, .4)
+}
+
+.astro-code .diff {
+	@apply block w-full py-1 -mb-6;
+}
+
+.astro-code .diff.remove {
+	@apply bg-red-100;
+}
+
+.astro-code .diff.add {
+	@apply bg-green-50;
+}
+
+@media (prefers-color-scheme: dark) {
+	.astro-code .diff.remove {
+		background-color: rgba(160, 46, 46, 0.15) !important;
+	}
+
+	.astro-code .diff:is(.remove, .add)>* {
+		background-color: transparent !important;
+	}
+
+	.astro-code .diff.add {
+		background-color: rgba(46, 160, 67, 0.15) !important;
+	}
+}
+
+.astro-code .diff.remove> :first-child::before {
+	content: "—";
+	@apply text-red-500 -ms-2;
+}
+
+
+.astro-code .diff.add> :first-child::before {
+	content: "+";
+	@apply text-green-500 -ms-2;
 }
 
 @media (prefers-color-scheme: dark) {
