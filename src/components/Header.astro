@@ -14,16 +14,28 @@ import NavLink from './NavLink.astro'
 
     <div
       class="flex items-center gap-1 rounded-full border border-zinc-300 bg-zinc-200 bg-opacity-40 px-1 text-zinc-600 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
-      <NavLink class="!p-1" href="mailto:mail@degreat.co.uk" target="_blank">
-        <span class="i-lucide-mail" title="My mail"></span>
+      <NavLink
+        class="!p-1"
+        href="mailto:mail@degreat.co.uk"
+        target="_blank"
+        aria-label="My mail">
+        <span class="i-lucide-mail" title="My mail" role="img"></span>
       </NavLink>
 
-      <NavLink class="!p-1" href="https://twitter.com/_yogr" target="_blank">
-        <span class="i-lucide-twitter" title="Twitter"></span>
+      <NavLink
+        class="!p-1"
+        href="https://twitter.com/_yogr"
+        target="_blank"
+        aria-label="Twitter">
+        <span class="i-lucide-twitter" title="Twitter" role="img"></span>
       </NavLink>
 
-      <NavLink class="!p-1" href="https://github.com/blackmann" target="_blank">
-        <span class="i-lucide-github" title="Github"></span>
+      <NavLink
+        class="!p-1"
+        href="https://github.com/blackmann"
+        target="_blank"
+        aria-label="Github">
+        <span class="i-lucide-github" title="Github" role="img"></span>
       </NavLink>
     </div>
   </header>

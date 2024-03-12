@@ -10,17 +10,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.6",
-    "@astrojs/react": "^3.0.9",
-    "@astrojs/rss": "^4.0.1",
-    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/mdx": "^2.2.0",
+    "@astrojs/react": "^3.1.0",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/lucide": "^1.1.151",
     "@resvg/resvg-js": "^2.6.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@unocss/preset-icons": "^0.58.3",
-    "astro": "^4.4.0",
+    "astro": "^4.5.2",
     "clsx": "^2.1.0",
     "mafs": "^0.18.0",
     "markdown-it": "^13.0.2",
@@ -35,6 +35,7 @@
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.6.1",
     "@unocss/reset": "^0.58.3",
     "@unocss/transformer-directives": "^0.58.3",
     "@unocss/transformer-variant-group": "^0.58.3",
