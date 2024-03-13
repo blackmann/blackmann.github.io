@@ -44,7 +44,6 @@ function CourseOutline({
 					<div
 						className="h-1.5 rounded-full bg-blue-600 dark:bg-blue-500"
 						style={{ width: `${progress}%` }}
-
 					/>
 				</div>
 			</div>

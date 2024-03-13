@@ -48,13 +48,13 @@ for (const meta of courseMeta) {
               <p>{course.data.description}</p>
               <p class="text-secondary">{course.data.meta}</p>
 
-              <div class="flex gap-2">
-                <span class="rounded-lg bg-zinc-200 px-2 text-sm font-medium dark:bg-neutral-700">
+              <div class="flex gap-2 flex-wrap font-mono">
+                <span class="rounded-lg bg-zinc-200 px-2 text-sm font-medium dark:bg-neutral-700 self-start">
                   {course.chapters} chapters
                 </span>
 
                 {course.data.tags.map((tag) => (
-                  <span class="rounded-lg bg-pink-100 px-2 text-sm font-medium text-pink-500 dark:bg-pink-700 dark:bg-opacity-10 dark:text-pink-400">
+                  <span class="rounded-lg bg-pink-100 px-2 text-sm font-medium text-pink-500 dark:bg-pink-700 dark:bg-opacity-10 dark:text-pink-400 self-start">
                     {tag}
                   </span>
                 ))}
