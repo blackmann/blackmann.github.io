@@ -4,7 +4,7 @@ description: The conversation not worth having
 pubDate: 'Mar 30, 2024'
 ---
 
-I'm going to begin with stating that I intend to move to Japan[^1] after school. The reason is because I do not feel intellectually challenged in the Ghanaian environment. The plan is to go for so many years, make a name and return. I experience the dumsor, the terrible internet and have bland conversations with people. People close to me have heard me a number of times say "I don't have anything going on for me so travelling abroad will just be me having a 9-5 in a job I may not enjoy everyday."
+I'm going to begin with stating that I intend to move to Japan[^1] after school. The reason is because I do not feel intellectually challenged in the Ghanaian environment. The plan is to go for so many years, make a name and return. I experience the dumsor, the terrible internet and have bland conversations with people. People close to me have heard me a number of times say "I don't have anything going on for me so travelling abroad will just be me having a 9-5 in a job I may not enjoy everyday." Which is why I'm not motivated to travel.
 
 [^1]: Yes Japan 🇯🇵. But principally, wherever I can nurture my values.
 
@@ -75,10 +75,10 @@ Throughout history, countries (especially ones used as models against Ghana) hav
 
 Instead of brainstorming ways to attack problems of the country, the brilliant idea educated people could come up with was to encourage desertion. Have these people learned how these countries arrived at their current state? Was it always that good? Is there anything we can learn from them? Can we inspire the same trend? How would we do that?
 
-We bundle everything as "Ghana" blame "leaders" and call it a day. How effective! You choose the lazy approach and expect more from others.
+> These seemingly simple questions would take years to figure out. It's the conversation to be having. It took some communities decades of different attempts here and there to arrive where they are.
 
-But as much as you don’t feel responsible for the state of your country, you are also not responsible for the state of that which you hail — you're enjoying the fruits of the labor of people you never knew.
+We bundle everything as "Ghana" blame "leaders" and call it a day. How effective! You choose the lazy approach and expect more from others. But as much as you don’t feel responsible for the state of your country, you are also not responsible for the state of that which you hail — you're enjoying the fruits of the labor of people you never knew.
 
 So maybe, the problem is that everyone wishes for a life of glamour which should have been built by people past but in fact we're a very young country. We really don't have any history — no examples.
 
-Can we set one?
+Can we set some?
