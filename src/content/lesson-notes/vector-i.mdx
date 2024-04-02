@@ -1,0 +1,64 @@
+---
+title: "Vector I"
+description: "Understanding vectors. Developing better reasoning for vectors"
+pubDate: "Apr 2, 2024"
+tags:
+  - vectors
+---
+
+import {PolarCoordinate, UnitVectorDemo} from '../../components/vectors-i.tsx'
+
+This semester, Vectors was my favorite subject. Maybe because it's easier for me to visualize it.
+
+In this note, I'll be documenting the different topics and how I reason about them. A vector is a quantity that has magnitude and a direction. Contrast with scalars which have only magnitude.
+
+## Vector representation
+
+Vector being defined as magnitute + direction means we can represent them as something like $(12km, 40\deg)$ or $(8m, \pi)$. But that's one way of representing vectors. Let's look at some ways of representing vectors:
+
+- **Polar coordinates** as mentioned earlier is in the format $(r, \theta)$, where $r$ is the magnitude or radius and $\theta$ is the direction/angle. The figure below demonstrates a polar coordinate.
+
+  <PolarCoordinate client:load />
+
+  This is the plot for $(3,\pi/5)$
+
+- **Tuple notation** is in the format $\langle v_1, v_2, ..., v_n \rangle$ where $v_i$ is a component of the vector $\vec{v}$. This notation allows for expressing vectors in $n$ dimension unlike the polar coordinate which can be used to represent a vector in just 2 dimensions.
+
+  Familiarly, we know vectors in 2 and 3 dimensions. But generalization is the essence of Mathematics. So some examples are $\langle 4, -5 \rangle$, $\langle 0, 92 \rangle$
+
+  > Note that vectors are NOT positional coordinates. Understanding this will prevent you from making some mistakes in future
+
+- **Matrix notation** is the vertical form of the tuple notation:
+
+  $$
+  \begin{bmatrix}
+  v_1\\
+  v_2\\
+  .\\
+  .\\
+  .\\
+  v_n
+  \end{bmatrix}
+  $$
+
+- **Unit vector notation**: Given a two dimensional (2D) plane, we can have two basis vectors $\vec{i}$ and $\vec{j}$ and the scalars $p$ and $q$ such that $p$ and $q$ scales $\vec{i}$ and $\vec{j}$ respectively giving us:
+
+  $$
+  \vec{v} = p\vec{i} + q\vec{j}
+  $$
+
+  On the 2D plane, we can have $\vec{i} = \langle 1, 0 \rangle$ and $\vec{j} = \langle 0, 1 \rangle$. Taking $p$ as $5$ and $q$ as $2$, we end up with the vector:
+
+  $$
+  \begin{align}
+  \vec{v} &= p\vec{i} + q\vec{j}\\
+   &= 5\vec{i} + 2\vec{j}\\
+   &= 5\langle 1, 0 \rangle + 2\langle 0, 1 \rangle\\
+   &= \langle 5, 0 \rangle + \langle 0, 2 \rangle\\
+   &= \langle 5, 2\rangle\\
+  \end{align}
+  $$
+
+  The applet below demonstrates this:
+
+  <UnitVectorDemo client:load />
