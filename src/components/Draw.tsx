@@ -9,6 +9,8 @@ interface Props {
 	id: string; // this becomes the layers' file name
 }
 
+const FONT = "18px 'Times New Roman'";
+
 const styles = [
 	{ type: "stroke", icon: "i-lucide-minus" },
 	{ type: "fill", icon: "i-lucide-paint-bucket" },
@@ -23,9 +25,10 @@ const shapes = [
 ] as const;
 
 const actions = [
-	{ type: "undo", icon: "i-lucide-undo-2" },
-	{ type: "redo", icon: "i-lucide-redo-2" },
-];
+	{ type: "outline", icon: "i-lucide-square-menu" },
+	// { type: "undo", icon: "i-lucide-undo-2" },
+	// { type: "redo", icon: "i-lucide-redo-2" },
+] as const;
 
 const colors = [
 	"fg",
@@ -41,6 +44,7 @@ const colors = [
 
 type StyleType = (typeof styles)[number]["type"];
 type ShapeType = (typeof shapes)[number]["type"];
+type ActionType = (typeof actions)[number]["type"];
 type Colors = (typeof colors)[number];
 
 function cs(key: string) {
@@ -60,6 +64,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 	const [currentStyle, setCurrentStyle] = React.useState<StyleType>("stroke");
 	const [currentShape, setCurrentShape] = React.useState<ShapeType>("line");
 
+	const [hovered, setHovered] = React.useState(-1);
+	const [showOutline, setShowOutline] = React.useState(false);
+
+	const [text, setText] = React.useState("");
+
 	const [styleColors, setStyleColors] = React.useState<
 		Record<StyleType, Colors>
 	>({ fill: "fg", stroke: "fg" });
@@ -67,23 +76,39 @@ function Draw({ aspectRatio, className, id }: Props) {
 	const getOptions = React.useCallback(
 		() => ({
 			stroke: cs(`--draw-${styleColors.stroke}`),
+			seed: Math.random() * 100,
 		}),
 		[styleColors],
 	);
+
+	function performAction(action: ActionType) {
+		switch (action) {
+			case "outline": {
+				setShowOutline((v) => !v);
+			}
+		}
+	}
 
 	const draw = React.useCallback(() => {
 		if (!canvas.current) {
 			return;
 		}
 
+		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
+
 		clear();
 
 		const rc = rough.canvas(canvas.current);
-		for (const op of layers) {
+		for (const [i, op] of [...layers].reverse().entries()) {
+			const options = { ...op.options };
+			if (hovered === i) {
+				options.stroke = "#454459";
+			}
+
 			switch (op.type) {
 				case "line": {
 					const [x1, y1, x2, y2] = op.arguments;
-					rc.line(x1, y1, x2, y2, op.options);
+					rc.line(x1, y1, x2, y2, options);
 					break;
 				}
 
@@ -91,7 +116,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const [x1, y1, x2, y2] = op.arguments;
 					const w = x2 - x1;
 					const h = y2 - y1;
-					rc.ellipse(x1 + w / 2, y1 + h / 2, w, h, op.options);
+					rc.ellipse(x1 + w / 2, y1 + h / 2, w, h, options);
 
 					break;
 				}
@@ -100,11 +125,24 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const [x1, y1, x2, y2] = op.arguments;
 					const w = x2 - x1;
 					const h = y2 - y1;
-					rc.rectangle(x1, y1, w, h, op.options);
+					rc.rectangle(x1, y1, w, h, options);
+
+					break;
+				}
+
+				// [ ] Improve: wrap text
+				case "text": {
+					const [x1, y1, x2, y2, text] = op.arguments;
+					ctx.save();
+					ctx.font = FONT;
+					ctx.textBaseline = "top";
+					ctx.fillStyle = options.stroke;
+					ctx.fillText(text, x1, y1, x2 - x1);
+					ctx.restore();
 				}
 			}
 		}
-	}, [layers]);
+	}, [layers, hovered]);
 
 	function clear() {
 		const cv = canvas.current;
@@ -135,6 +173,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			return;
 		}
 
+		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
 		const rc = rough.canvas(canvas.current);
 
 		let isDrawing = false;
@@ -142,16 +181,24 @@ function Draw({ aspectRatio, className, id }: Props) {
 		let endPoint = [0, 0];
 		function onMouseDown(e: MouseEvent) {
 			isDrawing = true;
+			setHovered(-1);
 			startPoint = [e.offsetX, e.offsetY];
 		}
 
 		function onMouseUp(e: MouseEvent) {
+			isDrawing = false;
 			endPoint = [e.offsetX, e.offsetY];
 
-			addOp(currentShape, [...startPoint, ...endPoint]);
-			draw();
+			if (endPoint[0] - startPoint[0] < 2 && endPoint[1] - startPoint[1] < 2) {
+				return;
+			}
 
-			isDrawing = false;
+			if (currentShape === "text" && !text) {
+				return;
+			}
+
+			addOp(currentShape, [...startPoint, ...endPoint, text]);
+			draw();
 		}
 
 		function onMouseMove(e: MouseEvent) {
@@ -190,6 +237,27 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const w = endPoint[0] - startPoint[0];
 					const h = endPoint[1] - startPoint[1];
 					rc.rectangle(startPoint[0], startPoint[1], w, h, getOptions());
+
+					break;
+				}
+
+				case "text": {
+					if (!text) {
+						return;
+					}
+
+					const [x, y] = startPoint;
+					ctx.save();
+					ctx.font = FONT;
+					ctx.textBaseline = "top";
+					ctx.fillStyle = getOptions().stroke;
+					ctx.fillText(text, x, y, endPoint[0] - startPoint[0]);
+					ctx.restore();
+
+					const w = endPoint[0] - startPoint[0];
+					const h = endPoint[1] - startPoint[1];
+					rc.rectangle(x, y, w, h, { stroke: cs("--draw-fg") });
+					break;
 				}
 			}
 		}
@@ -203,7 +271,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			canvas.current?.removeEventListener("mouseup", onMouseUp);
 			canvas.current?.removeEventListener("mousemove", onMouseMove);
 		};
-	}, [addOp, getOptions, draw, currentShape]);
+	}, [addOp, getOptions, draw, currentShape, text]);
 
 	React.useEffect(() => {
 		function resize() {
@@ -228,6 +296,12 @@ function Draw({ aspectRatio, className, id }: Props) {
 	React.useEffect(() => {
 		return startApp();
 	}, [startApp]);
+
+  React.useEffect(() => {
+    if (layers.length === 0) {
+      setShowOutline(false)
+    }
+  }, [layers.length, showOutline])
 
 	return (
 		<div>
@@ -273,7 +347,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					</ul>
 				</div>
 
-				<div>
+				<div className="flex flex-col">
 					<ul className="ms-0 mb-1 flex">
 						{actions.map((action) => (
 							<button
@@ -282,12 +356,39 @@ function Draw({ aspectRatio, className, id }: Props) {
 								)}
 								type="button"
 								key={action.type}
-								onClick={() => {}}
+								onClick={() => performAction(action.type)}
 							>
 								<div className={clsx(action.icon)} />
 							</button>
 						))}
 					</ul>
+
+					<div className="relative">
+						<ul
+							className={clsx(
+								"w-[12rem] max-h-[20rem] border dark:border-neutral-700 rounded-lg overflow-y-auto absolute list-none ms-0 right-1 top-1 dark:bg-neutral-900 transition-all",
+								{ "h-0 opacity-0": !showOutline },
+							)}
+							onMouseLeave={() => setHovered(-1)}
+						>
+							{[...layers].reverse().map((it, index) => (
+								<li
+									key={index}
+									className="px-2 py-0.5 mt-0 hover:bg-neutral-800 font-mono text-sm flex justify-between border-b last:border-b-0 dark:border-neutral-800"
+									onMouseEnter={() => setHovered(index)}
+								>
+									<span>{it.type}</span>
+									<button
+										type="button"
+										className="i-lucide-minus text-secondary"
+										onClick={() =>
+											setLayers((layers) => layers.filter((i) => i !== it))
+										}
+									/>
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 			</header>
 
@@ -321,6 +422,19 @@ function Draw({ aspectRatio, className, id }: Props) {
 				<div className="font-mono px-1 text-secondary text-xs bg-neutral-800 rounded-md self-start">
 					{id}
 				</div>
+			</div>
+
+			<div className="relative">
+				<textarea
+					className={clsx(
+						"rounded-lg border py-0.5 p-1 dark:border-neutral-700 absolute top-1 left-0 text-sm font-mono h-[6rem] transition-all",
+						{ "h-0 opacity-0": currentShape !== "text" },
+					)}
+					value={text}
+					disabled={currentShape !== "text"}
+					placeholder="text here then drag to draw"
+					onChange={(e) => setText(e.target.value)}
+				/>
 			</div>
 		</div>
 	);
