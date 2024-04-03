@@ -2,14 +2,13 @@ import clsx from "clsx";
 import React from "react";
 import rough from "roughjs";
 import type { Options as RoughOptions } from "roughjs/bin/core";
+import { useColorScheme } from "../lib/use-color-scheme";
 
 interface Props {
 	aspectRatio: number;
 	className?: string;
 	id: string; // this becomes the layers' file name
 }
-
-const FONT = "18px 'Times New Roman'";
 
 const styles = [
 	{ type: "stroke", icon: "i-lucide-minus" },
@@ -58,6 +57,8 @@ interface Op {
 }
 
 function Draw({ aspectRatio, className, id }: Props) {
+	const theme = useColorScheme();
+
 	const canvas = React.useRef<HTMLCanvasElement>(null);
 	const [layers, setLayers] = React.useState<Op[]>([]);
 
@@ -74,10 +75,12 @@ function Draw({ aspectRatio, className, id }: Props) {
 	>({ fill: "fg", stroke: "fg" });
 
 	const getOptions = React.useCallback(
-		() => ({
-			stroke: cs(`--draw-${styleColors.stroke}`),
-			seed: Math.random() * 100,
-		}),
+		(now = false) =>
+			({
+				stroke: now ? cs(`--draw-${styleColors.stroke}`) : styleColors.stroke,
+				strokeWidth: window.devicePixelRatio,
+				seed: Math.random() * 100,
+			}) satisfies RoughOptions,
 		[styleColors],
 	);
 
@@ -99,8 +102,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 		clear();
 
 		const rc = rough.canvas(canvas.current);
-		for (const [i, op] of [...layers].reverse().entries()) {
+		for (const [c, op] of layers.entries()) {
+			const i = layers.length - c - 1;
+			const dpi = window.devicePixelRatio;
+
 			const options = { ...op.options };
+			options.stroke = cs(`--draw-${options.stroke}`);
+
 			if (hovered === i) {
 				options.stroke = "#454459";
 			}
@@ -108,7 +116,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			switch (op.type) {
 				case "line": {
 					const [x1, y1, x2, y2] = op.arguments;
-					rc.line(x1, y1, x2, y2, options);
+					rc.line(x1 * dpi, y1 * dpi, x2 * dpi, y2 * dpi, options);
 					break;
 				}
 
@@ -116,7 +124,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const [x1, y1, x2, y2] = op.arguments;
 					const w = x2 - x1;
 					const h = y2 - y1;
-					rc.ellipse(x1 + w / 2, y1 + h / 2, w, h, options);
+					rc.ellipse(
+						(x1 + w / 2) * dpi,
+						(y1 + h / 2) * dpi,
+						w * dpi,
+						h * dpi,
+						options,
+					);
 
 					break;
 				}
@@ -125,7 +139,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const [x1, y1, x2, y2] = op.arguments;
 					const w = x2 - x1;
 					const h = y2 - y1;
-					rc.rectangle(x1, y1, w, h, options);
+					rc.rectangle(x1 * dpi, y1 * dpi, w * dpi, h * dpi, options);
 
 					break;
 				}
@@ -134,10 +148,10 @@ function Draw({ aspectRatio, className, id }: Props) {
 				case "text": {
 					const [x1, y1, x2, y2, text] = op.arguments;
 					ctx.save();
-					ctx.font = FONT;
+					ctx.font = getFont();
 					ctx.textBaseline = "top";
 					ctx.fillStyle = options.stroke;
-					ctx.fillText(text, x1, y1, x2 - x1);
+					ctx.fillText(text, x1 * dpi, y1 * dpi, (x2 - x1) * dpi);
 					ctx.restore();
 				}
 			}
@@ -158,6 +172,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}));
 	}
 
+	function getFont() {
+		const dpi = window.devicePixelRatio;
+		return `${18 * dpi}px 'Indie Flower'`;
+	}
+
 	const addOp = React.useCallback(
 		(type: Op["type"], args: any) => {
 			setLayers((layers) => [
@@ -175,6 +194,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
 		const rc = rough.canvas(canvas.current);
+		const dpi = window.devicePixelRatio;
 
 		let isDrawing = false;
 		let startPoint = [0, 0];
@@ -209,11 +229,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 			switch (currentShape) {
 				case "line": {
 					rc.line(
-						startPoint[0],
-						startPoint[1],
-						endPoint[0],
-						endPoint[1],
-						getOptions(),
+						startPoint[0] * dpi,
+						startPoint[1] * dpi,
+						endPoint[0] * dpi,
+						endPoint[1] * dpi,
+						getOptions(true),
 					);
 
 					break;
@@ -223,11 +243,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 					const w = endPoint[0] - startPoint[0];
 					const h = endPoint[1] - startPoint[1];
 					rc.ellipse(
-						startPoint[0] + w / 2,
-						startPoint[1] + h / 2,
-						w,
-						h,
-						getOptions(),
+						(startPoint[0] + w / 2) * dpi,
+						(startPoint[1] + h / 2) * dpi,
+						w * dpi,
+						h * dpi,
+						getOptions(true),
 					);
 
 					break;
@@ -236,7 +256,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 				case "rectangle": {
 					const w = endPoint[0] - startPoint[0];
 					const h = endPoint[1] - startPoint[1];
-					rc.rectangle(startPoint[0], startPoint[1], w, h, getOptions());
+					rc.rectangle(
+						startPoint[0] * dpi,
+						startPoint[1] * dpi,
+						w * dpi,
+						h * dpi,
+						getOptions(true),
+					);
 
 					break;
 				}
@@ -248,15 +274,22 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 					const [x, y] = startPoint;
 					ctx.save();
-					ctx.font = FONT;
+					ctx.font = getFont();
 					ctx.textBaseline = "top";
 					ctx.fillStyle = getOptions().stroke;
-					ctx.fillText(text, x, y, endPoint[0] - startPoint[0]);
+					ctx.fillText(
+						text,
+						x * dpi,
+						y * dpi,
+						(endPoint[0] - startPoint[0]) * dpi,
+					);
 					ctx.restore();
 
 					const w = endPoint[0] - startPoint[0];
 					const h = endPoint[1] - startPoint[1];
-					rc.rectangle(x, y, w, h, { stroke: cs("--draw-fg") });
+					rc.rectangle(x * dpi, y * dpi, w * dpi, h * dpi, {
+						stroke: cs("--draw-fg"),
+					});
 					break;
 				}
 			}
@@ -279,10 +312,19 @@ function Draw({ aspectRatio, className, id }: Props) {
 				return;
 			}
 
-			const parent = canvas.current.parentElement;
+			const dpi = window.devicePixelRatio;
+
+			const cv = canvas.current;
+
+			const parent = cv.parentElement;
 			if (!parent) return;
-			canvas.current.width = parent?.clientWidth;
-			canvas.current.height = (1 / aspectRatio) * canvas.current.width;
+
+			const w = parent.clientWidth;
+			const h = (1 / aspectRatio) * w;
+			cv.width = w * dpi;
+			cv.height = h * dpi;
+			cv.style.width = `${w}px`;
+			cv.style.height = `${h}px`;
 
 			draw();
 		}
@@ -297,11 +339,15 @@ function Draw({ aspectRatio, className, id }: Props) {
 		return startApp();
 	}, [startApp]);
 
-  React.useEffect(() => {
-    if (layers.length === 0) {
-      setShowOutline(false)
-    }
-  }, [layers.length, showOutline])
+	React.useEffect(() => {
+		if (layers.length === 0) {
+			setShowOutline(false);
+		}
+	}, [layers.length]);
+
+	React.useEffect(() => {
+		draw();
+	}, [theme]);
 
 	return (
 		<div>
@@ -311,8 +357,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 						{styles.map((style) => (
 							<button
 								className={clsx(
-									"flex flex-col gap-1 border px-2 py-1 dark:border-neutral-700 text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
-									{ "bg-neutral-700": style.type === currentStyle },
+									"flex flex-col gap-1 border border-zinc-300 px-2 py-1 dark:border-neutral-700 text-zinc-700 dark:text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
+									{
+										"bg-zinc-300 dark:bg-neutral-700":
+											style.type === currentStyle,
+									},
 								)}
 								type="button"
 								key={style.type}
@@ -352,7 +401,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 						{actions.map((action) => (
 							<button
 								className={clsx(
-									"flex flex-col hover:bg-neutral-800 gap-1 border px-2 py-2 dark:border-neutral-700 text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
+									"flex flex-col hover:bg-zinc-200 dark:hover:bg-neutral-800 gap-1 border px-2 py-2 dark:border-neutral-700 first:rounded-s-lg last:rounded-e-lg",
 								)}
 								type="button"
 								key={action.type}
@@ -366,7 +415,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					<div className="relative">
 						<ul
 							className={clsx(
-								"w-[12rem] max-h-[20rem] border dark:border-neutral-700 rounded-lg overflow-y-auto absolute list-none ms-0 right-1 top-1 dark:bg-neutral-900 transition-all",
+								"w-[10rem] max-h-[20rem] border dark:border-neutral-700 rounded-lg overflow-y-auto absolute list-none ms-0 right-1 top-1 bg-zinc-100 dark:bg-neutral-900 transition-all",
 								{ "h-0 opacity-0": !showOutline },
 							)}
 							onMouseLeave={() => setHovered(-1)}
@@ -374,7 +423,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 							{[...layers].reverse().map((it, index) => (
 								<li
 									key={index}
-									className="px-2 py-0.5 mt-0 hover:bg-neutral-800 font-mono text-sm flex justify-between border-b last:border-b-0 dark:border-neutral-800"
+									className="px-2 py-0.5 mt-0 hover:bg-zinc-200 dark:hover:bg-neutral-800 font-mono text-sm flex justify-between border-b last:border-b-0 dark:border-neutral-800"
 									onMouseEnter={() => setHovered(index)}
 								>
 									<span>{it.type}</span>
@@ -395,7 +444,10 @@ function Draw({ aspectRatio, className, id }: Props) {
 			<canvas
 				ref={canvas}
 				style={{ aspectRatio }}
-				className={clsx("bg-neutral-800 w-full", className)}
+				className={clsx(
+					"bg-zinc-200 bg-opacity-30 dark:bg-neutral-800 dark:bg-opacity-100 w-full",
+					className,
+				)}
 			/>
 
 			<div className="mt-1 flex justify-between">
@@ -403,8 +455,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 					{shapes.map((shape) => (
 						<button
 							className={clsx(
-								"flex flex-col gap-1 border px-2 py-1 dark:border-neutral-700 text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
-								{ "bg-neutral-700": shape.type === currentShape },
+								"flex flex-col gap-1 border border-zinc-300 px-2 py-1 dark:border-neutral-700 text-zinc-800 dark:text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
+								{
+									"bg-zinc-300 dark:bg-neutral-700":
+										shape.type === currentShape,
+								},
 							)}
 							type="button"
 							key={shape.type}
@@ -419,7 +474,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					))}
 				</ul>
 
-				<div className="font-mono px-1 text-secondary text-xs bg-neutral-800 rounded-md self-start">
+				<div className="font-mono px-1 text-secondary text-xs bg-zinc-200 dark:bg-neutral-800 rounded-md self-start">
 					{id}
 				</div>
 			</div>
