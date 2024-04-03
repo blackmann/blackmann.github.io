@@ -98,6 +98,8 @@ function Draw({ aspectRatio, className, id }: Props) {
 	const theme = useColorScheme();
 	const readOnly = process.env.NODE_ENV === "production";
 
+	const [ready, setReady] = React.useState(false);
+
 	const canvas = React.useRef<HTMLCanvasElement>(null);
 	const [layers, setLayers] = React.useState<Op[]>([]);
 
@@ -137,7 +139,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}
 
 		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
-		const cw = canvas.current.width;
+		const cw = Number(canvas.current.style.width.replace("px", ""));
 
 		clear();
 
@@ -153,7 +155,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				options.stroke = "#454459";
 			}
 
-			const [xs1, ys1, xs2, ys2] = op.arguments;
+			const [xs1, ys1, xs2, ys2, text] = op.arguments;
 			const [x1, y1] = xUp(cw, [xs1, ys1]);
 			const [x2, y2] = xUp(cw, [xs2, ys2]);
 
@@ -202,7 +204,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				}
 			}
 		}
-	}, [layers, hovered, text]);
+	}, [layers, hovered]);
 
 	function clear() {
 		const cv = canvas.current;
@@ -224,7 +226,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 	}
 
 	const addOp = React.useCallback(
-		(type: Op["type"], args: any) => {
+		(type: Op["type"], args: Op["arguments"]) => {
 			setLayers((layers) => [
 				...layers,
 				{ type, arguments: args, options: getOptions() },
@@ -234,14 +236,14 @@ function Draw({ aspectRatio, className, id }: Props) {
 	);
 
 	const startApp = React.useCallback(() => {
-		if (!canvas.current) {
+		if (!canvas.current || readOnly) {
 			return;
 		}
 
 		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
 		const rc = rough.canvas(canvas.current);
 		const dpi = window.devicePixelRatio;
-		const cw = canvas.current.width;
+		const cw = Number(canvas.current.style.width.replace("px", ""));
 
 		let isDrawing = false;
 		let startPoint: [number, number] = [0, 0];
@@ -357,7 +359,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			canvas.current?.removeEventListener("mouseup", onMouseUp);
 			canvas.current?.removeEventListener("mousemove", onMouseMove);
 		};
-	}, [addOp, getOptions, draw, currentShape, text]);
+	}, [addOp, getOptions, draw, currentShape, text, readOnly]);
 
 	React.useEffect(() => {
 		function resize() {
@@ -402,9 +404,31 @@ function Draw({ aspectRatio, className, id }: Props) {
 		draw();
 	}, [theme]);
 
+	React.useEffect(() => {
+		fetch(`/drawings/${id}.json`)
+			.then((res) => {
+				res.json().then((layers) => {
+					setLayers(layers);
+				});
+			})
+			.finally(() => {
+				setReady(true);
+			});
+	}, [id]);
+
+	React.useEffect(() => {
+		if (!ready) return;
+
+		fetch(`http://localhost:4444/draw/${id}`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(layers),
+		});
+	}, [layers, id, ready]);
+
 	return (
 		<div>
-			<header className={clsx("flex justify-between", { hidden: readOnly })}>
+			<header className={clsx("flex justify-between", { "!hidden": readOnly })}>
 				<div className="flex gap-4">
 					<ul className="ms-0 mb-1 flex">
 						{styles.map((style) => (
@@ -504,7 +528,9 @@ function Draw({ aspectRatio, className, id }: Props) {
 				)}
 			/>
 
-			<div className={clsx("mt-1 flex justify-between", { hidden: readOnly })}>
+			<div
+				className={clsx("mt-1 flex justify-between", { "!hidden": readOnly })}
+			>
 				<ul className="ms-0 mb-1 flex">
 					{shapes.map((shape) => (
 						<button

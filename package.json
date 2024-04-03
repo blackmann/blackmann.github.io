@@ -23,6 +23,8 @@
     "@unocss/preset-icons": "^0.58.3",
     "astro": "^4.5.13",
     "clsx": "^2.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "mafs": "^0.18.4",
     "markdown-it": "^13.0.2",
     "perfect-freehand": "^1.2.2",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.1",
+    "@types/express": "^4.17.21",
     "@unocss/reset": "^0.58.3",
     "@unocss/transformer-directives": "^0.58.3",
     "@unocss/transformer-variant-group": "^0.58.3",
