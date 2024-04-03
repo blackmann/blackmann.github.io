@@ -6,7 +6,7 @@ pubDate: 'Apr 3, 2024'
 
 import {Draw} from '../../components/Draw.tsx'
 
-Last night, while preparing my notes on [Vectors](/lesson-notes/vector-i), I needed to do some illustrations. The immediate option was to use code to draw them. I had seen this [library](https://roughjs.com) and wanted to use it because it made the lines look hand-drawn; the perfect aesthetic I was look for.
+Last night, while preparing my notes on [Vectors](/lesson-notes/vector-i), I needed to do some illustrations. The immediate option was to use code to draw them. I had seen this [library](https://roughjs.com) and wanted to use it because it made the lines look hand-drawn; the perfect aesthetic I was looking for.
 
 So I started; begun to write one line for each stroke. Then I realize this was going to be cumbersome since I may end up having lots of illustrations to do for this note in particular.
 
@@ -18,7 +18,7 @@ The above illustration was done with `Draw`. I am fascinated with this ease of i
 
 ## How it works
 
-In development mode, ie, `process.env.NODE_ENV === 'development'`, drawing is enabled. So you can draw lines, rectangles and ellipse. You can also do freehand drawing and add texts. After adding any element, the illustration is saved by calling an endpoint served by express. The [server](https://github.com/blackmann/blackmann.github.io/blob/1647251decf6dc1345883d399758fe853b7141e2/draw-server.mjs), which is just 30 lines of code, saves the illustration in a JSON format into `public/drawings/` directory.
+In development mode, ie, `process.env.NODE_ENV === 'development'`, drawing is enabled. So you can draw lines, rectangles and ellipses. You can also do freehand drawing and add texts. After adding any element, the illustration is saved by calling an endpoint served by express. The [server](https://github.com/blackmann/blackmann.github.io/blob/1647251decf6dc1345883d399758fe853b7141e2/draw-server.mjs), which is just 30 lines of code, saves the illustration in a JSON format into `public/drawings/` directory.
 
 In production mode, when the site is live, editing is disabled. The component then loads the illustration from the public folder mentioned earlier.
 
@@ -36,10 +36,9 @@ This is the same draw component in this post
 
 ## Features
 
-
 I took lots of care in developing this. So here are all the considerations and features:
 
-<video class="mb-4" src="/draw.mp4" autoplay loop/>
+<video class="mb-4" src="/draw.mp4" autoplay loop controls/>
 
 - **Light + dark modes**. If you toggled between light and dark modes, the colors change to fit. So black outlines become white in dark mode. Darker colors are slightly brighter in dark mode as well.
 
