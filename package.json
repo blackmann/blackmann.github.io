@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "draw": "node draw-server.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.2.3",
@@ -15,7 +16,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/tailwind": "^5.1.0",
-    "@iconify-json/lucide": "^1.1.151",
+    "@iconify-json/lucide": "^1.1.178",
     "@resvg/resvg-js": "^2.6.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
@@ -28,6 +29,7 @@
     "react-dom": "^18.2.0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
+    "roughjs": "^4.6.6",
     "sanitize-html": "^2.11.0",
     "satori": "^0.10.11",
     "shikiji-transformers": "^0.10.2",

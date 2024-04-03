@@ -15,6 +15,16 @@
 	--svg-outline: #d4d4d8;
 	--svg-foreground: #A2A1A1;
 	--svg-surface: white;
+
+	--draw-fg: #333;
+	--draw-red: #f11d0e;
+	--draw-orange: #f14e0e;
+	--draw-yellow: #ffe44a;
+	--draw-green: #15e272;
+	--draw-blue: #58a6ff;
+	--draw-indigo: #7c58ff;
+	--draw-violet: #ae58ff;
+	--draw-pink: #ee00ab;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +32,8 @@
 		--svg-outline: #525252;
 		--svg-foreground: #d4d4d4;
 		--svg-surface: #262626;
+
+		--draw-fg: #eee;
 	}
 }
 
@@ -270,5 +282,15 @@ article ol {
 }
 
 .MafsView {
-	@apply rounded-lg mt-2 border-2 border-transparent dark:border-neutral-700;
+	@apply rounded-lg mt-2 border-2 border-zinc-200 dark:border-neutral-700;
+}
+
+@media (prefers-color-scheme: light) {
+	.MafsView {
+		--mafs-bg: #efefef;
+		--mafs-fg: #222;
+
+		--mafs-line-color: #aaa;
+		--grid-line-subdivision-color: #999;
+	}
 }

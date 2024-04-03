@@ -6,7 +6,8 @@ tags:
   - vectors
 ---
 
-import {PolarCoordinate, UnitVectorDemo} from '../../components/vectors-i.tsx'
+import {PolarCoordinate, UnitVectorDemo, VectorAddPolarExample} from '../../components/vectors-i.tsx'
+import { Draw } from '../../components/Draw.tsx'
 
 This semester, Vectors was my favorite subject. Maybe because it's easier for me to visualize it.
 
@@ -62,3 +63,14 @@ Vector being defined as magnitute + direction means we can represent them as som
   The applet below demonstrates this:
 
   <UnitVectorDemo client:load />
+
+  > Throughout this article, I'll be using the unit vector notation.
+
+## Vector addition
+
+Vectors can be added. In practical terms, if we went $12km$ north and then branched $5km$ west, we can be able to tell how far we've moved from where we started (ie, the origin).
+
+
+<div class="mt-2">
+  <Draw className="rounded-lg" aspectRatio={16/9} id="vector-addition-polar" client:load />
+</div>
