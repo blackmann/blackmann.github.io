@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import React from "react";
+import rough from "roughjs";
+import type { Options as RoughOptions } from "roughjs/bin/core";
 
 interface Props {
 	aspectRatio: number;
 	className?: string;
-	id: string; // this becomes the layers file name
+	id: string; // this becomes the layers' file name
 }
 
 const styles = [
@@ -18,7 +20,7 @@ const shapes = [
 	{ type: "ellipse", icon: "i-lucide-circle" },
 	{ type: "arc", icon: "i-lucide-loader-circle" },
 	{ type: "text", icon: "i-lucide-type" },
-];
+] as const;
 
 const actions = [
 	{ type: "undo", icon: "i-lucide-undo-2" },
@@ -41,9 +43,19 @@ type StyleType = (typeof styles)[number]["type"];
 type ShapeType = (typeof shapes)[number]["type"];
 type Colors = (typeof colors)[number];
 
+function cs(key: string) {
+	return getComputedStyle(document.documentElement).getPropertyValue(key);
+}
+
+interface Op {
+	type: ShapeType;
+	arguments: any;
+	options: RoughOptions;
+}
+
 function Draw({ aspectRatio, className, id }: Props) {
 	const canvas = React.useRef<HTMLCanvasElement>(null);
-	const [layers, setLayers] = React.useState([]);
+	const [layers, setLayers] = React.useState<Op[]>([]);
 
 	const [currentStyle, setCurrentStyle] = React.useState<StyleType>("stroke");
 	const [currentShape, setCurrentShape] = React.useState<ShapeType>("line");
@@ -52,7 +64,54 @@ function Draw({ aspectRatio, className, id }: Props) {
 		Record<StyleType, Colors>
 	>({ fill: "fg", stroke: "fg" });
 
-	function draw() {}
+	const getOptions = React.useCallback(
+		() => ({
+			stroke: cs(`--draw-${styleColors.stroke}`),
+		}),
+		[styleColors],
+	);
+
+	const draw = React.useCallback(() => {
+		if (!canvas.current) {
+			return;
+		}
+
+		clear();
+
+		const rc = rough.canvas(canvas.current);
+		for (const op of layers) {
+			switch (op.type) {
+				case "line": {
+					const [x1, y1, x2, y2] = op.arguments;
+					rc.line(x1, y1, x2, y2, op.options);
+					break;
+				}
+
+				case "ellipse": {
+					const [x1, y1, x2, y2] = op.arguments;
+					const w = x2 - x1;
+					const h = y2 - y1;
+					rc.ellipse(x1 + w / 2, y1 + h / 2, w, h, op.options);
+
+					break;
+				}
+
+				case "rectangle": {
+					const [x1, y1, x2, y2] = op.arguments;
+					const w = x2 - x1;
+					const h = y2 - y1;
+					rc.rectangle(x1, y1, w, h, op.options);
+				}
+			}
+		}
+	}, [layers]);
+
+	function clear() {
+		const cv = canvas.current;
+		if (!cv) return;
+
+		cv.getContext("2d")?.clearRect(0, 0, cv.width, cv.height);
+	}
 
 	function changeColor(color: Colors) {
 		setStyleColors((styleColors) => ({
@@ -61,11 +120,90 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}));
 	}
 
-	function startApp() {
+	const addOp = React.useCallback(
+		(type: Op["type"], args: any) => {
+			setLayers((layers) => [
+				...layers,
+				{ type, arguments: args, options: getOptions() },
+			]);
+		},
+		[getOptions],
+	);
+
+	const startApp = React.useCallback(() => {
 		if (!canvas.current) {
 			return;
 		}
-	}
+
+		const rc = rough.canvas(canvas.current);
+
+		let isDrawing = false;
+		let startPoint = [0, 0];
+		let endPoint = [0, 0];
+		function onMouseDown(e: MouseEvent) {
+			isDrawing = true;
+			startPoint = [e.offsetX, e.offsetY];
+		}
+
+		function onMouseUp(e: MouseEvent) {
+			endPoint = [e.offsetX, e.offsetY];
+
+			addOp(currentShape, [...startPoint, ...endPoint]);
+			draw();
+
+			isDrawing = false;
+		}
+
+		function onMouseMove(e: MouseEvent) {
+			if (!isDrawing) return;
+			endPoint = [e.offsetX, e.offsetY];
+			draw();
+
+			switch (currentShape) {
+				case "line": {
+					rc.line(
+						startPoint[0],
+						startPoint[1],
+						endPoint[0],
+						endPoint[1],
+						getOptions(),
+					);
+
+					break;
+				}
+
+				case "ellipse": {
+					const w = endPoint[0] - startPoint[0];
+					const h = endPoint[1] - startPoint[1];
+					rc.ellipse(
+						startPoint[0] + w / 2,
+						startPoint[1] + h / 2,
+						w,
+						h,
+						getOptions(),
+					);
+
+					break;
+				}
+
+				case "rectangle": {
+					const w = endPoint[0] - startPoint[0];
+					const h = endPoint[1] - startPoint[1];
+					rc.rectangle(startPoint[0], startPoint[1], w, h, getOptions());
+				}
+			}
+		}
+
+		canvas.current.addEventListener("mousedown", onMouseDown);
+		canvas.current.addEventListener("mouseup", onMouseUp);
+		canvas.current.addEventListener("mousemove", onMouseMove);
+
+		return () => {
+			canvas.current?.removeEventListener("mousedown", onMouseDown);
+			canvas.current?.removeEventListener("mouseup", onMouseUp);
+			canvas.current?.removeEventListener("mousemove", onMouseMove);
+		};
+	}, [addOp, getOptions, draw, currentShape]);
 
 	React.useEffect(() => {
 		function resize() {
@@ -82,13 +220,14 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}
 
 		window.addEventListener("resize", resize);
+		resize();
 
 		return () => window.removeEventListener("resize", resize);
-	}, [aspectRatio]);
+	}, [aspectRatio, draw]);
 
 	React.useEffect(() => {
 		return startApp();
-	}, []);
+	}, [startApp]);
 
 	return (
 		<div>
@@ -179,7 +318,9 @@ function Draw({ aspectRatio, className, id }: Props) {
 					))}
 				</ul>
 
-				<div className="font-mono text-secondary text-xs">{id}</div>
+				<div className="font-mono px-1 text-secondary text-xs bg-neutral-800 rounded-md self-start">
+					{id}
+				</div>
 			</div>
 		</div>
 	);
