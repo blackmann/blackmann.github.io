@@ -70,14 +70,33 @@ function renderPath(path: [number, number][]) {
 	return render;
 }
 
+function xDown(
+	canvasWidth: number,
+	[x, y]: [number, number],
+): [number, number] {
+	return [x / canvasWidth, y / canvasWidth];
+}
+
+function xUp(canvasWidth: number, [x, y]: [number, number]): [number, number] {
+	return [x * canvasWidth, y * canvasWidth];
+}
+
 interface Op {
 	type: ShapeType;
-	arguments: any;
+	arguments: [
+		x1: number,
+		y1: number,
+		x2: number,
+		y2: number,
+		text: string,
+		path: [number, number][],
+	];
 	options: RoughOptions;
 }
 
 function Draw({ aspectRatio, className, id }: Props) {
 	const theme = useColorScheme();
+	const readOnly = process.env.NODE_ENV === "production";
 
 	const canvas = React.useRef<HTMLCanvasElement>(null);
 	const [layers, setLayers] = React.useState<Op[]>([]);
@@ -118,6 +137,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}
 
 		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
+		const cw = canvas.current.width;
 
 		clear();
 
@@ -133,17 +153,20 @@ function Draw({ aspectRatio, className, id }: Props) {
 				options.stroke = "#454459";
 			}
 
+			const [xs1, ys1, xs2, ys2] = op.arguments;
+			const [x1, y1] = xUp(cw, [xs1, ys1]);
+			const [x2, y2] = xUp(cw, [xs2, ys2]);
+
+			const w = x2 - x1;
+			const h = y2 - y1;
+
 			switch (op.type) {
 				case "line": {
-					const [x1, y1, x2, y2] = op.arguments;
 					rc.line(x1 * dpi, y1 * dpi, x2 * dpi, y2 * dpi, options);
 					break;
 				}
 
 				case "ellipse": {
-					const [x1, y1, x2, y2] = op.arguments;
-					const w = x2 - x1;
-					const h = y2 - y1;
 					rc.ellipse(
 						(x1 + w / 2) * dpi,
 						(y1 + h / 2) * dpi,
@@ -156,9 +179,6 @@ function Draw({ aspectRatio, className, id }: Props) {
 				}
 
 				case "rectangle": {
-					const [x1, y1, x2, y2] = op.arguments;
-					const w = x2 - x1;
-					const h = y2 - y1;
 					rc.rectangle(x1 * dpi, y1 * dpi, w * dpi, h * dpi, options);
 
 					break;
@@ -166,7 +186,6 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 				// [ ] Improve: wrap text
 				case "text": {
-					const [x1, y1, x2, y2, text] = op.arguments;
 					ctx.save();
 					ctx.font = getFont();
 					ctx.textBaseline = "top";
@@ -179,11 +198,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 				case "freehand": {
 					const [, , , , , path] = op.arguments;
-					rc.path(renderPath(path), options);
+					rc.path(renderPath(path.map((p) => xUp(cw, p))), options);
 				}
 			}
 		}
-	}, [layers, hovered]);
+	}, [layers, hovered, text]);
 
 	function clear() {
 		const cv = canvas.current;
@@ -222,10 +241,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 		const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
 		const rc = rough.canvas(canvas.current);
 		const dpi = window.devicePixelRatio;
+		const cw = canvas.current.width;
 
 		let isDrawing = false;
-		let startPoint = [0, 0];
-		let endPoint = [0, 0];
+		let startPoint: [number, number] = [0, 0];
+		let endPoint: [number, number] = [0, 0];
 		let path: [number, number][] = [];
 
 		function onMouseDown(e: MouseEvent) {
@@ -251,7 +271,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 				return;
 			}
 
-			addOp(currentShape, [...startPoint, ...endPoint, text, path]);
+			addOp(currentShape, [
+				...xDown(cw, startPoint),
+				...xDown(cw, endPoint),
+				text,
+				path.map((p) => xDown(cw, p)),
+			]);
+
 			draw();
 		}
 
@@ -378,7 +404,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 	return (
 		<div>
-			<header className="flex justify-between">
+			<header className={clsx("flex justify-between", { hidden: readOnly })}>
 				<div className="flex gap-4">
 					<ul className="ms-0 mb-1 flex">
 						{styles.map((style) => (
@@ -390,6 +416,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 											style.type === currentStyle,
 									},
 								)}
+								disabled={style.type === "fill"}
 								type="button"
 								key={style.type}
 								onClick={() => setCurrentStyle(style.type)}
@@ -449,7 +476,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 						>
 							{[...layers].reverse().map((it, index) => (
 								<li
-									key={index}
+									key={`${it.type}-${index}`}
 									className="px-2 py-0.5 mt-0 hover:bg-zinc-200 dark:hover:bg-neutral-800 font-mono text-sm flex justify-between border-b last:border-b-0 dark:border-neutral-800"
 									onMouseEnter={() => setHovered(index)}
 								>
@@ -477,7 +504,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				)}
 			/>
 
-			<div className="mt-1 flex justify-between">
+			<div className={clsx("mt-1 flex justify-between", { hidden: readOnly })}>
 				<ul className="ms-0 mb-1 flex">
 					{shapes.map((shape) => (
 						<button
