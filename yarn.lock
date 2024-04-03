@@ -3985,6 +3985,11 @@ perfect-debounce@^1.0.0:
   resolved "https://registry.npmjs.org/perfect-debounce/-/perfect-debounce-1.0.0.tgz"
   integrity sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==
 
+perfect-freehand@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/perfect-freehand/-/perfect-freehand-1.2.2.tgz#292f65b72df0c7f57a89c4b346b50d7139014172"
+  integrity sha512-eh31l019WICQ03pkF3FSzHxB8n07ItqIQ++G5UV8JX0zVOXzgTGCqnRR0jJ2h9U8/2uW4W4mtGJELt9kEV0CFQ==
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"

@@ -3,6 +3,7 @@ import React from "react";
 import rough from "roughjs";
 import type { Options as RoughOptions } from "roughjs/bin/core";
 import { useColorScheme } from "../lib/use-color-scheme";
+import { getStrokePoints } from "perfect-freehand";
 
 interface Props {
 	aspectRatio: number;
@@ -19,7 +20,7 @@ const shapes = [
 	{ type: "line", icon: "i-lucide-slash" },
 	{ type: "rectangle", icon: "i-lucide-square" },
 	{ type: "ellipse", icon: "i-lucide-circle" },
-	{ type: "arc", icon: "i-lucide-loader-circle" },
+	{ type: "freehand", icon: "i-lucide-pen-line" },
 	{ type: "text", icon: "i-lucide-type" },
 ] as const;
 
@@ -50,6 +51,25 @@ function cs(key: string) {
 	return getComputedStyle(document.documentElement).getPropertyValue(key);
 }
 
+function renderPath(path: [number, number][]) {
+	const dpi = window.devicePixelRatio;
+	const points = getStrokePoints(path, { size: dpi });
+	let render = "";
+
+	for (const {
+		point: [x, y],
+	} of points) {
+		if (!render) {
+			render += `M ${x * dpi} ${y * dpi}`;
+			continue;
+		}
+
+		render += `L  ${x * dpi} ${y * dpi}`;
+	}
+
+	return render;
+}
+
 interface Op {
 	type: ShapeType;
 	arguments: any;
@@ -78,8 +98,8 @@ function Draw({ aspectRatio, className, id }: Props) {
 		(now = false) =>
 			({
 				stroke: now ? cs(`--draw-${styleColors.stroke}`) : styleColors.stroke,
-				strokeWidth: window.devicePixelRatio,
 				seed: Math.random() * 100,
+				strokeWidth: now ? window.devicePixelRatio : undefined,
 			}) satisfies RoughOptions,
 		[styleColors],
 	);
@@ -106,7 +126,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			const i = layers.length - c - 1;
 			const dpi = window.devicePixelRatio;
 
-			const options = { ...op.options };
+			const options = { ...op.options, strokeWidth: dpi };
 			options.stroke = cs(`--draw-${options.stroke}`);
 
 			if (hovered === i) {
@@ -153,6 +173,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 					ctx.fillStyle = options.stroke;
 					ctx.fillText(text, x1 * dpi, y1 * dpi, (x2 - x1) * dpi);
 					ctx.restore();
+
+					break;
+				}
+
+				case "freehand": {
+					const [, , , , , path] = op.arguments;
+					rc.path(renderPath(path), options);
 				}
 			}
 		}
@@ -199,10 +226,17 @@ function Draw({ aspectRatio, className, id }: Props) {
 		let isDrawing = false;
 		let startPoint = [0, 0];
 		let endPoint = [0, 0];
+		let path: [number, number][] = [];
+
 		function onMouseDown(e: MouseEvent) {
 			isDrawing = true;
 			setHovered(-1);
-			startPoint = [e.offsetX, e.offsetY];
+			const [x, y] = [e.offsetX, e.offsetY];
+			startPoint = [x, y];
+
+			if (currentShape === "freehand") {
+				path = [[x, y]];
+			}
 		}
 
 		function onMouseUp(e: MouseEvent) {
@@ -217,7 +251,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				return;
 			}
 
-			addOp(currentShape, [...startPoint, ...endPoint, text]);
+			addOp(currentShape, [...startPoint, ...endPoint, text, path]);
 			draw();
 		}
 
@@ -226,25 +260,27 @@ function Draw({ aspectRatio, className, id }: Props) {
 			endPoint = [e.offsetX, e.offsetY];
 			draw();
 
+			const [x1, y1, x2, y2] = [
+				startPoint[0],
+				startPoint[1],
+				endPoint[0],
+				endPoint[1],
+			];
+
+			const w = x2 - x1;
+			const h = y2 - y1;
+
 			switch (currentShape) {
 				case "line": {
-					rc.line(
-						startPoint[0] * dpi,
-						startPoint[1] * dpi,
-						endPoint[0] * dpi,
-						endPoint[1] * dpi,
-						getOptions(true),
-					);
+					rc.line(x1 * dpi, y1 * dpi, x2 * dpi, y2 * dpi, getOptions(true));
 
 					break;
 				}
 
 				case "ellipse": {
-					const w = endPoint[0] - startPoint[0];
-					const h = endPoint[1] - startPoint[1];
 					rc.ellipse(
-						(startPoint[0] + w / 2) * dpi,
-						(startPoint[1] + h / 2) * dpi,
+						(x1 + w / 2) * dpi,
+						(y1 + h / 2) * dpi,
 						w * dpi,
 						h * dpi,
 						getOptions(true),
@@ -254,15 +290,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				}
 
 				case "rectangle": {
-					const w = endPoint[0] - startPoint[0];
-					const h = endPoint[1] - startPoint[1];
-					rc.rectangle(
-						startPoint[0] * dpi,
-						startPoint[1] * dpi,
-						w * dpi,
-						h * dpi,
-						getOptions(true),
-					);
+					rc.rectangle(x1 * dpi, y1 * dpi, w * dpi, h * dpi, getOptions(true));
 
 					break;
 				}
@@ -272,25 +300,24 @@ function Draw({ aspectRatio, className, id }: Props) {
 						return;
 					}
 
-					const [x, y] = startPoint;
 					ctx.save();
 					ctx.font = getFont();
 					ctx.textBaseline = "top";
 					ctx.fillStyle = getOptions().stroke;
-					ctx.fillText(
-						text,
-						x * dpi,
-						y * dpi,
-						(endPoint[0] - startPoint[0]) * dpi,
-					);
+					ctx.fillText(text, x1 * dpi, y1 * dpi, (x2 - x1) * dpi);
 					ctx.restore();
 
-					const w = endPoint[0] - startPoint[0];
-					const h = endPoint[1] - startPoint[1];
-					rc.rectangle(x * dpi, y * dpi, w * dpi, h * dpi, {
+					rc.rectangle(x1 * dpi, y1 * dpi, w * dpi, h * dpi, {
 						stroke: cs("--draw-fg"),
 					});
+
 					break;
+				}
+
+				case "freehand": {
+					path.push([x2, y2]);
+
+					rc.path(renderPath(path), getOptions(true));
 				}
 			}
 		}
@@ -454,6 +481,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				<ul className="ms-0 mb-1 flex">
 					{shapes.map((shape) => (
 						<button
+							title={shape.type}
 							className={clsx(
 								"flex flex-col gap-1 border border-zinc-300 px-2 py-1 dark:border-neutral-700 text-zinc-800 dark:text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
 								{
