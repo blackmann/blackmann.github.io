@@ -7,8 +7,9 @@ import {
 	vec,
 } from "mafs/build/index.mjs";
 // import { Mafs, Coordinates, Circle, Vector, useMovablePoint, vec } from "mafs";
-import "mafs/core.css";
 import React from "react";
+import rough from "roughjs";
+import { useColorScheme } from "../lib/use-color-scheme";
 
 function PolarCoordinate() {
 	const [r, t] = [3, Math.PI / 5];
@@ -71,8 +72,45 @@ function UnitVectorDemo() {
 			<Text x={-0.5} y={scaledJ[1]} size={14}>
 				q={Math.round(jm.y)}
 			</Text>
+
+			<Text x={resultant[0]} y={[resultant[1] + 0.25]} size={14}>
+				{Math.round(im.x)}i + {Math.round(jm.y)}j
+			</Text>
 		</Mafs>
 	);
 }
 
-export { PolarCoordinate, UnitVectorDemo };
+function cs(key: string) {
+	return getComputedStyle(document.documentElement).getPropertyValue(key);
+}
+
+function VectorAddPolarExample() {
+	const canvas = React.useRef<HTMLCanvasElement>(null);
+	const theme = useColorScheme();
+
+	function draw() {
+		if (!canvas.current) {
+			return;
+		}
+
+		const fg = canvas.current
+			.getContext("2d")
+			?.clearRect(0, 0, canvas.current.width, canvas.current.height);
+
+		const rc = rough.canvas(canvas.current);
+
+		const strokeColor = cs("--draw-fg");
+
+		rc.line(50, 50, 50, 250, { stroke: strokeColor });
+		rc.line(50, 250, 180, 250, { stroke: strokeColor });
+		rc.line(50, 250, 180, 50, { stroke: strokeColor });
+	}
+
+	React.useEffect(() => {
+		draw();
+	}, [theme]);
+
+	return <canvas width={600} height={400} ref={canvas} />;
+}
+
+export { PolarCoordinate, UnitVectorDemo, VectorAddPolarExample };
