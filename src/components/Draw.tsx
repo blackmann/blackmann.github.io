@@ -192,7 +192,8 @@ function Draw({ aspectRatio, className, id }: Props) {
 					ctx.font = getFont();
 					ctx.textBaseline = "top";
 					ctx.fillStyle = options.stroke;
-					ctx.fillText(text, x1 * dpi, y1 * dpi, (x2 - x1) * dpi);
+					const w = ctx.measureText(text).width;
+					ctx.fillText(text, x1 * dpi - w / 2, y1 * dpi, w);
 					ctx.restore();
 
 					break;
@@ -222,7 +223,9 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 	function getFont() {
 		const dpi = window.devicePixelRatio;
-		return `${18 * dpi}px 'Indie Flower'`;
+		const fs = Number(cs('--draw-fs'));
+
+		return `${fs * dpi}px 'Indie Flower'`;
 	}
 
 	const addOp = React.useCallback(
@@ -265,7 +268,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 			isDrawing = false;
 			endPoint = [e.offsetX, e.offsetY];
 
-			if (endPoint[0] - startPoint[0] < 2 && endPoint[1] - startPoint[1] < 2) {
+			if (
+				currentShape !== "text" &&
+				endPoint[0] - startPoint[0] < 2 &&
+				endPoint[1] - startPoint[1] < 2
+			) {
 				return;
 			}
 
@@ -285,7 +292,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 		function onMouseMove(e: MouseEvent) {
 			if (!isDrawing) return;
+
+			if (currentShape === "text") {
+				startPoint = [e.offsetX, e.offsetY];
+			}
+
 			endPoint = [e.offsetX, e.offsetY];
+
 			draw();
 
 			const [x1, y1, x2, y2] = [
@@ -331,13 +344,10 @@ function Draw({ aspectRatio, className, id }: Props) {
 					ctx.save();
 					ctx.font = getFont();
 					ctx.textBaseline = "top";
-					ctx.fillStyle = getOptions().stroke;
-					ctx.fillText(text, x1 * dpi, y1 * dpi, (x2 - x1) * dpi);
+					ctx.fillStyle = cs(`--draw-${getOptions().stroke}`);
+					const w = ctx.measureText(text).width;
+					ctx.fillText(text, x1 * dpi - w / 2, y1 * dpi, w);
 					ctx.restore();
-
-					rc.rectangle(x1 * dpi, y1 * dpi, w * dpi, h * dpi, {
-						stroke: cs("--draw-fg"),
-					});
 
 					break;
 				}
@@ -402,7 +412,8 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 	React.useEffect(() => {
 		draw();
-	}, [theme]);
+		document.fonts.ready.then(() => draw());
+	}, [theme, draw]);
 
 	React.useEffect(() => {
 		fetch(`/drawings/${id}.json`)

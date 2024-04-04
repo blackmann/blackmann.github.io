@@ -17,6 +17,7 @@
 	--svg-foreground: #A2A1A1;
 	--svg-surface: white;
 
+	--draw-fs: 16;
 	--draw-fg: #333;
 	--draw-red: #f11d0e;
 	--draw-orange: #f14e0e;
@@ -27,6 +28,12 @@
 	--draw-violet: #ae58ff;
 	--draw-pink: #ee00ab;
 
+}
+
+@media screen and (max-width: 720px) {
+	:root {
+		--draw-fs: 14;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
