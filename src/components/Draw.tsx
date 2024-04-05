@@ -223,7 +223,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 
 	function getFont() {
 		const dpi = window.devicePixelRatio;
-		const fs = Number(cs('--draw-fs'));
+		const fs = Number(cs("--draw-fs"));
 
 		return `${fs * dpi}px 'Indie Flower'`;
 	}
@@ -533,6 +533,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			<canvas
 				ref={canvas}
 				style={{ aspectRatio }}
+				aria-label={id}
 				className={clsx(
 					"bg-zinc-200 bg-opacity-30 dark:bg-neutral-800 dark:bg-opacity-100 w-full",
 					className,
