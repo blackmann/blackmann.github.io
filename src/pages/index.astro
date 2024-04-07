@@ -9,6 +9,7 @@ import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import { ArtSlides } from '../components/ArtSlides.tsx'
+import PG from '../components/PG.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -28,7 +29,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
       class="rounded-lg border border-pink-200 bg-pink-100 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:border-green-800 dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
       <div class="i-lucide-hand-metal inline-block !text-sm"></div> Akwaaba
     </abbr>
-    <h1 class="mt-0 text-lg font-bold">Mi casa es mi casa</h1>
+    <h1 class="mt-0 text-lg font-bold">いらっしゃいませ</h1>
 
     <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
       <div class="col-span-1">
@@ -47,7 +48,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
           </a> server.
         </p>
 
-        <p>🇬🇭</p>
+        <p class="mt-8">
+          <PG />
+        </p>
       </div>
 
       <div class="col-span-1 mt-8 lg:mt-0">
