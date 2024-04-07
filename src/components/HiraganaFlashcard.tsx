@@ -67,8 +67,14 @@ function HiraganaFlashcard() {
 	return (
 		<>
 			<div className="flex justify-between mb-8 items-start">
-				<h1 className="text-center rounded-lg px-2 capitalize font-medium text-secondary">
+				<h1 className="text-center rounded-lg px-2 capitalize font-medium text-secondary flex flex-col items-start">
 					Hiragana &bull; ひらがな
+					<a
+						href="https://www.tofugu.com/japanese/learn-hiragana/"
+						className="text-secondary flex items-center gap-2 rounded-lg bg-zinc-200 dark:bg-neutral-800 px-2 font-mono no-underline text-sm"
+					>
+						<div className="i-lucide-videotape inline-block" /> Check this
+					</a>
 				</h1>
 
 				{/* <div className="flex items-center gap-2 rounded-2xl bg-zinc-200 dark:bg-neutral-700 p-1 font-medium pe-2">
