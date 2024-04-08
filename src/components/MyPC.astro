@@ -1,0 +1,139 @@
+---
+const inDev = process.env.NODE_ENV !== 'production'
+---
+
+<canvas
+  id="pc-canvas"
+  style="background-color: transparent;"
+  class:list={[{ 'pointer-events-none': !inDev, border: inDev }]}
+  height="260"
+  width="300">
+</canvas>
+{
+  inDev && (
+    <div class="inline-block rounded bg-zinc-200 font-mono text-sm">
+      <div id="canvas-position">p:</div>
+      <div id="canvas-rotation">θ:</div>
+    </div>
+  )
+}
+
+<script>
+  import {
+    Mesh,
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    AmbientLight,
+    DirectionalLight,
+    LineBasicMaterial,
+    EdgesGeometry,
+    LineSegments,
+  } from 'three'
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+
+  const canvas = document.querySelector('#pc-canvas') as HTMLCanvasElement
+  const scene = new Scene()
+  const camera = new PerspectiveCamera(
+    30,
+    canvas.width / canvas.height,
+    0.1,
+    1000,
+  )
+  const renderer = new WebGLRenderer({ canvas })
+  renderer.setSize(canvas.width, canvas.height)
+  renderer.shadowMap.enabled = true
+  renderer.setPixelRatio(window.devicePixelRatio)
+
+  renderer.setClearColor(0xf4f4f5)
+
+  camera.position.set(0, 0, 5.3)
+  const lineMat = new LineBasicMaterial({ color: 0x000000, linewidth: 2 })
+
+  new GLTFLoader().load('/macintoshhh.glb', (glb) => {
+    // scene.add(glb.scene)
+
+    for (const i of glb.scene.children) {
+      if (i.type !== 'Mesh') {
+        continue
+      }
+
+      const mesh = i as Mesh
+
+      const e = new EdgesGeometry(mesh.geometry)
+      const w = new LineSegments(e, lineMat)
+
+      w.position.set(mesh.position.x, mesh.position.y, mesh.position.z)
+      // i.receiveShadow = true
+      // i.castShadow = true
+      // i.material = new MeshStandardMaterial({
+      //   color: 0xe4e3e2,
+      //   wireframe: true,
+      // })
+      scene.add(w)
+    }
+  })
+
+  function updateCameraDebug() {
+    const cp = document.querySelector('#canvas-position')
+    const ct = document.querySelector('#canvas-rotation')
+
+    if (!(cp && ct)) {
+      return
+    }
+
+    const { x, y, z } = camera.position
+    const p = `p: ${x.toFixed(3)}, ${y.toFixed(3)}, ${z.toFixed(3)}`
+    cp.innerHTML = p
+
+    const { x: u, y: v, z: w } = camera.rotation
+    const t = `θ: ${u.toFixed(3)}, ${v.toFixed(3)}, ${w.toFixed(3)}`
+    ct.innerHTML = t
+  }
+
+  function dark() {
+    renderer.setClearColor(0x171717)
+    lineMat.color.set(0xe4e5e3)
+  }
+
+  function light() {
+    renderer.setClearColor(0xf4f4f5)
+    lineMat.color.set(0x111111)
+  }
+
+  new OrbitControls(camera, canvas)
+  scene.add(new AmbientLight())
+  const dl = new DirectionalLight()
+  dl.castShadow = true
+  scene.add(dl)
+
+  window.addEventListener('resize', () => [
+    renderer.setPixelRatio(window.devicePixelRatio),
+  ])
+
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+  if (mediaQuery.matches) {
+    dark()
+  }
+
+  const listener = (e: MediaQueryListEvent) => {
+    if (e.matches) {
+      dark()
+    } else {
+      light()
+    }
+  }
+
+  mediaQuery.addEventListener('change', listener)
+
+  function animate() {
+    // orbitControl.update()
+    renderer.render(scene, camera)
+    window.requestAnimationFrame(animate)
+    updateCameraDebug()
+  }
+
+  animate()
+</script>

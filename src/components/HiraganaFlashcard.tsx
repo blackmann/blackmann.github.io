@@ -114,7 +114,9 @@ function HiraganaFlashcard() {
 								style={{ animation: "fadeIn 1s" }}
 								key={it.char}
 							>
-								<div>{it.char}</div>
+								<div className={clsx({ "text-secondary": !it.correct })}>
+									{it.char}
+								</div>
 								<div className="text-xs text-secondary">{it.pronunciation}</div>
 							</li>
 						))}

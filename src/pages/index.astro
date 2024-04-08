@@ -8,8 +8,8 @@ import shortenDate from '../lib/shorten-date'
 import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 import ProjectItem from '../components/ProjectItem.astro'
-import { ArtSlides } from '../components/ArtSlides.tsx'
 import PG from '../components/PG.astro'
+import MyPC from '../components/MyPC.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -53,8 +53,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
         </p>
       </div>
 
-      <div class="col-span-1 mt-8 lg:mt-0">
-        <ArtSlides client:load />
+      <div class="col-span-1 mt-8 lg:mt-0 flex flex-col items-center">
+        <!-- <ArtSlides client:load /> -->
+        <MyPC />
       </div>
     </div>
 
