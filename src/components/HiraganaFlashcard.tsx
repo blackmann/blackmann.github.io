@@ -110,7 +110,7 @@ function HiraganaFlashcard() {
 					<ul className="flex gap-2 mb-2 h-[3.2rem]">
 						{history.map((it) => (
 							<li
-								className="border-2 border-b-4 px-1 rounded-lg flex flex-col items-center min-w-[3rem] font-bold"
+								className="border-2 border-b-4 dark:border-neutral-800 px-1 rounded-lg flex flex-col items-center min-w-[3rem] font-bold"
 								style={{ animation: "fadeIn 1s" }}
 								key={it.char}
 							>
