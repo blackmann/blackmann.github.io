@@ -311,3 +311,13 @@ article ol {
 		--grid-line-subdivision-color: #999;
 	}
 }
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

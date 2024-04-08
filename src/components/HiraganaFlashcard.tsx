@@ -7,12 +7,20 @@ const pronunciations = Object.values(hiragana);
 
 const COUNT = chars.length;
 
+interface HistoryItem {
+	char: string;
+	pronunciation: string;
+	correct: boolean;
+}
+
 function HiraganaFlashcard() {
 	const [cursor, setCursor] = React.useState(
 		Math.floor(Math.random() * chars.length),
 	);
 
 	const [correct, setCorrect] = React.useState<boolean | null>(null);
+
+	const [history, setHistory] = React.useState<HistoryItem[]>([]);
 
 	const [selected, setSelected] = React.useState(-1);
 
@@ -29,6 +37,19 @@ function HiraganaFlashcard() {
 
 		return [japaneseChar, [pronunciations[alt], pronunciations[cursor]]];
 	}, [cursor, COUNT]);
+
+	const addToHistory = React.useCallback(() => {
+		setHistory((history) => {
+			if (correct === null) return history;
+			if (history.length === 4) {
+				history.shift();
+			}
+
+			history.push({ char, correct, pronunciation: pronunciations[cursor] });
+
+			return history;
+		});
+	}, [char, correct, cursor]);
 
 	React.useEffect(() => {
 		if (selected === -1) {
@@ -54,10 +75,12 @@ function HiraganaFlashcard() {
 
 				return newCursor;
 			});
+
+			addToHistory();
 		}, 1000);
 
 		return () => clearTimeout(timeout);
-	}, [correct]);
+	}, [correct, addToHistory]);
 
 	React.useEffect(() => {
 		setSelected(-1);
@@ -66,7 +89,7 @@ function HiraganaFlashcard() {
 
 	return (
 		<>
-			<div className="flex justify-between mb-8 items-start">
+			<div className="flex justify-between mb-4 items-start">
 				<h1 className="text-center rounded-lg px-2 capitalize font-medium text-secondary flex flex-col items-start">
 					Hiragana &bull; ひらがな
 					<a
@@ -84,6 +107,20 @@ function HiraganaFlashcard() {
 			</div>
 
 			<div className="flex flex-col items-center">
+				<div>
+					<ul className="flex gap-2 mb-2 h-[3.2rem]">
+						{history.map((it) => (
+							<li
+								className="border-2 border-b-4 px-1 rounded-lg flex flex-col items-center min-w-[3rem] font-bold"
+								style={{ animation: "fadeIn 1s" }}
+								key={it.char}
+							>
+								<div>{it.char}</div>
+								<div className="text-xs text-secondary">{it.pronunciation}</div>
+							</li>
+						))}
+					</ul>
+				</div>
 				<div
 					className={clsx(
 						"rounded-[2rem] border-3 dark:border-neutral-800 border-b-8 px-8 text-[16rem] font-bold transition-all",
