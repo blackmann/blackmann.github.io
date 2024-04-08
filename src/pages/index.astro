@@ -9,7 +9,6 @@ import ContentList from '../components/ContentList.astro'
 import Shell from '../layouts/Shell.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import PG from '../components/PG.astro'
-import MyPC from '../components/MyPC.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -55,11 +54,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
       <div class="col-span-1 mt-8 lg:mt-0 flex flex-col items-center">
         <!-- <ArtSlides client:load /> -->
-        <MyPC />
+        <!-- <Matrix /> -->
       </div>
     </div>
 
-    <h2 class="mb-4 flex items-center gap-2 font-bold" id="featured">
+    <h2 class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8" id="featured">
       <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
     </h2>
 

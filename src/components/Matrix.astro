@@ -5,18 +5,10 @@ const inDev = process.env.NODE_ENV !== 'production'
 <canvas
   id="pc-canvas"
   style="background-color: transparent;"
-  class:list={[{ 'pointer-events-none': !inDev, border: inDev }]}
   height="260"
+  class="border"
   width="300">
 </canvas>
-{
-  inDev && (
-    <div class="inline-block rounded bg-zinc-200 font-mono text-sm">
-      <div id="canvas-position">p:</div>
-      <div id="canvas-rotation">θ:</div>
-    </div>
-  )
-}
 
 <script>
   import {
@@ -29,9 +21,18 @@ const inDev = process.env.NODE_ENV !== 'production'
     LineBasicMaterial,
     EdgesGeometry,
     LineSegments,
+    MeshStandardMaterial,
+    PointLight,
+    RectAreaLight,
+    DirectionalLightHelper,
+    SpotLightHelper,
+    Plane,
+    ShadowMaterial,
+    PlaneGeometry,
+    MeshBasicMaterial,
   } from 'three'
   import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-  import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
   const canvas = document.querySelector('#pc-canvas') as HTMLCanvasElement
   const scene = new Scene()
@@ -49,10 +50,14 @@ const inDev = process.env.NODE_ENV !== 'production'
   renderer.setClearColor(0xf4f4f5)
 
   camera.position.set(0, 0, 5.3)
-  const lineMat = new LineBasicMaterial({ color: 0x000000, linewidth: 2 })
+  const caseMaterial = new MeshStandardMaterial({
+    color: 0xe4e3e2,
+    roughness: 0.4,
+  })
 
+  // Mark: Model
   new GLTFLoader().load('/macintoshhh.glb', (glb) => {
-    // scene.add(glb.scene)
+    scene.add(glb.scene)
 
     for (const i of glb.scene.children) {
       if (i.type !== 'Mesh') {
@@ -60,53 +65,35 @@ const inDev = process.env.NODE_ENV !== 'production'
       }
 
       const mesh = i as Mesh
+      mesh.material = caseMaterial
+      mesh.castShadow = true
+      mesh.receiveShadow = true
 
-      const e = new EdgesGeometry(mesh.geometry)
-      const w = new LineSegments(e, lineMat)
-
-      w.position.set(mesh.position.x, mesh.position.y, mesh.position.z)
-      // i.receiveShadow = true
-      // i.castShadow = true
-      // i.material = new MeshStandardMaterial({
-      //   color: 0xe4e3e2,
-      //   wireframe: true,
-      // })
-      scene.add(w)
+      // scene.add(mesh)
     }
   })
 
-  function updateCameraDebug() {
-    const cp = document.querySelector('#canvas-position')
-    const ct = document.querySelector('#canvas-rotation')
+  // Mark: Ambient Light
+  const al = new AmbientLight()
+  scene.add(al)
 
-    if (!(cp && ct)) {
-      return
-    }
-
-    const { x, y, z } = camera.position
-    const p = `p: ${x.toFixed(3)}, ${y.toFixed(3)}, ${z.toFixed(3)}`
-    cp.innerHTML = p
-
-    const { x: u, y: v, z: w } = camera.rotation
-    const t = `θ: ${u.toFixed(3)}, ${v.toFixed(3)}, ${w.toFixed(3)}`
-    ct.innerHTML = t
-  }
-
-  function dark() {
-    renderer.setClearColor(0x171717)
-    lineMat.color.set(0xe4e5e3)
-  }
-
-  function light() {
-    renderer.setClearColor(0xf4f4f5)
-    lineMat.color.set(0x111111)
-  }
-
-  new OrbitControls(camera, canvas)
-  scene.add(new AmbientLight())
+  // Mark: Directional Light
   const dl = new DirectionalLight()
   dl.castShadow = true
   scene.add(dl)
+
+  // Mark: Area Light
+  const pl = new RectAreaLight()
+  pl.position.z = 2
+  pl.intensity = 0.45
+  scene.add(pl)
+
+  // Mark: Shadow catcher
+  const sc = new Mesh(new PlaneGeometry(3, 3), new ShadowMaterial({opacity: 0.5}))
+  sc.rotation.set(-Math.PI / 2, 0, 0)
+  sc.position.set(0, -1, 0)
+  sc.receiveShadow = true
+  scene.add(sc)
 
   window.addEventListener('resize', () => [
     renderer.setPixelRatio(window.devicePixelRatio),
@@ -128,11 +115,22 @@ const inDev = process.env.NODE_ENV !== 'production'
 
   mediaQuery.addEventListener('change', listener)
 
+  function dark() {
+    renderer.setClearColor(0x171717)
+    dl.intensity = 0.1
+    al.intensity = 0.1
+  }
+
+  function light() {
+    renderer.setClearColor(0xf4f4f5)
+    dl.intensity = 1
+    al.intensity = 1
+  }
+
+  new OrbitControls(camera, canvas)
   function animate() {
-    // orbitControl.update()
     renderer.render(scene, camera)
     window.requestAnimationFrame(animate)
-    updateCameraDebug()
   }
 
   animate()
