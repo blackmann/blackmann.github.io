@@ -41,13 +41,12 @@ function HiraganaFlashcard() {
 	const addToHistory = React.useCallback(() => {
 		setHistory((history) => {
 			if (correct === null) return history;
-			if (history.length === 4) {
-				history.shift();
+			const latest = { char, correct, pronunciation: pronunciations[cursor] };
+			if (history.length > 3) {
+				return [...history.slice(history.length - 3, history.length), latest];
 			}
 
-			history.push({ char, correct, pronunciation: pronunciations[cursor] });
-
-			return history;
+			return [...history, latest];
 		});
 	}, [char, correct, cursor]);
 
