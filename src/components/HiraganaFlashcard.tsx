@@ -108,11 +108,11 @@ function HiraganaFlashcard() {
 			<div className="flex flex-col items-center">
 				<div>
 					<ul className="flex gap-2 mb-2 h-[3.2rem]">
-						{history.map((it) => (
+						{history.map((it, index) => (
 							<li
 								className="border-2 border-b-4 dark:border-neutral-800 px-1 rounded-lg flex flex-col items-center min-w-[3rem] font-bold"
 								style={{ animation: "fadeIn 1s" }}
-								key={it.char}
+								key={`${it.char}-${index}`}
 							>
 								<div className={clsx({ "text-secondary": !it.correct })}>
 									{it.char}
