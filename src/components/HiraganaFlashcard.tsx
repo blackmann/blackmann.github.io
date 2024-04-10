@@ -66,9 +66,9 @@ function HiraganaFlashcard() {
 		if (correct === null) return;
 
 		const timeout = setTimeout(() => {
-			setCursor((prev) => {
+			setCursor(() => {
 				let newCursor = Math.floor(Math.random() * chars.length);
-				while (newCursor === prev) {
+				while (history.find((i) => i.char === chars[newCursor])) {
 					newCursor = Math.floor(Math.random() * chars.length);
 				}
 
@@ -79,7 +79,7 @@ function HiraganaFlashcard() {
 		}, 1000);
 
 		return () => clearTimeout(timeout);
-	}, [correct, addToHistory]);
+	}, [correct, addToHistory, history]);
 
 	React.useEffect(() => {
 		setSelected(-1);
@@ -108,11 +108,11 @@ function HiraganaFlashcard() {
 			<div className="flex flex-col items-center">
 				<div>
 					<ul className="flex gap-2 mb-2 h-[3.2rem]">
-						{history.map((it, index) => (
+						{history.map((it) => (
 							<li
 								className="border-2 border-b-4 dark:border-neutral-800 px-1 rounded-lg flex flex-col items-center min-w-[3rem] font-bold"
 								style={{ animation: "fadeIn 1s" }}
-								key={`${it.char}-${index}`}
+								key={it.char}
 							>
 								<div className={clsx({ "text-secondary": !it.correct })}>
 									{it.char}
