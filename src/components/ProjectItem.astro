@@ -16,29 +16,17 @@ interface Props {
 const { project } = Astro.props
 ---
 
-<div class="col-span-1">
-  <div class="card !p-2 !md:p-4">
-    <h3 class="font-bold">{project.title}</h3>
+<div
+  class="hover:(bg-zinc-50 dark:bg-neutral-800) flex gap-2 rounded-lg px-2 py-1 transition-[background] duration-200">
+  <div class="flex-1">
+    <h2 class="flex gap-4 font-medium">
+      {project.title}
 
-    <p class="text-secondary text-sm mt-0">{project.description}</p>
+      <ul class="mt-1 flex gap-2 text-sm">
+        <li><IconifyLink href={`https://${project.url}`} /></li>
+      </ul>
+    </h2>
 
-    <div class="text-secondary text-sm">{project.meta}</div>
-
-    <div class="mt-2 text-sm">
-      <IconifyLink href={`https://${project.url}`} />
-    </div>
-
-    {
-      project.tags && (
-        <ul class="mt-2 text-sm">
-          {project.tags.map((tag) => (
-            <span
-              class={`rounded-lg bg-zinc-200 px-2 font-medium text-zinc-600 dark:bg-neutral-700 dark:text-neutral-300`}>
-              {tag}
-            </span>
-          ))}
-        </ul>
-      )
-    }
+    <p class="text-secondary mt-0 text-sm">{project.description}</p>
   </div>
 </div>

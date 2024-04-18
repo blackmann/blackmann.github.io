@@ -1,4 +1,5 @@
 ---
+import IconifyLink from '../components/IconifyLink.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import Shell from '../layouts/Shell.astro'
 
@@ -9,6 +10,12 @@ const startups = [
     description:
       'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant. Currently hosting 1000+ shops and processing tens of orders a week. Free to get started',
     meta: '2021—date',
+  },
+  {
+    title: 'compa',
+    url: 'compa.so',
+    description:
+      'An open initiative to promote collaboration and knowledge sharing among students of higher education.',
   },
 ]
 
@@ -85,19 +92,48 @@ const packages = [
       and showcase; or just proud of them.
     </p>
 
-    <h2 class="mb-4 mt-5 text-lg font-medium">Startups</h2>
-    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
-      {startups.map((project) => <ProjectItem project={project} />)}
-    </div>
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
+      <div role="img" class="i-lucide-rocket"></div> Startups
+    </h2>
 
-    <h2 class="mb-4 mt-[5rem] text-lg font-medium">Apps</h2>
-    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
-      {apps.map((project) => <ProjectItem project={project} />)}
-    </div>
+    <ul>
+      {
+        startups.map((project) => (
+          <li class="">
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
 
-    <h2 class="mb-4 mt-[5rem] text-lg font-medium">Packages</h2>
-    <div class="grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
-      {packages.map((project) => <ProjectItem project={project} />)}
-    </div>
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
+      <div role="img" class="i-lucide-app-window"></div> Apps
+    </h2>
+
+    <ul>
+      {
+        apps.map((project) => (
+          <li>
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase">
+      <div role="img" class="i-lucide-package"></div> Packages
+    </h2>
+    <ul>
+      {
+        packages.map((project) => (
+          <li>
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Shell>

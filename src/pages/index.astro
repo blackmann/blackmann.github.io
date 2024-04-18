@@ -52,13 +52,15 @@ const postsList = posts.slice(0, 6).map((post) => ({
         </p>
       </div>
 
-      <div class="col-span-1 mt-8 lg:mt-0 flex flex-col items-center">
+      <div class="col-span-1 mt-8 flex flex-col items-center lg:mt-0">
         <!-- <ArtSlides client:load /> -->
         <!-- <Matrix /> -->
       </div>
     </div>
 
-    <h2 class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8" id="featured">
+    <h2
+      class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8"
+      id="featured">
       <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
     </h2>
 
@@ -135,15 +137,15 @@ const postsList = posts.slice(0, 6).map((post) => ({
         Packages
       </h2>
 
-      <div class="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4">
+      <ul>
         {
           developerTools.map((pkg) => (
-            <div class="col-md-4">
+            <li>
               <ProjectItem project={pkg} />
-            </div>
+            </li>
           ))
         }
-      </div>
+      </ul>
 
       <div class="text-secondary mt-5">
         Check out <a
