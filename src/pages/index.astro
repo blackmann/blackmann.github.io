@@ -1,14 +1,14 @@
 ---
+import { getCollection } from 'astro:content'
+import ContentList from '../components/ContentList.astro'
 import Link from '../components/Link.astro'
+import PG from '../components/PG.astro'
+import ProjectItem from '../components/ProjectItem.astro'
 import { SITE_DESCRIPTION } from '../consts'
+import Shell from '../layouts/Shell.astro'
 import developerTools from '../lib/developer-tools'
 import featuredLinks from '../lib/featured-links'
-import { getCollection } from 'astro:content'
 import shortenDate from '../lib/shorten-date'
-import ContentList from '../components/ContentList.astro'
-import Shell from '../layouts/Shell.astro'
-import ProjectItem from '../components/ProjectItem.astro'
-import PG from '../components/PG.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -88,12 +88,31 @@ const postsList = posts.slice(0, 6).map((post) => ({
             </div>
             {link.footer && (
               <p class="text-secondary ms-2 mt-0 text-xs md:ms-4">
-                Please subscribe
+                {link.footer}
               </p>
             )}
           </div>
         ))
       }
+    </div>
+
+    <div class="mt-8 flex">
+      <a
+        href="https://compa.so"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-4 rounded-lg border border-yellow-500 bg-amber-400 px-2 py-1 font-bold text-black no-underline">
+        <div class="text-sm">— compa is your companion</div>
+        <div class="flex gap-2 opacity-80">
+          <div class="i-lucide-message-circle"></div>
+          <div class="i-lucide-calendar-range"></div>
+          <div class="i-lucide-library-square"></div>
+          <div class="i-lucide-sparkle"></div>
+          <div class="i-lucide-users-round"></div>
+          <div class="i-lucide-shopping-bag"></div>
+          <div class="i-lucide-gamepad-2"></div>
+        </div>
+      </a>
     </div>
 
     <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
