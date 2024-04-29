@@ -3,11 +3,11 @@ import {
   presetIcons,
   presetWind,
   transformerDirectives,
-  transformerVariantGroup
-} from 'unocss'
+  transformerVariantGroup,
+} from "unocss";
 
 export default defineConfig({
-  presets: [presetWind({ dark: 'media' }), presetIcons()],
-  transformers: [transformerDirectives(), transformerVariantGroup()],
-  safelist: ['i-lucide-youtube']
-})
+	presets: [presetWind({ dark: "media" }), presetIcons()],
+	transformers: [transformerDirectives(), transformerVariantGroup()],
+	safelist: ["i-lucide-youtube", "text-red-500"],
+});
