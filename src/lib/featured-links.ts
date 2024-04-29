@@ -1,6 +1,4 @@
 import MangobaseFeatureImage from "../components/MangobaseFeatureImage.astro";
-import YTFeatureImage from "../components/YTFeatureImage.astro";
-import AdetonFeatureImage from "../components/AdetonFeatureImage.astro";
 
 const featuredLinks = [
 	// {
@@ -25,9 +23,10 @@ const featuredLinks = [
 	{
 		title: "Devlog",
 		description:
-			"This is a Youtube channel I share progress on stuff I'm working on. It's fun, check it out!",
+			"This is a Youtube channel I share progress on stuff I'm working on. You'll also find some tutorials on code, 3d, etc. It's fun, check it out!",
 		link: "youtube.com/@notgr",
 		footer: "Please subscribe",
+		icon: "i-lucide-youtube text-red-500 text-lg",
 	},
 ];
 
