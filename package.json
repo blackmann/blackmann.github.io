@@ -22,7 +22,7 @@
     "@types/react-dom": "^18.2.18",
     "@types/three": "^0.163.0",
     "@unocss/preset-icons": "^0.58.3",
-    "astro": "^4.5.13",
+    "astro": "^4.7.0",
     "clsx": "^2.1.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",

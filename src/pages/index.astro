@@ -82,10 +82,8 @@ const postsList = posts.slice(0, 6).map((post) => ({
         featuredLinks.map((link) => (
           <div class="col-span-1">
             <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
-              <h3 class="font-bold flex items-center gap-2">
-                {link.icon && (
-                  <div class:list={["inline-block", link.icon]} />
-                )}
+              <h3 class="flex items-center gap-2 font-bold">
+                {link.icon && <div class:list={['inline-block', link.icon]} />}
                 {link.title}
               </h3>
               <p class="text-secondary mt-0 text-sm">{link.description}</p>

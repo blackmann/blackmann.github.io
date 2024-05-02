@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import Shell from '../../layouts/Shell.astro'
 import { getCollection } from 'astro:content'
-import DotLocalAd from '../../components/DotLocalAd.astro'
 import { CourseOutline } from '../../components/CourseOutline.tsx'
+import DotLocalAd from '../../components/DotLocalAd.astro'
+import Shell from '../../layouts/Shell.astro'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
@@ -115,7 +115,7 @@ const { Content } = await content.render()
 
           {
             next && (
-              <div class="col-span-1 col-start-2 flex justify-end lg:col-start-3">
+              <div class="col-span-1 col-start-2 flex justify-end lg:col-start-3 mt-8">
                 <a
                   href={`/courses/${next.slug}`}
                   class="group inline-flex gap-2 rounded-lg border border-zinc-300 !bg-opacity-75 px-2 py-1 no-underline transition-[background] duration-200 hover:bg-zinc-200 dark:border-neutral-800 dark:hover:bg-neutral-800">
