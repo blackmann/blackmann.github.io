@@ -1,0 +1,12 @@
+---
+import { P5ketch } from '../components/P5ketch'
+import Shell from '../layouts/Shell.astro'
+---
+
+<Shell title="Magic" description="Yes, some magic with P5js">
+  <main class="container">
+    <h1 class="text-secondary mt-8 font-mono">p5.canvas</h1>
+
+    <P5ketch client:load />
+  </main>
+</Shell>

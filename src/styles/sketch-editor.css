@@ -1,0 +1,18 @@
+.cm-editor .cm-content {
+  font-family: "zed";
+  font-variant-ligatures: common-ligatures;
+  height: 100%;
+}
+
+.cm-gutters {
+  @apply !border-transparent;
+}
+
+.cm-lineNumbers {
+  font-family: 'zed', monospace;
+  font-size: 0.9rem;
+}
+
+.cm-focused {
+  @apply !outline-none;
+}
