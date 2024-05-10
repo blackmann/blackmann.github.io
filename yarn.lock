@@ -4554,6 +4554,11 @@ p-try@^2.0.0:
   resolved "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
+p5@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-1.9.3.tgz#bc0da17a392113c066f0eac749c38f14517ce07b"
+  integrity sha512-RnLMqejKJ9ZmBlUpCnVLYF1UnV/NnC13MfOSZdvJXTRH1eQkBQkUVCw5rkyRWE6chI4t5KvIJsZZnFzmGJEgag==
+
 pako@^0.2.5:
   version "0.2.9"
   resolved "https://registry.npmjs.org/pako/-/pako-0.2.9.tgz"
