@@ -49,7 +49,7 @@ function InstaxForm() {
 		setInProgress(true);
 
 		try {
-			const { url } = await uploadMedia(file);
+			const { url } = await uploadMedia(file, 'instax');
 			await fetch(`${ENDPOINT}/instax`, {
 				method: "POST",
 				headers: {
