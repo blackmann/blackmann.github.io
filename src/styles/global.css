@@ -327,3 +327,25 @@ article ol {
 		opacity: 1;
 	}
 }
+
+input, select {
+	@apply !border-0;
+}
+
+.reactEasyCrop_CropArea.reactEasyCrop_CropAreaGrid {
+	display: none;
+}
+
+.pulsate {
+	animation: pulsate 1s ease-out infinite alternate;
+}
+
+@keyframes pulsate {
+	0% {
+		transform: scale(0.9, 0.9);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
+}

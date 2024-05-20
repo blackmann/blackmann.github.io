@@ -38,6 +38,7 @@
     "perfect-freehand": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^5.0.7",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
     "roughjs": "^4.6.6",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.1",
+    "@julr/unocss-preset-forms": "^0.1.0",
     "@types/express": "^4.17.21",
     "@unocss/reset": "^0.58.3",
     "@unocss/transformer-directives": "^0.58.3",

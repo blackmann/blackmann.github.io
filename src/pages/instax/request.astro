@@ -8,8 +8,9 @@ import Shell from '../../layouts/Shell.astro'
   description="Get your instax printed and delivered">
   <div class="container">
     <div class="mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3">
-      <div class="col-span-1 md:col-start-2 md:col-span-2 lg:col-span-1 lg:col-start-2">
-        <header class="flex gap-2 mb-4">
+      <div
+        class="col-span-1 md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-2">
+        <header class="mb-4 flex gap-2">
           <div class="size-10 rounded-full bg-yellow-500"></div>
           <div class="flex-1">
             <h1 class="text-lg font-medium leading-none">
@@ -18,7 +19,8 @@ import Shell from '../../layouts/Shell.astro'
             <p class="text-secondary mt-0">They last forever.</p>
           </div>
         </header>
-        <InstaxForm />
+
+        <InstaxForm client:only="react" />
       </div>
     </div>
   </div>
