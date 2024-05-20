@@ -16,7 +16,7 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
 <link rel="icon" type="image/svg+xml" href="/o.svg" />
 <meta name="generator" content={Astro.generator} />
 
@@ -46,6 +46,13 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 	process.env.NODE_ENV === 'production' && (
 	<!-- Umami -->
 <script async src="https://analytics.umami.is/script.js" data-website-id="6cc8bf19-147d-45a2-b7c9-75b7c1b607bf"></script>
+	)
+}
+
+{
+	process.env.NODE_ENV !== 'production' && (
+	<!-- Observe -->
+<script async src="https://observe.local/script.js" data-app="clwdb5cdp0000m6lzsk3m8pnj"></script>
 	)
 }
 
