@@ -1,3 +1,4 @@
+import { presetForms } from "@julr/unocss-preset-forms";
 import {
   defineConfig,
   presetIcons,
@@ -7,7 +8,7 @@ import {
 } from "unocss";
 
 export default defineConfig({
-	presets: [presetWind({ dark: "media" }), presetIcons()],
+	presets: [presetWind({ dark: "media" }), presetIcons(), presetForms()],
 	transformers: [transformerDirectives(), transformerVariantGroup()],
 	safelist: ["i-lucide-youtube", "text-red-500"],
 });
