@@ -148,7 +148,7 @@ function InstaxForm() {
 					)}
 					onClick={() => setValue("quantity", 1)}
 				>
-					1<span className="opacity-70">x</span> GHS50
+					1<span className="opacity-70">x</span> GHS40
 				</button>
 
 				<button
@@ -161,7 +161,7 @@ function InstaxForm() {
 					)}
 					onClick={() => setValue("quantity", 2)}
 				>
-					2<span className="opacity-70">x</span> GHS90
+					2<span className="opacity-70">x</span> GHS70
 				</button>
 			</div>
 
