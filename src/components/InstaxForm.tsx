@@ -49,7 +49,7 @@ function InstaxForm() {
 		setInProgress(true);
 
 		try {
-			const { url } = await uploadMedia(file, 'instax');
+			const { url } = await uploadMedia(file, "instax");
 			await fetch(`${ENDPOINT}/instax`, {
 				method: "POST",
 				headers: {
@@ -74,6 +74,11 @@ function InstaxForm() {
 			setInProgress(false);
 		}
 	}
+
+	React.useEffect(() => {
+		const loader = document.querySelector("#form-loader") as HTMLElement;
+		loader.style.display = "none";
+	}, []);
 
 	const $quantity = watch("quantity", 1);
 
