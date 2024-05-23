@@ -15,7 +15,7 @@ const label = isGithub
   ? url.pathname.split('/').pop()
   : isHome
     ? url.pathname
-    : url
+    : url.toString().replace(/(^https:\/\/|\/$)/g, '')
 
 const icon = isGithub
   ? 'i-lucide-github'
