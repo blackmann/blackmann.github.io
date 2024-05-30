@@ -20,6 +20,9 @@ function NglDetail() {
 		const token = url.searchParams.get("token");
 
 		fetch(`https://fns.degreat.co.uk/ngl/${id}?token=${token}`).then((res) => {
+			if (res.status !== 200) {
+				return
+			}
 			res.json().then((v) => setText(v.message));
 		});
 	}, []);
@@ -35,7 +38,7 @@ function NglDetail() {
 
 	return (
 		<>
-			<NglPreview text={text} />
+			<NglPreview text={text} link />
 
 			<footer className="mt-4 text-end">
 				<button
