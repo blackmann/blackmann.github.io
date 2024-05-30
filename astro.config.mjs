@@ -37,5 +37,8 @@ export default defineConfig({
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js-darwin-arm64"],
 		},
+		ssr: {
+			noExternal: ['mafs']
+		}
 	},
 });

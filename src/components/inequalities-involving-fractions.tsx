@@ -1,5 +1,4 @@
-import { Circle, Coordinates, Mafs, Vector } from "mafs/build/index.mjs";
-// import { Circle, Coordinates, Mafs, Vector } from "mafs";
+import { Circle, Coordinates, Mafs, Vector } from "mafs";
 import "mafs/core.css";
 
 function Sol1NumberLine() {

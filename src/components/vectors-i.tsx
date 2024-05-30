@@ -1,12 +1,4 @@
-import {
-	Mafs,
-	Coordinates,
-	Text,
-	Vector,
-	useMovablePoint,
-	vec,
-} from "mafs/build/index.mjs";
-// import { Mafs, Coordinates, Circle, Vector, useMovablePoint, vec } from "mafs";
+import { Coordinates, Mafs, Text, Vector, useMovablePoint, vec } from "mafs";
 import React from "react";
 import rough from "roughjs";
 import { useColorScheme } from "../lib/use-color-scheme";
