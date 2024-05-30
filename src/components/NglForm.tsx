@@ -13,6 +13,8 @@ function NglForm() {
 	});
 
 	async function send(data: FieldValues) {
+		setInProgress(true)
+
 		await fetch("https://fns.degreat.co.uk/ngl", {
 			method: "POST",
 			body: JSON.stringify({ message: data.message }),
@@ -22,6 +24,7 @@ function NglForm() {
 		});
 
 		setSent(data.message);
+		setInProgress(false)
 	}
 
 	const length = watch("message").length;
@@ -74,6 +77,7 @@ function NglForm() {
 			<footer className="mt-4 text-end">
 				<button
 					type="submit"
+					disabled={inProgress}
 					className="bg-pink-500 rounded-full p-2 font-medium inline-flex items-center gap-2 text-white"
 				>
 					{inProgress ? (
