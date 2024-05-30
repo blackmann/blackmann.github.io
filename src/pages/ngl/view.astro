@@ -1,0 +1,18 @@
+---
+import { NglDetail } from '../../components/NglDetail'
+import Shell from '../../layouts/Shell.astro'
+---
+
+<Shell title="NGL" description="Send an anonymous message">
+  <div class="container mt-[8rem]">
+    <div class="grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-1 max-md:px-6 lg:col-start-2">
+        <h1 class="mb-4 leading-none text-lg font-bold text-center">
+          See message
+        </h1>
+
+        <NglDetail client:load />
+      </div>
+    </div>
+  </div>
+</Shell>

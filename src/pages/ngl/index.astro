@@ -1,0 +1,18 @@
+---
+import { NglForm } from '../../components/NglForm'
+import Shell from '../../layouts/Shell.astro'
+---
+
+<Shell title="NGL" description="Send an anonymous message">
+  <div class="container mt-[8rem]">
+    <div class="grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-1 max-md:px-6 lg:col-start-2">
+        <h1 class="mb-4 leading-none text-lg font-bold text-center">
+          Send me an anonymous message
+        </h1>
+
+        <NglForm client:load />
+      </div>
+    </div>
+  </div>
+</Shell>
