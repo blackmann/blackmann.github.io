@@ -1,5 +1,6 @@
 ---
 import ProjectItem from '../components/ProjectItem.astro'
+import RoadmanCard from '../components/RoadmanCard.astro'
 import Shell from '../layouts/Shell.astro'
 
 const startups = [
@@ -31,7 +32,8 @@ const apps = [
   },
   {
     title: 'fonted',
-    description: 'An extension to change the UI font of vscode. That\'s all it does.',
+    description:
+      "An extension to change the UI font of vscode. That's all it does.",
     url: 'github.com/blackmann/fonted',
   },
   {
@@ -133,15 +135,23 @@ const packages = [
       <div role="img" class="i-lucide-app-window"></div> Apps
     </h2>
 
-    <ul>
-      {
-        apps.map((project) => (
-          <li>
-            <ProjectItem project={project} />
-          </li>
-        ))
-      }
-    </ul>
+    <div class="col-span-1 grid lg:grid-cols-4 gap-4">
+      <div class="col-span-3">
+        <ul>
+          {
+            apps.map((app) => (
+              <li class="">
+                <ProjectItem project={app} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="col-span-1 col-start-4 hidden lg:block">
+        <RoadmanCard />
+      </div>
+    </div>
 
     <h2
       class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase">

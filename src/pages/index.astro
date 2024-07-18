@@ -4,6 +4,7 @@ import ContentList from '../components/ContentList.astro'
 import Link from '../components/Link.astro'
 import PG from '../components/PG.astro'
 import ProjectItem from '../components/ProjectItem.astro'
+import RoadmanCard from '../components/RoadmanCard.astro'
 import { SITE_DESCRIPTION } from '../consts'
 import Shell from '../layouts/Shell.astro'
 import developerTools from '../lib/developer-tools'
@@ -175,27 +176,35 @@ const postsList = posts.slice(0, 6).map((post) => ({
     </section>
 
     <section class="mt-[4rem]">
-      <h2 class="mb-4 flex items-center gap-2 font-bold">
-        <div class="i-lucide-terminal-square inline-block opacity-60"></div> Developer
-        Packages
-      </h2>
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <div class="col-span-1 lg:col-span-2">
+          <h2 class="mb-4 flex items-center gap-2 font-bold">
+            <div class="i-lucide-terminal-square inline-block opacity-60"></div>
+            Developer Packages
+          </h2>
 
-      <ul>
-        {
-          developerTools.map((pkg) => (
-            <li>
-              <ProjectItem project={pkg} />
-            </li>
-          ))
-        }
-      </ul>
+          <ul>
+            {
+              developerTools.map((pkg) => (
+                <li>
+                  <ProjectItem project={pkg} />
+                </li>
+              ))
+            }
+          </ul>
 
-      <div class="text-secondary mt-5">
-        Check out <a
-          class="text-zinc-800 dark:text-neutral-200"
-          href="/projects">
-          more projects
-        </a>
+          <div class="text-secondary mt-5">
+            Check out <a
+              class="text-zinc-800 dark:text-neutral-200"
+              href="/projects">
+              more projects
+            </a>
+          </div>
+        </div>
+
+        <div class="col-span-1 lg:col-start-4">
+          <RoadmanCard />
+        </div>
       </div>
     </section>
   </main>
