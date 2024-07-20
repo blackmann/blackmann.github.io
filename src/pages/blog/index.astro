@@ -1,16 +1,16 @@
 ---
 import { getCollection } from 'astro:content'
-import shortenDate from '../../lib/shorten-date'
 import ContentList from '../../components/ContentList.astro'
 import Shell from '../../layouts/Shell.astro'
+import shortenDate from '../../lib/shorten-date'
 
 const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
+  (a, b) => (b.data.pubDate as Date).valueOf() - (a.data.pubDate as Date).valueOf(),
 )
 
 const postsList = posts.map((post) => ({
   link: `/blog/${post.slug}`,
-  meta: shortenDate(post.data.pubDate!),
+  meta: shortenDate(post.data.pubDate as Date),
   title: post.data.title,
   tags: post.data.tags,
 }))
@@ -18,7 +18,7 @@ const postsList = posts.map((post) => ({
 
 <Shell title="Blog" description="My own words, shaped by my experience.">
   <main class="container mx-auto mt-[8rem] min-h-[60vh]">
-    <div class="font-bold">{posts.length} posts published</div>
+    <h1 class="font-bold">{posts.length} posts published</h1>
 
     <p class="text-secondary max-w-[480px]">
       These are my own words. Shaped by my own experiences. If you find
