@@ -4,7 +4,7 @@ description: "It's the responsibility of the few to ensure the success of the ma
 pubDate: "Jul 30 2024"
 ---
 
-I recently made a [tweet](https://x.com/_yogr/status/1812460239591010689) thanking my younger self for making the all the decisions that has made me who I am today. One of the things I (younger self) learned was that helping people makes you successful. I can't clearly remember what books, articles, podcasts or videos in particular but the people I looked up to always seemed to use the same language of "helping people". I subscribed to that idea!
+I recently made a [tweet](https://x.com/_yogr/status/1812460239591010689) thanking my younger self for making all the decisions that has made me who I am today. One of the things I (younger self) learned was that helping people makes you successful. I can't clearly remember what books, articles, podcasts or videos in particular but the people I looked up to always seemed to use the same language of "helping people". I subscribed to that idea!
 
 This way of thinking/being has become an integral part of me that it's not immediately obvious what drives me. I was only reminded of this again when I was presented a [video](https://www.youtube.com/watch?v=25LUF8GmbFU&t=130s) at random by Youtube last week. In this video, Goobie shares his reasons for becoming a neurosurgeon and his journey so far.
 
