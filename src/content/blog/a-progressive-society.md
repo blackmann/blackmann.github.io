@@ -44,7 +44,7 @@ Yes, not everyone can/should help everyone. This post is just like an ember of t
 
 No matter how small, this influences a lot of things about your lifestyle. For example, having this responsibility, will also require you to learn and know a lot of things. Personally, this way of thinking has led me to be more sensitive to problems, explore their root causes and hypothesize on different cause of actions. I am actually very pragmatic.
 
-Not to be naive: some reasons/desire to help people are (or can be) secondary. And that is fine. But without wanting to help people factor, the experience can sometimes be dire. And this evident in so many aspects of the Ghanaian society.
+Not to be naive: some reasons/desire to help people are (or can be) secondary. And that is fine. But without wanting to help people factor, the experience can sometimes be dire. And this is evident in so many aspects of the Ghanaian society.
 
 Let’s take restaurants for example. Yes, the first requirement is to make profits — it’s not a charity. For a restaurant business that only cares about that, customer service is a whole story. Delivery will take hours to arrive. Food taste will be inconsistent. On the other hand, for a business that thinks it also exists to feed people: opening very early, closing *strategically* late, serving on time with consistent taste will be a requirement.
 
