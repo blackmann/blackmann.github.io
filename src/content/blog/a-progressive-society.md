@@ -26,7 +26,7 @@ All these are examples of people who took on the responsibility to ensure the pr
 
 One misconception I've seen people have with the idea of "helping people" is that it always has to be free. But this is wrong. Helping people doesn't have to be free. Let me explain:
 
-In a simple society, the majority may not know how to get an entertainment system like a TV into their homes. Being a supplier of this means you're helping them. They don't have to worry where TVs are manufactured or sold in wholesale. They don't have figure out how to get it transported to their houses. But you wouldn't take care of these for free, would you?
+In a simple society, the majority may not know how to get an entertainment system like a TV into their homes. Being a supplier of this means you're helping them. They don't have to worry where TVs are manufactured or sold in wholesale. They don't have to figure out how to get it transported to their houses. But you wouldn't take care of these for free, would you?
 
 I once mentioned in an argument that one way to help the people of Ghana is to build a very good electrical engineering vocational instituition to teach people how to make things. Because right now, if you wanted your son/daughter to learn this, it's almost impossible to find a place. Well, I don't! The _ball-roll_ effect is that when it comes the time when someone wants to build an electronics factory in Ghana, they can find indigenes to employ. But right now, this will be impossible — even though we have degree holders.
 
@@ -34,7 +34,7 @@ You don't have to set up this institution for free. And yes, people will pay to 
 
 An immediate example is Ashesi University. Patrick Awuah was concerned about the [future generations of Africa](https://www.universityworldnews.com/post.php?story=20240423124250224#:~:text=As%20I%20confronted%20many%20challenges,solve%20these%20problems%20in%20future.). Is Ashesi free to enrol? No. But it is achieving its purpose.
 
-Making things accessible and possible for people so they don't have worry about the complexities is helping (aka unburdening). Millions of people don't know how Microsoft Word works but life-changing stories, textbooks, etc. have been written in it.
+Making things accessible and possible for people so they don't have to worry about the complexities is helping (aka unburdening). Millions of people don't know how Microsoft Word works but life-changing stories, textbooks, etc. have been written in it.
 
 ## Scale & Purpose
 
