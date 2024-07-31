@@ -24,7 +24,7 @@ All these are examples of people who took on the responsibility to ensure the pr
 
 ## Not free
 
-One misconception I've seen people have with the idea of "helping people" is that it has to be free. But this is wrong. Helping people doesn't have to be free. Let me explain:
+One misconception I've seen people have with the idea of "helping people" is that it always has to be free. But this is wrong. Helping people doesn't have to be free. Let me explain:
 
 In a simple society, the majority may not know how to get an entertainment system like a TV into their homes. Being a supplier of this means you're helping them. They don't have to worry where TVs are manufactured or sold in wholesale. They don't have figure out how to get it transported to their houses. But you wouldn't take care of these for free, would you?
 
