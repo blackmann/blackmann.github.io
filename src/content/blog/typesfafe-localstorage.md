@@ -47,6 +47,9 @@ const pref = {
 		return JSON.parse(value);
 	},
 
+  /**
+   * Stringifies and saves value to localstorage
+   **/
 	set<T extends PrefKey>(key: T, value: Pref[T]) {
 		localStorage.setItem(key as string, JSON.stringify(value));
 	},
