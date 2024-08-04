@@ -61,6 +61,6 @@ export { pref };
 With `.get(key)`, you can't pass any other key apart from those listed in `Pref`. If you haven't guessed already, that means you get IntelliSense/autocomplete for key names.
 
 
-`.set(key, value)` will strictly require only specified keys in `Pref` and corresponding type. You can't pass a different type even if its specified in `Pref`.
+`.set(key, value)` will strictly require only specified keys in `Pref` and corresponding type. You can't pass a value of different type even if its specified in `Pref` (under a different key).
 
 Enjoy!
