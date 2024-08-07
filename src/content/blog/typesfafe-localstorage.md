@@ -28,7 +28,7 @@ So here's a better approach I came up with while working on a recent project:
 ```ts
 // A specification of key names and expected types
 type Pref = {
-	"@project/editor-config": EditorConfig,
+  "@project/editor-config": EditorConfig,
   "@project/theme-preferences": ThemePreferences,
   // ...more
 };

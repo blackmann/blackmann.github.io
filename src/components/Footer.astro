@@ -13,8 +13,7 @@ const today = new Date()
       <div class="text-secondary ms-4 font-mono text-sm">
         version
         <span class="bg-green-400 bg-opacity-10 text-green-600">
-          {today.getFullYear()}
-        </span>.{today.getMonth() + 1}.{
+          {today.getFullYear()}</span>.{today.getMonth() + 1}.{
           today.getDate().toString().padStart(2, '0')
         }/1
       </div>
@@ -39,9 +38,9 @@ const today = new Date()
         </a>
         <a
           class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 font-medium no-underline dark:bg-neutral-800"
-          href="/candies">
-          <span class="i-lucide-candy-cane text-secondary !text-sm"></span>
-          Candies 🍬
+          href="/missions">
+          <span class="i-lucide-database-zap text-secondary !text-sm"></span>
+          Missions
         </a>
         <a
           class="me-1 inline-flex items-center gap-2 rounded-lg bg-zinc-200 px-2 font-medium no-underline dark:bg-neutral-800"

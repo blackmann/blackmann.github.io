@@ -738,10 +738,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.4.tgz#11ef0398f9abee161193461910a507ef0d4c0c32"
   integrity sha512-sywLRD3UK/qRJt0oBwdpYLBibk7KiRfbswmWRDabuncQYSlf8aLEEUor/oP6KRz8KEG+HoiVLBhPRD5JWjS8Sg==
 
-"@iconify-json/lucide@^1.1.178":
-  version "1.1.188"
-  resolved "https://registry.npmjs.org/@iconify-json/lucide/-/lucide-1.1.188.tgz"
-  integrity sha512-yJNoU7vX11OvdeSKBiAvmbk/etAq2HPCZQkZX1U687NZhn8dTfx1PfyNhPxtJilrd288XGDKK+NQgygcZ+Ho4g==
+"@iconify-json/lucide@^1.1.205":
+  version "1.1.205"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.1.205.tgz#4f15b665f5cd5fa851a228f9a1e45373bd8bb6dc"
+  integrity sha512-PTA7UXYCRETE7DneGSW5XbUKCmyNYHp2KuM623NgTK3IjqdRbTw0dm2YPhsSZpaRswvHFFi71JtbKPHQTLfX+Q==
   dependencies:
     "@iconify/types" "*"
 
