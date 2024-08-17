@@ -1,6 +1,6 @@
 ---
 title: 'Disconnect of disciplines'
-description: 'A _ lack of gradient and vibrancy in our existence.'
+description: 'A worrying lack of gradient and vibrancy in our existence.'
 pubDate: 'Aug 17, 2024'
 ---
 
