@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ViewTransitions } from 'astro:transitions';
 import "mafs/core.css";
 import '../styles/global.css';
 
@@ -19,6 +19,8 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
 <link rel="icon" type="image/svg+xml" href="/o.svg" />
 <meta name="generator" content={Astro.generator} />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
