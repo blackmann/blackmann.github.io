@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
 
 @font-face {
-	font-family: 'zed';
-	src: url('/zed.woff2');
+	font-family: 'carto';
+	src: url('/fonts/CartographCF-RegularItalic.otf');
 }
 
 .text-secondary {
@@ -124,6 +125,11 @@ code {
 	font-variant-ligatures: common-ligatures;
 	@apply text-blue-600 dark:text-orange-400 text-sm;
 }
+
+.cursive {
+	font-family: 'carto', cursive;
+}
+
 
 article h1,
 article h2,
@@ -270,6 +276,7 @@ article ol {
 }
 
 @media (prefers-color-scheme: dark) {
+
 	.astro-code,
 	.astro-code span {
 		color: var(--shiki-dark) !important;
@@ -328,7 +335,8 @@ article ol {
 	}
 }
 
-input, select {
+input,
+select {
 	@apply !border-0;
 }
 
@@ -370,5 +378,21 @@ input, select {
 
 	100% {
 		transform: rotate(0deg);
+	}
+}
+
+.fade-up {
+	animation: fadeUp 1s ease-out;
+}
+
+@keyframes fadeUp {
+	0% {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

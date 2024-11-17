@@ -1,0 +1,32 @@
+---
+import Day1 from '../../components/365/Day1.astro'
+import Shell from '../../layouts/Shell.astro'
+const days = Array.from({ length: 364 }, (_, i) => i + 1)
+---
+
+<Shell title="365" description="My gallery of art">
+  <div class="container">
+    <h1 class="mt-8rem text-2xl font-bold">365 days of UI</h1>
+    <p class="text-secondary mt-0">
+      This project is inspired by <a
+        class="cursive rounded-lg bg-zinc-200 px-1 no-underline dark:bg-neutral-800"
+        href="https://www.figma.com/community/file/1434983318290209664/366-design-concepts">
+        366 design concepts</a> by <a class="cursive rounded-lg bg-zinc-200 px-1 no-underline dark:bg-neutral-800"
+        href="https://x.com/sovpal/status/1841212238268358720">
+        @sovpal
+      </a>
+    </p>
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+      <div class="col-span-1">
+        <Day1 />
+      </div>
+      {
+        days.map((day) => (
+          <div class="col-span-1">
+            <div class="rounded-2rem aspect-square bg-zinc-200 dark:bg-neutral-800" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Shell>
