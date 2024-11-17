@@ -1,7 +1,8 @@
 ---
 import Day1 from '../../components/365/Day1.astro'
+import Day2 from '../../components/365/Day2.astro'
 import Shell from '../../layouts/Shell.astro'
-const days = Array.from({ length: 364 }, (_, i) => i + 1)
+const days = Array.from({ length: 362 }, (_, i) => i + 1)
 ---
 
 <Shell title="365" description="My gallery of art">
@@ -16,9 +17,13 @@ const days = Array.from({ length: 364 }, (_, i) => i + 1)
         @sovpal
       </a>
     </p>
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
       <div class="col-span-1">
         <Day1 />
+      </div>
+
+      <div class="col-span-1">
+        <Day2 />
       </div>
       {
         days.map((day) => (
