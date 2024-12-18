@@ -16,7 +16,7 @@ The idea of challenging each other and beating[^1] them all the time. Making sur
 
 Teaching this little one to be compassionate. To put the continuity and well-being of humanity first.
 
-The idea that once in a while I can pull off some tricks to wow him/her. Sometimes, some cool handshakes, some orignami, backflips[^2], what-not. Jokes only both of us understand.
+The idea that once in a while I can pull off some tricks to wow him/her. Sometimes, some cool handshakes, some origami, backflips[^2], what-not. Jokes only both of us understand.
 
 [^2]: Can't do this now, but will definitely figure it out.
 
