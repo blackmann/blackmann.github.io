@@ -4,7 +4,7 @@ description: "School, farm, work and projects. More importantly, the elections. 
 pubDate: 'Jan 6, 2025'
 ---
 
-If you don't have time to ready all these stories. Here's a short version:
+If you don't have time to read all these stories. Here's a short version:
 
 Top year! Better than the last.
 
