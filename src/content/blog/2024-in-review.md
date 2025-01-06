@@ -163,7 +163,7 @@ But well, [Mahama won](https://3news.com/elections/presidential/)! That's all I 
 
 Okay! This was last minute; more like peer pressure.
 
-24th of December, I flew for Cape Town, SA to join [Peter](https://twitter.com/) and other friends on a vacation. Then on 28th, we all moved to Johannesburg.
+24th of December, I flew for Cape Town, SA to join [Peter](https://twitter.com/oniicode) and other friends on a vacation. Then on 28th, we all moved to Johannesburg.
 
 Cape Town is just a beautiful city and well structured. One thing that caught me offguard was sunlight. As at 8pm, the sun will still be out like it's 4pm.
 
@@ -189,7 +189,7 @@ But then: see you again South Africa 🇿🇦!
 
 ## What for 25
 
-What are plan for `2025`? This time, I have a few plans:
+What are plans for `2025`? This time, I have a few plans:
 
 - Get USSDK into business and make profit.
 - Re-attempt talent development programme. This time, just ran competitions. Details on this will come later.
