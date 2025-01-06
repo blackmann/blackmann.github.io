@@ -1,6 +1,6 @@
 ---
 title: 2024 in review
-description: ""
+description: "School, farm, work and projects. More importantly, the elections. Great year!"
 pubDate: 'Jan 6, 2025'
 ---
 
