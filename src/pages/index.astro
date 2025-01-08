@@ -35,8 +35,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
       <div class="col-span-1">
         <p class="mt-8">
-          It's me De-Great; or call me GR. I am a creative trying every and
-          anything that spikes my interest. 3D, code, music, drawing, writing?
+          It's me De-Great<sup
+            class="rounded-full bg-zinc-200 dark:bg-neutral-800 px-1 py-0.5 font-mono">
+            1
+          </sup>. I am a creative trying every and anything that spikes my
+          interest. 3D, code, music, drawing, writing?
         </p>
 
         <p>
@@ -61,6 +64,13 @@ const postsList = posts.slice(0, 6).map((post) => ({
             />
           </a> server.
         </p>
+
+        <div class="flex">
+          <div class="bg-zinc-200 dark:bg-neutral-800 ps-2 pe-4 rounded-lg text-secondary">
+            <sup class="rounded-full px-1 py-0.5 font-mono">1</sup> You can also
+            call me GR.
+          </div>
+        </div>
 
         <p class="mt-8">
           <PG />
