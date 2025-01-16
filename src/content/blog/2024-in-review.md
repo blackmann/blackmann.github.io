@@ -195,7 +195,7 @@ What are plans for `2025`? This time, I have a few plans:
 - Re-attempt talent development programme. This time, just ran competitions. Details on this will come later.
 - Try another crop as part of the maize.
 
-And that my friends what `2024`.
+And that my friends was `2024`.
 
 Another great year!
 
