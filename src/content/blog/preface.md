@@ -48,7 +48,7 @@ But this is the formula I've come up with (while maintaining some originality):
 
 ### Layout
 
-Layout as you alreay know is the arrangment of [major] content. Choosing a style of layout may demand a level of responsibility in regards to responsiveness. If you don't want to deal with that, you have the option sticking with a single column + max-width page style.
+Layout as you already know is the arrangment of [major] content. Choosing a style of layout may demand a level of responsibility in regards to responsiveness. If you don't want to deal with that, you have the option sticking with a single column + max-width page style.
 
 But, if you want something less boring, what you can do is look through a number of sites/inspirations and choose the layout you want. Remember, you're only choosing layout style from these sites/inspirations and not the content itself.
 

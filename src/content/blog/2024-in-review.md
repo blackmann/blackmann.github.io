@@ -54,7 +54,7 @@ I think I did relatively fewer projects this year. But at the beginning of the y
 
 ### Compa
 
-If you haven't seen it alreay, it's here: [knust.compa.so](https://knust.compa.so). Compa was built to address some community and digital gaps at school. The ideas was basically to have a crowdsourced platform to keep everyone connected with school. It came with features like a forum, aka `Discussions`, events page, library, timetable, marketplace, etc. I spent most of my time besides studies working on this.
+If you haven't seen it already, it's here: [knust.compa.so](https://knust.compa.so). Compa was built to address some community and digital gaps at school. The ideas was basically to have a crowdsourced platform to keep everyone connected with school. It came with features like a forum, aka `Discussions`, events page, library, timetable, marketplace, etc. I spent most of my time besides studies working on this.
 
 There were thousands of visitors every month and most of them used the timetable feature. I only promoted it on Twitter and snapshot. Some friends also helped with promoting it too. With more effort put in promoting it, I think compa can gradually become a thing — a wonderful thing that people will not be able to answer how they lived that long without it.
 
