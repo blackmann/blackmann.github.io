@@ -1,6 +1,6 @@
 ---
 title: Who are you?
-description: We
+description: If you had to introduce yourself, what would you say?
 pubDate: 'Mar 19 2025'
 ---
 
