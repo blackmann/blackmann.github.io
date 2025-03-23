@@ -5,7 +5,8 @@ import Shell from '../../layouts/Shell.astro'
 import shortenDate from '../../lib/shorten-date'
 
 const posts = (await getCollection('blog')).sort(
-  (a, b) => (b.data.pubDate as Date).valueOf() - (a.data.pubDate as Date).valueOf(),
+  (a, b) =>
+    (b.data.pubDate as Date).valueOf() - (a.data.pubDate as Date).valueOf(),
 )
 
 const postsList = posts.map((post) => ({
@@ -21,6 +22,14 @@ const postsList = posts.map((post) => ({
     <h1 class="font-bold">{posts.length} posts published</h1>
 
     <p class="text-secondary max-w-[480px]">
+      I don't write thinking that what I say will immediately have an effect on
+      you. I write thinking that a lot of the ideas we have are just
+      manifestations of seeds planted by the many people we've met and
+      experiences we've had before but have totally forgotten where from — and
+      my writings will be one of those.
+    </p>
+
+    <p class="mt-2">
       These are my own words. Shaped by my own experiences. If you find
       something confusing, wrong or misleading, please let me know. If you find
       anything helpful, please consider sharing to your friends.
