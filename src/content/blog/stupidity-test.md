@@ -17,7 +17,7 @@ In my line of work, Tailwind had become the de facto way of styling web applicat
 
 > TypeScript too.
 
-These are just a few examples where I eventually joined the multitude — not without cost. They cost of missing opportunities and wasting time and money. But I could have avoided all of that. I believe you can also count moments in your life where this has happened.
+These are just a few examples where I eventually joined the multitude — not without cost. The cost of missing opportunities and wasting time and money. But I could have avoided all of that. I believe you can also count moments in your life where this has happened.
 
 How? By using what I call the stupidity test. It’s easy. Pick a few people you admire or respect and see what they think/choose about the topic. Now, assuming everyone is stupid and they’re doing something that this person or these people you look up to are a part of, then it implies they’re stupid. But that would be contradictory — you definitely aren’t looking up to stupid people.
 
