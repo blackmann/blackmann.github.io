@@ -9,19 +9,25 @@ export async function getStaticPaths() {
 
   return posts.map((post, index) => ({
     params: { slug: post.slug },
-    props: { post, previous: posts[index - 1] },
+    props: { post, index },
   }))
 }
 
 type Props = {
   post: CollectionEntry<'blog'>
-  previous?: CollectionEntry<'blog'>
+  index: number
 }
 
-const { post, previous } = Astro.props
+const { post, index } = Astro.props
 const { Content, headings } = await post.render()
 
 const dev = process.env.NODE_ENV !== 'production'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => a.data.pubDate!.valueOf() - b.data.pubDate!.valueOf(),
+)
+
+const previous = index > 0 ? posts[index - 1] : null
 ---
 
 <BlogPost headings={headings} {...post}>
