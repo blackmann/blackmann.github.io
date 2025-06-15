@@ -25,3 +25,7 @@ So you'll realize, a lot of the fascination is around how the output of AI looks
 But when it comes to entirely new ideas, new/different aesthetics, which I constantly find myself doing, AI hasn't really been helpful to me.
 
 I would be going back to VS Code (away from cursor)
+
+---
+
+Now, that's an creative point of view. Not everyone is in it for the creativity. A lot (higher proportion) are in for the money — I'm not sharing that view.
