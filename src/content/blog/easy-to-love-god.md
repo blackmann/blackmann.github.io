@@ -1,7 +1,7 @@
 ---
 title: "It's easier to love God"
 description: "Very easy."
-pubDate: "Jun 15 2025"
+pubDate: "Jun 30 2025"
 ---
 
 It's easier to love God and that's what people want. To love God, it's simple.
