@@ -3,8 +3,23 @@ import React from "react";
 
 export function Happy26() {
 	const [step, setStep] = React.useState(1);
+  const [videoUrl, setVideoUrl] = React.useState('')
 
-	if (step === 2) return <Step2 />;
+	React.useEffect(() => {
+		fetch("/26.mp4")
+			.then((res) => res.blob())
+			.then((v) => setVideoUrl(URL.createObjectURL(v)));
+	}, []);
+
+	if (!videoUrl) {
+		return (
+			<div className="h-100dvh container mx-auto flex justify-center items-center">
+				A moment…
+			</div>
+		);
+	}
+
+	if (step === 2) return <Step2 videoUrl={videoUrl} />;
 
 	return <Step1 onProceed={() => setStep(2)} />;
 }
@@ -46,12 +61,19 @@ function Step1({ onProceed }: StepProp) {
 	);
 }
 
-function Step2() {
+interface Step2Props { videoUrl: string }
+function Step2({ videoUrl }: Step2Props) {
 	return (
 		<div style={{ fontFamily: "Nunito", fontSize: 16 }}>
 			<div className="container mx-auto flex flex-col justify-center items-center min-h-100dvh py-8rem">
 				<div className="aspect-[4/5] bg-stone-200 dark:bg-neutral-800 rounded-2xl w-30rem shadow-lg overflow-hidden animate-fade-in animate-duration-3000">
-					<video src="/26.mp4" className="w-full" playsInline controls autoPlay />
+					<video
+						src={videoUrl}
+						className="w-full"
+						playsInline
+						controls
+						autoPlay
+					/>
 				</div>
 
 				<div className="w-30rem mt-4">
