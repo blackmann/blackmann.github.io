@@ -46,21 +46,12 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
 {
 	process.env.NODE_ENV === 'production' && (
-	<!-- Umami -->
-<script async src="https://analytics.umami.is/script.js" data-website-id="6cc8bf19-147d-45a2-b7c9-75b7c1b607bf"></script>
 	<!-- Observe -->
 <script
     src="https://observe.degreat.co.uk/api/script.js"
     data-site-id="1"
     defer
 ></script>
-	)
-}
-
-{
-	process.env.NODE_ENV !== 'production' && (
-	<!-- Observe Local -->
-<script async src="https://observe.local/script.js" data-app="clwnp4jnp0000ze4wmdyiawle"></script>
 	)
 }
 
