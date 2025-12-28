@@ -1,9 +1,9 @@
 import clsx from "clsx";
+import { getStrokePoints } from "perfect-freehand";
 import React from "react";
 import rough from "roughjs";
 import type { Options as RoughOptions } from "roughjs/bin/core";
 import { useColorScheme } from "../lib/use-color-scheme";
-import { getStrokePoints } from "perfect-freehand";
 
 interface Props {
 	aspectRatio: number;
@@ -49,6 +49,12 @@ type Colors = (typeof colors)[number];
 
 function cs(key: string) {
 	return getComputedStyle(document.documentElement).getPropertyValue(key);
+}
+
+function getFont() {
+	const dpi = window.devicePixelRatio;
+	const fs = Number(cs("--draw-fs"));
+	return `${fs * dpi}px 'Indie Flower'`;
 }
 
 function renderPath(path: [number, number][]) {
@@ -219,13 +225,6 @@ function Draw({ aspectRatio, className, id }: Props) {
 			...styleColors,
 			[currentStyle]: color,
 		}));
-	}
-
-	function getFont() {
-		const dpi = window.devicePixelRatio;
-		const fs = Number(cs("--draw-fs"));
-
-		return `${fs * dpi}px 'Indie Flower'`;
 	}
 
 	const addOp = React.useCallback(
@@ -410,6 +409,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 		}
 	}, [layers.length]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: theme triggers re-draw when colors change
 	React.useEffect(() => {
 		draw();
 		document.fonts.ready.then(() => draw());
@@ -418,7 +418,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 	React.useEffect(() => {
 		fetch(`/drawings/${id}.json`)
 			.then((res) => {
-				res.json().then((layers) => {
+				res.json().then((layers: Op[]) => {
 					setLayers(layers);
 				});
 			})

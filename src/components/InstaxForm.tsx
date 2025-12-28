@@ -1,9 +1,15 @@
 import clsx from "clsx";
 import React from "react";
-import Cropper from "react-easy-crop";
-import { useForm, type FieldValues } from "react-hook-form";
+import Cropper, { type Point } from "react-easy-crop";
+import { useForm } from "react-hook-form";
 import { ENDPOINT } from "../lib/fns";
 import { uploadMedia } from "../lib/upload-media";
+
+interface InstaxFormData {
+	quantity: number;
+	phone: string;
+	hostel: string;
+}
 
 const hostels = [
 	"New Brunei",
@@ -22,10 +28,10 @@ const hostels = [
 ];
 
 function InstaxForm() {
-	const { register, handleSubmit, setValue, watch } = useForm();
-	const [image, setImage] = React.useState<any>(null);
+	const { register, handleSubmit, setValue, watch } = useForm<InstaxFormData>();
+	const [image, setImage] = React.useState<string | null>(null);
 	const [file, setFile] = React.useState<File | null>(null);
-	const [crop, setCrop] = React.useState<any>({ x: 0, y: 0 });
+	const [crop, setCrop] = React.useState<Point>({ x: 0, y: 0 });
 	const [zoom, setZoom] = React.useState(1);
 	const [rotation, setRotation] = React.useState(0);
 
@@ -38,13 +44,13 @@ function InstaxForm() {
 		setFile(file);
 		const reader = new FileReader();
 		reader.onload = () => {
-			setImage(reader.result);
+			setImage(reader.result as string);
 		};
 
 		reader.readAsDataURL(file);
 	}
 
-	async function placeOrder(data: FieldValues) {
+	async function placeOrder(data: InstaxFormData) {
 		if (!image || !file) return;
 		setInProgress(true);
 
@@ -98,22 +104,20 @@ function InstaxForm() {
 				)}
 
 				{image && (
-					<>
-						<Cropper
-							aspect={3 / 4}
-							onCropChange={setCrop}
-							image={image}
-							crop={crop}
-							zoom={zoom}
-							onZoomChange={setZoom}
-							rotation={rotation}
-							objectFit="contain"
-							onRotationChange={setRotation}
-							classes={{
-								containerClassName: "m-4 aspect-[3/4] rounded border",
-							}}
-						/>
-					</>
+					<Cropper
+						aspect={3 / 4}
+						onCropChange={setCrop}
+						image={image}
+						crop={crop}
+						zoom={zoom}
+						onZoomChange={setZoom}
+						rotation={rotation}
+						objectFit="contain"
+						onRotationChange={setRotation}
+						classes={{
+							containerClassName: "m-4 aspect-[3/4] rounded border",
+						}}
+					/>
 				)}
 			</div>
 

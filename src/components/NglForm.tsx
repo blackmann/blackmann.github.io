@@ -1,6 +1,10 @@
 import React from "react";
-import { useForm, type FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { NglPreview } from "./NglPreview";
+
+interface NglFormData {
+	message: string;
+}
 
 const MAX = 200;
 
@@ -8,12 +12,12 @@ function NglForm() {
 	const [inProgress, setInProgress] = React.useState(false);
 	const [sent, setSent] = React.useState("");
 
-	const { register, handleSubmit, watch } = useForm({
+	const { register, handleSubmit, watch } = useForm<NglFormData>({
 		defaultValues: { message: "" },
 	});
 
-	async function send(data: FieldValues) {
-		setInProgress(true)
+	async function send(data: NglFormData) {
+		setInProgress(true);
 
 		await fetch("https://fns.degreat.co.uk/ngl", {
 			method: "POST",
@@ -24,7 +28,7 @@ function NglForm() {
 		});
 
 		setSent(data.message);
-		setInProgress(false)
+		setInProgress(false);
 	}
 
 	const length = watch("message").length;
