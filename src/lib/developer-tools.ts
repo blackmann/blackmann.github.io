@@ -1,9 +1,9 @@
 const developerTools = [
   {
-    title: 'Many Things',
+    title: 'ManyManyThings',
     description:
-      'Track tasks you need to work on and quickly list ideas right from the menu bar.',
-    url: 'github.com/blackmann/ManyThings'
+      'Pragmatic planner for people doing a lot of things. Many Many Things is designed to help you handle one day at a time while staying motivated by how far you\'ve come.',
+    url: 'https://degreat.co.uk/manymanythings/'
   },
   {
     title: 'DotLocal',
