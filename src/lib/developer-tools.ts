@@ -3,7 +3,7 @@ const developerTools = [
     title: 'ManyManyThings',
     description:
       'Pragmatic planner for people doing a lot of things. Many Many Things is designed to help you handle one day at a time while staying motivated by how far you\'ve come.',
-    url: 'https://degreat.co.uk/manymanythings/'
+    url: 'degreat.co.uk/manymanythings/'
   },
   {
     title: 'DotLocal',
