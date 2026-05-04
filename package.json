@@ -1,0 +1,54 @@
+{
+  "name": "gremix",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "lint": "biome lint",
+    "start": "node ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "makemigration": "prisma migrate dev --name $1",
+    "migrate": "prisma migrate deploy",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.74",
+    "@iconify-json/solar": "^1.2.5",
+    "@iconify-json/svg-spinners": "^1.2.4",
+    "@julr/unocss-preset-forms": "^2.0.0",
+    "@react-router/fs-routes": "^7.9.6",
+    "@react-router/node": "^7.9.6",
+    "@react-router/serve": "^7.9.6",
+    "@unocss/reset": "66.5.9",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "isbot": "^5.1.32",
+    "prisma": "^7.7.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.66.1",
+    "react-router": "^7.9.6",
+    "react-router-hono-server": "^2.22.0",
+    "unocss": "^66.5.9"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.7",
+    "@react-router/dev": "^7.9.6",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "type-fest": "^5.2.0",
+    "typescript": "^6.0.2",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@10.33.2"
+}
