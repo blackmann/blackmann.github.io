@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Fragment } from "react";
 import { NavLink } from "react-router";
+import { LedNavScreen } from "./led-nav-screen";
 
 const navigationLinks = [
   {
@@ -54,7 +55,7 @@ export function Navigation() {
   return (
     <div className="w-19rem">
       <div className="text-secondary">
-        <div className="mt-6 h-16 rounded-full bg-secondary mx-6"></div>
+        <LedNavScreen />
         <p className="px-6 mt-4">
           Home to the super creative. Petty to design and aesthetics. Fascinated by animals.
           Philosophical and cares and about posterity.

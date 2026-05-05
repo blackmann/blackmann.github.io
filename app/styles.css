@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap");
+
+@font-face {
+  font-display: swap;
+  font-family: "Maple Mono";
+  font-style: italic;
+  font-weight: 400;
+  size-adjust: 92%;
+  src: url("/fonts/maple-mono-italic.ttf") format("truetype");
+}
 
 :root {
   font-size: 14px;
@@ -22,5 +31,160 @@
 }
 
 .font-mono {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "DM Mono", monospace;
+  font-variant-ligatures: common-ligatures;
+}
+
+em,
+i {
+  font-family: "Maple Mono", "DM Mono", monospace;
+}
+
+.mdx-post {
+  @apply text-[1.05rem] leading-7 text-stone-800 dark:text-neutral-100;
+}
+
+.mdx-post > * + * {
+  @apply mt-5;
+}
+
+.mdx-post h2 {
+  @apply mt-10 text-2xl font-semibold leading-tight text-stone-950 dark:text-white;
+}
+
+.mdx-post h3 {
+  @apply mt-8 text-xl font-semibold leading-tight text-stone-950 dark:text-white;
+}
+
+.mdx-post ul,
+.mdx-post ol {
+  @apply pl-6;
+}
+
+.mdx-post ul {
+  @apply list-disc;
+}
+
+.mdx-post ol {
+  @apply list-decimal;
+}
+
+.mdx-post li + li {
+  @apply mt-2;
+}
+
+.mdx-post blockquote {
+  @apply border-l-4 border-stone-300 pl-4 dark:border-neutral-700;
+  font-family: "Maple Mono", "DM Mono", monospace;
+  font-style: italic;
+  @apply text-stone-500 dark:text-neutral-400;
+}
+
+.mdx-post blockquote * {
+  font-family: inherit;
+  font-style: inherit;
+}
+
+.mdx-post .footnotes {
+  @apply mt-16 border-t border-stone-300 pt-8 dark:border-neutral-700;
+}
+
+.mdx-post .footnotes h2 {
+  @apply hidden;
+}
+
+.mdx-post .footnotes ol {
+  @apply pl-5 text-sm leading-6 text-secondary;
+}
+
+.mdx-post .footnotes li + li {
+  @apply mt-3;
+}
+
+.mdx-post code {
+  font-family: "DM Mono", monospace;
+  font-variant-ligatures: common-ligatures;
+  font-size: 1rem;
+}
+
+.mdx-post .shiki {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.mdx-post .shiki .line {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.mdx-post .shiki .line::before {
+  color: rgba(115, 138, 148, 0.4);
+  content: counter(step);
+  counter-increment: step;
+  display: inline-block;
+  margin-right: 1.5rem;
+  text-align: right;
+  width: 1rem;
+}
+
+.mdx-post .shiki .diff {
+  @apply -mb-6 block w-full py-1;
+}
+
+.mdx-post .shiki .diff.remove {
+  @apply bg-red-100;
+}
+
+.mdx-post .shiki .diff.add {
+  @apply bg-green-50;
+}
+
+.mdx-post .shiki .diff.remove > :first-child::before {
+  content: "-";
+  @apply -ms-2 text-red-500;
+}
+
+.mdx-post .shiki .diff.add > :first-child::before {
+  content: "+";
+  @apply -ms-2 text-green-500;
+}
+
+.mdx-post .shiki .highlighted {
+  @apply bg-yellow-100/70 dark:bg-amber-400/10;
+}
+
+.mdx-post img,
+.mdx-post video {
+  @apply my-6 w-full rounded-lg border border-stone-200 bg-stone-100 dark:border-neutral-800 dark:bg-neutral-900;
+}
+
+.mdx-heading-anchor {
+  @apply no-underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mdx-post .shiki,
+  .mdx-post .shiki span {
+    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .mdx-post .shiki .diff.remove {
+    background-color: rgba(160, 46, 46, 0.15) !important;
+  }
+
+  .mdx-post .shiki .diff.add {
+    background-color: rgba(46, 160, 67, 0.15) !important;
+  }
+
+  .mdx-post .shiki .diff:is(.remove, .add) > * {
+    background-color: transparent !important;
+  }
+}
+
+.snazzy-light {
+  @apply !bg-white;
 }
